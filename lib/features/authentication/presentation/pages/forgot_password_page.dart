@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/design_system/design_system.dart';
+import '../../../../core/result/result.dart';
 import '../../../../core/validation/validators.dart';
 import '../../data/providers/auth_providers.dart';
 
@@ -40,9 +41,8 @@ class _ForgotPasswordPageState extends ConsumerState<ForgotPasswordPage> {
 
     setState(() {
       _isLoading = false;
-      _isSent = result.isSuccess;
-      if (result.isFailure) {
-        _errorMessage = result.failure.message;
+      if (result is Failure) {
+        _errorMessage = (result as Failure).failure.message;
       }
     });
   }

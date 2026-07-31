@@ -176,7 +176,7 @@ class HomePage extends ConsumerWidget {
 
                 ListView.separated(
                   shrinkWrap: true,
-                  physics: const NeverScrollablePhysics(),
+                  physics: NeverScrollablePhysics(),
                   padding: const EdgeInsets.symmetric(
                     horizontal: AppSpacing.base,
                   ),
