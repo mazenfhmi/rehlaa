@@ -1,0 +1,55 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../app/app.dart';
+import '../core/logging/app_logger.dart';
+import '../core/storage/storage_service.dart';
+import 'app_environment.dart';
+import 'provider_observer.dart';
+
+/// Initializes all platform services and starts the application.
+///
+/// All async initialization is done here — `main.dart` remains a single line.
+/// Error handling is global via [FlutterError.onError].
+Future<void> bootstrap({
+  required AppEnvironment environment,
+}) async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Lock to portrait.
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+
+  // Initialize shared preferences.
+  final prefs = await SharedPreferences.getInstance();
+
+  // Forward Flutter framework errors to error reporting.
+  FlutterError.onError = (details) {
+    AppLogger.error(
+      'Flutter Error: ${details.exceptionAsString()}',
+      details.exception,
+      details.stack,
+    );
+    FlutterError.presentError(details);
+  };
+
+  AppLogger.info('Rehlaa starting [${environment.label}]');
+
+  runApp(
+    ProviderScope(
+      observers: [
+        if (environment.enableDiagnostics) const AppProviderObserver(),
+      ],
+      overrides: [
+        preferenceStorageServiceProvider.overrideWithValue(
+          PreferenceStorageService(prefs),
+        ),
+      ],
+      child: const RehlaaApp(),
+    ),
+  );
+}

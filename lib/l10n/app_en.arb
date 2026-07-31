@@ -1,0 +1,64 @@
+{
+  "@@locale": "en",
+  "@@author": "Rehlaa Team",
+
+  "appName": "Rehlaa",
+
+  "homeTitle": "Home",
+  "favoritesTitle": "Favorites",
+  "cartTitle": "Cart",
+  "walletTitle": "Wallet",
+  "profileTitle": "Profile",
+
+  "offlineMessage": "You are viewing saved data. Transactions are unavailable.",
+  "retryLabel": "Try Again",
+  "seeAllLabel": "See All",
+  "loadingLabel": "Loading...",
+  "noItemsFound": "No items found.",
+
+  "signIn": "Sign In",
+  "signUp": "Sign Up",
+  "signOut": "Sign Out",
+  "email": "Email",
+  "password": "Password",
+  "confirmPassword": "Confirm Password",
+  "forgotPassword": "Forgot Password?",
+  "fullName": "Full Name",
+  "phone": "Phone Number",
+
+  "addToCart": "Add to Cart",
+  "buyNow": "Buy Now",
+  "removeFromCart": "Remove",
+  "cartEmpty": "Your cart is empty.",
+  "checkout": "Checkout",
+  "total": "Total",
+  "subTotal": "Subtotal",
+  "discount": "Discount",
+  "coupon": "Coupon",
+
+  "walletBalance": "Wallet Balance",
+  "topUp": "Top Up",
+  "transactions": "Transactions",
+
+  "orderSummary": "Order Summary",
+  "orderStatus": "Order Status",
+  "pending": "Pending",
+  "processing": "Processing",
+  "completed": "Completed",
+  "cancelled": "Cancelled",
+
+  "settings": "Settings",
+  "language": "Language",
+  "theme": "Theme",
+  "notifications": "Notifications",
+  "privacyPolicy": "Privacy Policy",
+  "termsOfService": "Terms of Service",
+  "support": "Support",
+
+  "lightTheme": "Light",
+  "darkTheme": "Dark",
+  "systemTheme": "System Default",
+
+  "english": "English",
+  "arabic": "Arabic"
+}

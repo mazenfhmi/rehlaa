@@ -1,0 +1,64 @@
+{
+  "@@locale": "ar",
+  "@@author": "Rehlaa Team",
+
+  "appName": "رحلة",
+
+  "homeTitle": "الرئيسية",
+  "favoritesTitle": "المفضلة",
+  "cartTitle": "السلة",
+  "walletTitle": "المحفظة",
+  "profileTitle": "الملف الشخصي",
+
+  "offlineMessage": "أنت تعرض بيانات محفوظة. العمليات المالية غير متاحة.",
+  "retryLabel": "حاول مجدداً",
+  "seeAllLabel": "عرض الكل",
+  "loadingLabel": "جاري التحميل...",
+  "noItemsFound": "لا توجد عناصر.",
+
+  "signIn": "تسجيل الدخول",
+  "signUp": "إنشاء حساب",
+  "signOut": "تسجيل الخروج",
+  "email": "البريد الإلكتروني",
+  "password": "كلمة المرور",
+  "confirmPassword": "تأكيد كلمة المرور",
+  "forgotPassword": "نسيت كلمة المرور؟",
+  "fullName": "الاسم الكامل",
+  "phone": "رقم الهاتف",
+
+  "addToCart": "أضف إلى السلة",
+  "buyNow": "اشتر الآن",
+  "removeFromCart": "إزالة",
+  "cartEmpty": "سلتك فارغة.",
+  "checkout": "الدفع",
+  "total": "الإجمالي",
+  "subTotal": "المجموع",
+  "discount": "خصم",
+  "coupon": "كوبون",
+
+  "walletBalance": "رصيد المحفظة",
+  "topUp": "شحن",
+  "transactions": "المعاملات",
+
+  "orderSummary": "ملخص الطلب",
+  "orderStatus": "حالة الطلب",
+  "pending": "معلق",
+  "processing": "قيد المعالجة",
+  "completed": "مكتمل",
+  "cancelled": "ملغي",
+
+  "settings": "الإعدادات",
+  "language": "اللغة",
+  "theme": "المظهر",
+  "notifications": "الإشعارات",
+  "privacyPolicy": "سياسة الخصوصية",
+  "termsOfService": "شروط الخدمة",
+  "support": "الدعم",
+
+  "lightTheme": "فاتح",
+  "darkTheme": "داكن",
+  "systemTheme": "إعداد النظام",
+
+  "english": "الإنجليزية",
+  "arabic": "العربية"
+}
