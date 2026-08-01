@@ -58,26 +58,22 @@ class AppShell extends StatelessWidget {
           currentIndex: navigationShell.currentIndex,
           onTap: (index) => _onTap(context, index),
           type: BottomNavigationBarType.fixed,
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
           elevation: 0,
           selectedItemColor: AppColors.primary,
-          unselectedItemColor:
-              Theme.of(context).iconTheme.color?.withValues(alpha: 0.4),
+          unselectedItemColor: const Color(0xFFB6B6B6),
           items: _navItems.asMap().entries.map((entry) {
             final i = entry.key;
             final item = entry.value;
             final isActive = i == navigationShell.currentIndex;
-            final color = isActive ? AppColors.primary : null;
 
             return BottomNavigationBarItem(
               icon: SvgPicture.asset(
                 item.svgPath,
                 height: 24,
-                colorFilter: ColorFilter.mode(
-                  color ??
-                      Theme.of(context)
-                          .iconTheme
-                          .color!
-                          .withValues(alpha: isDark ? 0.4 : 0.6),
+                colorFilter: const ColorFilter.mode(
+                  Color(0xFFB6B6B6),
                   BlendMode.srcIn,
                 ),
               ),

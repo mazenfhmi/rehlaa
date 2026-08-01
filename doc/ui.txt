@@ -1,0 +1,5448 @@
+Directory structure:
+└── dnxempire-1-e-commerce-flutter-app/
+    ├── README.md
+    ├── analysis_options.yaml
+    ├── LICENSE
+    ├── pubspec.lock
+    ├── pubspec.yaml
+    ├── .metadata
+    ├── android/
+    │   ├── gradle.properties
+    │   ├── app/
+    │   │   └── src/
+    │   │       ├── debug/
+    │   │       │   └── AndroidManifest.xml
+    │   │       ├── main/
+    │   │       │   ├── AndroidManifest.xml
+    │   │       │   ├── kotlin/
+    │   │       │   │   └── com/
+    │   │       │   │       └── example/
+    │   │       │   │           └── demo_app/
+    │   │       │   │               └── MainActivity.kt
+    │   │       │   └── res/
+    │   │       │       ├── drawable/
+    │   │       │       │   └── launch_background.xml
+    │   │       │       ├── drawable-v21/
+    │   │       │       │   └── launch_background.xml
+    │   │       │       ├── values/
+    │   │       │       │   └── styles.xml
+    │   │       │       └── values-night/
+    │   │       │           └── styles.xml
+    │   │       └── profile/
+    │   │           └── AndroidManifest.xml
+    │   └── gradle/
+    │       └── wrapper/
+    │           └── gradle-wrapper.properties
+    ├── assets/
+    │   └── fonts/
+    │       └── muli/
+    │           ├── Muli-ExtraLight.ttf
+    │           ├── Muli-ExtraLightItalic.ttf
+    │           ├── Muli-Italic.ttf
+    │           ├── Muli-Light.ttf
+    │           ├── Muli-LightItalic.ttf
+    │           ├── Muli-Semi-BoldItalic.ttf
+    │           ├── Muli-SemiBold.ttf
+    │           └── Muli.ttf
+    ├── ios/
+    │   ├── Flutter/
+    │   │   ├── AppFrameworkInfo.plist
+    │   │   ├── Debug.xcconfig
+    │   │   └── Release.xcconfig
+    │   ├── Runner/
+    │   │   ├── AppDelegate.swift
+    │   │   ├── Info.plist
+    │   │   ├── Runner-Bridging-Header.h
+    │   │   ├── Assets.xcassets/
+    │   │   │   ├── AppIcon.appiconset/
+    │   │   │   │   └── Contents.json
+    │   │   │   └── LaunchImage.imageset/
+    │   │   │       ├── README.md
+    │   │   │       └── Contents.json
+    │   │   └── Base.lproj/
+    │   │       ├── LaunchScreen.storyboard
+    │   │       └── Main.storyboard
+    │   └── RunnerTests/
+    │       └── RunnerTests.swift
+    ├── lib/
+    │   ├── constants.dart
+    │   ├── enums.dart
+    │   ├── main.dart
+    │   ├── routes.dart
+    │   ├── theme.dart
+    │   ├── components/
+    │   │   ├── custom_surfix_icon.dart
+    │   │   ├── form_error.dart
+    │   │   ├── no_account_text.dart
+    │   │   ├── product_card.dart
+    │   │   ├── rounded_icon_btn.dart
+    │   │   └── socal_card.dart
+    │   ├── helper/
+    │   │   └── keyboard.dart
+    │   ├── models/
+    │   │   ├── Cart.dart
+    │   │   └── Product.dart
+    │   └── screens/
+    │       ├── init_screen.dart
+    │       ├── cart/
+    │       │   ├── cart_screen.dart
+    │       │   └── components/
+    │       │       ├── cart_card.dart
+    │       │       └── check_out_card.dart
+    │       ├── complete_profile/
+    │       │   ├── complete_profile_screen.dart
+    │       │   └── components/
+    │       │       └── complete_profile_form.dart
+    │       ├── details/
+    │       │   ├── details_screen.dart
+    │       │   └── components/
+    │       │       ├── color_dots.dart
+    │       │       ├── product_description.dart
+    │       │       ├── product_images.dart
+    │       │       └── top_rounded_container.dart
+    │       ├── favorite/
+    │       │   └── favorite_screen.dart
+    │       ├── forgot_password/
+    │       │   ├── forgot_password_screen.dart
+    │       │   └── components/
+    │       │       └── forgot_pass_form.dart
+    │       ├── home/
+    │       │   ├── home_screen.dart
+    │       │   └── components/
+    │       │       ├── categories.dart
+    │       │       ├── discount_banner.dart
+    │       │       ├── home_header.dart
+    │       │       ├── icon_btn_with_counter.dart
+    │       │       ├── popular_product.dart
+    │       │       ├── search_field.dart
+    │       │       ├── section_title.dart
+    │       │       └── special_offers.dart
+    │       ├── login_success/
+    │       │   └── login_success_screen.dart
+    │       ├── otp/
+    │       │   ├── otp_screen.dart
+    │       │   └── components/
+    │       │       └── otp_form.dart
+    │       ├── products/
+    │       │   └── products_screen.dart
+    │       ├── profile/
+    │       │   ├── profile_screen.dart
+    │       │   └── components/
+    │       │       ├── profile_menu.dart
+    │       │       └── profile_pic.dart
+    │       ├── sign_in/
+    │       │   ├── sign_in_screen.dart
+    │       │   └── components/
+    │       │       └── sign_form.dart
+    │       ├── sign_up/
+    │       │   ├── sign_up_screen.dart
+    │       │   └── components/
+    │       │       └── sign_up_form.dart
+    │       └── splash/
+    │           ├── splash_screen.dart
+    │           └── components/
+    │               └── splash_content.dart
+    └── test/
+        └── widget_test.dart
+
+================================================
+FILE: README.md
+================================================
+# Flutter E-Commerce App 🛍️📱
+
+Welcome to the Flutter E-Commerce App project! This app is designed to provide a seamless shopping experience for users to browse, search, and purchase products directly from their mobile devices.
+
+## Features
+
+- **Product Catalog:**
+  - Browse through a wide range of products with detailed descriptions and images.
+
+- **Search Functionality:**
+  - Easily search for specific products by name, category, or keyword.
+
+- **Shopping Cart:**
+  - Add products to the cart, update quantities, and proceed to checkout.
+
+- **Secure Checkout:**
+  - Integrated payment options for a secure and hassle-free checkout process.
+
+- **User Authentication:**
+  - Allow users to create accounts, log in, and manage their profiles.
+
+## Technologies Used
+
+- **Flutter:**
+  - UI toolkit for building natively compiled applications for mobile, web, and desktop from a single codebase.
+
+- **Firebase:**
+  - Backend services for authentication, database, and hosting.
+
+- **Third-Party Plugins:**
+
+
+### Video Preview of the Shop template
+
+![Preview](/intro.gif)
+
+## Screens it contains:
+
+=> Onboarding
+=> Login
+=> Forgot Password
+=> Sign Up
+=> Complete Profile
+=> OTP Verification
+=> Home Page
+=> Product Details
+=> Order
+=> Profile (added)
+=> Bottom Navigation Bar (added)
+
+Now it contains all the screen, thanks for your love and support 🙏 
+
+## Photos
+![Preview](/1.png)
+![Preview](2.png)
+![Preview](3.png)
+![Preview](4.png)
+![Preview](5.png)
+![Preview](6.png)
+![Preview](7.png)
+
+## Preview
+
+
+
+================================================
+FILE: analysis_options.yaml
+================================================
+# This file configures the analyzer, which statically analyzes Dart code to
+# check for errors, warnings, and lints.
+#
+# The issues identified by the analyzer are surfaced in the UI of Dart-enabled
+# IDEs (https://dart.dev/tools#ides-and-editors). The analyzer can also be
+# invoked from the command line by running `flutter analyze`.
+
+# The following line activates a set of recommended lints for Flutter apps,
+# packages, and plugins designed to encourage good coding practices.
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  # The lint rules applied to this project can be customized in the
+  # section below to disable rules from the `package:flutter_lints/flutter.yaml`
+  # included above or to enable additional rules. A list of all available lints
+  # and their documentation is published at https://dart.dev/lints.
+  #
+  # Instead of disabling a lint rule for the entire project in the
+  # section below, it can also be suppressed for a single line of code
+  # or a specific dart file by using the `// ignore: name_of_lint` and
+  # `// ignore_for_file: name_of_lint` syntax on the line or in the file
+  # producing the lint.
+  rules:
+    # avoid_print: false  # Uncomment to disable the `avoid_print` rule
+    # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
+
+# Additional information about this file can be found at
+# https://dart.dev/guides/language/analysis-options
+
+
+
+================================================
+FILE: LICENSE
+================================================
+                    GNU GENERAL PUBLIC LICENSE
+                       Version 3, 29 June 2007
+
+ Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>
+ Everyone is permitted to copy and distribute verbatim copies
+ of this license document, but changing it is not allowed.
+
+                            Preamble
+
+  The GNU General Public License is a free, copyleft license for
+software and other kinds of works.
+
+  The licenses for most software and other practical works are designed
+to take away your freedom to share and change the works.  By contrast,
+the GNU General Public License is intended to guarantee your freedom to
+share and change all versions of a program--to make sure it remains free
+software for all its users.  We, the Free Software Foundation, use the
+GNU General Public License for most of our software; it applies also to
+any other work released this way by its authors.  You can apply it to
+your programs, too.
+
+  When we speak of free software, we are referring to freedom, not
+price.  Our General Public Licenses are designed to make sure that you
+have the freedom to distribute copies of free software (and charge for
+them if you wish), that you receive source code or can get it if you
+want it, that you can change the software or use pieces of it in new
+free programs, and that you know you can do these things.
+
+  To protect your rights, we need to prevent others from denying you
+these rights or asking you to surrender the rights.  Therefore, you have
+certain responsibilities if you distribute copies of the software, or if
+you modify it: responsibilities to respect the freedom of others.
+
+  For example, if you distribute copies of such a program, whether
+gratis or for a fee, you must pass on to the recipients the same
+freedoms that you received.  You must make sure that they, too, receive
+or can get the source code.  And you must show them these terms so they
+know their rights.
+
+  Developers that use the GNU GPL protect your rights with two steps:
+(1) assert copyright on the software, and (2) offer you this License
+giving you legal permission to copy, distribute and/or modify it.
+
+  For the developers' and authors' protection, the GPL clearly explains
+that there is no warranty for this free software.  For both users' and
+authors' sake, the GPL requires that modified versions be marked as
+changed, so that their problems will not be attributed erroneously to
+authors of previous versions.
+
+  Some devices are designed to deny users access to install or run
+modified versions of the software inside them, although the manufacturer
+can do so.  This is fundamentally incompatible with the aim of
+protecting users' freedom to change the software.  The systematic
+pattern of such abuse occurs in the area of products for individuals to
+use, which is precisely where it is most unacceptable.  Therefore, we
+have designed this version of the GPL to prohibit the practice for those
+products.  If such problems arise substantially in other domains, we
+stand ready to extend this provision to those domains in future versions
+of the GPL, as needed to protect the freedom of users.
+
+  Finally, every program is threatened constantly by software patents.
+States should not allow patents to restrict development and use of
+software on general-purpose computers, but in those that do, we wish to
+avoid the special danger that patents applied to a free program could
+make it effectively proprietary.  To prevent this, the GPL assures that
+patents cannot be used to render the program non-free.
+
+  The precise terms and conditions for copying, distribution and
+modification follow.
+
+                       TERMS AND CONDITIONS
+
+  0. Definitions.
+
+  "This License" refers to version 3 of the GNU General Public License.
+
+  "Copyright" also means copyright-like laws that apply to other kinds of
+works, such as semiconductor masks.
+
+  "The Program" refers to any copyrightable work licensed under this
+License.  Each licensee is addressed as "you".  "Licensees" and
+"recipients" may be individuals or organizations.
+
+  To "modify" a work means to copy from or adapt all or part of the work
+in a fashion requiring copyright permission, other than the making of an
+exact copy.  The resulting work is called a "modified version" of the
+earlier work or a work "based on" the earlier work.
+
+  A "covered work" means either the unmodified Program or a work based
+on the Program.
+
+  To "propagate" a work means to do anything with it that, without
+permission, would make you directly or secondarily liable for
+infringement under applicable copyright law, except executing it on a
+computer or modifying a private copy.  Propagation includes copying,
+distribution (with or without modification), making available to the
+public, and in some countries other activities as well.
+
+  To "convey" a work means any kind of propagation that enables other
+parties to make or receive copies.  Mere interaction with a user through
+a computer network, with no transfer of a copy, is not conveying.
+
+  An interactive user interface displays "Appropriate Legal Notices"
+to the extent that it includes a convenient and prominently visible
+feature that (1) displays an appropriate copyright notice, and (2)
+tells the user that there is no warranty for the work (except to the
+extent that warranties are provided), that licensees may convey the
+work under this License, and how to view a copy of this License.  If
+the interface presents a list of user commands or options, such as a
+menu, a prominent item in the list meets this criterion.
+
+  1. Source Code.
+
+  The "source code" for a work means the preferred form of the work
+for making modifications to it.  "Object code" means any non-source
+form of a work.
+
+  A "Standard Interface" means an interface that either is an official
+standard defined by a recognized standards body, or, in the case of
+interfaces specified for a particular programming language, one that
+is widely used among developers working in that language.
+
+  The "System Libraries" of an executable work include anything, other
+than the work as a whole, that (a) is included in the normal form of
+packaging a Major Component, but which is not part of that Major
+Component, and (b) serves only to enable use of the work with that
+Major Component, or to implement a Standard Interface for which an
+implementation is available to the public in source code form.  A
+"Major Component", in this context, means a major essential component
+(kernel, window system, and so on) of the specific operating system
+(if any) on which the executable work runs, or a compiler used to
+produce the work, or an object code interpreter used to run it.
+
+  The "Corresponding Source" for a work in object code form means all
+the source code needed to generate, install, and (for an executable
+work) run the object code and to modify the work, including scripts to
+control those activities.  However, it does not include the work's
+System Libraries, or general-purpose tools or generally available free
+programs which are used unmodified in performing those activities but
+which are not part of the work.  For example, Corresponding Source
+includes interface definition files associated with source files for
+the work, and the source code for shared libraries and dynamically
+linked subprograms that the work is specifically designed to require,
+such as by intimate data communication or control flow between those
+subprograms and other parts of the work.
+
+  The Corresponding Source need not include anything that users
+can regenerate automatically from other parts of the Corresponding
+Source.
+
+  The Corresponding Source for a work in source code form is that
+same work.
+
+  2. Basic Permissions.
+
+  All rights granted under this License are granted for the term of
+copyright on the Program, and are irrevocable provided the stated
+conditions are met.  This License explicitly affirms your unlimited
+permission to run the unmodified Program.  The output from running a
+covered work is covered by this License only if the output, given its
+content, constitutes a covered work.  This License acknowledges your
+rights of fair use or other equivalent, as provided by copyright law.
+
+  You may make, run and propagate covered works that you do not
+convey, without conditions so long as your license otherwise remains
+in force.  You may convey covered works to others for the sole purpose
+of having them make modifications exclusively for you, or provide you
+with facilities for running those works, provided that you comply with
+the terms of this License in conveying all material for which you do
+not control copyright.  Those thus making or running the covered works
+for you must do so exclusively on your behalf, under your direction
+and control, on terms that prohibit them from making any copies of
+your copyrighted material outside their relationship with you.
+
+  Conveying under any other circumstances is permitted solely under
+the conditions stated below.  Sublicensing is not allowed; section 10
+makes it unnecessary.
+
+  3. Protecting Users' Legal Rights From Anti-Circumvention Law.
+
+  No covered work shall be deemed part of an effective technological
+measure under any applicable law fulfilling obligations under article
+11 of the WIPO copyright treaty adopted on 20 December 1996, or
+similar laws prohibiting or restricting circumvention of such
+measures.
+
+  When you convey a covered work, you waive any legal power to forbid
+circumvention of technological measures to the extent such circumvention
+is effected by exercising rights under this License with respect to
+the covered work, and you disclaim any intention to limit operation or
+modification of the work as a means of enforcing, against the work's
+users, your or third parties' legal rights to forbid circumvention of
+technological measures.
+
+  4. Conveying Verbatim Copies.
+
+  You may convey verbatim copies of the Program's source code as you
+receive it, in any medium, provided that you conspicuously and
+appropriately publish on each copy an appropriate copyright notice;
+keep intact all notices stating that this License and any
+non-permissive terms added in accord with section 7 apply to the code;
+keep intact all notices of the absence of any warranty; and give all
+recipients a copy of this License along with the Program.
+
+  You may charge any price or no price for each copy that you convey,
+and you may offer support or warranty protection for a fee.
+
+  5. Conveying Modified Source Versions.
+
+  You may convey a work based on the Program, or the modifications to
+produce it from the Program, in the form of source code under the
+terms of section 4, provided that you also meet all of these conditions:
+
+    a) The work must carry prominent notices stating that you modified
+    it, and giving a relevant date.
+
+    b) The work must carry prominent notices stating that it is
+    released under this License and any conditions added under section
+    7.  This requirement modifies the requirement in section 4 to
+    "keep intact all notices".
+
+    c) You must license the entire work, as a whole, under this
+    License to anyone who comes into possession of a copy.  This
+    License will therefore apply, along with any applicable section 7
+    additional terms, to the whole of the work, and all its parts,
+    regardless of how they are packaged.  This License gives no
+    permission to license the work in any other way, but it does not
+    invalidate such permission if you have separately received it.
+
+    d) If the work has interactive user interfaces, each must display
+    Appropriate Legal Notices; however, if the Program has interactive
+    interfaces that do not display Appropriate Legal Notices, your
+    work need not make them do so.
+
+  A compilation of a covered work with other separate and independent
+works, which are not by their nature extensions of the covered work,
+and which are not combined with it such as to form a larger program,
+in or on a volume of a storage or distribution medium, is called an
+"aggregate" if the compilation and its resulting copyright are not
+used to limit the access or legal rights of the compilation's users
+beyond what the individual works permit.  Inclusion of a covered work
+in an aggregate does not cause this License to apply to the other
+parts of the aggregate.
+
+  6. Conveying Non-Source Forms.
+
+  You may convey a covered work in object code form under the terms
+of sections 4 and 5, provided that you also convey the
+machine-readable Corresponding Source under the terms of this License,
+in one of these ways:
+
+    a) Convey the object code in, or embodied in, a physical product
+    (including a physical distribution medium), accompanied by the
+    Corresponding Source fixed on a durable physical medium
+    customarily used for software interchange.
+
+    b) Convey the object code in, or embodied in, a physical product
+    (including a physical distribution medium), accompanied by a
+    written offer, valid for at least three years and valid for as
+    long as you offer spare parts or customer support for that product
+    model, to give anyone who possesses the object code either (1) a
+    copy of the Corresponding Source for all the software in the
+    product that is covered by this License, on a durable physical
+    medium customarily used for software interchange, for a price no
+    more than your reasonable cost of physically performing this
+    conveying of source, or (2) access to copy the
+    Corresponding Source from a network server at no charge.
+
+    c) Convey individual copies of the object code with a copy of the
+    written offer to provide the Corresponding Source.  This
+    alternative is allowed only occasionally and noncommercially, and
+    only if you received the object code with such an offer, in accord
+    with subsection 6b.
+
+    d) Convey the object code by offering access from a designated
+    place (gratis or for a charge), and offer equivalent access to the
+    Corresponding Source in the same way through the same place at no
+    further charge.  You need not require recipients to copy the
+    Corresponding Source along with the object code.  If the place to
+    copy the object code is a network server, the Corresponding Source
+    may be on a different server (operated by you or a third party)
+    that supports equivalent copying facilities, provided you maintain
+    clear directions next to the object code saying where to find the
+    Corresponding Source.  Regardless of what server hosts the
+    Corresponding Source, you remain obligated to ensure that it is
+    available for as long as needed to satisfy these requirements.
+
+    e) Convey the object code using peer-to-peer transmission, provided
+    you inform other peers where the object code and Corresponding
+    Source of the work are being offered to the general public at no
+    charge under subsection 6d.
+
+  A separable portion of the object code, whose source code is excluded
+from the Corresponding Source as a System Library, need not be
+included in conveying the object code work.
+
+  A "User Product" is either (1) a "consumer product", which means any
+tangible personal property which is normally used for personal, family,
+or household purposes, or (2) anything designed or sold for incorporation
+into a dwelling.  In determining whether a product is a consumer product,
+doubtful cases shall be resolved in favor of coverage.  For a particular
+product received by a particular user, "normally used" refers to a
+typical or common use of that class of product, regardless of the status
+of the particular user or of the way in which the particular user
+actually uses, or expects or is expected to use, the product.  A product
+is a consumer product regardless of whether the product has substantial
+commercial, industrial or non-consumer uses, unless such uses represent
+the only significant mode of use of the product.
+
+  "Installation Information" for a User Product means any methods,
+procedures, authorization keys, or other information required to install
+and execute modified versions of a covered work in that User Product from
+a modified version of its Corresponding Source.  The information must
+suffice to ensure that the continued functioning of the modified object
+code is in no case prevented or interfered with solely because
+modification has been made.
+
+  If you convey an object code work under this section in, or with, or
+specifically for use in, a User Product, and the conveying occurs as
+part of a transaction in which the right of possession and use of the
+User Product is transferred to the recipient in perpetuity or for a
+fixed term (regardless of how the transaction is characterized), the
+Corresponding Source conveyed under this section must be accompanied
+by the Installation Information.  But this requirement does not apply
+if neither you nor any third party retains the ability to install
+modified object code on the User Product (for example, the work has
+been installed in ROM).
+
+  The requirement to provide Installation Information does not include a
+requirement to continue to provide support service, warranty, or updates
+for a work that has been modified or installed by the recipient, or for
+the User Product in which it has been modified or installed.  Access to a
+network may be denied when the modification itself materially and
+adversely affects the operation of the network or violates the rules and
+protocols for communication across the network.
+
+  Corresponding Source conveyed, and Installation Information provided,
+in accord with this section must be in a format that is publicly
+documented (and with an implementation available to the public in
+source code form), and must require no special password or key for
+unpacking, reading or copying.
+
+  7. Additional Terms.
+
+  "Additional permissions" are terms that supplement the terms of this
+License by making exceptions from one or more of its conditions.
+Additional permissions that are applicable to the entire Program shall
+be treated as though they were included in this License, to the extent
+that they are valid under applicable law.  If additional permissions
+apply only to part of the Program, that part may be used separately
+under those permissions, but the entire Program remains governed by
+this License without regard to the additional permissions.
+
+  When you convey a copy of a covered work, you may at your option
+remove any additional permissions from that copy, or from any part of
+it.  (Additional permissions may be written to require their own
+removal in certain cases when you modify the work.)  You may place
+additional permissions on material, added by you to a covered work,
+for which you have or can give appropriate copyright permission.
+
+  Notwithstanding any other provision of this License, for material you
+add to a covered work, you may (if authorized by the copyright holders of
+that material) supplement the terms of this License with terms:
+
+    a) Disclaiming warranty or limiting liability differently from the
+    terms of sections 15 and 16 of this License; or
+
+    b) Requiring preservation of specified reasonable legal notices or
+    author attributions in that material or in the Appropriate Legal
+    Notices displayed by works containing it; or
+
+    c) Prohibiting misrepresentation of the origin of that material, or
+    requiring that modified versions of such material be marked in
+    reasonable ways as different from the original version; or
+
+    d) Limiting the use for publicity purposes of names of licensors or
+    authors of the material; or
+
+    e) Declining to grant rights under trademark law for use of some
+    trade names, trademarks, or service marks; or
+
+    f) Requiring indemnification of licensors and authors of that
+    material by anyone who conveys the material (or modified versions of
+    it) with contractual assumptions of liability to the recipient, for
+    any liability that these contractual assumptions directly impose on
+    those licensors and authors.
+
+  All other non-permissive additional terms are considered "further
+restrictions" within the meaning of section 10.  If the Program as you
+received it, or any part of it, contains a notice stating that it is
+governed by this License along with a term that is a further
+restriction, you may remove that term.  If a license document contains
+a further restriction but permits relicensing or conveying under this
+License, you may add to a covered work material governed by the terms
+of that license document, provided that the further restriction does
+not survive such relicensing or conveying.
+
+  If you add terms to a covered work in accord with this section, you
+must place, in the relevant source files, a statement of the
+additional terms that apply to those files, or a notice indicating
+where to find the applicable terms.
+
+  Additional terms, permissive or non-permissive, may be stated in the
+form of a separately written license, or stated as exceptions;
+the above requirements apply either way.
+
+  8. Termination.
+
+  You may not propagate or modify a covered work except as expressly
+provided under this License.  Any attempt otherwise to propagate or
+modify it is void, and will automatically terminate your rights under
+this License (including any patent licenses granted under the third
+paragraph of section 11).
+
+  However, if you cease all violation of this License, then your
+license from a particular copyright holder is reinstated (a)
+provisionally, unless and until the copyright holder explicitly and
+finally terminates your license, and (b) permanently, if the copyright
+holder fails to notify you of the violation by some reasonable means
+prior to 60 days after the cessation.
+
+  Moreover, your license from a particular copyright holder is
+reinstated permanently if the copyright holder notifies you of the
+violation by some reasonable means, this is the first time you have
+received notice of violation of this License (for any work) from that
+copyright holder, and you cure the violation prior to 30 days after
+your receipt of the notice.
+
+  Termination of your rights under this section does not terminate the
+licenses of parties who have received copies or rights from you under
+this License.  If your rights have been terminated and not permanently
+reinstated, you do not qualify to receive new licenses for the same
+material under section 10.
+
+  9. Acceptance Not Required for Having Copies.
+
+  You are not required to accept this License in order to receive or
+run a copy of the Program.  Ancillary propagation of a covered work
+occurring solely as a consequence of using peer-to-peer transmission
+to receive a copy likewise does not require acceptance.  However,
+nothing other than this License grants you permission to propagate or
+modify any covered work.  These actions infringe copyright if you do
+not accept this License.  Therefore, by modifying or propagating a
+covered work, you indicate your acceptance of this License to do so.
+
+  10. Automatic Licensing of Downstream Recipients.
+
+  Each time you convey a covered work, the recipient automatically
+receives a license from the original licensors, to run, modify and
+propagate that work, subject to this License.  You are not responsible
+for enforcing compliance by third parties with this License.
+
+  An "entity transaction" is a transaction transferring control of an
+organization, or substantially all assets of one, or subdividing an
+organization, or merging organizations.  If propagation of a covered
+work results from an entity transaction, each party to that
+transaction who receives a copy of the work also receives whatever
+licenses to the work the party's predecessor in interest had or could
+give under the previous paragraph, plus a right to possession of the
+Corresponding Source of the work from the predecessor in interest, if
+the predecessor has it or can get it with reasonable efforts.
+
+  You may not impose any further restrictions on the exercise of the
+rights granted or affirmed under this License.  For example, you may
+not impose a license fee, royalty, or other charge for exercise of
+rights granted under this License, and you may not initiate litigation
+(including a cross-claim or counterclaim in a lawsuit) alleging that
+any patent claim is infringed by making, using, selling, offering for
+sale, or importing the Program or any portion of it.
+
+  11. Patents.
+
+  A "contributor" is a copyright holder who authorizes use under this
+License of the Program or a work on which the Program is based.  The
+work thus licensed is called the contributor's "contributor version".
+
+  A contributor's "essential patent claims" are all patent claims
+owned or controlled by the contributor, whether already acquired or
+hereafter acquired, that would be infringed by some manner, permitted
+by this License, of making, using, or selling its contributor version,
+but do not include claims that would be infringed only as a
+consequence of further modification of the contributor version.  For
+purposes of this definition, "control" includes the right to grant
+patent sublicenses in a manner consistent with the requirements of
+this License.
+
+  Each contributor grants you a non-exclusive, worldwide, royalty-free
+patent license under the contributor's essential patent claims, to
+make, use, sell, offer for sale, import and otherwise run, modify and
+propagate the contents of its contributor version.
+
+  In the following three paragraphs, a "patent license" is any express
+agreement or commitment, however denominated, not to enforce a patent
+(such as an express permission to practice a patent or covenant not to
+sue for patent infringement).  To "grant" such a patent license to a
+party means to make such an agreement or commitment not to enforce a
+patent against the party.
+
+  If you convey a covered work, knowingly relying on a patent license,
+and the Corresponding Source of the work is not available for anyone
+to copy, free of charge and under the terms of this License, through a
+publicly available network server or other readily accessible means,
+then you must either (1) cause the Corresponding Source to be so
+available, or (2) arrange to deprive yourself of the benefit of the
+patent license for this particular work, or (3) arrange, in a manner
+consistent with the requirements of this License, to extend the patent
+license to downstream recipients.  "Knowingly relying" means you have
+actual knowledge that, but for the patent license, your conveying the
+covered work in a country, or your recipient's use of the covered work
+in a country, would infringe one or more identifiable patents in that
+country that you have reason to believe are valid.
+
+  If, pursuant to or in connection with a single transaction or
+arrangement, you convey, or propagate by procuring conveyance of, a
+covered work, and grant a patent license to some of the parties
+receiving the covered work authorizing them to use, propagate, modify
+or convey a specific copy of the covered work, then the patent license
+you grant is automatically extended to all recipients of the covered
+work and works based on it.
+
+  A patent license is "discriminatory" if it does not include within
+the scope of its coverage, prohibits the exercise of, or is
+conditioned on the non-exercise of one or more of the rights that are
+specifically granted under this License.  You may not convey a covered
+work if you are a party to an arrangement with a third party that is
+in the business of distributing software, under which you make payment
+to the third party based on the extent of your activity of conveying
+the work, and under which the third party grants, to any of the
+parties who would receive the covered work from you, a discriminatory
+patent license (a) in connection with copies of the covered work
+conveyed by you (or copies made from those copies), or (b) primarily
+for and in connection with specific products or compilations that
+contain the covered work, unless you entered into that arrangement,
+or that patent license was granted, prior to 28 March 2007.
+
+  Nothing in this License shall be construed as excluding or limiting
+any implied license or other defenses to infringement that may
+otherwise be available to you under applicable patent law.
+
+  12. No Surrender of Others' Freedom.
+
+  If conditions are imposed on you (whether by court order, agreement or
+otherwise) that contradict the conditions of this License, they do not
+excuse you from the conditions of this License.  If you cannot convey a
+covered work so as to satisfy simultaneously your obligations under this
+License and any other pertinent obligations, then as a consequence you may
+not convey it at all.  For example, if you agree to terms that obligate you
+to collect a royalty for further conveying from those to whom you convey
+the Program, the only way you could satisfy both those terms and this
+License would be to refrain entirely from conveying the Program.
+
+  13. Use with the GNU Affero General Public License.
+
+  Notwithstanding any other provision of this License, you have
+permission to link or combine any covered work with a work licensed
+under version 3 of the GNU Affero General Public License into a single
+combined work, and to convey the resulting work.  The terms of this
+License will continue to apply to the part which is the covered work,
+but the special requirements of the GNU Affero General Public License,
+section 13, concerning interaction through a network will apply to the
+combination as such.
+
+  14. Revised Versions of this License.
+
+  The Free Software Foundation may publish revised and/or new versions of
+the GNU General Public License from time to time.  Such new versions will
+be similar in spirit to the present version, but may differ in detail to
+address new problems or concerns.
+
+  Each version is given a distinguishing version number.  If the
+Program specifies that a certain numbered version of the GNU General
+Public License "or any later version" applies to it, you have the
+option of following the terms and conditions either of that numbered
+version or of any later version published by the Free Software
+Foundation.  If the Program does not specify a version number of the
+GNU General Public License, you may choose any version ever published
+by the Free Software Foundation.
+
+  If the Program specifies that a proxy can decide which future
+versions of the GNU General Public License can be used, that proxy's
+public statement of acceptance of a version permanently authorizes you
+to choose that version for the Program.
+
+  Later license versions may give you additional or different
+permissions.  However, no additional obligations are imposed on any
+author or copyright holder as a result of your choosing to follow a
+later version.
+
+  15. Disclaimer of Warranty.
+
+  THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY
+APPLICABLE LAW.  EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT
+HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM "AS IS" WITHOUT WARRANTY
+OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO,
+THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+PURPOSE.  THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM
+IS WITH YOU.  SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF
+ALL NECESSARY SERVICING, REPAIR OR CORRECTION.
+
+  16. Limitation of Liability.
+
+  IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING
+WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MODIFIES AND/OR CONVEYS
+THE PROGRAM AS PERMITTED ABOVE, BE LIABLE TO YOU FOR DAMAGES, INCLUDING ANY
+GENERAL, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE
+USE OR INABILITY TO USE THE PROGRAM (INCLUDING BUT NOT LIMITED TO LOSS OF
+DATA OR DATA BEING RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU OR THIRD
+PARTIES OR A FAILURE OF THE PROGRAM TO OPERATE WITH ANY OTHER PROGRAMS),
+EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF
+SUCH DAMAGES.
+
+  17. Interpretation of Sections 15 and 16.
+
+  If the disclaimer of warranty and limitation of liability provided
+above cannot be given local legal effect according to their terms,
+reviewing courts shall apply local law that most closely approximates
+an absolute waiver of all civil liability in connection with the
+Program, unless a warranty or assumption of liability accompanies a
+copy of the Program in return for a fee.
+
+                     END OF TERMS AND CONDITIONS
+
+            How to Apply These Terms to Your New Programs
+
+  If you develop a new program, and you want it to be of the greatest
+possible use to the public, the best way to achieve this is to make it
+free software which everyone can redistribute and change under these terms.
+
+  To do so, attach the following notices to the program.  It is safest
+to attach them to the start of each source file to most effectively
+state the exclusion of warranty; and each file should have at least
+the "copyright" line and a pointer to where the full notice is found.
+
+    <one line to give the program's name and a brief idea of what it does.>
+    Copyright (C) <year>  <name of author>
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+Also add information on how to contact you by electronic and paper mail.
+
+  If the program does terminal interaction, make it output a short
+notice like this when it starts in an interactive mode:
+
+    <program>  Copyright (C) <year>  <name of author>
+    This program comes with ABSOLUTELY NO WARRANTY; for details type `show w'.
+    This is free software, and you are welcome to redistribute it
+    under certain conditions; type `show c' for details.
+
+The hypothetical commands `show w' and `show c' should show the appropriate
+parts of the General Public License.  Of course, your program's commands
+might be different; for a GUI interface, you would use an "about box".
+
+  You should also get your employer (if you work as a programmer) or school,
+if any, to sign a "copyright disclaimer" for the program, if necessary.
+For more information on this, and how to apply and follow the GNU GPL, see
+<https://www.gnu.org/licenses/>.
+
+  The GNU General Public License does not permit incorporating your program
+into proprietary programs.  If your program is a subroutine library, you
+may consider it more useful to permit linking proprietary applications with
+the library.  If this is what you want to do, use the GNU Lesser General
+Public License instead of this License.  But first, please read
+<https://www.gnu.org/licenses/why-not-lgpl.html>.
+
+
+
+================================================
+FILE: pubspec.lock
+================================================
+# Generated by pub
+# See https://dart.dev/tools/pub/glossary#lockfile
+packages:
+  args:
+    dependency: transitive
+    description:
+      name: args
+      sha256: eef6c46b622e0494a36c5a12d10d77fb4e855501a91c1b9ef9339326e58f0596
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.4.2"
+  async:
+    dependency: transitive
+    description:
+      name: async
+      sha256: "947bfcf187f74dbc5e146c9eb9c0f10c9f8b30743e341481c1e2ed3ecc18c20c"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.11.0"
+  boolean_selector:
+    dependency: transitive
+    description:
+      name: boolean_selector
+      sha256: "6cfb5af12253eaf2b368f07bacc5a80d1301a071c73360d746b7f2e32d762c66"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.1"
+  characters:
+    dependency: transitive
+    description:
+      name: characters
+      sha256: "04a925763edad70e8443c99234dc3328f442e811f1d8fd1a72f1c8ad0f69a605"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.3.0"
+  clock:
+    dependency: transitive
+    description:
+      name: clock
+      sha256: cb6d7f03e1de671e34607e909a7213e31d7752be4fb66a86d29fe1eb14bfb5cf
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.1"
+  collection:
+    dependency: transitive
+    description:
+      name: collection
+      sha256: ee67cb0715911d28db6bf4af1026078bd6f0128b07a5f66fb2ed94ec6783c09a
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.18.0"
+  cupertino_icons:
+    dependency: "direct main"
+    description:
+      name: cupertino_icons
+      sha256: d57953e10f9f8327ce64a508a355f0b1ec902193f66288e8cb5070e7c47eeb2d
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.6"
+  fake_async:
+    dependency: transitive
+    description:
+      name: fake_async
+      sha256: "511392330127add0b769b75a987850d136345d9227c6b94c96a04cf4a391bf78"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.3.1"
+  flutter:
+    dependency: "direct main"
+    description: flutter
+    source: sdk
+    version: "0.0.0"
+  flutter_lints:
+    dependency: "direct dev"
+    description:
+      name: flutter_lints
+      sha256: a25a15ebbdfc33ab1cd26c63a6ee519df92338a9c10f122adda92938253bef04
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.3"
+  flutter_svg:
+    dependency: "direct main"
+    description:
+      name: flutter_svg
+      sha256: d39e7f95621fc84376bc0f7d504f05c3a41488c562f4a8ad410569127507402c
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.9"
+  flutter_test:
+    dependency: "direct dev"
+    description: flutter
+    source: sdk
+    version: "0.0.0"
+  lints:
+    dependency: transitive
+    description:
+      name: lints
+      sha256: "0a217c6c989d21039f1498c3ed9f3ed71b354e69873f13a8dfc3c9fe76f1b452"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.1"
+  matcher:
+    dependency: transitive
+    description:
+      name: matcher
+      sha256: "1803e76e6653768d64ed8ff2e1e67bea3ad4b923eb5c56a295c3e634bad5960e"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.12.16"
+  material_color_utilities:
+    dependency: transitive
+    description:
+      name: material_color_utilities
+      sha256: "9528f2f296073ff54cb9fee677df673ace1218163c3bc7628093e7eed5203d41"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.5.0"
+  meta:
+    dependency: transitive
+    description:
+      name: meta
+      sha256: a6e590c838b18133bb482a2745ad77c5bb7715fb0451209e1a7567d416678b8e
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.10.0"
+  nested:
+    dependency: transitive
+    description:
+      name: nested
+      sha256: "03bac4c528c64c95c722ec99280375a6f2fc708eec17c7b3f07253b626cd2a20"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0"
+  path:
+    dependency: transitive
+    description:
+      name: path
+      sha256: "8829d8a55c13fc0e37127c29fedf290c102f4e40ae94ada574091fe0ff96c917"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.8.3"
+  path_parsing:
+    dependency: transitive
+    description:
+      name: path_parsing
+      sha256: e3e67b1629e6f7e8100b367d3db6ba6af4b1f0bb80f64db18ef1fbabd2fa9ccf
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.1"
+  petitparser:
+    dependency: transitive
+    description:
+      name: petitparser
+      sha256: cb3798bef7fc021ac45b308f4b51208a152792445cce0448c9a4ba5879dd8750
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.4.0"
+  provider:
+    dependency: "direct main"
+    description:
+      name: provider
+      sha256: "9a96a0a19b594dbc5bf0f1f27d2bc67d5f95957359b461cd9feb44ed6ae75096"
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.1.1"
+  sky_engine:
+    dependency: transitive
+    description: flutter
+    source: sdk
+    version: "0.0.99"
+  source_span:
+    dependency: transitive
+    description:
+      name: source_span
+      sha256: "53e943d4206a5e30df338fd4c6e7a077e02254531b138a15aec3bd143c1a8b3c"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.10.0"
+  stack_trace:
+    dependency: transitive
+    description:
+      name: stack_trace
+      sha256: "73713990125a6d93122541237550ee3352a2d84baad52d375a4cad2eb9b7ce0b"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.11.1"
+  stream_channel:
+    dependency: transitive
+    description:
+      name: stream_channel
+      sha256: ba2aa5d8cc609d96bbb2899c28934f9e1af5cddbd60a827822ea467161eb54e7
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.2"
+  string_scanner:
+    dependency: transitive
+    description:
+      name: string_scanner
+      sha256: "556692adab6cfa87322a115640c11f13cb77b3f076ddcc5d6ae3c20242bedcde"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.0"
+  term_glyph:
+    dependency: transitive
+    description:
+      name: term_glyph
+      sha256: a29248a84fbb7c79282b40b8c72a1209db169a2e0542bce341da992fe1bc7e84
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.1"
+  test_api:
+    dependency: transitive
+    description:
+      name: test_api
+      sha256: "5c2f730018264d276c20e4f1503fd1308dfbbae39ec8ee63c5236311ac06954b"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.6.1"
+  vector_graphics:
+    dependency: transitive
+    description:
+      name: vector_graphics
+      sha256: "0f0c746dd2d6254a0057218ff980fc7f5670fd0fcf5e4db38a490d31eed4ad43"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.9+1"
+  vector_graphics_codec:
+    dependency: transitive
+    description:
+      name: vector_graphics_codec
+      sha256: "0edf6d630d1bfd5589114138ed8fada3234deacc37966bec033d3047c29248b7"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.9+1"
+  vector_graphics_compiler:
+    dependency: transitive
+    description:
+      name: vector_graphics_compiler
+      sha256: d24333727332d9bd20990f1483af4e09abdb9b1fc7c3db940b56ab5c42790c26
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.9+1"
+  vector_math:
+    dependency: transitive
+    description:
+      name: vector_math
+      sha256: "80b3257d1492ce4d091729e3a67a60407d227c27241d6927be0130c98e741803"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.4"
+  web:
+    dependency: transitive
+    description:
+      name: web
+      sha256: afe077240a270dcfd2aafe77602b4113645af95d0ad31128cc02bce5ac5d5152
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.3.0"
+  xml:
+    dependency: transitive
+    description:
+      name: xml
+      sha256: "5bc72e1e45e941d825fd7468b9b4cc3b9327942649aeb6fc5cdbf135f0a86e84"
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.3.0"
+sdks:
+  dart: ">=3.2.0-194.0.dev <4.0.0"
+  flutter: ">=3.7.0-0"
+
+
+
+================================================
+FILE: pubspec.yaml
+================================================
+name: shop_app
+description: A new Flutter project.
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number is used as CFBundleVersion.
+# Read more about iOS versioning at
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+# In Windows, build-name is used as the major, minor, and patch parts
+# of the product and file versions while build-number is used as the build suffix.
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.1.0 <4.0.0"
+
+# Dependencies specify other packages that your package needs in order to work.
+# To automatically upgrade your package dependencies to the latest versions
+# consider running `flutter pub upgrade --major-versions`. Alternatively,
+# dependencies can be manually updated by changing the version numbers below to
+# the latest version available on pub.dev. To see which dependencies have newer
+# versions available, run `flutter pub outdated`.
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.2
+  flutter_svg: ^2.0.9 # help us to use SVG in our app
+  provider: ^6.1.1 # for State management
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # The "flutter_lints" package below contains a set of recommended lints to
+  # encourage good coding practices. The lint set provided by the package is
+  # activated in the `analysis_options.yaml` file located at the root of your
+  # package. See that file for information about deactivating specific lint
+  # rules and activating additional ones.
+  flutter_lints: ^2.0.0
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter packages.
+flutter:
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/images/
+    - assets/icons/
+  fonts:
+    - family: Muli
+      fonts:
+        - asset: assets/fonts/muli/Muli.ttf
+        - asset: assets/fonts/muli/Muli-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/muli/Muli-Light.ttf
+          weight: 300
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/custom-fonts/#from-packages
+
+
+
+================================================
+FILE: .metadata
+================================================
+# This file tracks properties of this Flutter project.
+# Used by Flutter tool to assess capabilities and perform upgrades etc.
+#
+# This file should be version controlled and should not be manually edited.
+
+version:
+  revision: 8af6b2f038c1172e61d418869363a28dffec3cb4
+  channel: stable
+
+project_type: app
+
+
+
+================================================
+FILE: android/gradle.properties
+================================================
+org.gradle.jvmargs=-Xmx1536M
+android.useAndroidX=true
+android.enableJetifier=true
+
+
+
+================================================
+FILE: android/app/src/debug/AndroidManifest.xml
+================================================
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- The INTERNET permission is required for development. Specifically,
+         the Flutter tool needs it to communicate with the running application
+         to allow setting breakpoints, to provide hot reload, etc.
+    -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+</manifest>
+
+
+
+================================================
+FILE: android/app/src/main/AndroidManifest.xml
+================================================
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application
+        android:label="demo_app"
+        android:name="${applicationName}"
+        android:icon="@mipmap/ic_launcher">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/LaunchTheme"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustResize">
+            <!-- Specifies an Android theme to apply to this Activity as soon as
+                 the Android process has started. This theme is visible to the user
+                 while the Flutter UI initializes. After that, this theme continues
+                 to determine the Window background behind the Flutter UI. -->
+            <meta-data
+              android:name="io.flutter.embedding.android.NormalTheme"
+              android:resource="@style/NormalTheme"
+              />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <!-- Don't delete the meta-data below.
+             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
+        <meta-data
+            android:name="flutterEmbedding"
+            android:value="2" />
+    </application>
+</manifest>
+
+
+
+================================================
+FILE: android/app/src/main/kotlin/com/example/demo_app/MainActivity.kt
+================================================
+package com.example.demo_app
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity: FlutterActivity() {
+}
+
+
+
+================================================
+FILE: android/app/src/main/res/drawable/launch_background.xml
+================================================
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Modify this file to customize your launch splash screen -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@android:color/white" />
+
+    <!-- You can insert your own image assets here -->
+    <!-- <item>
+        <bitmap
+            android:gravity="center"
+            android:src="@mipmap/launch_image" />
+    </item> -->
+</layer-list>
+
+
+
+================================================
+FILE: android/app/src/main/res/drawable-v21/launch_background.xml
+================================================
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Modify this file to customize your launch splash screen -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="?android:colorBackground" />
+
+    <!-- You can insert your own image assets here -->
+    <!-- <item>
+        <bitmap
+            android:gravity="center"
+            android:src="@mipmap/launch_image" />
+    </item> -->
+</layer-list>
+
+
+
+================================================
+FILE: android/app/src/main/res/values/styles.xml
+================================================
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Theme applied to the Android Window while the process is starting when the OS's Dark Mode setting is off -->
+    <style name="LaunchTheme" parent="@android:style/Theme.Light.NoTitleBar">
+        <!-- Show a splash screen on the activity. Automatically removed when
+             the Flutter engine draws its first frame -->
+        <item name="android:windowBackground">@drawable/launch_background</item>
+    </style>
+    <!-- Theme applied to the Android Window as soon as the process has started.
+         This theme determines the color of the Android Window while your
+         Flutter UI initializes, as well as behind your Flutter UI while its
+         running.
+
+         This Theme is only used starting with V2 of Flutter's Android embedding. -->
+    <style name="NormalTheme" parent="@android:style/Theme.Light.NoTitleBar">
+        <item name="android:windowBackground">?android:colorBackground</item>
+    </style>
+</resources>
+
+
+
+================================================
+FILE: android/app/src/main/res/values-night/styles.xml
+================================================
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Theme applied to the Android Window while the process is starting when the OS's Dark Mode setting is on -->
+    <style name="LaunchTheme" parent="@android:style/Theme.Black.NoTitleBar">
+        <!-- Show a splash screen on the activity. Automatically removed when
+             the Flutter engine draws its first frame -->
+        <item name="android:windowBackground">@drawable/launch_background</item>
+    </style>
+    <!-- Theme applied to the Android Window as soon as the process has started.
+         This theme determines the color of the Android Window while your
+         Flutter UI initializes, as well as behind your Flutter UI while its
+         running.
+
+         This Theme is only used starting with V2 of Flutter's Android embedding. -->
+    <style name="NormalTheme" parent="@android:style/Theme.Black.NoTitleBar">
+        <item name="android:windowBackground">?android:colorBackground</item>
+    </style>
+</resources>
+
+
+
+================================================
+FILE: android/app/src/profile/AndroidManifest.xml
+================================================
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- The INTERNET permission is required for development. Specifically,
+         the Flutter tool needs it to communicate with the running application
+         to allow setting breakpoints, to provide hot reload, etc.
+    -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+</manifest>
+
+
+
+================================================
+FILE: android/gradle/wrapper/gradle-wrapper.properties
+================================================
+distributionBase=GRADLE_USER_HOME
+distributionPath=wrapper/dists
+zipStoreBase=GRADLE_USER_HOME
+zipStorePath=wrapper/dists
+distributionUrl=https\://services.gradle.org/distributions/gradle-7.5-all.zip
+
+
+
+================================================
+FILE: assets/fonts/muli/Muli-ExtraLight.ttf
+================================================
+[Binary file]
+
+
+================================================
+FILE: assets/fonts/muli/Muli-ExtraLightItalic.ttf
+================================================
+[Binary file]
+
+
+================================================
+FILE: assets/fonts/muli/Muli-Italic.ttf
+================================================
+[Binary file]
+
+
+================================================
+FILE: assets/fonts/muli/Muli-Light.ttf
+================================================
+[Binary file]
+
+
+================================================
+FILE: assets/fonts/muli/Muli-LightItalic.ttf
+================================================
+[Binary file]
+
+
+================================================
+FILE: assets/fonts/muli/Muli-Semi-BoldItalic.ttf
+================================================
+[Binary file]
+
+
+================================================
+FILE: assets/fonts/muli/Muli-SemiBold.ttf
+================================================
+[Binary file]
+
+
+================================================
+FILE: assets/fonts/muli/Muli.ttf
+================================================
+[Binary file]
+
+
+================================================
+FILE: ios/Flutter/AppFrameworkInfo.plist
+================================================
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>CFBundleDevelopmentRegion</key>
+  <string>en</string>
+  <key>CFBundleExecutable</key>
+  <string>App</string>
+  <key>CFBundleIdentifier</key>
+  <string>io.flutter.flutter.app</string>
+  <key>CFBundleInfoDictionaryVersion</key>
+  <string>6.0</string>
+  <key>CFBundleName</key>
+  <string>App</string>
+  <key>CFBundlePackageType</key>
+  <string>FMWK</string>
+  <key>CFBundleShortVersionString</key>
+  <string>1.0</string>
+  <key>CFBundleSignature</key>
+  <string>????</string>
+  <key>CFBundleVersion</key>
+  <string>1.0</string>
+  <key>MinimumOSVersion</key>
+  <string>11.0</string>
+</dict>
+</plist>
+
+
+
+================================================
+FILE: ios/Flutter/Debug.xcconfig
+================================================
+#include "Generated.xcconfig"
+
+
+
+================================================
+FILE: ios/Flutter/Release.xcconfig
+================================================
+#include "Generated.xcconfig"
+
+
+
+================================================
+FILE: ios/Runner/AppDelegate.swift
+================================================
+import UIKit
+import Flutter
+
+@UIApplicationMain
+@objc class AppDelegate: FlutterAppDelegate {
+  override func application(
+    _ application: UIApplication,
+    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+  ) -> Bool {
+    GeneratedPluginRegistrant.register(with: self)
+    return super.application(application, didFinishLaunchingWithOptions: launchOptions)
+  }
+}
+
+
+
+================================================
+FILE: ios/Runner/Info.plist
+================================================
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>Demo App</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>demo_app</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>$(FLUTTER_BUILD_NAME)</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>$(FLUTTER_BUILD_NUMBER)</string>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>UIMainStoryboardFile</key>
+	<string>Main</string>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
+</dict>
+</plist>
+
+
+
+================================================
+FILE: ios/Runner/Runner-Bridging-Header.h
+================================================
+#import "GeneratedPluginRegistrant.h"
+
+
+
+================================================
+FILE: ios/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json
+================================================
+{
+  "images" : [
+    {
+      "size" : "20x20",
+      "idiom" : "iphone",
+      "filename" : "Icon-App-20x20@2x.png",
+      "scale" : "2x"
+    },
+    {
+      "size" : "20x20",
+      "idiom" : "iphone",
+      "filename" : "Icon-App-20x20@3x.png",
+      "scale" : "3x"
+    },
+    {
+      "size" : "29x29",
+      "idiom" : "iphone",
+      "filename" : "Icon-App-29x29@1x.png",
+      "scale" : "1x"
+    },
+    {
+      "size" : "29x29",
+      "idiom" : "iphone",
+      "filename" : "Icon-App-29x29@2x.png",
+      "scale" : "2x"
+    },
+    {
+      "size" : "29x29",
+      "idiom" : "iphone",
+      "filename" : "Icon-App-29x29@3x.png",
+      "scale" : "3x"
+    },
+    {
+      "size" : "40x40",
+      "idiom" : "iphone",
+      "filename" : "Icon-App-40x40@2x.png",
+      "scale" : "2x"
+    },
+    {
+      "size" : "40x40",
+      "idiom" : "iphone",
+      "filename" : "Icon-App-40x40@3x.png",
+      "scale" : "3x"
+    },
+    {
+      "size" : "60x60",
+      "idiom" : "iphone",
+      "filename" : "Icon-App-60x60@2x.png",
+      "scale" : "2x"
+    },
+    {
+      "size" : "60x60",
+      "idiom" : "iphone",
+      "filename" : "Icon-App-60x60@3x.png",
+      "scale" : "3x"
+    },
+    {
+      "size" : "20x20",
+      "idiom" : "ipad",
+      "filename" : "Icon-App-20x20@1x.png",
+      "scale" : "1x"
+    },
+    {
+      "size" : "20x20",
+      "idiom" : "ipad",
+      "filename" : "Icon-App-20x20@2x.png",
+      "scale" : "2x"
+    },
+    {
+      "size" : "29x29",
+      "idiom" : "ipad",
+      "filename" : "Icon-App-29x29@1x.png",
+      "scale" : "1x"
+    },
+    {
+      "size" : "29x29",
+      "idiom" : "ipad",
+      "filename" : "Icon-App-29x29@2x.png",
+      "scale" : "2x"
+    },
+    {
+      "size" : "40x40",
+      "idiom" : "ipad",
+      "filename" : "Icon-App-40x40@1x.png",
+      "scale" : "1x"
+    },
+    {
+      "size" : "40x40",
+      "idiom" : "ipad",
+      "filename" : "Icon-App-40x40@2x.png",
+      "scale" : "2x"
+    },
+    {
+      "size" : "76x76",
+      "idiom" : "ipad",
+      "filename" : "Icon-App-76x76@1x.png",
+      "scale" : "1x"
+    },
+    {
+      "size" : "76x76",
+      "idiom" : "ipad",
+      "filename" : "Icon-App-76x76@2x.png",
+      "scale" : "2x"
+    },
+    {
+      "size" : "83.5x83.5",
+      "idiom" : "ipad",
+      "filename" : "Icon-App-83.5x83.5@2x.png",
+      "scale" : "2x"
+    },
+    {
+      "size" : "1024x1024",
+      "idiom" : "ios-marketing",
+      "filename" : "Icon-App-1024x1024@1x.png",
+      "scale" : "1x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}
+
+
+
+================================================
+FILE: ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md
+================================================
+# Launch Screen Assets
+
+You can customize the launch screen with your own desired assets by replacing the image files in this directory.
+
+You can also do it by opening your Flutter project's Xcode project with `open ios/Runner.xcworkspace`, selecting `Runner/Assets.xcassets` in the Project Navigator and dropping in the desired images.
+
+
+================================================
+FILE: ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.json
+================================================
+{
+  "images" : [
+    {
+      "idiom" : "universal",
+      "filename" : "LaunchImage.png",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "LaunchImage@2x.png",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "LaunchImage@3x.png",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}
+
+
+
+================================================
+FILE: ios/Runner/Base.lproj/LaunchScreen.storyboard
+================================================
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ydg-fD-yQy"/>
+                        <viewControllerLayoutGuide type="bottom" id="xbc-2k-c8Z"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="LaunchImage" translatesAutoresizingMaskIntoConstraints="NO" id="YRO-k0-Ey4">
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="YRO-k0-Ey4" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="1a2-6s-vTC"/>
+                            <constraint firstItem="YRO-k0-Ey4" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="4X2-HB-R7a"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="53" y="375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="LaunchImage" width="168" height="185"/>
+    </resources>
+</document>
+
+
+
+================================================
+FILE: ios/Runner/Base.lproj/Main.storyboard
+================================================
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Flutter View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="FlutterViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
+
+
+
+================================================
+FILE: ios/RunnerTests/RunnerTests.swift
+================================================
+import Flutter
+import UIKit
+import XCTest
+
+class RunnerTests: XCTestCase {
+
+  func testExample() {
+    // If you add code to the Runner application, consider adding tests here.
+    // See https://developer.apple.com/documentation/xctest for more information about using XCTest.
+  }
+
+}
+
+
+
+================================================
+FILE: lib/constants.dart
+================================================
+import 'package:flutter/material.dart';
+
+const kPrimaryColor = Color(0xFFFF7643);
+const kPrimaryLightColor = Color(0xFFFFECDF);
+const kPrimaryGradientColor = LinearGradient(
+  begin: Alignment.topLeft,
+  end: Alignment.bottomRight,
+  colors: [Color(0xFFFFA53E), Color(0xFFFF7643)],
+);
+const kSecondaryColor = Color(0xFF979797);
+const kTextColor = Colors.black;
+
+const kAnimationDuration = Duration(milliseconds: 200);
+
+const headingStyle = TextStyle(
+  fontSize: 24,
+  fontWeight: FontWeight.bold,
+  color: Colors.black,
+  height: 1.5,
+);
+
+const defaultDuration = Duration(milliseconds: 250);
+
+// Form Error
+final RegExp emailValidatorRegExp =
+    RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
+const String kEmailNullError = "Please Enter your email";
+const String kInvalidEmailError = "Please Enter Valid Email";
+const String kPassNullError = "Please Enter your password";
+const String kShortPassError = "Password is too short";
+const String kMatchPassError = "Passwords don't match";
+const String kNamelNullError = "Please Enter your name";
+const String kPhoneNumberNullError = "Please Enter your phone number";
+const String kAddressNullError = "Please Enter your address";
+
+final otpInputDecoration = InputDecoration(
+  contentPadding: const EdgeInsets.symmetric(vertical: 16),
+  border: outlineInputBorder(),
+  focusedBorder: outlineInputBorder(),
+  enabledBorder: outlineInputBorder(),
+);
+
+OutlineInputBorder outlineInputBorder() {
+  return OutlineInputBorder(
+    borderRadius: BorderRadius.circular(16),
+    borderSide: const BorderSide(color: kTextColor),
+  );
+}
+
+
+
+================================================
+FILE: lib/enums.dart
+================================================
+enum MenuState { home, favourite, message, profile }
+
+
+
+================================================
+FILE: lib/main.dart
+================================================
+import 'package:flutter/material.dart';
+import 'package:shop_app/screens/splash/splash_screen.dart';
+
+import 'routes.dart';
+import 'theme.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'The Flutter Way - Template',
+      theme: AppTheme.lightTheme(context),
+      initialRoute: SplashScreen.routeName,
+      routes: routes,
+    );
+  }
+}
+
+
+
+================================================
+FILE: lib/routes.dart
+================================================
+import 'package:flutter/widgets.dart';
+import 'package:shop_app/screens/products/products_screen.dart';
+
+import 'screens/cart/cart_screen.dart';
+import 'screens/complete_profile/complete_profile_screen.dart';
+import 'screens/details/details_screen.dart';
+import 'screens/forgot_password/forgot_password_screen.dart';
+import 'screens/home/home_screen.dart';
+import 'screens/init_screen.dart';
+import 'screens/login_success/login_success_screen.dart';
+import 'screens/otp/otp_screen.dart';
+import 'screens/profile/profile_screen.dart';
+import 'screens/sign_in/sign_in_screen.dart';
+import 'screens/sign_up/sign_up_screen.dart';
+import 'screens/splash/splash_screen.dart';
+
+// We use name route
+// All our routes will be available here
+final Map<String, WidgetBuilder> routes = {
+  InitScreen.routeName: (context) => const InitScreen(),
+  SplashScreen.routeName: (context) => const SplashScreen(),
+  SignInScreen.routeName: (context) => const SignInScreen(),
+  ForgotPasswordScreen.routeName: (context) => const ForgotPasswordScreen(),
+  LoginSuccessScreen.routeName: (context) => const LoginSuccessScreen(),
+  SignUpScreen.routeName: (context) => const SignUpScreen(),
+  CompleteProfileScreen.routeName: (context) => const CompleteProfileScreen(),
+  OtpScreen.routeName: (context) => const OtpScreen(),
+  HomeScreen.routeName: (context) => const HomeScreen(),
+  ProductsScreen.routeName: (context) => const ProductsScreen(),
+  DetailsScreen.routeName: (context) => const DetailsScreen(),
+  CartScreen.routeName: (context) => const CartScreen(),
+  ProfileScreen.routeName: (context) => const ProfileScreen(),
+};
+
+
+
+================================================
+FILE: lib/theme.dart
+================================================
+import 'package:flutter/material.dart';
+
+import 'constants.dart';
+
+class AppTheme {
+  static ThemeData lightTheme(BuildContext context) {
+    return ThemeData(
+      scaffoldBackgroundColor: Colors.white,
+      fontFamily: "Muli",
+      appBarTheme: const AppBarTheme(
+          color: Colors.white,
+          elevation: 0,
+          iconTheme: IconThemeData(color: Colors.black),
+          titleTextStyle: TextStyle(color: Colors.black)),
+      textTheme: const TextTheme(
+        bodyLarge: TextStyle(color: kTextColor),
+        bodyMedium: TextStyle(color: kTextColor),
+        bodySmall: TextStyle(color: kTextColor),
+      ),
+      inputDecorationTheme: const InputDecorationTheme(
+        floatingLabelBehavior: FloatingLabelBehavior.always,
+        contentPadding: EdgeInsets.symmetric(horizontal: 42, vertical: 20),
+        enabledBorder: outlineInputBorder,
+        focusedBorder: outlineInputBorder,
+        border: outlineInputBorder,
+      ),
+      visualDensity: VisualDensity.adaptivePlatformDensity,
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          elevation: 0,
+          backgroundColor: kPrimaryColor,
+          foregroundColor: Colors.white,
+          minimumSize: const Size(double.infinity, 48),
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(16)),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+const OutlineInputBorder outlineInputBorder = OutlineInputBorder(
+  borderRadius: BorderRadius.all(Radius.circular(28)),
+  borderSide: BorderSide(color: kTextColor),
+  gapPadding: 10,
+);
+
+
+
+================================================
+FILE: lib/components/custom_surfix_icon.dart
+================================================
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+class CustomSurffixIcon extends StatelessWidget {
+  const CustomSurffixIcon({
+    Key? key,
+    required this.svgIcon,
+  }) : super(key: key);
+
+  final String svgIcon;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(20),
+      child: SvgPicture.asset(
+        svgIcon,
+        height: 16,
+        width: 16,
+      ),
+    );
+  }
+}
+
+
+
+================================================
+FILE: lib/components/form_error.dart
+================================================
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+class FormError extends StatelessWidget {
+  const FormError({
+    Key? key,
+    required this.errors,
+  }) : super(key: key);
+
+  final List<String?> errors;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: List.generate(
+          errors.length, (index) => formErrorText(error: errors[index]!)),
+    );
+  }
+
+  Row formErrorText({required String error}) {
+    return Row(
+      children: [
+        SvgPicture.asset(
+          "assets/icons/Error.svg",
+          height: 16,
+          width: 16,
+        ),
+        const SizedBox(
+          width: 10,
+        ),
+        Text(error),
+      ],
+    );
+  }
+}
+
+
+
+================================================
+FILE: lib/components/no_account_text.dart
+================================================
+import 'package:flutter/material.dart';
+
+import '../constants.dart';
+import '../screens/sign_up/sign_up_screen.dart';
+
+class NoAccountText extends StatelessWidget {
+  const NoAccountText({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Text(
+          "Don’t have an account? ",
+          style: TextStyle(fontSize: 16),
+        ),
+        GestureDetector(
+          onTap: () => Navigator.pushNamed(context, SignUpScreen.routeName),
+          child: const Text(
+            "Sign Up",
+            style: TextStyle(fontSize: 16, color: kPrimaryColor),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+
+
+================================================
+FILE: lib/components/product_card.dart
+================================================
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+import '../constants.dart';
+import '../models/Product.dart';
+
+class ProductCard extends StatelessWidget {
+  const ProductCard({
+    Key? key,
+    this.width = 140,
+    this.aspectRetio = 1.02,
+    required this.product,
+    required this.onPress,
+  }) : super(key: key);
+
+  final double width, aspectRetio;
+  final Product product;
+  final VoidCallback onPress;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: width,
+      child: GestureDetector(
+        onTap: onPress,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            AspectRatio(
+              aspectRatio: 1.02,
+              child: Container(
+                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: kSecondaryColor.withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Image.asset(product.images[0]),
+              ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              product.title,
+              style: Theme.of(context).textTheme.bodyMedium,
+              maxLines: 2,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "\$${product.price}",
+                  style: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    color: kPrimaryColor,
+                  ),
+                ),
+                InkWell(
+                  borderRadius: BorderRadius.circular(50),
+                  onTap: () {},
+                  child: Container(
+                    padding: const EdgeInsets.all(6),
+                    height: 24,
+                    width: 24,
+                    decoration: BoxDecoration(
+                      color: product.isFavourite
+                          ? kPrimaryColor.withOpacity(0.15)
+                          : kSecondaryColor.withOpacity(0.1),
+                      shape: BoxShape.circle,
+                    ),
+                    child: SvgPicture.asset(
+                      "assets/icons/Heart Icon_2.svg",
+                      colorFilter: ColorFilter.mode(
+                          product.isFavourite
+                              ? const Color(0xFFFF4848)
+                              : const Color(0xFFDBDEE4),
+                          BlendMode.srcIn),
+                    ),
+                  ),
+                ),
+              ],
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+
+================================================
+FILE: lib/components/rounded_icon_btn.dart
+================================================
+import 'package:flutter/material.dart';
+
+import '../constants.dart';
+
+class RoundedIconBtn extends StatelessWidget {
+  const RoundedIconBtn({
+    Key? key,
+    required this.icon,
+    required this.press,
+    this.showShadow = false,
+  }) : super(key: key);
+
+  final IconData icon;
+  final GestureTapCancelCallback press;
+  final bool showShadow;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 40,
+      width: 40,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        boxShadow: [
+          if (showShadow)
+            BoxShadow(
+              offset: const Offset(0, 6),
+              blurRadius: 10,
+              color: const Color(0xFFB0B0B0).withOpacity(0.2),
+            ),
+        ],
+      ),
+      child: TextButton(
+        style: TextButton.styleFrom(
+          foregroundColor: kPrimaryColor,
+          padding: EdgeInsets.zero,
+          backgroundColor: Colors.white,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+        ),
+        onPressed: press,
+        child: Icon(icon),
+      ),
+    );
+  }
+}
+
+
+
+================================================
+FILE: lib/components/socal_card.dart
+================================================
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+class SocalCard extends StatelessWidget {
+  const SocalCard({
+    Key? key,
+    this.icon,
+    this.press,
+  }) : super(key: key);
+
+  final String? icon;
+  final Function? press;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: press as void Function()?,
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 10),
+        padding: const EdgeInsets.all(12),
+        height: 40,
+        width: 40,
+        decoration: const BoxDecoration(
+          color: Color(0xFFF5F6F9),
+          shape: BoxShape.circle,
+        ),
+        child: SvgPicture.asset(icon!),
+      ),
+    );
+  }
+}
+
+
+
+================================================
+FILE: lib/helper/keyboard.dart
+================================================
+import 'package:flutter/cupertino.dart';
+
+class KeyboardUtil {
+  static void hideKeyboard(BuildContext context) {
+    FocusScopeNode currentFocus = FocusScope.of(context);
+    if (!currentFocus.hasPrimaryFocus) {
+      currentFocus.unfocus();
+    }
+  }
+}
+
+
+
+================================================
+FILE: lib/models/Cart.dart
+================================================
+import 'Product.dart';
+
+class Cart {
+  final Product product;
+  final int numOfItem;
+
+  Cart({required this.product, required this.numOfItem});
+}
+
+// Demo data for our cart
+
+List<Cart> demoCarts = [
+  Cart(product: demoProducts[0], numOfItem: 2),
+  Cart(product: demoProducts[1], numOfItem: 1),
+  Cart(product: demoProducts[3], numOfItem: 1),
+];
+
+
+
+================================================
+FILE: lib/models/Product.dart
+================================================
+import 'package:flutter/material.dart';
+
+class Product {
+  final int id;
+  final String title, description;
+  final List<String> images;
+  final List<Color> colors;
+  final double rating, price;
+  final bool isFavourite, isPopular;
+
+  Product({
+    required this.id,
+    required this.images,
+    required this.colors,
+    this.rating = 0.0,
+    this.isFavourite = false,
+    this.isPopular = false,
+    required this.title,
+    required this.price,
+    required this.description,
+  });
+}
+
+// Our demo Products
+
+List<Product> demoProducts = [
+  Product(
+    id: 1,
+    images: [
+      "assets/images/ps4_console_white_1.png",
+      "assets/images/ps4_console_white_2.png",
+      "assets/images/ps4_console_white_3.png",
+      "assets/images/ps4_console_white_4.png",
+    ],
+    colors: [
+      const Color(0xFFF6625E),
+      const Color(0xFF836DB8),
+      const Color(0xFFDECB9C),
+      Colors.white,
+    ],
+    title: "Wireless Controller for PS4™",
+    price: 64.99,
+    description: description,
+    rating: 4.8,
+    isFavourite: true,
+    isPopular: true,
+  ),
+  Product(
+    id: 2,
+    images: [
+      "assets/images/Image Popular Product 2.png",
+    ],
+    colors: [
+      const Color(0xFFF6625E),
+      const Color(0xFF836DB8),
+      const Color(0xFFDECB9C),
+      Colors.white,
+    ],
+    title: "Nike Sport White - Man Pant",
+    price: 50.5,
+    description: description,
+    rating: 4.1,
+    isPopular: true,
+  ),
+  Product(
+    id: 3,
+    images: [
+      "assets/images/glap.png",
+    ],
+    colors: [
+      const Color(0xFFF6625E),
+      const Color(0xFF836DB8),
+      const Color(0xFFDECB9C),
+      Colors.white,
+    ],
+    title: "Gloves XC Omega - Polygon",
+    price: 36.55,
+    description: description,
+    rating: 4.1,
+    isFavourite: true,
+    isPopular: true,
+  ),
+  Product(
+    id: 4,
+    images: [
+      "assets/images/wireless headset.png",
+    ],
+    colors: [
+      const Color(0xFFF6625E),
+      const Color(0xFF836DB8),
+      const Color(0xFFDECB9C),
+      Colors.white,
+    ],
+    title: "Logitech Head",
+    price: 20.20,
+    description: description,
+    rating: 4.1,
+    isFavourite: true,
+  ),
+  Product(
+    id: 1,
+    images: [
+      "assets/images/ps4_console_white_1.png",
+      "assets/images/ps4_console_white_2.png",
+      "assets/images/ps4_console_white_3.png",
+      "assets/images/ps4_console_white_4.png",
+    ],
+    colors: [
+      const Color(0xFFF6625E),
+      const Color(0xFF836DB8),
+      const Color(0xFFDECB9C),
+      Colors.white,
+    ],
+    title: "Wireless Controller for PS4™",
+    price: 64.99,
+    description: description,
+    rating: 4.8,
+    isFavourite: true,
+    isPopular: true,
+  ),
+  Product(
+    id: 2,
+    images: [
+      "assets/images/Image Popular Product 2.png",
+    ],
+    colors: [
+      const Color(0xFFF6625E),
+      const Color(0xFF836DB8),
+      const Color(0xFFDECB9C),
+      Colors.white,
+    ],
+    title: "Nike Sport White - Man Pant",
+    price: 50.5,
+    description: description,
+    rating: 4.1,
+    isPopular: true,
+  ),
+  Product(
+    id: 3,
+    images: [
+      "assets/images/glap.png",
+    ],
+    colors: [
+      const Color(0xFFF6625E),
+      const Color(0xFF836DB8),
+      const Color(0xFFDECB9C),
+      Colors.white,
+    ],
+    title: "Gloves XC Omega - Polygon",
+    price: 36.55,
+    description: description,
+    rating: 4.1,
+    isFavourite: true,
+    isPopular: true,
+  ),
+  Product(
+    id: 4,
+    images: [
+      "assets/images/wireless headset.png",
+    ],
+    colors: [
+      const Color(0xFFF6625E),
+      const Color(0xFF836DB8),
+      const Color(0xFFDECB9C),
+      Colors.white,
+    ],
+    title: "Logitech Head",
+    price: 20.20,
+    description: description,
+    rating: 4.1,
+    isFavourite: true,
+  ),
+];
+
+const String description =
+    "Wireless Controller for PS4™ gives you what you want in your gaming from over precision control your games to sharing …";
+
+
+
+================================================
+FILE: lib/screens/init_screen.dart
+================================================
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shop_app/constants.dart';
+import 'package:shop_app/screens/favorite/favorite_screen.dart';
+import 'package:shop_app/screens/home/home_screen.dart';
+import 'package:shop_app/screens/profile/profile_screen.dart';
+
+const Color inActiveIconColor = Color(0xFFB6B6B6);
+
+class InitScreen extends StatefulWidget {
+  const InitScreen({super.key});
+
+  static String routeName = "/";
+
+  @override
+  State<InitScreen> createState() => _InitScreenState();
+}
+
+class _InitScreenState extends State<InitScreen> {
+  int currentSelectedIndex = 0;
+
+  void updateCurrentIndex(int index) {
+    setState(() {
+      currentSelectedIndex = index;
+    });
+  }
+
+  final pages = [
+    const HomeScreen(),
+    const FavoriteScreen(),
+    const Center(
+      child: Text("Chat"),
+    ),
+    const ProfileScreen()
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: pages[currentSelectedIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: updateCurrentIndex,
+        currentIndex: currentSelectedIndex,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        type: BottomNavigationBarType.fixed,
+        items: [
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(
+              "assets/icons/Shop Icon.svg",
+              colorFilter: const ColorFilter.mode(
+                inActiveIconColor,
+                BlendMode.srcIn,
+              ),
+            ),
+            activeIcon: SvgPicture.asset(
+              "assets/icons/Shop Icon.svg",
+              colorFilter: const ColorFilter.mode(
+                kPrimaryColor,
+                BlendMode.srcIn,
+              ),
+            ),
+            label: "Home",
+          ),
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(
+              "assets/icons/Heart Icon.svg",
+              colorFilter: const ColorFilter.mode(
+                inActiveIconColor,
+                BlendMode.srcIn,
+              ),
+            ),
+            activeIcon: SvgPicture.asset(
+              "assets/icons/Heart Icon.svg",
+              colorFilter: const ColorFilter.mode(
+                kPrimaryColor,
+                BlendMode.srcIn,
+              ),
+            ),
+            label: "Fav",
+          ),
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(
+              "assets/icons/Chat bubble Icon.svg",
+              colorFilter: const ColorFilter.mode(
+                inActiveIconColor,
+                BlendMode.srcIn,
+              ),
+            ),
+            activeIcon: SvgPicture.asset(
+              "assets/icons/Chat bubble Icon.svg",
+              colorFilter: const ColorFilter.mode(
+                kPrimaryColor,
+                BlendMode.srcIn,
+              ),
+            ),
+            label: "Chat",
+          ),
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(
+              "assets/icons/User Icon.svg",
+              colorFilter: const ColorFilter.mode(
+                inActiveIconColor,
+                BlendMode.srcIn,
+              ),
+            ),
+            activeIcon: SvgPicture.asset(
+              "assets/icons/User Icon.svg",
+              colorFilter: const ColorFilter.mode(
+                kPrimaryColor,
+                BlendMode.srcIn,
+              ),
+            ),
+            label: "Fav",
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+
+================================================
+FILE: lib/screens/cart/cart_screen.dart
+================================================
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../models/Cart.dart';
+import 'components/cart_card.dart';
+import 'components/check_out_card.dart';
+
+class CartScreen extends StatefulWidget {
+  static String routeName = "/cart";
+
+  const CartScreen({super.key});
+
+  @override
+  State<CartScreen> createState() => _CartScreenState();
+}
+
+class _CartScreenState extends State<CartScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Column(
+          children: [
+            const Text(
+              "Your Cart",
+              style: TextStyle(color: Colors.black),
+            ),
+            Text(
+              "${demoCarts.length} items",
+              style: Theme.of(context).textTheme.bodySmall,
+            ),
+          ],
+        ),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: ListView.builder(
+          itemCount: demoCarts.length,
+          itemBuilder: (context, index) => Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            child: Dismissible(
+              key: Key(demoCarts[index].product.id.toString()),
+              direction: DismissDirection.endToStart,
+              onDismissed: (direction) {
+                setState(() {
+                  demoCarts.removeAt(index);
+                });
+              },
+              background: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                decoration: BoxDecoration(
+                  color: const Color(0xFFFFE6E6),
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Row(
+                  children: [
+                    const Spacer(),
+                    SvgPicture.asset("assets/icons/Trash.svg"),
+                  ],
+                ),
+              ),
+              child: CartCard(cart: demoCarts[index]),
+            ),
+          ),
+        ),
+      ),
+      bottomNavigationBar: const CheckoutCard(),
+    );
+  }
+}
+
+
+
+================================================
+FILE: lib/screens/cart/components/cart_card.dart
+================================================
+import 'package:flutter/material.dart';
+
+import '../../../constants.dart';
+import '../../../models/Cart.dart';
+
+class CartCard extends StatelessWidget {
+  const CartCard({
+    Key? key,
+    required this.cart,
+  }) : super(key: key);
+
+  final Cart cart;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        SizedBox(
+          width: 88,
+          child: AspectRatio(
+            aspectRatio: 0.88,
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: const Color(0xFFF5F6F9),
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: Image.asset(cart.product.images[0]),
+            ),
+          ),
+        ),
+        const SizedBox(width: 20),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              cart.product.title,
+              style: const TextStyle(color: Colors.black, fontSize: 16),
+              maxLines: 2,
+            ),
+            const SizedBox(height: 8),
+            Text.rich(
+              TextSpan(
+                text: "\$${cart.product.price}",
+                style: const TextStyle(
+                    fontWeight: FontWeight.w600, color: kPrimaryColor),
+                children: [
+                  TextSpan(
+                      text: " x${cart.numOfItem}",
+                      style: Theme.of(context).textTheme.bodyLarge),
+                ],
+              ),
+            )
+          ],
+        )
+      ],
+    );
+  }
+}
+
+
+
+================================================
+FILE: lib/screens/cart/components/check_out_card.dart
+================================================
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../../constants.dart';
+
+class CheckoutCard extends StatelessWidget {
+  const CheckoutCard({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        vertical: 16,
+        horizontal: 20,
+      ),
+      // height: 174,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(30),
+          topRight: Radius.circular(30),
+        ),
+        boxShadow: [
+          BoxShadow(
+            offset: const Offset(0, -15),
+            blurRadius: 20,
+            color: const Color(0xFFDADADA).withOpacity(0.15),
+          )
+        ],
+      ),
+      child: SafeArea(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  height: 40,
+                  width: 40,
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFF5F6F9),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: SvgPicture.asset("assets/icons/receipt.svg"),
+                ),
+                const Spacer(),
+                const Text("Add voucher code"),
+                const SizedBox(width: 8),
+                const Icon(
+                  Icons.arrow_forward_ios,
+                  size: 12,
+                  color: kTextColor,
+                )
+              ],
+            ),
+            const SizedBox(height: 16),
+            Row(
+              children: [
+                const Expanded(
+                  child: Text.rich(
+                    TextSpan(
+                      text: "Total:\n",
+                      children: [
+                        TextSpan(
+                          text: "\$337.15",
+                          style: TextStyle(fontSize: 16, color: Colors.black),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: const Text("Check Out"),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+
+================================================
+FILE: lib/screens/complete_profile/complete_profile_screen.dart
+================================================
+import 'package:flutter/material.dart';
+
+import '../../constants.dart';
+import 'components/complete_profile_form.dart';
+
+class CompleteProfileScreen extends StatelessWidget {
+  static String routeName = "/complete_profile";
+
+  const CompleteProfileScreen({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Sign Up'),
+      ),
+      body: SafeArea(
+        child: SizedBox(
+          width: double.infinity,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  const SizedBox(height: 16),
+                  const Text("Complete Profile", style: headingStyle),
+                  const Text(
+                    "Complete your details or continue  \nwith social media",
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 16),
+                  const CompleteProfileForm(),
+                  const SizedBox(height: 30),
+                  Text(
+                    "By continuing your confirm that you agree \nwith our Term and Condition",
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+
+================================================
+FILE: lib/screens/complete_profile/components/complete_profile_form.dart
+================================================
+import 'package:flutter/material.dart';
+
+import '../../../components/custom_surfix_icon.dart';
+import '../../../components/form_error.dart';
+import '../../../constants.dart';
+import '../../otp/otp_screen.dart';
+
+class CompleteProfileForm extends StatefulWidget {
+  const CompleteProfileForm({super.key});
+
+  @override
+  _CompleteProfileFormState createState() => _CompleteProfileFormState();
+}
+
+class _CompleteProfileFormState extends State<CompleteProfileForm> {
+  final _formKey = GlobalKey<FormState>();
+  final List<String?> errors = [];
+  String? firstName;
+  String? lastName;
+  String? phoneNumber;
+  String? address;
+
+  void addError({String? error}) {
+    if (!errors.contains(error)) {
+      setState(() {
+        errors.add(error);
+      });
+    }
+  }
+
+  void removeError({String? error}) {
+    if (errors.contains(error)) {
+      setState(() {
+        errors.remove(error);
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      key: _formKey,
+      child: Column(
+        children: [
+          TextFormField(
+            onSaved: (newValue) => firstName = newValue,
+            onChanged: (value) {
+              if (value.isNotEmpty) {
+                removeError(error: kNamelNullError);
+              }
+              return;
+            },
+            validator: (value) {
+              if (value!.isEmpty) {
+                addError(error: kNamelNullError);
+                return "";
+              }
+              return null;
+            },
+            decoration: const InputDecoration(
+              labelText: "First Name",
+              hintText: "Enter your first name",
+              // If  you are using latest version of flutter then lable text and hint text shown like this
+              // if you r using flutter less then 1.20.* then maybe this is not working properly
+              floatingLabelBehavior: FloatingLabelBehavior.always,
+              suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/User.svg"),
+            ),
+          ),
+          const SizedBox(height: 20),
+          TextFormField(
+            onSaved: (newValue) => lastName = newValue,
+            decoration: const InputDecoration(
+              labelText: "Last Name",
+              hintText: "Enter your last name",
+              // If  you are using latest version of flutter then lable text and hint text shown like this
+              // if you r using flutter less then 1.20.* then maybe this is not working properly
+              floatingLabelBehavior: FloatingLabelBehavior.always,
+              suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/User.svg"),
+            ),
+          ),
+          const SizedBox(height: 20),
+          TextFormField(
+            keyboardType: TextInputType.phone,
+            onSaved: (newValue) => phoneNumber = newValue,
+            onChanged: (value) {
+              if (value.isNotEmpty) {
+                removeError(error: kPhoneNumberNullError);
+              }
+              return;
+            },
+            validator: (value) {
+              if (value!.isEmpty) {
+                addError(error: kPhoneNumberNullError);
+                return "";
+              }
+              return null;
+            },
+            decoration: const InputDecoration(
+              labelText: "Phone Number",
+              hintText: "Enter your phone number",
+              // If  you are using latest version of flutter then lable text and hint text shown like this
+              // if you r using flutter less then 1.20.* then maybe this is not working properly
+              floatingLabelBehavior: FloatingLabelBehavior.always,
+              suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Phone.svg"),
+            ),
+          ),
+          const SizedBox(height: 20),
+          TextFormField(
+            onSaved: (newValue) => address = newValue,
+            onChanged: (value) {
+              if (value.isNotEmpty) {
+                removeError(error: kAddressNullError);
+              }
+              return;
+            },
+            validator: (value) {
+              if (value!.isEmpty) {
+                addError(error: kAddressNullError);
+                return "";
+              }
+              return null;
+            },
+            decoration: const InputDecoration(
+              labelText: "Address",
+              hintText: "Enter your address",
+              // If  you are using latest version of flutter then lable text and hint text shown like this
+              // if you r using flutter less then 1.20.* then maybe this is not working properly
+              floatingLabelBehavior: FloatingLabelBehavior.always,
+              suffixIcon:
+                  CustomSurffixIcon(svgIcon: "assets/icons/Location point.svg"),
+            ),
+          ),
+          FormError(errors: errors),
+          const SizedBox(height: 20),
+          ElevatedButton(
+            onPressed: () {
+              if (_formKey.currentState!.validate()) {
+                Navigator.pushNamed(context, OtpScreen.routeName);
+              }
+            },
+            child: const Text("Continue"),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+
+================================================
+FILE: lib/screens/details/details_screen.dart
+================================================
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shop_app/screens/cart/cart_screen.dart';
+
+import '../../models/Product.dart';
+import 'components/color_dots.dart';
+import 'components/product_description.dart';
+import 'components/product_images.dart';
+import 'components/top_rounded_container.dart';
+
+class DetailsScreen extends StatelessWidget {
+  static String routeName = "/details";
+
+  const DetailsScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final ProductDetailsArguments agrs =
+        ModalRoute.of(context)!.settings.arguments as ProductDetailsArguments;
+    final product = agrs.product;
+    return Scaffold(
+      extendBody: true,
+      extendBodyBehindAppBar: true,
+      backgroundColor: const Color(0xFFF5F6F9),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ElevatedButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            style: ElevatedButton.styleFrom(
+              shape: const CircleBorder(),
+              padding: EdgeInsets.zero,
+              elevation: 0,
+              backgroundColor: Colors.white,
+            ),
+            child: const Icon(
+              Icons.arrow_back_ios_new,
+              color: Colors.black,
+              size: 20,
+            ),
+          ),
+        ),
+        actions: [
+          Row(
+            children: [
+              Container(
+                margin: const EdgeInsets.only(right: 20),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(14),
+                ),
+                child: Row(
+                  children: [
+                    const Text(
+                      "4.7",
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    const SizedBox(width: 4),
+                    SvgPicture.asset("assets/icons/Star Icon.svg"),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+      body: ListView(
+        children: [
+          ProductImages(product: product),
+          TopRoundedContainer(
+            color: Colors.white,
+            child: Column(
+              children: [
+                ProductDescription(
+                  product: product,
+                  pressOnSeeMore: () {},
+                ),
+                TopRoundedContainer(
+                  color: const Color(0xFFF6F7F9),
+                  child: Column(
+                    children: [
+                      ColorDots(product: product),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+      bottomNavigationBar: TopRoundedContainer(
+        color: Colors.white,
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, CartScreen.routeName);
+              },
+              child: const Text("Add To Cart"),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ProductDetailsArguments {
+  final Product product;
+
+  ProductDetailsArguments({required this.product});
+}
+
+
+
+================================================
+FILE: lib/screens/details/components/color_dots.dart
+================================================
+import 'package:flutter/material.dart';
+
+import '../../../components/rounded_icon_btn.dart';
+import '../../../constants.dart';
+import '../../../models/Product.dart';
+
+class ColorDots extends StatelessWidget {
+  const ColorDots({
+    Key? key,
+    required this.product,
+  }) : super(key: key);
+
+  final Product product;
+
+  @override
+  Widget build(BuildContext context) {
+    // Now this is fixed and only for demo
+    int selectedColor = 3;
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: Row(
+        children: [
+          ...List.generate(
+            product.colors.length,
+            (index) => ColorDot(
+              color: product.colors[index],
+              isSelected: index == selectedColor,
+            ),
+          ),
+          const Spacer(),
+          RoundedIconBtn(
+            icon: Icons.remove,
+            press: () {},
+          ),
+          const SizedBox(width: 20),
+          RoundedIconBtn(
+            icon: Icons.add,
+            showShadow: true,
+            press: () {},
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class ColorDot extends StatelessWidget {
+  const ColorDot({
+    Key? key,
+    required this.color,
+    this.isSelected = false,
+  }) : super(key: key);
+
+  final Color color;
+  final bool isSelected;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(right: 2),
+      padding: const EdgeInsets.all(8),
+      height: 40,
+      width: 40,
+      decoration: BoxDecoration(
+        color: Colors.transparent,
+        border:
+            Border.all(color: isSelected ? kPrimaryColor : Colors.transparent),
+        shape: BoxShape.circle,
+      ),
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          color: color,
+          shape: BoxShape.circle,
+        ),
+      ),
+    );
+  }
+}
+
+
+
+================================================
+FILE: lib/screens/details/components/product_description.dart
+================================================
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../../constants.dart';
+import '../../../models/Product.dart';
+
+class ProductDescription extends StatelessWidget {
+  const ProductDescription({
+    Key? key,
+    required this.product,
+    this.pressOnSeeMore,
+  }) : super(key: key);
+
+  final Product product;
+  final GestureTapCallback? pressOnSeeMore;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Text(
+            product.title,
+            style: Theme.of(context).textTheme.titleLarge,
+          ),
+        ),
+        Align(
+          alignment: Alignment.centerRight,
+          child: Container(
+            padding: const EdgeInsets.all(16),
+            width: 48,
+            decoration: BoxDecoration(
+              color: product.isFavourite
+                  ? const Color(0xFFFFE6E6)
+                  : const Color(0xFFF5F6F9),
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(20),
+                bottomLeft: Radius.circular(20),
+              ),
+            ),
+            child: SvgPicture.asset(
+              "assets/icons/Heart Icon_2.svg",
+              colorFilter: ColorFilter.mode(
+                  product.isFavourite
+                      ? const Color(0xFFFF4848)
+                      : const Color(0xFFDBDEE4),
+                  BlendMode.srcIn),
+              height: 16,
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(
+            left: 20,
+            right: 64,
+          ),
+          child: Text(
+            product.description,
+            maxLines: 3,
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 20,
+            vertical: 12,
+          ),
+          child: GestureDetector(
+            onTap: () {},
+            child: const Row(
+              children: [
+                Text(
+                  "See More Detail",
+                  style: TextStyle(
+                      fontWeight: FontWeight.w600, color: kPrimaryColor),
+                ),
+                SizedBox(width: 5),
+                Icon(
+                  Icons.arrow_forward_ios,
+                  size: 12,
+                  color: kPrimaryColor,
+                ),
+              ],
+            ),
+          ),
+        )
+      ],
+    );
+  }
+}
+
+
+
+================================================
+FILE: lib/screens/details/components/product_images.dart
+================================================
+import 'package:flutter/material.dart';
+
+import '../../../constants.dart';
+import '../../../models/Product.dart';
+
+class ProductImages extends StatefulWidget {
+  const ProductImages({
+    Key? key,
+    required this.product,
+  }) : super(key: key);
+
+  final Product product;
+
+  @override
+  _ProductImagesState createState() => _ProductImagesState();
+}
+
+class _ProductImagesState extends State<ProductImages> {
+  int selectedImage = 0;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        SizedBox(
+          width: 238,
+          child: AspectRatio(
+            aspectRatio: 1,
+            child: Image.asset(widget.product.images[selectedImage]),
+          ),
+        ),
+        // SizedBox(height: 20),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ...List.generate(
+              widget.product.images.length,
+              (index) => SmallProductImage(
+                isSelected: index == selectedImage,
+                press: () {
+                  setState(() {
+                    selectedImage = index;
+                  });
+                },
+                image: widget.product.images[index],
+              ),
+            ),
+          ],
+        )
+      ],
+    );
+  }
+}
+
+class SmallProductImage extends StatefulWidget {
+  const SmallProductImage(
+      {super.key,
+      required this.isSelected,
+      required this.press,
+      required this.image});
+
+  final bool isSelected;
+  final VoidCallback press;
+  final String image;
+
+  @override
+  State<SmallProductImage> createState() => _SmallProductImageState();
+}
+
+class _SmallProductImageState extends State<SmallProductImage> {
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: widget.press,
+      child: AnimatedContainer(
+        duration: defaultDuration,
+        margin: const EdgeInsets.only(right: 16),
+        padding: const EdgeInsets.all(8),
+        height: 48,
+        width: 48,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(
+              color: kPrimaryColor.withOpacity(widget.isSelected ? 1 : 0)),
+        ),
+        child: Image.asset(widget.image),
+      ),
+    );
+  }
+}
+
+
+
+================================================
+FILE: lib/screens/details/components/top_rounded_container.dart
+================================================
+import 'package:flutter/material.dart';
+
+class TopRoundedContainer extends StatelessWidget {
+  const TopRoundedContainer({
+    Key? key,
+    required this.color,
+    required this.child,
+  }) : super(key: key);
+
+  final Color color;
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(top: 20),
+      padding: const EdgeInsets.only(top: 20),
+      width: double.infinity,
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(40),
+          topRight: Radius.circular(40),
+        ),
+      ),
+      child: child,
+    );
+  }
+}
+
+
+
+================================================
+FILE: lib/screens/favorite/favorite_screen.dart
+================================================
+import 'package:flutter/material.dart';
+import 'package:shop_app/components/product_card.dart';
+import 'package:shop_app/models/Product.dart';
+
+import '../details/details_screen.dart';
+
+class FavoriteScreen extends StatelessWidget {
+  const FavoriteScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Column(
+        children: [
+          Text(
+            "Favorites",
+            style: Theme.of(context).textTheme.titleLarge,
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: GridView.builder(
+                itemCount: demoProducts.length,
+                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                  maxCrossAxisExtent: 200,
+                  childAspectRatio: 0.7,
+                  mainAxisSpacing: 20,
+                  crossAxisSpacing: 16,
+                ),
+                itemBuilder: (context, index) => ProductCard(
+                  product: demoProducts[index],
+                  onPress: () => Navigator.pushNamed(
+                    context,
+                    DetailsScreen.routeName,
+                    arguments:
+                        ProductDetailsArguments(product: demoProducts[index]),
+                  ),
+                ),
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+
+
+================================================
+FILE: lib/screens/forgot_password/forgot_password_screen.dart
+================================================
+import 'package:flutter/material.dart';
+
+import 'components/forgot_pass_form.dart';
+
+class ForgotPasswordScreen extends StatelessWidget {
+  static String routeName = "/forgot_password";
+
+  const ForgotPasswordScreen({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Forgot Password"),
+      ),
+      body: const SizedBox(
+        width: double.infinity,
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              children: [
+                SizedBox(height: 16),
+                Text(
+                  "Forgot Password",
+                  style: TextStyle(
+                    fontSize: 24,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  "Please enter your email and we will send \nyou a link to return to your account",
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(height: 32),
+                ForgotPassForm(),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+
+================================================
+FILE: lib/screens/forgot_password/components/forgot_pass_form.dart
+================================================
+import 'package:flutter/material.dart';
+
+import '../../../components/custom_surfix_icon.dart';
+import '../../../components/form_error.dart';
+import '../../../components/no_account_text.dart';
+import '../../../constants.dart';
+
+class ForgotPassForm extends StatefulWidget {
+  const ForgotPassForm({super.key});
+
+  @override
+  _ForgotPassFormState createState() => _ForgotPassFormState();
+}
+
+class _ForgotPassFormState extends State<ForgotPassForm> {
+  final _formKey = GlobalKey<FormState>();
+  List<String> errors = [];
+  String? email;
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      key: _formKey,
+      child: Column(
+        children: [
+          TextFormField(
+            keyboardType: TextInputType.emailAddress,
+            onSaved: (newValue) => email = newValue,
+            onChanged: (value) {
+              if (value.isNotEmpty && errors.contains(kEmailNullError)) {
+                setState(() {
+                  errors.remove(kEmailNullError);
+                });
+              } else if (emailValidatorRegExp.hasMatch(value) &&
+                  errors.contains(kInvalidEmailError)) {
+                setState(() {
+                  errors.remove(kInvalidEmailError);
+                });
+              }
+              return;
+            },
+            validator: (value) {
+              if (value!.isEmpty && !errors.contains(kEmailNullError)) {
+                setState(() {
+                  errors.add(kEmailNullError);
+                });
+              } else if (!emailValidatorRegExp.hasMatch(value) &&
+                  !errors.contains(kInvalidEmailError)) {
+                setState(() {
+                  errors.add(kInvalidEmailError);
+                });
+              }
+              return null;
+            },
+            decoration: const InputDecoration(
+              labelText: "Email",
+              hintText: "Enter your email",
+              // If  you are using latest version of flutter then lable text and hint text shown like this
+              // if you r using flutter less then 1.20.* then maybe this is not working properly
+              floatingLabelBehavior: FloatingLabelBehavior.always,
+              suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Mail.svg"),
+            ),
+          ),
+          const SizedBox(height: 8),
+          FormError(errors: errors),
+          const SizedBox(height: 8),
+          ElevatedButton(
+            onPressed: () {
+              if (_formKey.currentState!.validate()) {
+                // Do what you want to do
+              }
+            },
+            child: const Text("Continue"),
+          ),
+          const SizedBox(height: 16),
+          const NoAccountText(),
+        ],
+      ),
+    );
+  }
+}
+
+
+
+================================================
+FILE: lib/screens/home/home_screen.dart
+================================================
+import 'package:flutter/material.dart';
+
+import 'components/categories.dart';
+import 'components/discount_banner.dart';
+import 'components/home_header.dart';
+import 'components/popular_product.dart';
+import 'components/special_offers.dart';
+
+class HomeScreen extends StatelessWidget {
+  static String routeName = "/home";
+
+  const HomeScreen({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: EdgeInsets.symmetric(vertical: 16),
+          child: Column(
+            children: [
+              HomeHeader(),
+              DiscountBanner(),
+              Categories(),
+              SpecialOffers(),
+              SizedBox(height: 20),
+              PopularProducts(),
+              SizedBox(height: 20),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+
+================================================
+FILE: lib/screens/home/components/categories.dart
+================================================
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+class Categories extends StatelessWidget {
+  const Categories({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    List<Map<String, dynamic>> categories = [
+      {"icon": "assets/icons/Flash Icon.svg", "text": "Flash Deal"},
+      {"icon": "assets/icons/Bill Icon.svg", "text": "Bill"},
+      {"icon": "assets/icons/Game Icon.svg", "text": "Game"},
+      {"icon": "assets/icons/Gift Icon.svg", "text": "Daily Gift"},
+      {"icon": "assets/icons/Discover.svg", "text": "More"},
+    ];
+    return Padding(
+      padding: const EdgeInsets.all(20),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: List.generate(
+          categories.length,
+          (index) => CategoryCard(
+            icon: categories[index]["icon"],
+            text: categories[index]["text"],
+            press: () {},
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class CategoryCard extends StatelessWidget {
+  const CategoryCard({
+    Key? key,
+    required this.icon,
+    required this.text,
+    required this.press,
+  }) : super(key: key);
+
+  final String icon, text;
+  final GestureTapCallback press;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: press,
+      child: Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(16),
+            height: 56,
+            width: 56,
+            decoration: BoxDecoration(
+              color: const Color(0xFFFFECDF),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: SvgPicture.asset(icon),
+          ),
+          const SizedBox(height: 4),
+          Text(text, textAlign: TextAlign.center)
+        ],
+      ),
+    );
+  }
+}
+
+
+
+================================================
+FILE: lib/screens/home/components/discount_banner.dart
+================================================
+import 'package:flutter/material.dart';
+
+class DiscountBanner extends StatelessWidget {
+  const DiscountBanner({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      margin: const EdgeInsets.all(20),
+      padding: const EdgeInsets.symmetric(
+        horizontal: 20,
+        vertical: 16,
+      ),
+      decoration: BoxDecoration(
+        color: const Color(0xFF4A3298),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: const Text.rich(
+        TextSpan(
+          style: TextStyle(color: Colors.white),
+          children: [
+            TextSpan(text: "A Summer Surpise\n"),
+            TextSpan(
+              text: "Cashback 20%",
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+
+================================================
+FILE: lib/screens/home/components/home_header.dart
+================================================
+import 'package:flutter/material.dart';
+
+import '../../cart/cart_screen.dart';
+import 'icon_btn_with_counter.dart';
+import 'search_field.dart';
+
+class HomeHeader extends StatelessWidget {
+  const HomeHeader({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          const Expanded(child: SearchField()),
+          const SizedBox(width: 16),
+          IconBtnWithCounter(
+            svgSrc: "assets/icons/Cart Icon.svg",
+            press: () => Navigator.pushNamed(context, CartScreen.routeName),
+          ),
+          const SizedBox(width: 8),
+          IconBtnWithCounter(
+            svgSrc: "assets/icons/Bell.svg",
+            numOfitem: 3,
+            press: () {},
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+
+================================================
+FILE: lib/screens/home/components/icon_btn_with_counter.dart
+================================================
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../../constants.dart';
+
+class IconBtnWithCounter extends StatelessWidget {
+  const IconBtnWithCounter({
+    Key? key,
+    required this.svgSrc,
+    this.numOfitem = 0,
+    required this.press,
+  }) : super(key: key);
+
+  final String svgSrc;
+  final int numOfitem;
+  final GestureTapCallback press;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      borderRadius: BorderRadius.circular(100),
+      onTap: press,
+      child: Stack(
+        clipBehavior: Clip.none,
+        children: [
+          Container(
+            padding: const EdgeInsets.all(12),
+            height: 46,
+            width: 46,
+            decoration: BoxDecoration(
+              color: kSecondaryColor.withOpacity(0.1),
+              shape: BoxShape.circle,
+            ),
+            child: SvgPicture.asset(svgSrc),
+          ),
+          if (numOfitem != 0)
+            Positioned(
+              top: -3,
+              right: 0,
+              child: Container(
+                height: 20,
+                width: 20,
+                decoration: BoxDecoration(
+                  color: const Color(0xFFFF4848),
+                  shape: BoxShape.circle,
+                  border: Border.all(width: 1.5, color: Colors.white),
+                ),
+                child: Center(
+                  child: Text(
+                    "$numOfitem",
+                    style: const TextStyle(
+                      fontSize: 12,
+                      height: 1,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+            )
+        ],
+      ),
+    );
+  }
+}
+
+
+
+================================================
+FILE: lib/screens/home/components/popular_product.dart
+================================================
+import 'package:flutter/material.dart';
+
+import '../../../components/product_card.dart';
+import '../../../models/Product.dart';
+import '../../details/details_screen.dart';
+import '../../products/products_screen.dart';
+import 'section_title.dart';
+
+class PopularProducts extends StatelessWidget {
+  const PopularProducts({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: SectionTitle(
+            title: "Popular Products",
+            press: () {
+              Navigator.pushNamed(context, ProductsScreen.routeName);
+            },
+          ),
+        ),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              ...List.generate(
+                demoProducts.length,
+                (index) {
+                  if (demoProducts[index].isPopular) {
+                    return Padding(
+                      padding: const EdgeInsets.only(left: 20),
+                      child: ProductCard(
+                        product: demoProducts[index],
+                        onPress: () => Navigator.pushNamed(
+                          context,
+                          DetailsScreen.routeName,
+                          arguments: ProductDetailsArguments(
+                              product: demoProducts[index]),
+                        ),
+                      ),
+                    );
+                  }
+
+                  return const SizedBox
+                      .shrink(); // here by default width and height is 0
+                },
+              ),
+              const SizedBox(width: 20),
+            ],
+          ),
+        )
+      ],
+    );
+  }
+}
+
+
+
+================================================
+FILE: lib/screens/home/components/search_field.dart
+================================================
+import 'package:flutter/material.dart';
+
+import '../../../constants.dart';
+
+class SearchField extends StatelessWidget {
+  const SearchField({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      child: TextFormField(
+        onChanged: (value) {},
+        decoration: InputDecoration(
+          filled: true,
+          fillColor: kSecondaryColor.withOpacity(0.1),
+          contentPadding:
+              const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          border: searchOutlineInputBorder,
+          focusedBorder: searchOutlineInputBorder,
+          enabledBorder: searchOutlineInputBorder,
+          hintText: "Search product",
+          prefixIcon: const Icon(Icons.search),
+        ),
+      ),
+    );
+  }
+}
+
+const searchOutlineInputBorder = OutlineInputBorder(
+  borderRadius: BorderRadius.all(Radius.circular(12)),
+  borderSide: BorderSide.none,
+);
+
+
+
+================================================
+FILE: lib/screens/home/components/section_title.dart
+================================================
+import 'package:flutter/material.dart';
+
+class SectionTitle extends StatelessWidget {
+  const SectionTitle({
+    Key? key,
+    required this.title,
+    required this.press,
+  }) : super(key: key);
+
+  final String title;
+  final GestureTapCallback press;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          title,
+          style: const TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+            color: Colors.black,
+          ),
+        ),
+        TextButton(
+          onPressed: press,
+          style: TextButton.styleFrom(foregroundColor: Colors.grey),
+          child: const Text("See more"),
+        ),
+      ],
+    );
+  }
+}
+
+
+
+================================================
+FILE: lib/screens/home/components/special_offers.dart
+================================================
+import 'package:flutter/material.dart';
+import 'package:shop_app/screens/products/products_screen.dart';
+
+import 'section_title.dart';
+
+class SpecialOffers extends StatelessWidget {
+  const SpecialOffers({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: SectionTitle(
+            title: "Special for you",
+            press: () {},
+          ),
+        ),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              SpecialOfferCard(
+                image: "assets/images/Image Banner 2.png",
+                category: "Smartphone",
+                numOfBrands: 18,
+                press: () {
+                  Navigator.pushNamed(context, ProductsScreen.routeName);
+                },
+              ),
+              SpecialOfferCard(
+                image: "assets/images/Image Banner 3.png",
+                category: "Fashion",
+                numOfBrands: 24,
+                press: () {
+                  Navigator.pushNamed(context, ProductsScreen.routeName);
+                },
+              ),
+              const SizedBox(width: 20),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class SpecialOfferCard extends StatelessWidget {
+  const SpecialOfferCard({
+    Key? key,
+    required this.category,
+    required this.image,
+    required this.numOfBrands,
+    required this.press,
+  }) : super(key: key);
+
+  final String category, image;
+  final int numOfBrands;
+  final GestureTapCallback press;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 20),
+      child: GestureDetector(
+        onTap: press,
+        child: SizedBox(
+          width: 242,
+          height: 100,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: Stack(
+              children: [
+                Image.asset(
+                  image,
+                  fit: BoxFit.cover,
+                ),
+                Container(
+                  decoration: const BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Colors.black54,
+                        Colors.black38,
+                        Colors.black26,
+                        Colors.transparent,
+                      ],
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 15,
+                    vertical: 10,
+                  ),
+                  child: Text.rich(
+                    TextSpan(
+                      style: const TextStyle(color: Colors.white),
+                      children: [
+                        TextSpan(
+                          text: "$category\n",
+                          style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        TextSpan(text: "$numOfBrands Brands")
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+
+================================================
+FILE: lib/screens/login_success/login_success_screen.dart
+================================================
+import 'package:flutter/material.dart';
+import 'package:shop_app/screens/init_screen.dart';
+
+class LoginSuccessScreen extends StatelessWidget {
+  static String routeName = "/login_success";
+
+  const LoginSuccessScreen({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        leading: const SizedBox(),
+        title: const Text("Login Success"),
+      ),
+      body: Column(
+        children: [
+          const SizedBox(height: 16),
+          Image.asset(
+            "assets/images/success.png",
+            height: MediaQuery.of(context).size.height * 0.4, //40%
+          ),
+          const SizedBox(height: 16),
+          const Text(
+            "Login Success",
+            style: TextStyle(
+              fontSize: 30,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
+          ),
+          const Spacer(),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, InitScreen.routeName);
+              },
+              child: const Text("Back to home"),
+            ),
+          ),
+          const Spacer(),
+        ],
+      ),
+    );
+  }
+}
+
+
+
+================================================
+FILE: lib/screens/otp/otp_screen.dart
+================================================
+import 'package:flutter/material.dart';
+
+import '../../constants.dart';
+
+import 'components/otp_form.dart';
+
+class OtpScreen extends StatelessWidget {
+  static String routeName = "/otp";
+
+  const OtpScreen({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("OTP Verification"),
+      ),
+      body: SizedBox(
+        width: double.infinity,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                const SizedBox(height: 16),
+                const Text(
+                  "OTP Verification",
+                  style: headingStyle,
+                ),
+                const Text("We sent your code to +1 898 860 ***"),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text("This code will expired in "),
+                    TweenAnimationBuilder(
+                      tween: Tween(begin: 30.0, end: 0.0),
+                      duration: const Duration(seconds: 30),
+                      builder: (_, dynamic value, child) => Text(
+                        "00:${value.toInt()}",
+                        style: const TextStyle(color: kPrimaryColor),
+                      ),
+                    ),
+                  ],
+                ),
+                const OtpForm(),
+                const SizedBox(height: 20),
+                GestureDetector(
+                  onTap: () {
+                    // OTP code resend
+                  },
+                  child: const Text(
+                    "Resend OTP Code",
+                    style: TextStyle(decoration: TextDecoration.underline),
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+
+================================================
+FILE: lib/screens/otp/components/otp_form.dart
+================================================
+import 'package:flutter/material.dart';
+
+import '../../../constants.dart';
+
+class OtpForm extends StatefulWidget {
+  const OtpForm({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  _OtpFormState createState() => _OtpFormState();
+}
+
+class _OtpFormState extends State<OtpForm> {
+  FocusNode? pin2FocusNode;
+  FocusNode? pin3FocusNode;
+  FocusNode? pin4FocusNode;
+
+  @override
+  void initState() {
+    super.initState();
+    pin2FocusNode = FocusNode();
+    pin3FocusNode = FocusNode();
+    pin4FocusNode = FocusNode();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    pin2FocusNode!.dispose();
+    pin3FocusNode!.dispose();
+    pin4FocusNode!.dispose();
+  }
+
+  void nextField(String value, FocusNode? focusNode) {
+    if (value.length == 1) {
+      focusNode!.requestFocus();
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      child: Column(
+        children: [
+          SizedBox(height: MediaQuery.of(context).size.height * 0.15),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SizedBox(
+                width: 60,
+                child: TextFormField(
+                  autofocus: true,
+                  obscureText: true,
+                  style: const TextStyle(fontSize: 24),
+                  keyboardType: TextInputType.number,
+                  textAlign: TextAlign.center,
+                  decoration: otpInputDecoration,
+                  onChanged: (value) {
+                    nextField(value, pin2FocusNode);
+                  },
+                ),
+              ),
+              SizedBox(
+                width: 60,
+                child: TextFormField(
+                  focusNode: pin2FocusNode,
+                  obscureText: true,
+                  style: const TextStyle(fontSize: 24),
+                  keyboardType: TextInputType.number,
+                  textAlign: TextAlign.center,
+                  decoration: otpInputDecoration,
+                  onChanged: (value) => nextField(value, pin3FocusNode),
+                ),
+              ),
+              SizedBox(
+                width: 60,
+                child: TextFormField(
+                  focusNode: pin3FocusNode,
+                  obscureText: true,
+                  style: const TextStyle(fontSize: 24),
+                  keyboardType: TextInputType.number,
+                  textAlign: TextAlign.center,
+                  decoration: otpInputDecoration,
+                  onChanged: (value) => nextField(value, pin4FocusNode),
+                ),
+              ),
+              SizedBox(
+                width: 60,
+                child: TextFormField(
+                  focusNode: pin4FocusNode,
+                  obscureText: true,
+                  style: const TextStyle(fontSize: 24),
+                  keyboardType: TextInputType.number,
+                  textAlign: TextAlign.center,
+                  decoration: otpInputDecoration,
+                  onChanged: (value) {
+                    if (value.length == 1) {
+                      pin4FocusNode!.unfocus();
+                      // Then you need to check is the code is correct or not
+                    }
+                  },
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.15),
+          ElevatedButton(
+            onPressed: () {},
+            child: const Text("Continue"),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+
+================================================
+FILE: lib/screens/products/products_screen.dart
+================================================
+import 'package:flutter/material.dart';
+import 'package:shop_app/components/product_card.dart';
+import 'package:shop_app/models/Product.dart';
+
+import '../details/details_screen.dart';
+
+class ProductsScreen extends StatelessWidget {
+  const ProductsScreen({super.key});
+
+  static String routeName = "/products";
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Products"),
+      ),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: GridView.builder(
+            itemCount: demoProducts.length,
+            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: 200,
+              childAspectRatio: 0.7,
+              mainAxisSpacing: 20,
+              crossAxisSpacing: 16,
+            ),
+            itemBuilder: (context, index) => ProductCard(
+              product: demoProducts[index],
+              onPress: () => Navigator.pushNamed(
+                context,
+                DetailsScreen.routeName,
+                arguments:
+                    ProductDetailsArguments(product: demoProducts[index]),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+
+================================================
+FILE: lib/screens/profile/profile_screen.dart
+================================================
+import 'package:flutter/material.dart';
+
+import 'components/profile_menu.dart';
+import 'components/profile_pic.dart';
+
+class ProfileScreen extends StatelessWidget {
+  static String routeName = "/profile";
+
+  const ProfileScreen({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Profile"),
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.symmetric(vertical: 20),
+        child: Column(
+          children: [
+            const ProfilePic(),
+            const SizedBox(height: 20),
+            ProfileMenu(
+              text: "My Account",
+              icon: "assets/icons/User Icon.svg",
+              press: () => {},
+            ),
+            ProfileMenu(
+              text: "Notifications",
+              icon: "assets/icons/Bell.svg",
+              press: () {},
+            ),
+            ProfileMenu(
+              text: "Settings",
+              icon: "assets/icons/Settings.svg",
+              press: () {},
+            ),
+            ProfileMenu(
+              text: "Help Center",
+              icon: "assets/icons/Question mark.svg",
+              press: () {},
+            ),
+            ProfileMenu(
+              text: "Log Out",
+              icon: "assets/icons/Log out.svg",
+              press: () {},
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+
+================================================
+FILE: lib/screens/profile/components/profile_menu.dart
+================================================
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../../constants.dart';
+
+class ProfileMenu extends StatelessWidget {
+  const ProfileMenu({
+    Key? key,
+    required this.text,
+    required this.icon,
+    this.press,
+  }) : super(key: key);
+
+  final String text, icon;
+  final VoidCallback? press;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      child: TextButton(
+        style: TextButton.styleFrom(
+          foregroundColor: kPrimaryColor, padding: const EdgeInsets.all(20),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+          backgroundColor: const Color(0xFFF5F6F9),
+        ),
+        onPressed: press,
+        child: Row(
+          children: [
+            SvgPicture.asset(
+              icon,
+              color: kPrimaryColor,
+              width: 22,
+            ),
+            const SizedBox(width: 20),
+            Expanded(child: Text(text)),
+            const Icon(Icons.arrow_forward_ios),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+
+================================================
+FILE: lib/screens/profile/components/profile_pic.dart
+================================================
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+class ProfilePic extends StatelessWidget {
+  const ProfilePic({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 115,
+      width: 115,
+      child: Stack(
+        fit: StackFit.expand,
+        clipBehavior: Clip.none,
+        children: [
+          const CircleAvatar(
+            backgroundImage: AssetImage("assets/images/Profile Image.png"),
+          ),
+          Positioned(
+            right: -16,
+            bottom: 0,
+            child: SizedBox(
+              height: 46,
+              width: 46,
+              child: TextButton(
+                style: TextButton.styleFrom(
+                  foregroundColor: Colors.white, shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50),
+                    side: const BorderSide(color: Colors.white),
+                  ),
+                  backgroundColor: const Color(0xFFF5F6F9),
+                ),
+                onPressed: () {},
+                child: SvgPicture.asset("assets/icons/Camera Icon.svg"),
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+
+
+================================================
+FILE: lib/screens/sign_in/sign_in_screen.dart
+================================================
+import 'package:flutter/material.dart';
+
+import '../../components/no_account_text.dart';
+import '../../components/socal_card.dart';
+import 'components/sign_form.dart';
+
+class SignInScreen extends StatelessWidget {
+  static String routeName = "/sign_in";
+
+  const SignInScreen({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Sign In"),
+      ),
+      body: SafeArea(
+        child: SizedBox(
+          width: double.infinity,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  const SizedBox(height: 16),
+                  const Text(
+                    "Welcome Back",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const Text(
+                    "Sign in with your email and password  \nor continue with social media",
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 16),
+                  const SignForm(),
+                  const SizedBox(height: 16),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SocalCard(
+                        icon: "assets/icons/google-icon.svg",
+                        press: () {},
+                      ),
+                      SocalCard(
+                        icon: "assets/icons/facebook-2.svg",
+                        press: () {},
+                      ),
+                      SocalCard(
+                        icon: "assets/icons/twitter.svg",
+                        press: () {},
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 20),
+                  const NoAccountText(),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+
+================================================
+FILE: lib/screens/sign_in/components/sign_form.dart
+================================================
+import 'package:flutter/material.dart';
+
+import '../../../components/custom_surfix_icon.dart';
+import '../../../components/form_error.dart';
+import '../../../constants.dart';
+import '../../../helper/keyboard.dart';
+import '../../forgot_password/forgot_password_screen.dart';
+import '../../login_success/login_success_screen.dart';
+
+class SignForm extends StatefulWidget {
+  const SignForm({super.key});
+
+  @override
+  _SignFormState createState() => _SignFormState();
+}
+
+class _SignFormState extends State<SignForm> {
+  final _formKey = GlobalKey<FormState>();
+  String? email;
+  String? password;
+  bool? remember = false;
+  final List<String?> errors = [];
+
+  void addError({String? error}) {
+    if (!errors.contains(error)) {
+      setState(() {
+        errors.add(error);
+      });
+    }
+  }
+
+  void removeError({String? error}) {
+    if (errors.contains(error)) {
+      setState(() {
+        errors.remove(error);
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      key: _formKey,
+      child: Column(
+        children: [
+          TextFormField(
+            keyboardType: TextInputType.emailAddress,
+            onSaved: (newValue) => email = newValue,
+            onChanged: (value) {
+              if (value.isNotEmpty) {
+                removeError(error: kEmailNullError);
+              } else if (emailValidatorRegExp.hasMatch(value)) {
+                removeError(error: kInvalidEmailError);
+              }
+              return;
+            },
+            validator: (value) {
+              if (value!.isEmpty) {
+                addError(error: kEmailNullError);
+                return "";
+              } else if (!emailValidatorRegExp.hasMatch(value)) {
+                addError(error: kInvalidEmailError);
+                return "";
+              }
+              return null;
+            },
+            decoration: const InputDecoration(
+              labelText: "Email",
+              hintText: "Enter your email",
+              // If  you are using latest version of flutter then lable text and hint text shown like this
+              // if you r using flutter less then 1.20.* then maybe this is not working properly
+              floatingLabelBehavior: FloatingLabelBehavior.always,
+              suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Mail.svg"),
+            ),
+          ),
+          const SizedBox(height: 20),
+          TextFormField(
+            obscureText: true,
+            onSaved: (newValue) => password = newValue,
+            onChanged: (value) {
+              if (value.isNotEmpty) {
+                removeError(error: kPassNullError);
+              } else if (value.length >= 8) {
+                removeError(error: kShortPassError);
+              }
+              return;
+            },
+            validator: (value) {
+              if (value!.isEmpty) {
+                addError(error: kPassNullError);
+                return "";
+              } else if (value.length < 8) {
+                addError(error: kShortPassError);
+                return "";
+              }
+              return null;
+            },
+            decoration: const InputDecoration(
+              labelText: "Password",
+              hintText: "Enter your password",
+              // If  you are using latest version of flutter then lable text and hint text shown like this
+              // if you r using flutter less then 1.20.* then maybe this is not working properly
+              floatingLabelBehavior: FloatingLabelBehavior.always,
+              suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Lock.svg"),
+            ),
+          ),
+          const SizedBox(height: 20),
+          Row(
+            children: [
+              Checkbox(
+                value: remember,
+                activeColor: kPrimaryColor,
+                onChanged: (value) {
+                  setState(() {
+                    remember = value;
+                  });
+                },
+              ),
+              const Text("Remember me"),
+              const Spacer(),
+              GestureDetector(
+                onTap: () => Navigator.pushNamed(
+                    context, ForgotPasswordScreen.routeName),
+                child: const Text(
+                  "Forgot Password",
+                  style: TextStyle(decoration: TextDecoration.underline),
+                ),
+              )
+            ],
+          ),
+          FormError(errors: errors),
+          const SizedBox(height: 16),
+          ElevatedButton(
+            onPressed: () {
+              if (_formKey.currentState!.validate()) {
+                _formKey.currentState!.save();
+                // if all are valid then go to success screen
+                KeyboardUtil.hideKeyboard(context);
+                Navigator.pushNamed(context, LoginSuccessScreen.routeName);
+              }
+            },
+            child: const Text("Continue"),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+
+================================================
+FILE: lib/screens/sign_up/sign_up_screen.dart
+================================================
+import 'package:flutter/material.dart';
+
+import '../../components/socal_card.dart';
+import '../../constants.dart';
+import 'components/sign_up_form.dart';
+
+class SignUpScreen extends StatelessWidget {
+  static String routeName = "/sign_up";
+
+  const SignUpScreen({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Sign Up"),
+      ),
+      body: SafeArea(
+        child: SizedBox(
+          width: double.infinity,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  const SizedBox(height: 16),
+                  const Text("Register Account", style: headingStyle),
+                  const Text(
+                    "Complete your details or continue \nwith social media",
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 16),
+                  const SignUpForm(),
+                  const SizedBox(height: 16),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SocalCard(
+                        icon: "assets/icons/google-icon.svg",
+                        press: () {},
+                      ),
+                      SocalCard(
+                        icon: "assets/icons/facebook-2.svg",
+                        press: () {},
+                      ),
+                      SocalCard(
+                        icon: "assets/icons/twitter.svg",
+                        press: () {},
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 16),
+                  Text(
+                    'By continuing your confirm that you agree \nwith our Term and Condition',
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.bodySmall,
+                  )
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+
+================================================
+FILE: lib/screens/sign_up/components/sign_up_form.dart
+================================================
+import 'package:flutter/material.dart';
+
+import '../../../components/custom_surfix_icon.dart';
+import '../../../components/form_error.dart';
+import '../../../constants.dart';
+import '../../complete_profile/complete_profile_screen.dart';
+
+class SignUpForm extends StatefulWidget {
+  const SignUpForm({super.key});
+
+  @override
+  _SignUpFormState createState() => _SignUpFormState();
+}
+
+class _SignUpFormState extends State<SignUpForm> {
+  final _formKey = GlobalKey<FormState>();
+  String? email;
+  String? password;
+  String? conform_password;
+  bool remember = false;
+  final List<String?> errors = [];
+
+  void addError({String? error}) {
+    if (!errors.contains(error)) {
+      setState(() {
+        errors.add(error);
+      });
+    }
+  }
+
+  void removeError({String? error}) {
+    if (errors.contains(error)) {
+      setState(() {
+        errors.remove(error);
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      key: _formKey,
+      child: Column(
+        children: [
+          TextFormField(
+            keyboardType: TextInputType.emailAddress,
+            onSaved: (newValue) => email = newValue,
+            onChanged: (value) {
+              if (value.isNotEmpty) {
+                removeError(error: kEmailNullError);
+              } else if (emailValidatorRegExp.hasMatch(value)) {
+                removeError(error: kInvalidEmailError);
+              }
+              return;
+            },
+            validator: (value) {
+              if (value!.isEmpty) {
+                addError(error: kEmailNullError);
+                return "";
+              } else if (!emailValidatorRegExp.hasMatch(value)) {
+                addError(error: kInvalidEmailError);
+                return "";
+              }
+              return null;
+            },
+            decoration: const InputDecoration(
+              labelText: "Email",
+              hintText: "Enter your email",
+              // If  you are using latest version of flutter then lable text and hint text shown like this
+              // if you r using flutter less then 1.20.* then maybe this is not working properly
+              floatingLabelBehavior: FloatingLabelBehavior.always,
+              suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Mail.svg"),
+            ),
+          ),
+          const SizedBox(height: 20),
+          TextFormField(
+            obscureText: true,
+            onSaved: (newValue) => password = newValue,
+            onChanged: (value) {
+              if (value.isNotEmpty) {
+                removeError(error: kPassNullError);
+              } else if (value.length >= 8) {
+                removeError(error: kShortPassError);
+              }
+              password = value;
+            },
+            validator: (value) {
+              if (value!.isEmpty) {
+                addError(error: kPassNullError);
+                return "";
+              } else if (value.length < 8) {
+                addError(error: kShortPassError);
+                return "";
+              }
+              return null;
+            },
+            decoration: const InputDecoration(
+              labelText: "Password",
+              hintText: "Enter your password",
+              // If  you are using latest version of flutter then lable text and hint text shown like this
+              // if you r using flutter less then 1.20.* then maybe this is not working properly
+              floatingLabelBehavior: FloatingLabelBehavior.always,
+              suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Lock.svg"),
+            ),
+          ),
+          const SizedBox(height: 20),
+          TextFormField(
+            obscureText: true,
+            onSaved: (newValue) => conform_password = newValue,
+            onChanged: (value) {
+              if (value.isNotEmpty) {
+                removeError(error: kPassNullError);
+              } else if (value.isNotEmpty && password == conform_password) {
+                removeError(error: kMatchPassError);
+              }
+              conform_password = value;
+            },
+            validator: (value) {
+              if (value!.isEmpty) {
+                addError(error: kPassNullError);
+                return "";
+              } else if ((password != value)) {
+                addError(error: kMatchPassError);
+                return "";
+              }
+              return null;
+            },
+            decoration: const InputDecoration(
+              labelText: "Confirm Password",
+              hintText: "Re-enter your password",
+              // If  you are using latest version of flutter then lable text and hint text shown like this
+              // if you r using flutter less then 1.20.* then maybe this is not working properly
+              floatingLabelBehavior: FloatingLabelBehavior.always,
+              suffixIcon: CustomSurffixIcon(svgIcon: "assets/icons/Lock.svg"),
+            ),
+          ),
+          FormError(errors: errors),
+          const SizedBox(height: 20),
+          ElevatedButton(
+            onPressed: () {
+              if (_formKey.currentState!.validate()) {
+                _formKey.currentState!.save();
+                // if all are valid then go to success screen
+                Navigator.pushNamed(context, CompleteProfileScreen.routeName);
+              }
+            },
+            child: const Text("Continue"),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+
+================================================
+FILE: lib/screens/splash/splash_screen.dart
+================================================
+import 'package:flutter/material.dart';
+
+import '../../constants.dart';
+import '../sign_in/sign_in_screen.dart';
+import 'components/splash_content.dart';
+
+class SplashScreen extends StatefulWidget {
+  static String routeName = "/splash";
+
+  const SplashScreen({super.key});
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  int currentPage = 0;
+  List<Map<String, String>> splashData = [
+    {
+      "text": "Welcome to Tokoto, Let’s shop!",
+      "image": "assets/images/splash_1.png"
+    },
+    {
+      "text":
+          "We help people conect with store \naround United State of America",
+      "image": "assets/images/splash_2.png"
+    },
+    {
+      "text": "We show the easy way to shop. \nJust stay at home with us",
+      "image": "assets/images/splash_3.png"
+    },
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: SizedBox(
+          width: double.infinity,
+          child: Column(
+            children: <Widget>[
+              Expanded(
+                flex: 3,
+                child: PageView.builder(
+                  onPageChanged: (value) {
+                    setState(() {
+                      currentPage = value;
+                    });
+                  },
+                  itemCount: splashData.length,
+                  itemBuilder: (context, index) => SplashContent(
+                    image: splashData[index]["image"],
+                    text: splashData[index]['text'],
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 2,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Column(
+                    children: <Widget>[
+                      const Spacer(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: List.generate(
+                          splashData.length,
+                          (index) => AnimatedContainer(
+                            duration: kAnimationDuration,
+                            margin: const EdgeInsets.only(right: 5),
+                            height: 6,
+                            width: currentPage == index ? 20 : 6,
+                            decoration: BoxDecoration(
+                              color: currentPage == index
+                                  ? kPrimaryColor
+                                  : const Color(0xFFD8D8D8),
+                              borderRadius: BorderRadius.circular(3),
+                            ),
+                          ),
+                        ),
+                      ),
+                      const Spacer(flex: 3),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, SignInScreen.routeName);
+                        },
+                        child: const Text("Continue"),
+                      ),
+                      const Spacer(),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+
+================================================
+FILE: lib/screens/splash/components/splash_content.dart
+================================================
+import 'package:flutter/material.dart';
+
+import '../../../constants.dart';
+
+class SplashContent extends StatefulWidget {
+  const SplashContent({
+    Key? key,
+    this.text,
+    this.image,
+  }) : super(key: key);
+  final String? text, image;
+
+  @override
+  State<SplashContent> createState() => _SplashContentState();
+}
+
+class _SplashContentState extends State<SplashContent> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        const Spacer(),
+        const Text(
+          "TOKOTO",
+          style: TextStyle(
+            fontSize: 32,
+            color: kPrimaryColor,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        Text(
+          widget.text!,
+          textAlign: TextAlign.center,
+        ),
+        const Spacer(flex: 2),
+        Image.asset(
+          widget.image!,
+          height: 265,
+          width: 235,
+        ),
+      ],
+    );
+  }
+}
+
+
+
+================================================
+FILE: test/widget_test.dart
+================================================
+// This is a basic Flutter widget test.
+//
+// To perform an interaction with a widget in your test, use the WidgetTester
+// utility in the flutter_test package. For example, you can send tap and scroll
+// gestures. You can also use WidgetTester to find child widgets in the widget
+// tree, read text, and verify that the values of widget properties are correct.
+
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:shop_app/main.dart';
+
+void main() {
+  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+    // Build our app and trigger a frame.
+    await tester.pumpWidget(const MyApp());
+
+    // Verify that our counter starts at 0.
+    expect(find.text('0'), findsOneWidget);
+    expect(find.text('1'), findsNothing);
+
+    // Tap the '+' icon and trigger a frame.
+    await tester.tap(find.byIcon(Icons.add));
+    await tester.pump();
+
+    // Verify that our counter has incremented.
+    expect(find.text('0'), findsNothing);
+    expect(find.text('1'), findsOneWidget);
+  });
+}
+
+

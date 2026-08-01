@@ -11,7 +11,7 @@ part 'theme_controller.g.dart';
 @Riverpod(keepAlive: true)
 class ThemeController extends _$ThemeController {
   @override
-  ThemeMode build() => ThemeMode.system;
+  ThemeMode build() => ThemeMode.light;
 
   void setThemeMode(ThemeMode mode) => state = mode;
 

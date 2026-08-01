@@ -59,4 +59,15 @@ abstract final class AppColors {
   // Transparent / Scrim
   static const Color transparent = Colors.transparent;
   static const Color scrim = Color(0x80000000);
+
+  // E-Commerce UI (ui.txt) colors
+  static const Color ecommercePrimary = Color(0xFFFF7643);
+  static const Color ecommercePrimaryLight = Color(0xFFFFECDF);
+  static const Color ecommerceSecondary = Color(0xFF979797);
+  static const Color ecommerceText = Colors.black;
+  static const Gradient ecommercePrimaryGradient = LinearGradient(
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+    colors: [Color(0xFFFFA53E), Color(0xFFFF7643)],
+  );
 }
