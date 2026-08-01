@@ -47,8 +47,12 @@ class ProductDetailsPage extends ConsumerWidget {
       bottomNavigationBar: PurchaseBar(
         selection: selection,
         quantity: details.quantity,
-        onAddToCart: () => onAddToCart?.call(selection, details.quantity),
-        onBuyNow: () => onBuyNow?.call(selection, details.quantity),
+        onAddToCart: onAddToCart == null
+            ? null
+            : () => onAddToCart!(selection, details.quantity),
+        onBuyNow: onBuyNow == null
+            ? null
+            : () => onBuyNow!(selection, details.quantity),
       ),
       body: SingleChildScrollView(
         physics: const AlwaysScrollableScrollPhysics(),

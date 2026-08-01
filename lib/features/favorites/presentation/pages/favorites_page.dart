@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:rehlaa/core/design_system/design_system.dart';
+import 'package:rehlaa/core/navigation/app_route_names.dart';
 import 'package:rehlaa/features/favorites/presentation/view_models/favorites_view_model.dart';
 import 'package:rehlaa/generated/l10n/app_localizations.dart';
+import 'package:rehlaa/shared/domain/catalog/product.dart';
 import 'package:rehlaa/shared/presentation/widgets/product_card.dart';
 
 class FavoritesPage extends ConsumerWidget {
-  const FavoritesPage({super.key});
+  const FavoritesPage({super.key, this.onProductTap});
+
+  final ValueChanged<Product>? onProductTap;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -41,7 +46,17 @@ class FavoritesPage extends ConsumerWidget {
                 onFavoriteTap: () => ref
                     .read(favoritesViewModelProvider.notifier)
                     .toggleFavorite(product),
-                onTap: () {},
+                onTap: () {
+                  final callback = onProductTap;
+                  if (callback != null) {
+                    callback(product);
+                    return;
+                  }
+                  context.push(
+                    AppRoutePaths.productDetailsFor(product.id),
+                    extra: product,
+                  );
+                },
               );
             },
           );

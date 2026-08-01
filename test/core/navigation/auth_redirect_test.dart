@@ -27,6 +27,14 @@ void main() {
       expect(redirect, equals('${AppRoutePaths.signIn}?returnTo=%2Fwallet'));
     });
 
+    test('guest opening cart is redirected to sign-in with return path', () {
+      final redirect = authRedirect(
+        session: const AuthSession.guest(),
+        state: _fakeState(AppRoutePaths.cart),
+      );
+      expect(redirect, equals('${AppRoutePaths.signIn}?returnTo=%2Fcart'));
+    });
+
     test('authenticated user accessing auth route is redirected to home', () {
       const user = AuthUser(
         id: 'u1',

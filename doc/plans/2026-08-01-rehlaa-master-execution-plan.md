@@ -67,9 +67,9 @@
 | Foundation Task 2 | منجزة | مصفوفة DG-01 مثبتة، والتوليد والتحليل والاختبارات ناجحة |
 | بقية Foundation | منجزة | F03–F10 منفذة ومثبتة بالاختبارات |
 | Authentication | منجزة | A01–A07 منفذة، وحماية المسارات و`returnTo` مثبتان بالاختبارات |
-| Catalog | قيد الاستكمال | C01–C08 مثبتة؛ المتبقي بوابة قبول المرحلة والتدفق التكاملي |
+| Catalog | منجزة | C01–C08 وبوابة القبول مثبتة باختبارات Domain/Repository/ViewModel/Widget/Integration |
 | Checkout | قيد الاستكمال | P01–P06 لها تنفيذ عامل؛ P07–P08 وتغطية الملف/Offline/RTL/الثيمات لم تكتمل |
-| نقطة الاستئناف | بوابة المرحلة 3 | ربط Home بالتفاصيل والمفضلة والسلة وإثبات التدفق قبل استكمال Checkout |
+| نقطة الاستئناف | تدقيق المرحلة 4 | مراجعة P01–P08 مقابل التنفيذ الحالي وإغلاق فجوات Checkout المتبقية |
 
 ### DG-01: بوابة توافق الاعتماديات
 
@@ -195,10 +195,10 @@ build_runner: ^2.10.4
 
 ### بوابة الكتالوج والتجارة
 
-- [ ] تدفق Home → Details → Options → Favorites/Cart يعمل للغتين والثيمين.
+- [x] تدفق Home → Details → Options → Favorites/Cart يعمل للغتين والثيمين.
 - [x] كل الحسابات تستخدم `Money`، وهوية عنصر السلة تشمل الخيارات المختارة.
-- [ ] القراءة من cache تعمل Offline، بينما الإجراءات المحمية تتبع سياسة الجلسة.
-- [ ] اختبارات Domain وRepository وViewModel وWidget وIntegration ناجحة.
+- [x] القراءة من cache تعمل Offline، بينما الإجراءات المحمية تتبع سياسة الجلسة.
+- [x] اختبارات Domain وRepository وViewModel وWidget وIntegration ناجحة.
 
 ---
 
@@ -392,6 +392,7 @@ git status --short
 | 2026-08-01 | C06 | منجز | Gallery وmetadata/favorite/rating والخيارات والكمية وشريط شراء safe-area، مع callback typed وتعريب Light/Dark وRTL و200%؛ format نظيف والتحليل بلا warnings والاختبارات 78/78 |
 | 2026-08-01 | C07 | منجز | uniqueness عبر Set وتطبيع نتائج Repository، optimistic remove مع rollback، وصفحة empty/grid مترجمة ومثبتة في Dark-Arabic و200%؛ الاختبارات 81/81 |
 | 2026-08-01 | C08 | منجز | Repository محلي immutable، استعادة السلة، منع الكميات غير الصالحة وخلط العملات، وهوية product+options، وحالتي empty/populated مترجمتان مع RTL/Dark/200% وملخص sticky typed؛ الاختبارات 86/86 |
+| 2026-08-01 | بوابة المرحلة 3 | منجز | ربط Home وFavorites بمسار تفاصيل حقيقي يدعم deep link، وربط الخيارات بالمفضلة والسلة والدفع، وحماية Cart مع returnTo، وتعطيل الشراء Offline، وإثبات Dark-Arabic عند 200%؛ الاختبارات 90/90 |
 
 ## 9. تعريف الإنجاز الكامل
 

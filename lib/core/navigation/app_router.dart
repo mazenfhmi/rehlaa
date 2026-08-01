@@ -9,7 +9,10 @@ import 'package:rehlaa/features/authentication/presentation/pages/login_page.dar
 import 'package:rehlaa/features/authentication/presentation/pages/register_page.dart';
 import 'package:rehlaa/features/authentication/presentation/view_models/auth_session_controller.dart';
 import 'package:rehlaa/features/cart/presentation/pages/cart_page.dart';
+import 'package:rehlaa/features/favorites/presentation/pages/favorites_page.dart';
 import 'package:rehlaa/features/home/presentation/pages/home_page.dart';
+import 'package:rehlaa/features/product_details/presentation/pages/commerce_product_details_page.dart';
+import 'package:rehlaa/shared/domain/catalog/product.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'app_router.g.dart';
@@ -66,8 +69,7 @@ GoRouter appRouter(Ref ref) {
               GoRoute(
                 path: AppRoutePaths.favorites,
                 name: AppRouteNames.favorites,
-                builder: (context, state) =>
-                    const _PlaceholderPage(title: 'Favorites'),
+                builder: (context, state) => const FavoritesPage(),
               ),
             ],
           ),
@@ -104,6 +106,17 @@ GoRouter appRouter(Ref ref) {
             ],
           ),
         ],
+      ),
+
+      GoRoute(
+        path: AppRoutePaths.productDetails,
+        name: AppRouteNames.productDetails,
+        builder: (context, state) => CommerceProductDetailsPage(
+          productId: state.pathParameters['id']!,
+          initialProduct: state.extra is Product
+              ? state.extra! as Product
+              : null,
+        ),
       ),
 
       // ── Auth routes (outside shell, no bottom nav) ──

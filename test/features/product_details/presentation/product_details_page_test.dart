@@ -53,6 +53,7 @@ void main() {
     bool useDarkTheme = false,
     double textScale = 1,
     ProductPurchaseCallback? onAddToCart,
+    ProductPurchaseCallback? onBuyNow,
   }) => ProviderScope(
     child: MaterialApp(
       locale: locale,
@@ -67,7 +68,11 @@ void main() {
       ),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      home: ProductDetailsPage(product: product, onAddToCart: onAddToCart),
+      home: ProductDetailsPage(
+        product: product,
+        onAddToCart: onAddToCart,
+        onBuyNow: onBuyNow,
+      ),
     ),
   );
 
@@ -153,6 +158,7 @@ void main() {
           submittedSelection = selection;
           submittedQuantity = quantity;
         },
+        onBuyNow: (_, _) {},
       ),
     );
     await tester.pump();

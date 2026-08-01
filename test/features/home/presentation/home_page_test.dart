@@ -9,7 +9,9 @@ import 'package:rehlaa/features/catalog/data/mock/catalog_mock_data.dart';
 import 'package:rehlaa/features/catalog/domain/repositories/catalog_repository.dart';
 import 'package:rehlaa/features/catalog/presentation/providers/catalog_provider.dart';
 import 'package:rehlaa/features/home/presentation/pages/home_page.dart';
+import 'package:rehlaa/features/home/presentation/widgets/product_section.dart';
 import 'package:rehlaa/generated/l10n/app_localizations.dart';
+import 'package:rehlaa/shared/domain/catalog/product.dart';
 import 'package:rehlaa/shared/presentation/widgets/product_card.dart';
 
 class MockCatalogRepository extends Mock implements CatalogRepository {}
@@ -156,5 +158,38 @@ void main() {
 
     addTearDown(tester.view.resetPhysicalSize);
     addTearDown(tester.view.resetDevicePixelRatio);
+  });
+
+  testWidgets('tapping a Home product forwards the selected product', (
+    tester,
+  ) async {
+    tester.view.physicalSize = const Size(1080, 2400);
+    tester.view.devicePixelRatio = 1.0;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+    final product = CatalogMockData.homeFeed.featuredProducts.first;
+    Product? selectedProduct;
+
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [
+          catalogRepositoryProvider.overrideWithValue(mockRepository),
+          isOnlineProvider.overrideWith((ref) => Stream.value(true)),
+        ],
+        child: MaterialApp(
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
+          home: HomePage(onProductTap: (product) => selectedProduct = product),
+        ),
+      ),
+    );
+    await tester.pump();
+    await tester.pump(const Duration(seconds: 1));
+
+    tester
+        .widget<ProductSection>(find.byType(ProductSection).last)
+        .onProductTap!(product);
+
+    expect(selectedProduct, same(product));
   });
 }

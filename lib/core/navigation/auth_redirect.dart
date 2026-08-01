@@ -5,6 +5,7 @@ import 'package:rehlaa/features/authentication/domain/entities/auth_session.dart
 /// Set of protected route paths requiring an authenticated user.
 const Set<String> _protectedRoutes = {
   AppRoutePaths.favorites,
+  AppRoutePaths.cart,
   AppRoutePaths.checkout,
   AppRoutePaths.wallet,
   AppRoutePaths.orders,

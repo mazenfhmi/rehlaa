@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:rehlaa/core/design_system/design_system.dart';
+import 'package:rehlaa/core/navigation/app_route_names.dart';
 import 'package:rehlaa/core/network/connectivity_service.dart';
 import 'package:rehlaa/features/home/presentation/providers/home_provider.dart';
 import 'package:rehlaa/features/home/presentation/states/home_view_state.dart';
@@ -10,15 +12,27 @@ import 'package:rehlaa/features/home/presentation/widgets/home_header.dart';
 import 'package:rehlaa/features/home/presentation/widgets/product_section.dart';
 import 'package:rehlaa/features/home/presentation/widgets/trust_benefits.dart';
 import 'package:rehlaa/generated/l10n/app_localizations.dart';
+import 'package:rehlaa/shared/domain/catalog/product.dart';
 
 class HomePage extends ConsumerWidget {
-  const HomePage({super.key});
+  const HomePage({super.key, this.onProductTap, this.onCartTap});
+
+  final ValueChanged<Product>? onProductTap;
+  final VoidCallback? onCartTap;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final viewAsync = ref.watch(homeViewModelProvider);
     final isOnline = ref.watch(isOnlineProvider).value ?? true;
     final l10n = AppLocalizations.of(context);
+    void openProduct(Product product) {
+      final callback = onProductTap;
+      if (callback != null) {
+        callback(product);
+        return;
+      }
+      context.push(AppRoutePaths.productDetailsFor(product.id), extra: product);
+    }
 
     return AppScaffold(
       body: SafeArea(
@@ -45,7 +59,11 @@ class HomePage extends ConsumerWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        HomeHeader(searchHint: l10n.homeSearchHint),
+                        HomeHeader(
+                          searchHint: l10n.homeSearchHint,
+                          onCartTap:
+                              onCartTap ?? () => context.go(AppRoutePaths.cart),
+                        ),
                         const SizedBox(height: AppSpacing.xl),
                         if (viewState.feed.isStale) ...[
                           _CachedDataBanner(message: l10n.cachedDataMessage),
@@ -77,12 +95,14 @@ class HomePage extends ConsumerWidget {
                           products: viewState.feed.exclusiveOffers,
                           emptyLabel: l10n.noItemsFound,
                           horizontal: true,
+                          onProductTap: openProduct,
                         ),
                         const SizedBox(height: AppSpacing.xl),
                         ProductSection(
                           title: l10n.featuredProductsTitle,
                           products: viewState.visibleFeaturedProducts,
                           emptyLabel: l10n.noItemsFound,
+                          onProductTap: openProduct,
                         ),
                       ],
                     ),

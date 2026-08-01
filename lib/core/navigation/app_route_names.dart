@@ -58,6 +58,7 @@ abstract final class AppRoutePaths {
 
   static const catalog = '/catalog';
   static const productDetails = '/product/:id';
+  static String productDetailsFor(String id) => '/product/$id';
 
   static const checkout = '/checkout';
   static const orders = '/orders';
