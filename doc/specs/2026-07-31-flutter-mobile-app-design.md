@@ -39,6 +39,9 @@ The application reproduces the supplied marketplace interfaces while correcting 
 - Authentication supports email/password and Google. Apple sign-in is excluded from the first release.
 - Backend integration will be added later without changing pages or feature-facing ViewModels.
 - The visual design should remain close to the supplied screens while fixing duplicated fields, inconsistent text direction, grammar, and money formatting.
+- `doc/specs/2026-08-01-ui-design-system.md` is the authoritative visual contract extracted from `doc/ui.txt` and adapted for native Light/Dark and RTL/LTR behavior.
+- Orange is the primary interaction identity; purple is reserved for promotional content.
+- The implementation state and stabilization priorities are tracked in `doc/2026-08-01-project-audit.md` and do not change the accepted product scope.
 
 ## 3. Architecture
 
@@ -285,7 +288,9 @@ Use Flutter localization generation with ARB files.
 
 ## 10. Theming and Design Tokens
 
-The design system is token-driven.
+The design system is token-driven and follows
+`doc/specs/2026-08-01-ui-design-system.md`. `doc/ui.txt` is an immutable visual
+source, not an implementation architecture.
 
 ```text
 core/design_system/
@@ -308,6 +313,36 @@ core/design_system/
 ```
 
 Pages and feature widgets must not introduce raw color, radius, spacing, typography, or animation values unless the design system has no suitable token and the value is subsequently added to it.
+
+The required semantic color roles are:
+
+| Role | Light | Dark |
+| --- | --- | --- |
+| `background` | `#FFFFFF` | `#121318` |
+| `surface` | `#FFFFFF` | `#1C1E24` |
+| `surfaceMuted` | `#F5F6F9` | `#252832` |
+| `primary` | `#C94F22` | `#FF9A73` |
+| `onPrimary` | `#FFFFFF` | `#24120B` |
+| `primaryContainer` | `#FFECDF` | `#3D241C` |
+| `brandDecorative` | `#FF7643` | `#FF8A5C` |
+| `promotionalContainer` | `#4A3298` | `#2F285A` |
+| `textPrimary` | `#1F1F23` | `#F7F7F8` |
+| `textSecondary` | `#6B6B73` | `#B7BAC2` |
+| `outline` | `#E3E5EA` | `#343843` |
+| `success` | `#1F8F5F` | `#4CD391` |
+| `warning` | `#B76E00` | `#FFC857` |
+| `error` | `#D92D3A` | `#FF737D` |
+
+Feature widgets consume semantic roles through `ThemeData`, `ColorScheme`, or
+a typed ThemeExtension. They never select a Light or Dark raw value directly.
+Plus Jakarta is the Latin family and Cairo is the Arabic family, each with
+400, 500, and 700 weights required by the approved type scale.
+
+Foundational component coverage includes buttons, fields, search, icon
+actions, cards, badges, section headers, bottom navigation, bottom sheets,
+loading/skeleton/empty/error/offline feedback, and accessible focus and
+disabled states. Visual deliverables are verified in Arabic/English,
+RTL/LTR, Light/Dark, 360×800, 390×844, 412×915, and 200% text scaling.
 
 ## 11. Offline and Cache Policy
 

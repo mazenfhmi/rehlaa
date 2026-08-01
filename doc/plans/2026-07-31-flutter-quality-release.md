@@ -14,6 +14,11 @@
 - لا يتم تحديث Golden files دون مراجعة بصرية.
 - جميع التدفقات المالية تختبر Offline وLoading وFailure.
 - نجاح `flutter analyze` شرط قبل أي Build.
+- عقد القبول البصري: `doc/specs/2026-08-01-ui-design-system.md`.
+- تقرير خط الأساس: `doc/2026-08-01-project-audit.md`؛ يبدأ التنفيذ بإغلاق أخطاء Analyze الأربعة وتوسيع الاختبارات لتجمع Home كاملة.
+- WCAG AA: نص عادي 4.5:1، عناصر غير نصية ونص كبير 3:1، وأهداف تفاعل 48×48 على الأقل.
+- 200% text scale جزء إلزامي من بوابة كل صفحة رئيسية.
+- كل Golden/Widget/Accessibility matrix يحدد صراحة Light/Dark وRTL/LTR وArabic/English بدل الاعتماد على الوضع الافتراضي.
 
 ---
 
@@ -28,6 +33,7 @@
 **Interfaces:**
 - Produces: `testApp(widget, locale, themeMode, overrides)`.
 - Produces device sizes 360×800, 390×844, 412×915.
+- Produces deterministic `textScale`, font loading, local assets, and disabled-animation controls.
 
 - [ ] **Step 1: Write harness self-test**
 
@@ -52,6 +58,9 @@ git commit -m "test(core): add shared widget test harness"
 - Create: `test/goldens/wallet_golden_test.dart`
 - Create: `test/goldens/profile_golden_test.dart`
 - Create: `test/goldens/empty_cart_golden_test.dart`
+- Create: `test/goldens/authentication_golden_test.dart`
+- Create: `test/goldens/orders_notifications_golden_test.dart`
+- Create: `test/goldens/feedback_states_golden_test.dart`
 
 **Interfaces:**
 - Covers light/dark and ar/en combinations relevant to each supplied screen.
@@ -69,6 +78,10 @@ flutter test --update-goldens test/goldens
 - [ ] **Step 3: Review images manually**
 
 Check spacing, typography, RTL order, clipping, and bottom safe areas against reference screenshots.
+
+Also check semantic orange action roles, promotional-only purple, theme-specific
+foregrounds, Cairo/Plus Jakarta selection, focus visibility, 48-pixel targets,
+and Loading/Empty/Error/Offline consistency against the approved UI contract.
 
 - [ ] **Step 4: Run without update and commit**
 
@@ -94,6 +107,10 @@ Back, close, favorite, hide balance, refresh, copy account, upload receipt, and 
 - [ ] **Step 2: Test text scaling**
 
 Render primary pages at textScaleFactor 2.0 and assert no exceptions/overflows.
+
+Add exact token tests for Light/Dark semantic roles, contrast tests for primary
+foreground pairs, 3:1 control boundaries, selected-state semantics, and
+color-independent credit/debit/status meaning.
 
 - [ ] **Step 3: Run and commit**
 

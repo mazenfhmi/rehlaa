@@ -14,6 +14,10 @@
 - البريد والأسماء تخضع للتحقق.
 - تغيير كلمة المرور اختياري؛ إذا أُدخلت كلمة جديدة تصبح الحالية والتأكيد مطلوبين.
 - اللغة والثيم يطبقان أثناء التشغيل.
+- عقد الواجهة الملزم: `doc/specs/2026-08-01-ui-design-system.md`.
+- Profile/Settings تستخدم avatar دائريًا، grouped muted tiles، directional arrows، وsemantic selection states.
+- كل النصوص من ARB والتفضيلات تستعاد من التخزين قبل عرض الحالة المستقرة.
+- التسليم البصري يثبت Light/Dark وRTL/LTR و48×48 و200% text scale.
 
 ---
 
@@ -91,6 +95,11 @@ Assert user card, four stats, settings section, support section, and logout tile
 
 Use `UserAvatar`, `NotificationBadge`, and feature-local setting widgets.
 
+Use a circular avatar with a 48-pixel edit action, `UserSummaryCard`,
+`ProfileStatsGrid`, `SettingsGroup`, radius-16 muted `SettingsTile`, directional
+arrows, and an error-role `LogoutTile`. Icons use semantic primary; Logout is
+never styled as a normal navigation item.
+
 - [ ] **Step 3: Test dark/English and dark/Arabic**
 
 ```bash
@@ -158,6 +167,9 @@ testWidgets('renders one change password section', (tester) async {
 
 Keep email field LTR under Arabic; expose password visibility toggles with semantics labels.
 
+Use radius-28 fields, keyboard-safe scrolling, and a sticky 52-pixel save
+action. Verify Dark Arabic and Light English at 200% text scaling.
+
 - [ ] **Step 3: Test and commit**
 
 ```bash
@@ -189,6 +201,10 @@ Save after valid change and load once during build.
 
 - [ ] **Step 3: Build selection pages using radio tiles**
 
+Radio cards expose selected semantics and consume semantic theme roles. Locale
+and theme controllers persist and restore the chosen values; no page owns a
+second local source of preference truth.
+
 - [ ] **Step 4: Test and commit**
 
 ```bash
@@ -216,6 +232,9 @@ Toggle marketing notifications off and verify stored preference.
 - [ ] **Step 2: Implement logout sheet**
 
 Cancel leaves session unchanged; confirm signs out and navigates home as guest.
+
+Use the shared radius-30 `AppBottomSheet`, localized copy, error-role confirm
+action, safe-area padding, focus order, and 48-pixel targets.
 
 - [ ] **Step 3: Run tests and commit**
 

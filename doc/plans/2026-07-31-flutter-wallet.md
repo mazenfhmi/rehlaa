@@ -14,6 +14,10 @@
 - Quick amounts: 5K, 10K, 20K, 50K, 100K, 200K.
 - Do not allow using the wallet to pay for wallet top-up.
 - Transactions log is not modified by the UI.
+- Visual contract: `doc/specs/2026-08-01-ui-design-system.md`.
+- Wallet financial surfaces use semantic promotional roles, not a new feature palette.
+- Credit/debit/status meaning is expressed by icon, sign, and localized text in addition to color.
+- Visual tests cover Light/Dark, Arabic/English, hidden balance, Offline, 48×48, and 200% text scale.
 
 ---
 
@@ -123,6 +127,11 @@ Assert `SDG 5,000.00`, Active badge, Charge Now, and welcome gift transaction.
 
 Use semantics labels for the eye button and pull-to-refresh.
 
+`WalletBalanceCard` uses `promotionalContainer`/`onPromotionalContainer`,
+`WalletStatusBadge` uses semantic status roles, and `ChargeWalletTile` uses the
+shared interactive-card pattern. Every financial value is formatted from
+`Money`; the page never accepts `double`.
+
 - [ ] **Step 3: Test dark RTL/LTR and commit**
 
 ```bash
@@ -176,6 +185,10 @@ Assert six quick amounts, minimum message, amount field, and disabled CTA below 
 - [ ] **Step 2: Implement bottom sheet**
 
 Use shared modal components and numeric keyboard; keep currency suffix LTR.
+
+Use the radius-30 `AppBottomSheet`, `AppModalHandle`, typed quick-amount
+selectors, a 48-pixel minimum target, and a sticky 52-pixel primary action.
+Verify keyboard-open and 200% text layouts without clipped amounts or actions.
 
 - [ ] **Step 3: Test and commit**
 

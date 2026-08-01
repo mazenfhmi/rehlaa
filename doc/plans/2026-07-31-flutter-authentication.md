@@ -15,6 +15,10 @@
 - التصفح العام متاح كضيف.
 - Favorites/Checkout/Wallet/Profile Edit محمية.
 - جميع الرسائل مترجمة.
+- عقد الواجهة الملزم: `doc/specs/2026-08-01-ui-design-system.md`.
+- صفحات المصادقة تستخدم Light/Dark الدلاليين، Plus Jakarta/Cairo، RTL/LTR، وحقولًا تقنية LTR داخل العربية.
+- لا تقرأ Pages الـRepository مباشرة؛ Register/Forgot/Verify/Reset لكل منها ViewModel وحالة submit typed.
+- اختبارات الواجهة تشمل 360×800، لوحة مفاتيح مفتوحة، 48×48، و200% text scale.
 
 ---
 
@@ -233,8 +237,11 @@ git commit -m "feat(auth): add session and form view models"
 
 **Files:**
 - Create: `lib/features/authentication/presentation/widgets/auth_page_layout.dart`
+- Create: `lib/features/authentication/presentation/widgets/auth_header.dart`
 - Create: `lib/features/authentication/presentation/widgets/auth_form_card.dart`
 - Create: `lib/features/authentication/presentation/widgets/google_sign_in_button.dart`
+- Create: `lib/features/authentication/presentation/widgets/otp_field.dart`
+- Create: `lib/features/authentication/presentation/widgets/auth_footer_link.dart`
 - Create: pages for login, register, verify email, forgot password, reset password
 - Test: `test/features/authentication/presentation/login_page_test.dart`
 
@@ -255,13 +262,22 @@ testWidgets('shows localized validation for empty credentials', (tester) async {
 
 - [ ] **Step 2: Implement shared form layout**
 
-Use `AppTextField`, `AppPasswordField`, `AppPrimaryButton`, and `GoogleSignInButton`. Preserve LTR direction inside email fields in Arabic mode.
+Use `AppTextField`, `AppPasswordField`, `AppPrimaryButton`, and
+`GoogleSignInButton`. The composition uses a flat app bar, centered 24/700
+heading, concise support copy, radius-28 fields, and a 52-pixel primary action.
+Preserve LTR direction inside email, token, and code fields in Arabic mode.
+All copy comes from ARB and all focus/error/disabled/loading colors come from
+the active theme.
 
 - [ ] **Step 3: Build all pages with no duplicated form logic**
 
 Each page owns only its field controllers and binds to a dedicated ViewModel.
 
 - [ ] **Step 4: Test both locales**
+
+Cover Light English and Dark Arabic, keyboard-open scrolling, disabled/loading
+actions, focus/error states, 360×800, and 200% text scaling. Every icon-only
+password or navigation action exposes a localized semantic label.
 
 ```bash
 flutter test test/features/authentication/presentation/login_page_test.dart

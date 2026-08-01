@@ -14,6 +14,10 @@
 - كل Quote تأتي من Use Case/Repository، لا من Widget.
 - العمليات المالية ممنوعة Offline.
 - التحويل البنكي لا يعتبر مدفوعًا؛ حالته `pendingReview`.
+- عقد الواجهة الملزم: `doc/specs/2026-08-01-ui-design-system.md`.
+- Checkout يستخدم AppBottomSheet دلالية radius 30، grouped AppCards، وsticky action آمن مع لوحة المفاتيح.
+- كل اختيار يملك selected/focus/error state نصية ودلالية؛ اللون ليس الإشارة الوحيدة.
+- اختبارات التدفق المالي تشمل Light/Dark وRTL/LTR وOffline و48×48 و200% text scale.
 
 ---
 
@@ -167,6 +171,11 @@ Verify selected tile uses semantic `selected: true`, brand border, and radio sta
 
 `ApplyCodeField` exposes `isApplying`, `errorText`, and `onApply`; `ReceiptUploader` exposes selected file metadata without performing upload itself.
 
+Payment and bank tiles use semantic surface/outline/primary roles and expose
+their selected state to Semantics. `PriceSummary` consumes typed `Money` only.
+Receipt upload has localized empty, selected, invalid-type, oversized, and
+error states in both themes.
+
 - [ ] **Step 3: Test RTL/LTR and commit**
 
 ```bash
@@ -196,6 +205,11 @@ Assert product title, old/current price, coupon, referral, wallet, three payment
 - [ ] **Step 2: Implement `DraggableScrollableSheet` composition**
 
 Use `AppBottomSheet`, `AppModalHandle`, shared widgets, and `AnimatedSwitcher` for payment forms.
+
+The sheet uses radius-30 top corners, a visible handle, grouped `AppCard`
+sections, bounded height, keyboard-safe scrolling, and a sticky action region.
+Bank/account/operation values remain LTR inside Arabic while their labels and
+section order remain directional.
 
 - [ ] **Step 3: Validate operation and receipt fields**
 

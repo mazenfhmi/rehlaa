@@ -2,6 +2,25 @@
 
 This consolidated document contains the master implementation roadmap and all sub-plans, arranged by dependencies.
 
+## Authoritative Source Manifest
+
+This aggregate is governed by, in order:
+
+1. `doc/specs/2026-07-31-flutter-mobile-app-design.md` for product and architecture.
+2. `doc/specs/2026-08-01-ui-design-system.md` for all visual decisions.
+3. `doc/2026-08-01-project-audit.md` for the verified current implementation state and stabilization priorities.
+4. The individual plans in `doc/plans/` for task-level execution details.
+5. `doc/plans/2026-08-01-ui-plan-alignment.md` for documentation synchronization checks.
+
+If an embedded section in this consolidated document becomes inconsistent with
+an individual plan, the individual plan is authoritative and this file must be
+synchronized before execution. `doc/ui.txt` remains an immutable visual source.
+
+The visual contract applies to every embedded plan: semantic orange primary
+actions (`#C94F22`/`#FF9A73`), promotional-only purple, Plus Jakarta/Cairo,
+token-only feature styling, Light/Dark, RTL/LTR, 48×48 targets, WCAG contrast,
+and 200% text scaling. No embedded section may redefine these rules.
+
 ---
 
 # Flutter Mobile Application Master Implementation Roadmap
@@ -18,6 +37,7 @@ This consolidated document contains the master implementation roadmap and all su
 
 - The target platforms in the first release: Android and iOS only.
 - Minimum development environment: Flutter 3.44.x and Dart 3.12.x.
+- Verified local baseline: Flutter 3.41.2 and Dart 3.11.0; upgrade or explicitly revise the target before a release Build is accepted.
 - Languages: Arabic and English from the first release with full RTL/LTR.
 - State and dependency management: Riverpod using Notifier and AsyncNotifier and code generation.
 - Architecture: Feature-first Clean MVVM with Domain selective and Repository Contracts.
@@ -32,6 +52,8 @@ This consolidated document contains the master implementation roadmap and all su
 - Do not use `Map<String, dynamic>` outside the limits of DTO and mock sources.
 - All tasks are executed in TDD style, ending with successful tests and an independent commit.
 - No phase is accepted with `flutter analyze` errors or ignored tests.
+- Foundation Task 0 and `doc/2026-08-01-project-audit.md` must be cleared before Catalog or financial feature execution.
+- All visual work follows `doc/specs/2026-08-01-ui-design-system.md`.
 
 ---
 
@@ -209,6 +231,9 @@ The mobile application is considered complete when:
 - Pages are thin, Widgets are reusable, and no business logic inside UI.
 - All texts from ARB and all visual values from Tokens.
 - TDD and independent commit per Task.
+- Visual contract: `doc/specs/2026-08-01-ui-design-system.md`; verified baseline: `doc/2026-08-01-project-audit.md`.
+- Execute Foundation Task 0 from the individual Foundation plan before this embedded Task 1.
+- Semantic orange primary, promotional-only purple, Plus Jakarta/Cairo, 48×48, and 200% text scaling are mandatory.
 
 ---
 
@@ -652,24 +677,43 @@ test('dark theme uses the dark background token', () {
   expect(AppTheme.dark().scaffoldBackgroundColor, AppColors.darkBackground);
 });
 
-test('primary button color is brand purple', () {
-  expect(AppTheme.light().colorScheme.primary, AppColors.brandPrimary);
+test('light and dark themes expose semantic primary roles', () {
+  expect(AppTheme.light().colorScheme.primary, const Color(0xFFC94F22));
+  expect(AppTheme.light().colorScheme.onPrimary, const Color(0xFFFFFFFF));
+  expect(AppTheme.dark().colorScheme.primary, const Color(0xFFFF9A73));
+  expect(AppTheme.dark().colorScheme.onPrimary, const Color(0xFF24120B));
 });
 ```
 
 - [ ] **Step 2: Implement tokens**
 
 ```dart
-abstract final class AppColors {
-  static const brandPrimary = Color(0xFF8E007B);
-  static const brandOrange = Color(0xFFFF8A1D);
-  static const brandTeal = Color(0xFF00C3AC);
-  static const darkBackground = Color(0xFF191A2E);
-  static const darkSurface = Color(0xFF1F2134);
-  static const lightBackground = Color(0xFFF5F6FA);
-  static const lightSurface = Color(0xFFFFFFFF);
-  static const success = Color(0xFF20C779);
-  static const error = Color(0xFFF04D4D);
+abstract final class AppLightColors {
+  static const background = Color(0xFFFFFFFF);
+  static const surface = Color(0xFFFFFFFF);
+  static const surfaceMuted = Color(0xFFF5F6F9);
+  static const primary = Color(0xFFC94F22);
+  static const onPrimary = Color(0xFFFFFFFF);
+  static const primaryContainer = Color(0xFFFFECDF);
+  static const brandDecorative = Color(0xFFFF7643);
+  static const promotionalContainer = Color(0xFF4A3298);
+  static const textPrimary = Color(0xFF1F1F23);
+  static const textSecondary = Color(0xFF6B6B73);
+  static const outline = Color(0xFFE3E5EA);
+}
+
+abstract final class AppDarkColors {
+  static const background = Color(0xFF121318);
+  static const surface = Color(0xFF1C1E24);
+  static const surfaceMuted = Color(0xFF252832);
+  static const primary = Color(0xFFFF9A73);
+  static const onPrimary = Color(0xFF24120B);
+  static const primaryContainer = Color(0xFF3D241C);
+  static const brandDecorative = Color(0xFFFF8A5C);
+  static const promotionalContainer = Color(0xFF2F285A);
+  static const textPrimary = Color(0xFFF7F7F8);
+  static const textSecondary = Color(0xFFB7BAC2);
+  static const outline = Color(0xFF343843);
 }
 ```
 
@@ -1010,6 +1054,9 @@ git commit -m "feat(home): prove architecture with mock category slice"
 - التصفح العام متاح كضيف.
 - Favorites/Checkout/Wallet/Profile Edit محمية.
 - جميع الرسائل مترجمة.
+- Visual contract: `doc/specs/2026-08-01-ui-design-system.md`.
+- Auth Pages use themed radius-28 fields, 52-pixel actions, localized copy, keyboard-safe scrolling, and ViewModels rather than direct Repository reads.
+- Cover Light English, Dark Arabic, 48×48, and 200% text scaling.
 
 ---
 
@@ -1368,6 +1415,9 @@ git commit -m "test(auth): cover complete authentication flows"
 - Cart product is identified by productId + optionSignature.
 - Favorites are associated with the product only.
 - Readable data can be displayed Offline, and purchase is disabled Offline.
+- Visual contract: `doc/specs/2026-08-01-ui-design-system.md`.
+- Home uses the approved search/banner/category/offer/product rhythm while preserving Repository → ViewModel → Page data flow.
+- ProductCard variants, layered radius-40 details, and radius-30 cart summary use semantic theme roles only.
 
 ---
 
@@ -1675,6 +1725,9 @@ git commit -m "feat(cart): add option aware cart and empty state"
 - Each Quote comes from a Use Case/Repository, not from a Widget.
 - Financial operations are forbidden in Offline mode.
 - Bank transfer is not considered paid; its status is `pendingReview`.
+- Visual contract: `doc/specs/2026-08-01-ui-design-system.md`.
+- Checkout uses the shared radius-30 AppBottomSheet, grouped cards, typed selection states, and keyboard-safe sticky actions.
+- Financial UI is verified in both themes/directions at 200% text and never consumes `double` money.
 
 ---
 
@@ -1948,6 +2001,9 @@ git commit -m "test(checkout): cover mixed wallet and bank transfer flow"
 - Quick amounts: 5K, 10K, 20K, 50K, 100K, 200K.
 - Do not allow using the wallet to pay for wallet top-up.
 - The transaction history is not modified from the UI.
+- Visual contract: `doc/specs/2026-08-01-ui-design-system.md`.
+- Wallet uses semantic promotional surfaces; transaction direction is shown by icon, sign, and text as well as color.
+- Hidden balance, Offline, Light/Dark, RTL/LTR, 48×48, and 200% text states are required.
 
 ---
 
@@ -2167,6 +2223,9 @@ git commit -m "feat(wallet): connect topup to bank transfer checkout"
 - Email and names are subject to validation.
 - Password change is optional; if a new password is entered, both the current and confirmation are required.
 - Language and theme are applied during operation.
+- Visual contract: `doc/specs/2026-08-01-ui-design-system.md`.
+- Profile uses circular avatar/edit action, grouped muted settings tiles, directional arrows, and a destructive confirmation sheet.
+- Locale/theme preferences are persisted and visual tests cover both themes/directions at 200% text.
 
 ---
 
@@ -2398,6 +2457,9 @@ git commit -m "feat(settings): add notifications and safe logout"
 - Search works with 400ms debounce.
 - Orders and notifications are protected by authentication.
 - Policy pages read content locally from Assets in Mock version.
+- Visual contract: `doc/specs/2026-08-01-ui-design-system.md`.
+- Orders reuse AppCard/AppStatusBadge; Notifications reuse grouped tiles; Search uses AppSearchField; Filters use AppBottomSheet.
+- Phase 2 introduces no feature-local palette or duplicate field/card/sheet language.
 
 ---
 
@@ -2598,6 +2660,9 @@ git commit -m "test(app): cover phase two feature navigation"
 - Golden files are not updated without visual review.
 - All financial flows are tested offline, during loading, and during failures.
 - Successful `flutter analyze` is a condition for any Build.
+- Visual acceptance follows `doc/specs/2026-08-01-ui-design-system.md`.
+- Enforce 4.5:1 text contrast, 3:1 non-text contrast, 48×48 targets, three reference device sizes, and 200% text scaling.
+- Golden coverage includes auth, orders/notifications, and Loading/Empty/Error/Offline states in meaningful theme/locale pairs.
 
 ---
 
@@ -2876,4 +2941,3 @@ git commit -m "chore(release): verify flutter mobile release candidate"
 
 
 ---
-

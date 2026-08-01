@@ -338,6 +338,46 @@ Design-System Component
   = Visual behavior only
 ```
 
+## Visual Contract
+
+The authoritative visual specification is
+`doc/specs/2026-08-01-ui-design-system.md`. The `doc/ui.txt` source contributes
+the visual language only; it does not replace Rehlaa architecture, navigation,
+state management, localization, offline policy, or feature behavior.
+
+The adopted visual foundation is:
+
+```text
+Semantic Light/Dark Colors
+        ↓
+Typography + Spacing + Shape + Motion Tokens
+        ↓
+Design-System Components with Typed Variants
+        ↓
+Shared Business Widgets
+        ↓
+Feature Widgets and Thin Pages
+```
+
+The visual contract requires:
+
+* Semantic orange primary actions: `#C94F22` in Light and `#FF9A73` in Dark.
+* Purple only for promotional content, never as the primary action identity.
+* Plus Jakarta for Latin content and bundled Cairo for Arabic content.
+* Directional spacing and positioning for complete RTL/LTR behavior.
+* A minimum 48×48 logical-pixel target for every interactive action.
+* Theme-defined default, pressed, focused, disabled, loading, selected, and
+  error behavior for reusable components.
+* No raw visual values inside feature code when a design token or typed
+  component variant can express the requirement.
+
+The current implementation baseline is documented in
+`doc/2026-08-01-project-audit.md`. The audit classifies the Foundation as
+partial: the architecture exists, but build errors, static Home data,
+unwired application localization, the legacy primary palette, and missing
+visual test coverage must be resolved before starting dependent commerce or
+financial features.
+
 ---
 
 # 6. Example of Wallet Page after Decomposition

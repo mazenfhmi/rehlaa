@@ -12,10 +12,15 @@
 
 - Android وiOS فقط.
 - Flutter 3.44.x وDart 3.12.x.
+- البيئة المدققة حاليًا هي Flutter 3.41.2 وDart 3.11.0؛ ترقية SDK إلى الحد المستهدف بوابة صريحة قبل اعتماد Build الإصدار.
 - العربية والإنجليزية مع RTL/LTR.
 - Pages رفيعة، Widgets قابلة لإعادة الاستخدام، ولا منطق أعمال داخل UI.
 - كل النصوص من ARB وكل القيم البصرية من Tokens.
 - TDD وCommit مستقل لكل Task.
+- المرجع البصري الملزم هو `doc/specs/2026-08-01-ui-design-system.md`، وتقرير الوضع الحالي هو `doc/2026-08-01-project-audit.md`.
+- Primary دلالي برتقالي: Light `#C94F22` مع `#FFFFFF`، وDark `#FF9A73` مع `#24120B`؛ البنفسجي للعروض فقط.
+- Plus Jakarta للنص اللاتيني وCairo للعربية بأوزان 400/500/700.
+- كل تسليم بصري يثبت Light/Dark وRTL/LTR و48×48 و200% text scale.
 
 ---
 
@@ -39,6 +44,70 @@ lib/
 ├── core/storage/app_database.dart
 ├── core/storage/preferences_store.dart
 └── features/home/...                  # proof vertical slice
+```
+
+## Current Baseline Gate
+
+التدقيق في 2026-08-01 أثبت وجود المعمارية الأولية، لكنه وجد أربعة أخطاء
+Analyze وHome ثابتة انفصلت عن ViewModel. لذلك تنفذ Task 0 قبل متابعة أي Task
+Foundation أو ميزة تعتمد عليها. لا تعتبر المهام الموجودة منجزة بمجرد وجود
+الملفات؛ الإنجاز يتطلب اجتياز أوامر التحقق المكتوبة في كل Task.
+
+### Task 0: Restore a buildable typed Foundation baseline
+
+**Files:**
+- Modify: `lib/core/extensions/extensions.dart`
+- Modify: `lib/features/home/presentation/pages/home_page.dart`
+- Modify: `lib/features/home/presentation/widgets/categories_widget.dart`
+- Modify: Home widgets that currently contain static source data
+- Test: `test/core/extensions/extensions_test.dart`
+- Test: `test/features/home/home_page_test.dart`
+
+**Interfaces:**
+- Consumes: existing `HomeCategory`, `HomeRepository`, `HomeCategoriesViewModel`, and `isOnlineProvider`.
+- Produces: one typed Home data flow and a project with zero Analyze errors.
+
+- [ ] **Step 1: Add a regression test for RTL detection**
+
+Render a widget inside RTL and LTR `Directionality` and assert `context.isRtl`
+returns true and false respectively. Import intl with an alias or a narrowed
+`show` list so Flutter `TextDirection` cannot collide with intl types.
+
+- [ ] **Step 2: Add a Home compilation and state test**
+
+Override `homeRepositoryProvider`, render `HomePage`, and assert Loading,
+success, selection, Offline banner, and failure states. This test must import
+the complete Home page and all its widgets so type errors cannot remain hidden.
+
+- [ ] **Step 3: Remove the static category map**
+
+`CategoriesWidget` consumes `List<HomeCategory>` plus
+`ValueChanged<String> onSelected`. It does not create
+`List<Map<String, dynamic>>` and does not own mock data.
+
+- [ ] **Step 4: Restore the Home presentation boundary**
+
+`HomePage` watches `homeCategoriesViewModelProvider` and `isOnlineProvider`,
+uses `AppAsyncBuilder`, and composes the approved Header, PromoBanner,
+CategoryCard, offer, and product widgets. Repository reads and category
+selection remain in the ViewModel.
+
+- [ ] **Step 5: Format and verify the repaired baseline**
+
+```bash
+dart format lib test
+flutter analyze
+flutter test
+```
+
+Expected: formatting clean, zero Analyze errors, and all existing plus new
+tests pass.
+
+- [ ] **Step 6: Commit**
+
+```bash
+git add lib/core/extensions lib/features/home test/core/extensions test/features/home
+git commit -m "fix(foundation): restore typed home vertical slice"
 ```
 
 ### Task 1: Initialize the Flutter project and strict analysis
@@ -459,24 +528,49 @@ test('dark theme uses the dark background token', () {
   expect(AppTheme.dark().scaffoldBackgroundColor, AppColors.darkBackground);
 });
 
-test('primary button color is brand purple', () {
-  expect(AppTheme.light().colorScheme.primary, AppColors.brandPrimary);
+test('light and dark themes expose semantic primary roles', () {
+  expect(AppTheme.light().colorScheme.primary, const Color(0xFFC94F22));
+  expect(AppTheme.light().colorScheme.onPrimary, const Color(0xFFFFFFFF));
+  expect(AppTheme.dark().colorScheme.primary, const Color(0xFFFF9A73));
+  expect(AppTheme.dark().colorScheme.onPrimary, const Color(0xFF24120B));
 });
 ```
 
 - [ ] **Step 2: Implement tokens**
 
 ```dart
-abstract final class AppColors {
-  static const brandPrimary = Color(0xFF8E007B);
-  static const brandOrange = Color(0xFFFF8A1D);
-  static const brandTeal = Color(0xFF00C3AC);
-  static const darkBackground = Color(0xFF191A2E);
-  static const darkSurface = Color(0xFF1F2134);
-  static const lightBackground = Color(0xFFF5F6FA);
-  static const lightSurface = Color(0xFFFFFFFF);
-  static const success = Color(0xFF20C779);
-  static const error = Color(0xFFF04D4D);
+abstract final class AppLightColors {
+  static const background = Color(0xFFFFFFFF);
+  static const surface = Color(0xFFFFFFFF);
+  static const surfaceMuted = Color(0xFFF5F6F9);
+  static const primary = Color(0xFFC94F22);
+  static const onPrimary = Color(0xFFFFFFFF);
+  static const primaryContainer = Color(0xFFFFECDF);
+  static const brandDecorative = Color(0xFFFF7643);
+  static const promotionalContainer = Color(0xFF4A3298);
+  static const textPrimary = Color(0xFF1F1F23);
+  static const textSecondary = Color(0xFF6B6B73);
+  static const outline = Color(0xFFE3E5EA);
+  static const success = Color(0xFF1F8F5F);
+  static const warning = Color(0xFFB76E00);
+  static const error = Color(0xFFD92D3A);
+}
+
+abstract final class AppDarkColors {
+  static const background = Color(0xFF121318);
+  static const surface = Color(0xFF1C1E24);
+  static const surfaceMuted = Color(0xFF252832);
+  static const primary = Color(0xFFFF9A73);
+  static const onPrimary = Color(0xFF24120B);
+  static const primaryContainer = Color(0xFF3D241C);
+  static const brandDecorative = Color(0xFFFF8A5C);
+  static const promotionalContainer = Color(0xFF2F285A);
+  static const textPrimary = Color(0xFFF7F7F8);
+  static const textSecondary = Color(0xFFB7BAC2);
+  static const outline = Color(0xFF343843);
+  static const success = Color(0xFF4CD391);
+  static const warning = Color(0xFFFFC857);
+  static const error = Color(0xFFFF737D);
 }
 ```
 
@@ -492,7 +586,20 @@ abstract final class AppSpacing {
 }
 ```
 
-- [ ] **Step 3: Implement theme controller**
+Add `AppRadius` values 10/12/16/20/30/40/pill, `AppSizes` values for
+52-pixel primary buttons, 46-pixel icon actions, 56-pixel category icons, and
+48-pixel minimum targets, plus 200ms and 250ms motion tokens. Configure Material
+3 component themes and a typed ThemeExtension so feature widgets consume
+semantic roles rather than Light/Dark classes directly.
+
+- [ ] **Step 3: Register locale-aware typography**
+
+Add bundled Cairo assets at weights 400/500/700. Plus Jakarta remains the
+Latin family. Implement the approved 32/24/20/16/14/12 scale and select the
+Arabic family for Arabic locale without changing numeric/technical value
+directionality.
+
+- [ ] **Step 4: Implement theme controller**
 
 ```dart
 @Riverpod(keepAlive: true)
@@ -504,7 +611,7 @@ class ThemeController extends _$ThemeController {
 }
 ```
 
-- [ ] **Step 4: Run tests and commit**
+- [ ] **Step 5: Run tests and commit**
 
 ```bash
 dart run build_runner build --delete-conflicting-outputs
@@ -517,9 +624,19 @@ git commit -m "feat(ui): add token driven light and dark themes"
 
 **Files:**
 - Create: `lib/core/design_system/components/buttons/app_primary_button.dart`
+- Create: `lib/core/design_system/components/buttons/app_secondary_button.dart`
+- Create: `lib/core/design_system/components/buttons/app_outlined_button.dart`
 - Create: `lib/core/design_system/components/fields/app_text_field.dart`
+- Create: `lib/core/design_system/components/fields/app_password_field.dart`
+- Create: `lib/core/design_system/components/fields/app_search_field.dart`
+- Create: `lib/core/design_system/components/actions/app_icon_button.dart`
+- Create: `lib/core/design_system/components/badges/notification_badge.dart`
 - Create: `lib/core/design_system/components/cards/app_card.dart`
 - Create: `lib/core/design_system/components/layout/app_scaffold.dart`
+- Create: `lib/core/design_system/components/layout/app_section_header.dart`
+- Create: `lib/core/design_system/components/overlays/app_bottom_sheet.dart`
+- Create: `lib/core/design_system/components/overlays/app_modal_handle.dart`
+- Create: `lib/core/design_system/components/navigation/app_bottom_navigation.dart`
 - Create: `lib/core/design_system/components/feedback/app_async_value_builder.dart`
 - Create: `lib/core/design_system/components/feedback/app_empty_state.dart`
 - Create: `lib/core/design_system/components/feedback/app_error_state.dart`
@@ -589,6 +706,15 @@ class AppPrimaryButton extends StatelessWidget {
 - [ ] **Step 3: Implement field, card, scaffold, and feedback widgets**
 
 Use typed constructor properties only; `AppTextField` must support label, hint, controller, errorText, prefix, suffix, text direction, keyboard type, and obscuring without feature logic.
+
+`AppTextField` uses radius 28, `AppSearchField` uses a muted radius-12 surface,
+buttons use height 52 and radius 16, icon actions expose a 48×48 target with a
+46×46 visual container, cards use radius 16 and semantic outline, banners use
+radius 20, and sheets use radius 30. Every icon-only action requires a localized
+tooltip and semantic label.
+
+Do not expose `double` prices from design-system commerce buttons. Consume a
+typed `Money` value or already localized display text plus typed callbacks.
 
 - [ ] **Step 4: Verify light/dark and RTL/LTR widget tests**
 
@@ -779,7 +905,11 @@ Return deterministic data for All, Gaming, Mobile, Educational Programs, Softwar
 
 - [ ] **Step 4: Implement the page using reusable widgets**
 
-`HomePage` must only watch `homeViewModelProvider`, display `AppAsyncValueBuilder`, and compose `HomeHeader`, `CategorySection`, and `AppOfflineBanner`.
+`HomePage` must only watch `homeViewModelProvider` and connectivity state,
+display `AppAsyncValueBuilder`, and compose `HomeHeader`, `PromoBanner`,
+`CategorySection`, `AppSectionHeader`, product sections, and
+`AppOfflineBanner`. Home widgets receive typed data and callbacks; they do not
+create their own mock lists or introduce raw visual values.
 
 - [ ] **Step 5: Verify complete foundation**
 

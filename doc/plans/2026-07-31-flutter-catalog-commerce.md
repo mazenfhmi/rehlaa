@@ -14,6 +14,10 @@
 - المنتج في السلة يحدد بواسطة productId + optionSignature.
 - المفضلة ترتبط بالمنتج فقط.
 - البيانات المقروءة يمكن عرضها Offline، والشراء معطل Offline.
+- عقد الواجهة الملزم: `doc/specs/2026-08-01-ui-design-system.md`.
+- Home تتبع: Search/Actions → PromoBanner → Categories → Exclusive Offers → Product Sections.
+- جميع Product/Category/Promo widgets typed، مترجمة، وتستهلك semantic theme roles فقط.
+- التسليم البصري يثبت Light/Dark وRTL/LTR و48×48 و200% text scale.
 
 ---
 
@@ -122,6 +126,11 @@ testWidgets('renders discounted price and featured badge', (tester) async {
 
 Use `AppNetworkImage`, `ProductPrice`, `ProductRating`, and `FavoriteButton`; support compact and grid variants through typed constructors.
 
+The grid variant uses square `surfaceMuted` media with radius 12, a two-line
+name, localized current and compare-at prices, an optional status badge, and a
+48-pixel favorite target. Add typed `compact`, `grid`, and `horizontal`
+variants; none reads providers or calculates price.
+
 - [ ] **Step 3: Test RTL/LTR and commit**
 
 ```bash
@@ -153,6 +162,11 @@ Keep selected category separate from fetched feed and derive filtered offers via
 - [ ] **Step 3: Compose thin page**
 
 `HomePage` composes six widgets and contains no raw styling or repository calls.
+
+It watches the Home ViewModel and connectivity state, preserves
+Loading/Empty/Error/Offline, uses a 20-pixel section rhythm, and delegates
+selection through typed callbacks. Static lists copied from `ui.txt` are not
+allowed inside presentation widgets.
 
 - [ ] **Step 4: Test and commit**
 
@@ -213,6 +227,12 @@ git commit -m "feat(product): resolve required options and variant pricing"
 **Interfaces:**
 - Consumes: ProductDetailsViewModel.
 - Produces: callbacks `addToCart()` and `buyNow()` only when selection complete.
+
+**Visual composition:** `ProductMediaGallery` on `surfaceMuted`,
+`ProductDetailsSurface` with radius-40 top corners, `FavoriteButton`,
+`ProductRating`, typed option selectors, quantity selector, localized price,
+and a safe-area sticky purchase action. Content remains scrollable at 200%
+text scaling and no action covers content.
 
 - [ ] **Step 1: Write disabled purchase test**
 
@@ -287,6 +307,10 @@ Reject quantity below 1 and keep subtotal in Money.
 - [ ] **Step 3: Build empty and populated states**
 
 Empty state matches supplied illustration layout; populated state uses shared product widgets and sticky summary.
+
+The populated state uses the horizontal ProductCard language and a radius-30
+`CartSummaryBar`. Delete/swipe actions are directional, accessible, and never
+identify a cart item without its `productId + optionSignature`.
 
 - [ ] **Step 4: Run full catalog flow test**
 

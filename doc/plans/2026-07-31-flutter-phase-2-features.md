@@ -14,6 +14,10 @@
 - البحث يعمل Debounce 400ms.
 - الطلبات والإشعارات محمية بالمصادقة.
 - صفحات السياسات تقرأ محتوى محليًا من Assets في إصدار Mock.
+- عقد الواجهة الملزم: `doc/specs/2026-08-01-ui-design-system.md`.
+- Orders تعيد استخدام AppCard/AppStatusBadge، Notifications تستخدم grouped tiles، Search تستخدم AppSearchField، وFilters تستخدم AppBottomSheet.
+- لا تقدم ميزات Phase 2 لوحة ألوان أو Card/Field/Sheet جديدة خارج Design System.
+- اختبارات الواجهة تشمل Light/Dark وRTL/LTR و48×48 و200% text scale.
 
 ---
 
@@ -42,6 +46,9 @@ Provide product purchase and wallet top-up fixtures.
 
 Use reusable `OrderStatusBadge`, `OrderItemTile`, and `PriceSummary`.
 
+Map `OrderStatusBadge` to semantic status roles and visible localized text.
+Cards use radius 16 and outline; financial values come from typed Money.
+
 - [ ] **Step 4: Test and commit**
 
 ```bash
@@ -69,6 +76,9 @@ Marking one notification read decrements count exactly once.
 - [ ] **Step 2: Implement optimistic read state with rollback**
 
 - [ ] **Step 3: Build grouped list by date**
+
+Use grouped interactive tiles on semantic surfaces, a typed unread state, and a
+localized `NotificationBadge`; selected/read meaning is not color-only.
 
 - [ ] **Step 4: Test and commit**
 
@@ -100,6 +110,9 @@ Search bilingual names and categories case-insensitively.
 
 - [ ] **Step 3: Build recent/empty/results states**
 
+Use `AppSearchField`, shared ProductCard variants, and existing Empty/Error
+states. Search text follows locale while product codes remain LTR.
+
 - [ ] **Step 4: Test and commit**
 
 ```bash
@@ -127,6 +140,9 @@ Verify category + stock + price range are AND-combined.
 - [ ] **Step 3: Build reusable filter controls**
 
 Use design-system selectors and no raw Slider styling.
+
+Present filters in the shared radius-30 `AppBottomSheet` with a visible handle,
+keyboard-safe scrolling, 48-pixel controls, and sticky Apply/Clear actions.
 
 - [ ] **Step 4: Test and commit**
 
@@ -161,6 +177,10 @@ Return typed `NotFoundFailure` if asset missing.
 - [ ] **Step 3: Build Contact Us form with Mock success**
 
 Fields: subject, message, optional order number.
+
+Use readable themed content surfaces and the approved typography scale. The
+order number remains LTR in Arabic; policy content supports 200% text scaling
+without fixed-height containers.
 
 - [ ] **Step 4: Test and commit**
 

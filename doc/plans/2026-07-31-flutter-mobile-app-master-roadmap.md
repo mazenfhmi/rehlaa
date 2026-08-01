@@ -12,6 +12,7 @@
 
 - المنصات المستهدفة في الإصدار الأول: Android وiOS فقط.
 - الحد الأدنى لبيئة التطوير: Flutter 3.44.x وDart 3.12.x.
+- البيئة المدققة حاليًا Flutter 3.41.2 وDart 3.11.0؛ لا يبدأ Build الإصدار قبل ترقية SDK أو اعتماد خط أساس بديل صريح.
 - اللغات: العربية والإنجليزية من أول إصدار مع RTL/LTR كامل.
 - إدارة الحالة والاعتماديات: Riverpod باستخدام Notifier وAsyncNotifier ومولد الأكواد.
 - المعمارية: Feature-first Clean MVVM مع Domain انتقائي وRepository Contracts.
@@ -26,6 +27,11 @@
 - لا يستخدم `Map<String, dynamic>` خارج حدود DTO والمصادر الوهمية.
 - جميع المهام تنفذ بأسلوب TDD، وتنتهي باختبارات ناجحة وCommit مستقل.
 - لا تُقبل أي مرحلة مع `flutter analyze` errors أو اختبارات متجاهلة.
+- المرجع البصري الملزم: `doc/specs/2026-08-01-ui-design-system.md`، ومصدر الاستخراج الثابت: `doc/ui.txt`.
+- تقرير التنفيذ الحالي والأولويات: `doc/2026-08-01-project-audit.md`.
+- Primary دلالي برتقالي في الوضعين؛ البنفسجي Promotional فقط.
+- Plus Jakarta للاتينية وCairo للعربية بأوزان 400/500/700.
+- كل تسليم بصري يثبت Light/Dark وRTL/LTR وWCAG و48×48 و200% text scale.
 
 ---
 
@@ -43,6 +49,14 @@
 | 6 | `2026-07-31-flutter-profile-settings.md` | الملف الشخصي، تعديل الحساب، اللغة، الثيم، الإشعارات، والخروج |
 | 7 | `2026-07-31-flutter-phase-2-features.md` | الطلبات، الإشعارات، البحث والفلاتر، الدعم والسياسات |
 | 8 | `2026-07-31-flutter-quality-release.md` | Golden/Integration/Accessibility/Performance/CI وتجهيز نسخ Android وiOS |
+| 9 | `2026-08-01-ui-plan-alignment.md` | تدقيق اتساق جميع وثائق الخطة مع عقد الواجهة والحالة الفعلية للمشروع |
+
+### Current implementation gate
+
+لا تبدأ خطة Catalog أو أي عملية مالية قبل اجتياز Foundation Task 0 المضافة
+بعد التدقيق: إصلاح أخطاء Analyze، إعادة Home إلى Repository/ViewModel، تفعيل
+AppLocalizations، واعتماد Semantic Light/Dark. وجود الملفات دون اجتياز
+الاختبارات لا يُحسب إنجازًا.
 
 ## 2. خريطة الاعتماديات بين الميزات
 
@@ -68,12 +82,16 @@ Foundation
 
 ### المرحلة الأولى: البنية والهوية
 
-1. Bootstrap وبيئات التشغيل.
-2. Design Tokens والثيمين.
-3. الترجمة واتجاه النص.
-4. Widgets العامة.
-5. Router Shell وشريط التنقل.
-6. حالات Loading/Empty/Error/Offline.
+1. إصلاح خط الأساس الحالي وإعادة Home إلى data flow typed.
+2. ترقية/تثبيت Toolchain ثم Bootstrap وبيئات التشغيل.
+3. Semantic color roles للوضعين.
+4. Plus Jakarta/Cairo وTypography scale.
+5. Spacing/Shape/Size/Motion tokens.
+6. Widgets العامة وحالاتها التفاعلية.
+7. الترجمة واتجاه النص والقيم التقنية LTR.
+8. Router Shell والحماية وشريط التنقل.
+9. حالات Loading/Empty/Error/Offline.
+10. Home proof slice بالبيانات وOffline والاختبارات.
 
 ### المرحلة الثانية: المصادقة والكتالوج
 
@@ -154,6 +172,9 @@ flutter build ipa --release --no-codesign
 - جميع الأزرار المهمة لها حالات Loading/Disabled/Error.
 - جميع الصور لها Loading fallback وError state.
 - الأهداف اللمسية لا تقل عن 48×48 logical pixels.
+- النصوص العادية تحقق 4.5:1 والعناصر غير النصية تحقق 3:1.
+- لا يحدث Overflow أو فقد إجراء عند 200% text scale.
+- لا تستخدم Feature widgets قيم Color/Spacing/Radius/Typography/Motion خام.
 - العمليات المالية غير متاحة في Offline mode.
 
 ## 6. استراتيجية الفروع والـCommits
@@ -178,6 +199,8 @@ test(auth): cover guest redirect flow
 - يدعم التصفح كضيف ويطلب المصادقة عند الإجراءات المحمية ثم يعيد المستخدم لوجهته.
 - تعرض بيانات الكتالوج المخزنة عند فقد الشبكة وتمنع الدفع والمحفظة.
 - تتطابق الشاشات الرئيسية بصريًا مع الصور المرجعية ضمن حدود الأصول المتاحة.
+- تتبع جميع الشاشات `2026-08-01-ui-design-system.md` دون لوحة ميزة مستقلة أو Primary بنفسجي.
+- يعمل النص حتى 200% وتحقق الأهداف 48×48 والتباين WCAG المحدد في الخطة.
 - تمر Unit وWidget وGolden وIntegration tests.
 - ينجح بناء Android App Bundle وiOS IPA دون أخطاء تحليل أو اختبارات متجاهلة.
 - يمكن استبدال Mock Repository عبر Provider override دون تعديل Pages أو ViewModels العامة.
