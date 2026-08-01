@@ -6,25 +6,58 @@ part of 'home_view_model.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$homeCategoriesViewModelHash() =>
-    r'd9db4b32b6e93db5e497c8569c5f575bc453ebbc';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+/// ViewModel managing the state of the Home Page categories.
+
+@ProviderFor(HomeCategoriesViewModel)
+final homeCategoriesViewModelProvider = HomeCategoriesViewModelProvider._();
 
 /// ViewModel managing the state of the Home Page categories.
-///
-/// Copied from [HomeCategoriesViewModel].
-@ProviderFor(HomeCategoriesViewModel)
-final homeCategoriesViewModelProvider = AutoDisposeAsyncNotifierProvider<
-    HomeCategoriesViewModel, List<HomeCategory>>.internal(
-  HomeCategoriesViewModel.new,
-  name: r'homeCategoriesViewModelProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$homeCategoriesViewModelHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+final class HomeCategoriesViewModelProvider
+    extends
+        $AsyncNotifierProvider<HomeCategoriesViewModel, List<HomeCategory>> {
+  /// ViewModel managing the state of the Home Page categories.
+  HomeCategoriesViewModelProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: _doNotRetry,
+        name: r'homeCategoriesViewModelProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
 
-typedef _$HomeCategoriesViewModel
-    = AutoDisposeAsyncNotifier<List<HomeCategory>>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+  @override
+  String debugGetCreateSourceHash() => _$homeCategoriesViewModelHash();
+
+  @$internal
+  @override
+  HomeCategoriesViewModel create() => HomeCategoriesViewModel();
+}
+
+String _$homeCategoriesViewModelHash() =>
+    r'f4869db04a553f7ff4872b535d24673127a62800';
+
+/// ViewModel managing the state of the Home Page categories.
+
+abstract class _$HomeCategoriesViewModel
+    extends $AsyncNotifier<List<HomeCategory>> {
+  FutureOr<List<HomeCategory>> build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final ref =
+        this.ref as $Ref<AsyncValue<List<HomeCategory>>, List<HomeCategory>>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<AsyncValue<List<HomeCategory>>, List<HomeCategory>>,
+              AsyncValue<List<HomeCategory>>,
+              Object?,
+              Object?
+            >;
+    element.handleCreate(ref, build);
+  }
+}

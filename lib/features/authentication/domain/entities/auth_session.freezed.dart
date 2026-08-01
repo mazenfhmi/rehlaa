@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -11,171 +11,42 @@ part of 'auth_session.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
 /// @nodoc
 mixin _$AuthSession {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() guest,
-    required TResult Function(AuthUser user) unverified,
-    required TResult Function(AuthUser user) authenticated,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? guest,
-    TResult? Function(AuthUser user)? unverified,
-    TResult? Function(AuthUser user)? authenticated,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? guest,
-    TResult Function(AuthUser user)? unverified,
-    TResult Function(AuthUser user)? authenticated,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_AuthSessionGuest value) guest,
-    required TResult Function(_AuthSessionUnverified value) unverified,
-    required TResult Function(_AuthSessionAuthenticated value) authenticated,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AuthSessionGuest value)? guest,
-    TResult? Function(_AuthSessionUnverified value)? unverified,
-    TResult? Function(_AuthSessionAuthenticated value)? authenticated,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AuthSessionGuest value)? guest,
-    TResult Function(_AuthSessionUnverified value)? unverified,
-    TResult Function(_AuthSessionAuthenticated value)? authenticated,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $AuthSessionCopyWith<$Res> {
-  factory $AuthSessionCopyWith(
-          AuthSession value, $Res Function(AuthSession) then) =
-      _$AuthSessionCopyWithImpl<$Res, AuthSession>;
-}
-
-/// @nodoc
-class _$AuthSessionCopyWithImpl<$Res, $Val extends AuthSession>
-    implements $AuthSessionCopyWith<$Res> {
-  _$AuthSessionCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of AuthSession
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-abstract class _$$AuthSessionGuestImplCopyWith<$Res> {
-  factory _$$AuthSessionGuestImplCopyWith(_$AuthSessionGuestImpl value,
-          $Res Function(_$AuthSessionGuestImpl) then) =
-      __$$AuthSessionGuestImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$AuthSessionGuestImplCopyWithImpl<$Res>
-    extends _$AuthSessionCopyWithImpl<$Res, _$AuthSessionGuestImpl>
-    implements _$$AuthSessionGuestImplCopyWith<$Res> {
-  __$$AuthSessionGuestImplCopyWithImpl(_$AuthSessionGuestImpl _value,
-      $Res Function(_$AuthSessionGuestImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AuthSession
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$AuthSessionGuestImpl extends _AuthSessionGuest {
-  const _$AuthSessionGuestImpl() : super._();
-
-  @override
-  String toString() {
-    return 'AuthSession.guest()';
-  }
-
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$AuthSessionGuestImpl);
+        (other.runtimeType == runtimeType && other is AuthSession);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
 
   @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() guest,
-    required TResult Function(AuthUser user) unverified,
-    required TResult Function(AuthUser user) authenticated,
-  }) {
-    return guest();
+  String toString() {
+    return 'AuthSession()';
   }
+}
 
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? guest,
-    TResult? Function(AuthUser user)? unverified,
-    TResult? Function(AuthUser user)? authenticated,
-  }) {
-    return guest?.call();
-  }
+/// @nodoc
+class $AuthSessionCopyWith<$Res> {
+  $AuthSessionCopyWith(AuthSession _, $Res Function(AuthSession) __);
+}
 
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? guest,
-    TResult Function(AuthUser user)? unverified,
-    TResult Function(AuthUser user)? authenticated,
-    required TResult orElse(),
-  }) {
-    if (guest != null) {
-      return guest();
-    }
-    return orElse();
-  }
+/// Adds pattern-matching-related methods to [AuthSession].
+extension AuthSessionPatterns on AuthSession {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
 
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_AuthSessionGuest value) guest,
-    required TResult Function(_AuthSessionUnverified value) unverified,
-    required TResult Function(_AuthSessionAuthenticated value) authenticated,
-  }) {
-    return guest(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AuthSessionGuest value)? guest,
-    TResult? Function(_AuthSessionUnverified value)? unverified,
-    TResult? Function(_AuthSessionAuthenticated value)? authenticated,
-  }) {
-    return guest?.call(this);
-  }
-
-  @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_AuthSessionGuest value)? guest,
@@ -183,186 +54,235 @@ class _$AuthSessionGuestImpl extends _AuthSessionGuest {
     TResult Function(_AuthSessionAuthenticated value)? authenticated,
     required TResult orElse(),
   }) {
-    if (guest != null) {
-      return guest(this);
+    final _that = this;
+    switch (_that) {
+      case _AuthSessionGuest() when guest != null:
+        return guest(_that);
+      case _AuthSessionUnverified() when unverified != null:
+        return unverified(_that);
+      case _AuthSessionAuthenticated() when authenticated != null:
+        return authenticated(_that);
+      case _:
+        return orElse();
     }
-    return orElse();
   }
-}
 
-abstract class _AuthSessionGuest extends AuthSession {
-  const factory _AuthSessionGuest() = _$AuthSessionGuestImpl;
-  const _AuthSessionGuest._() : super._();
-}
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
 
-/// @nodoc
-abstract class _$$AuthSessionUnverifiedImplCopyWith<$Res> {
-  factory _$$AuthSessionUnverifiedImplCopyWith(
-          _$AuthSessionUnverifiedImpl value,
-          $Res Function(_$AuthSessionUnverifiedImpl) then) =
-      __$$AuthSessionUnverifiedImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({AuthUser user});
-
-  $AuthUserCopyWith<$Res> get user;
-}
-
-/// @nodoc
-class __$$AuthSessionUnverifiedImplCopyWithImpl<$Res>
-    extends _$AuthSessionCopyWithImpl<$Res, _$AuthSessionUnverifiedImpl>
-    implements _$$AuthSessionUnverifiedImplCopyWith<$Res> {
-  __$$AuthSessionUnverifiedImplCopyWithImpl(_$AuthSessionUnverifiedImpl _value,
-      $Res Function(_$AuthSessionUnverifiedImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AuthSession
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? user = null,
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AuthSessionGuest value) guest,
+    required TResult Function(_AuthSessionUnverified value) unverified,
+    required TResult Function(_AuthSessionAuthenticated value) authenticated,
   }) {
-    return _then(_$AuthSessionUnverifiedImpl(
-      user: null == user
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as AuthUser,
-    ));
+    final _that = this;
+    switch (_that) {
+      case _AuthSessionGuest():
+        return guest(_that);
+      case _AuthSessionUnverified():
+        return unverified(_that);
+      case _AuthSessionAuthenticated():
+        return authenticated(_that);
+    }
   }
 
-  /// Create a copy of AuthSession
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AuthUserCopyWith<$Res> get user {
-    return $AuthUserCopyWith<$Res>(_value.user, (value) {
-      return _then(_value.copyWith(user: value));
-    });
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AuthSessionGuest value)? guest,
+    TResult? Function(_AuthSessionUnverified value)? unverified,
+    TResult? Function(_AuthSessionAuthenticated value)? authenticated,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _AuthSessionGuest() when guest != null:
+        return guest(_that);
+      case _AuthSessionUnverified() when unverified != null:
+        return unverified(_that);
+      case _AuthSessionAuthenticated() when authenticated != null:
+        return authenticated(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? guest,
+    TResult Function(AuthUser user)? unverified,
+    TResult Function(AuthUser user)? authenticated,
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _AuthSessionGuest() when guest != null:
+        return guest();
+      case _AuthSessionUnverified() when unverified != null:
+        return unverified(_that.user);
+      case _AuthSessionAuthenticated() when authenticated != null:
+        return authenticated(_that.user);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() guest,
+    required TResult Function(AuthUser user) unverified,
+    required TResult Function(AuthUser user) authenticated,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _AuthSessionGuest():
+        return guest();
+      case _AuthSessionUnverified():
+        return unverified(_that.user);
+      case _AuthSessionAuthenticated():
+        return authenticated(_that.user);
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? guest,
+    TResult? Function(AuthUser user)? unverified,
+    TResult? Function(AuthUser user)? authenticated,
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _AuthSessionGuest() when guest != null:
+        return guest();
+      case _AuthSessionUnverified() when unverified != null:
+        return unverified(_that.user);
+      case _AuthSessionAuthenticated() when authenticated != null:
+        return authenticated(_that.user);
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 
-class _$AuthSessionUnverifiedImpl extends _AuthSessionUnverified {
-  const _$AuthSessionUnverifiedImpl({required this.user}) : super._();
+class _AuthSessionGuest extends AuthSession {
+  const _AuthSessionGuest() : super._();
 
   @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _AuthSessionGuest);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  String toString() {
+    return 'AuthSession.guest()';
+  }
+}
+
+/// @nodoc
+
+class _AuthSessionUnverified extends AuthSession {
+  const _AuthSessionUnverified({required this.user}) : super._();
+
   final AuthUser user;
+
+  /// Create a copy of AuthSession
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$AuthSessionUnverifiedCopyWith<_AuthSessionUnverified> get copyWith =>
+      __$AuthSessionUnverifiedCopyWithImpl<_AuthSessionUnverified>(
+        this,
+        _$identity,
+      );
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _AuthSessionUnverified &&
+            (identical(other.user, user) || other.user == user));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, user);
 
   @override
   String toString() {
     return 'AuthSession.unverified(user: $user)';
   }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$AuthSessionUnverifiedImpl &&
-            (identical(other.user, user) || other.user == user));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, user);
-
-  /// Create a copy of AuthSession
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$AuthSessionUnverifiedImplCopyWith<_$AuthSessionUnverifiedImpl>
-      get copyWith => __$$AuthSessionUnverifiedImplCopyWithImpl<
-          _$AuthSessionUnverifiedImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() guest,
-    required TResult Function(AuthUser user) unverified,
-    required TResult Function(AuthUser user) authenticated,
-  }) {
-    return unverified(user);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? guest,
-    TResult? Function(AuthUser user)? unverified,
-    TResult? Function(AuthUser user)? authenticated,
-  }) {
-    return unverified?.call(user);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? guest,
-    TResult Function(AuthUser user)? unverified,
-    TResult Function(AuthUser user)? authenticated,
-    required TResult orElse(),
-  }) {
-    if (unverified != null) {
-      return unverified(user);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_AuthSessionGuest value) guest,
-    required TResult Function(_AuthSessionUnverified value) unverified,
-    required TResult Function(_AuthSessionAuthenticated value) authenticated,
-  }) {
-    return unverified(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AuthSessionGuest value)? guest,
-    TResult? Function(_AuthSessionUnverified value)? unverified,
-    TResult? Function(_AuthSessionAuthenticated value)? authenticated,
-  }) {
-    return unverified?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AuthSessionGuest value)? guest,
-    TResult Function(_AuthSessionUnverified value)? unverified,
-    TResult Function(_AuthSessionAuthenticated value)? authenticated,
-    required TResult orElse(),
-  }) {
-    if (unverified != null) {
-      return unverified(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _AuthSessionUnverified extends AuthSession {
-  const factory _AuthSessionUnverified({required final AuthUser user}) =
-      _$AuthSessionUnverifiedImpl;
-  const _AuthSessionUnverified._() : super._();
-
-  AuthUser get user;
-
-  /// Create a copy of AuthSession
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AuthSessionUnverifiedImplCopyWith<_$AuthSessionUnverifiedImpl>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$AuthSessionAuthenticatedImplCopyWith<$Res> {
-  factory _$$AuthSessionAuthenticatedImplCopyWith(
-          _$AuthSessionAuthenticatedImpl value,
-          $Res Function(_$AuthSessionAuthenticatedImpl) then) =
-      __$$AuthSessionAuthenticatedImplCopyWithImpl<$Res>;
+abstract mixin class _$AuthSessionUnverifiedCopyWith<$Res>
+    implements $AuthSessionCopyWith<$Res> {
+  factory _$AuthSessionUnverifiedCopyWith(
+    _AuthSessionUnverified value,
+    $Res Function(_AuthSessionUnverified) _then,
+  ) = __$AuthSessionUnverifiedCopyWithImpl;
   @useResult
   $Res call({AuthUser user});
 
@@ -370,27 +290,25 @@ abstract class _$$AuthSessionAuthenticatedImplCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$AuthSessionAuthenticatedImplCopyWithImpl<$Res>
-    extends _$AuthSessionCopyWithImpl<$Res, _$AuthSessionAuthenticatedImpl>
-    implements _$$AuthSessionAuthenticatedImplCopyWith<$Res> {
-  __$$AuthSessionAuthenticatedImplCopyWithImpl(
-      _$AuthSessionAuthenticatedImpl _value,
-      $Res Function(_$AuthSessionAuthenticatedImpl) _then)
-      : super(_value, _then);
+class __$AuthSessionUnverifiedCopyWithImpl<$Res>
+    implements _$AuthSessionUnverifiedCopyWith<$Res> {
+  __$AuthSessionUnverifiedCopyWithImpl(this._self, this._then);
+
+  final _AuthSessionUnverified _self;
+  final $Res Function(_AuthSessionUnverified) _then;
 
   /// Create a copy of AuthSession
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? user = null,
-  }) {
-    return _then(_$AuthSessionAuthenticatedImpl(
-      user: null == user
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as AuthUser,
-    ));
+  $Res call({Object? user = null}) {
+    return _then(
+      _AuthSessionUnverified(
+        user: null == user
+            ? _self.user
+            : user // ignore: cast_nullable_to_non_nullable
+                  as AuthUser,
+      ),
+    );
   }
 
   /// Create a copy of AuthSession
@@ -398,124 +316,88 @@ class __$$AuthSessionAuthenticatedImplCopyWithImpl<$Res>
   @override
   @pragma('vm:prefer-inline')
   $AuthUserCopyWith<$Res> get user {
-    return $AuthUserCopyWith<$Res>(_value.user, (value) {
-      return _then(_value.copyWith(user: value));
+    return $AuthUserCopyWith<$Res>(_self.user, (value) {
+      return _then(_self.copyWith(user: value));
     });
   }
 }
 
 /// @nodoc
 
-class _$AuthSessionAuthenticatedImpl extends _AuthSessionAuthenticated {
-  const _$AuthSessionAuthenticatedImpl({required this.user}) : super._();
+class _AuthSessionAuthenticated extends AuthSession {
+  const _AuthSessionAuthenticated({required this.user}) : super._();
 
-  @override
   final AuthUser user;
 
-  @override
-  String toString() {
-    return 'AuthSession.authenticated(user: $user)';
-  }
+  /// Create a copy of AuthSession
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$AuthSessionAuthenticatedCopyWith<_AuthSessionAuthenticated> get copyWith =>
+      __$AuthSessionAuthenticatedCopyWithImpl<_AuthSessionAuthenticated>(
+        this,
+        _$identity,
+      );
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AuthSessionAuthenticatedImpl &&
+            other is _AuthSessionAuthenticated &&
             (identical(other.user, user) || other.user == user));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, user);
 
-  /// Create a copy of AuthSession
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$AuthSessionAuthenticatedImplCopyWith<_$AuthSessionAuthenticatedImpl>
-      get copyWith => __$$AuthSessionAuthenticatedImplCopyWithImpl<
-          _$AuthSessionAuthenticatedImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() guest,
-    required TResult Function(AuthUser user) unverified,
-    required TResult Function(AuthUser user) authenticated,
-  }) {
-    return authenticated(user);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? guest,
-    TResult? Function(AuthUser user)? unverified,
-    TResult? Function(AuthUser user)? authenticated,
-  }) {
-    return authenticated?.call(user);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? guest,
-    TResult Function(AuthUser user)? unverified,
-    TResult Function(AuthUser user)? authenticated,
-    required TResult orElse(),
-  }) {
-    if (authenticated != null) {
-      return authenticated(user);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_AuthSessionGuest value) guest,
-    required TResult Function(_AuthSessionUnverified value) unverified,
-    required TResult Function(_AuthSessionAuthenticated value) authenticated,
-  }) {
-    return authenticated(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_AuthSessionGuest value)? guest,
-    TResult? Function(_AuthSessionUnverified value)? unverified,
-    TResult? Function(_AuthSessionAuthenticated value)? authenticated,
-  }) {
-    return authenticated?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_AuthSessionGuest value)? guest,
-    TResult Function(_AuthSessionUnverified value)? unverified,
-    TResult Function(_AuthSessionAuthenticated value)? authenticated,
-    required TResult orElse(),
-  }) {
-    if (authenticated != null) {
-      return authenticated(this);
-    }
-    return orElse();
+  String toString() {
+    return 'AuthSession.authenticated(user: $user)';
   }
 }
 
-abstract class _AuthSessionAuthenticated extends AuthSession {
-  const factory _AuthSessionAuthenticated({required final AuthUser user}) =
-      _$AuthSessionAuthenticatedImpl;
-  const _AuthSessionAuthenticated._() : super._();
+/// @nodoc
+abstract mixin class _$AuthSessionAuthenticatedCopyWith<$Res>
+    implements $AuthSessionCopyWith<$Res> {
+  factory _$AuthSessionAuthenticatedCopyWith(
+    _AuthSessionAuthenticated value,
+    $Res Function(_AuthSessionAuthenticated) _then,
+  ) = __$AuthSessionAuthenticatedCopyWithImpl;
+  @useResult
+  $Res call({AuthUser user});
 
-  AuthUser get user;
+  $AuthUserCopyWith<$Res> get user;
+}
+
+/// @nodoc
+class __$AuthSessionAuthenticatedCopyWithImpl<$Res>
+    implements _$AuthSessionAuthenticatedCopyWith<$Res> {
+  __$AuthSessionAuthenticatedCopyWithImpl(this._self, this._then);
+
+  final _AuthSessionAuthenticated _self;
+  final $Res Function(_AuthSessionAuthenticated) _then;
 
   /// Create a copy of AuthSession
   /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AuthSessionAuthenticatedImplCopyWith<_$AuthSessionAuthenticatedImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $Res call({Object? user = null}) {
+    return _then(
+      _AuthSessionAuthenticated(
+        user: null == user
+            ? _self.user
+            : user // ignore: cast_nullable_to_non_nullable
+                  as AuthUser,
+      ),
+    );
+  }
+
+  /// Create a copy of AuthSession
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AuthUserCopyWith<$Res> get user {
+    return $AuthUserCopyWith<$Res>(_self.user, (value) {
+      return _then(_self.copyWith(user: value));
+    });
+  }
 }

@@ -8,7 +8,7 @@
 
 **Architecture:** يعتمد المشروع Feature-first Clean MVVM مع Riverpod لإدارة الحالة والاعتماديات، Repository Contracts لعزل مصادر البيانات، وطبقة Domain انتقائية للمنطق المشترك والمعقد. تبدأ جميع الميزات بمصادر Mock وذاكرة محلية للقراءة فقط، بينما تُمنع عمليات الشراء والدفع والمحفظة دون اتصال.
 
-**Tech Stack:** Flutter 3.44.x، Dart 3.12.x، Material 3، flutter_riverpod 3.4.1، riverpod_annotation 4.0.5، riverpod_generator 4.0.7، go_router 17.3.0، Freezed 3.2.5، json_serializable 6.14.0، Drift 2.34.3، intl، connectivity_plus، shared_preferences، flutter_secure_storage، cached_network_image، flutter_svg، image_picker/file_picker، mocktail، flutter_test، integration_test.
+**Tech Stack:** Flutter 3.44.x، Dart 3.12.x، Material 3، flutter_riverpod 3.3.1، riverpod_annotation 4.0.2، riverpod_generator 4.0.3، go_router 17.3.0، Freezed 3.2.5، json_serializable 6.12.0، Drift 2.30.1، intl، connectivity_plus، shared_preferences، flutter_secure_storage، cached_network_image، flutter_svg، image_picker/file_picker، mocktail، flutter_test، integration_test.
 
 ## Global Constraints
 

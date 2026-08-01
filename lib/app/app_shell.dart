@@ -23,7 +23,7 @@ class _ShellNavItem {
 const List<_ShellNavItem> _navItems = [
   _ShellNavItem(label: 'Home', svgPath: 'assets/icons/Home.svg'),
   _ShellNavItem(label: 'Favorites', svgPath: 'assets/icons/Heart.svg'),
-  _ShellNavItem(label: 'Cart', svgPath: 'assets/icons/Buy.svg'),
+  _ShellNavItem(label: 'Cart', svgPath: 'assets/icons/Bag.svg'),
   _ShellNavItem(label: 'Wallet', svgPath: 'assets/icons/Wallet.svg'),
   _ShellNavItem(label: 'Profile', svgPath: 'assets/icons/Profile.svg'),
 ];

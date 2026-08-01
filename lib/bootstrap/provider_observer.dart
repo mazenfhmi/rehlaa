@@ -6,41 +6,38 @@ import '../core/logging/app_logger.dart';
 ///
 /// Only attached when [AppEnvironment.enableDiagnostics] is `true`,
 /// keeping production builds free of diagnostic overhead.
-class AppProviderObserver extends ProviderObserver {
+final class AppProviderObserver extends ProviderObserver {
   const AppProviderObserver();
 
   @override
-  void didAddProvider(
-    ProviderBase<Object?> provider,
-    Object? value,
-    ProviderContainer container,
-  ) {
+  void didAddProvider(ProviderObserverContext context, Object? value) {
     AppLogger.verbose(
-      '[Riverpod] Added: ${provider.name ?? provider.runtimeType}',
+      '[Riverpod] Added: '
+      '${context.provider.name ?? context.provider.runtimeType}',
     );
   }
 
   @override
   void didUpdateProvider(
-    ProviderBase<Object?> provider,
+    ProviderObserverContext context,
     Object? previousValue,
     Object? newValue,
-    ProviderContainer container,
   ) {
     AppLogger.verbose(
-      '[Riverpod] Updated: ${provider.name ?? provider.runtimeType}',
+      '[Riverpod] Updated: '
+      '${context.provider.name ?? context.provider.runtimeType}',
     );
   }
 
   @override
   void providerDidFail(
-    ProviderBase<Object?> provider,
+    ProviderObserverContext context,
     Object error,
     StackTrace stackTrace,
-    ProviderContainer container,
   ) {
     AppLogger.error(
-      '[Riverpod] Failed: ${provider.name ?? provider.runtimeType}',
+      '[Riverpod] Failed: '
+      '${context.provider.name ?? context.provider.runtimeType}',
       error,
       stackTrace,
     );

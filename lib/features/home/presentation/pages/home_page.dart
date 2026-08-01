@@ -17,7 +17,7 @@ class HomePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final categoriesAsync = ref.watch(homeCategoriesViewModelProvider);
-    final isOnline = ref.watch(isOnlineProvider).valueOrNull ?? true;
+    final isOnline = ref.watch(isOnlineProvider).value ?? true;
 
     return AppScaffold(
       body: SafeArea(

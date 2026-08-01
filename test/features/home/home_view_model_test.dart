@@ -13,8 +13,9 @@ void main() {
       );
       addTearDown(container.dispose);
 
-      final categories =
-          await container.read(homeCategoriesViewModelProvider.future);
+      final categories = await container.read(
+        homeCategoriesViewModelProvider.future,
+      );
 
       expect(categories, isNotEmpty);
       expect(categories.first.id, equals('1'));
@@ -38,8 +39,7 @@ void main() {
           .read(homeCategoriesViewModelProvider.notifier)
           .selectCategory('2');
 
-      final categories =
-          container.read(homeCategoriesViewModelProvider).valueOrNull;
+      final categories = container.read(homeCategoriesViewModelProvider).value;
 
       expect(categories, isNotNull);
       expect(categories!.firstWhere((c) => c.id == '1').isSelected, isFalse);

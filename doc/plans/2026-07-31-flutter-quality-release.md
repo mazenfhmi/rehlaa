@@ -180,7 +180,7 @@ jobs:
           channel: stable
           cache: true
       - run: flutter pub get
-      - run: dart run build_runner build --delete-conflicting-outputs
+      - run: dart run build_runner build
       - run: git diff --exit-code
       - run: dart format --output=none --set-exit-if-changed lib test integration_test
       - run: flutter analyze
@@ -281,7 +281,7 @@ git commit -m "chore(release): configure android and ios release builds"
 ```bash
 flutter clean
 flutter pub get
-dart run build_runner build --delete-conflicting-outputs
+dart run build_runner build
 ```
 
 - [ ] **Step 2: Run static and automated checks**

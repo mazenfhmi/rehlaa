@@ -49,7 +49,7 @@ Repository methods: getWallet, getTransactions(page), createTopup(amount), refre
 - [ ] **Step 3: Test and commit**
 
 ```bash
-dart run build_runner build --delete-conflicting-outputs
+dart run build_runner build
 flutter test test/features/wallet/domain/wallet_topup_test.dart
 git add lib/features/wallet/domain test/features/wallet/domain
 git commit -m "feat(wallet): define wallet ledger domain"
@@ -103,7 +103,7 @@ Prevent duplicate next-page requests while one is in progress.
 - [ ] **Step 3: Test and commit**
 
 ```bash
-dart run build_runner build --delete-conflicting-outputs
+dart run build_runner build
 flutter test test/features/wallet/presentation/wallet_view_model_test.dart
 git add lib/features/wallet/presentation/states lib/features/wallet/presentation/view_models test/features/wallet/presentation
 git commit -m "feat(wallet): add wallet dashboard state management"

@@ -93,7 +93,7 @@ abstract interface class AuthRepository {
 - [ ] **Step 4: Generate and test**
 
 ```bash
-dart run build_runner build --delete-conflicting-outputs
+dart run build_runner build
 flutter test test/features/authentication/domain/auth_session_test.dart
 ```
 
@@ -179,7 +179,7 @@ AuthRepository authRepository(Ref ref) {
 - [ ] **Step 4: Test and commit**
 
 ```bash
-dart run build_runner build --delete-conflicting-outputs
+dart run build_runner build
 flutter test test/features/authentication/data/mock_auth_repository_test.dart
 git add lib/features/authentication/data test/features/authentication/data
 git commit -m "feat(auth): add deterministic mock authentication repository"
@@ -222,7 +222,7 @@ Include `isSubmitting`, `fieldErrors`, and `submissionFailure`; do not expose ra
 - [ ] **Step 3: Implement ViewModels and test**
 
 ```bash
-dart run build_runner build --delete-conflicting-outputs
+dart run build_runner build
 flutter test test/features/authentication/presentation/login_view_model_test.dart
 ```
 

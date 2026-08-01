@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -11,121 +11,81 @@ part of 'auth_user.dart';
 
 T _$identity<T>(T value) => value;
 
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-AuthUser _$AuthUserFromJson(Map<String, dynamic> json) {
-  return _AuthUser.fromJson(json);
-}
-
 /// @nodoc
 mixin _$AuthUser {
-  String get id => throw _privateConstructorUsedError;
-  String get email => throw _privateConstructorUsedError;
-  String get displayName => throw _privateConstructorUsedError;
-  String? get photoUrl => throw _privateConstructorUsedError;
-  String? get phoneNumber => throw _privateConstructorUsedError;
-  bool get isEmailVerified => throw _privateConstructorUsedError;
-
-  /// Serializes this AuthUser to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  String get id;
+  String get email;
+  String get displayName;
+  String? get photoUrl;
+  String? get phoneNumber;
+  bool get isEmailVerified;
 
   /// Create a copy of AuthUser
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $AuthUserCopyWith<AuthUser> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $AuthUserCopyWith<$Res> {
-  factory $AuthUserCopyWith(AuthUser value, $Res Function(AuthUser) then) =
-      _$AuthUserCopyWithImpl<$Res, AuthUser>;
-  @useResult
-  $Res call(
-      {String id,
-      String email,
-      String displayName,
-      String? photoUrl,
-      String? phoneNumber,
-      bool isEmailVerified});
-}
-
-/// @nodoc
-class _$AuthUserCopyWithImpl<$Res, $Val extends AuthUser>
-    implements $AuthUserCopyWith<$Res> {
-  _$AuthUserCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of AuthUser
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $AuthUserCopyWith<AuthUser> get copyWith =>
+      _$AuthUserCopyWithImpl<AuthUser>(this as AuthUser, _$identity);
+
+  /// Serializes this AuthUser to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? id = null,
-    Object? email = null,
-    Object? displayName = null,
-    Object? photoUrl = freezed,
-    Object? phoneNumber = freezed,
-    Object? isEmailVerified = null,
-  }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      displayName: null == displayName
-          ? _value.displayName
-          : displayName // ignore: cast_nullable_to_non_nullable
-              as String,
-      photoUrl: freezed == photoUrl
-          ? _value.photoUrl
-          : photoUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
-      phoneNumber: freezed == phoneNumber
-          ? _value.phoneNumber
-          : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
-      isEmailVerified: null == isEmailVerified
-          ? _value.isEmailVerified
-          : isEmailVerified // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is AuthUser &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.displayName, displayName) ||
+                other.displayName == displayName) &&
+            (identical(other.photoUrl, photoUrl) ||
+                other.photoUrl == photoUrl) &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                other.phoneNumber == phoneNumber) &&
+            (identical(other.isEmailVerified, isEmailVerified) ||
+                other.isEmailVerified == isEmailVerified));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+    runtimeType,
+    id,
+    email,
+    displayName,
+    photoUrl,
+    phoneNumber,
+    isEmailVerified,
+  );
+
+  @override
+  String toString() {
+    return 'AuthUser(id: $id, email: $email, displayName: $displayName, photoUrl: $photoUrl, phoneNumber: $phoneNumber, isEmailVerified: $isEmailVerified)';
   }
 }
 
 /// @nodoc
-abstract class _$$AuthUserImplCopyWith<$Res>
-    implements $AuthUserCopyWith<$Res> {
-  factory _$$AuthUserImplCopyWith(
-          _$AuthUserImpl value, $Res Function(_$AuthUserImpl) then) =
-      __$$AuthUserImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $AuthUserCopyWith<$Res> {
+  factory $AuthUserCopyWith(AuthUser value, $Res Function(AuthUser) _then) =
+      _$AuthUserCopyWithImpl;
   @useResult
-  $Res call(
-      {String id,
-      String email,
-      String displayName,
-      String? photoUrl,
-      String? phoneNumber,
-      bool isEmailVerified});
+  $Res call({
+    String id,
+    String email,
+    String displayName,
+    String? photoUrl,
+    String? phoneNumber,
+    bool isEmailVerified,
+  });
 }
 
 /// @nodoc
-class __$$AuthUserImplCopyWithImpl<$Res>
-    extends _$AuthUserCopyWithImpl<$Res, _$AuthUserImpl>
-    implements _$$AuthUserImplCopyWith<$Res> {
-  __$$AuthUserImplCopyWithImpl(
-      _$AuthUserImpl _value, $Res Function(_$AuthUserImpl) _then)
-      : super(_value, _then);
+class _$AuthUserCopyWithImpl<$Res> implements $AuthUserCopyWith<$Res> {
+  _$AuthUserCopyWithImpl(this._self, this._then);
+
+  final AuthUser _self;
+  final $Res Function(AuthUser) _then;
 
   /// Create a copy of AuthUser
   /// with the given fields replaced by the non-null parameter values.
@@ -139,48 +99,252 @@ class __$$AuthUserImplCopyWithImpl<$Res>
     Object? phoneNumber = freezed,
     Object? isEmailVerified = null,
   }) {
-    return _then(_$AuthUserImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      displayName: null == displayName
-          ? _value.displayName
-          : displayName // ignore: cast_nullable_to_non_nullable
-              as String,
-      photoUrl: freezed == photoUrl
-          ? _value.photoUrl
-          : photoUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
-      phoneNumber: freezed == phoneNumber
-          ? _value.phoneNumber
-          : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String?,
-      isEmailVerified: null == isEmailVerified
-          ? _value.isEmailVerified
-          : isEmailVerified // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+    return _then(
+      _self.copyWith(
+        id: null == id
+            ? _self.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as String,
+        email: null == email
+            ? _self.email
+            : email // ignore: cast_nullable_to_non_nullable
+                  as String,
+        displayName: null == displayName
+            ? _self.displayName
+            : displayName // ignore: cast_nullable_to_non_nullable
+                  as String,
+        photoUrl: freezed == photoUrl
+            ? _self.photoUrl
+            : photoUrl // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        phoneNumber: freezed == phoneNumber
+            ? _self.phoneNumber
+            : phoneNumber // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        isEmailVerified: null == isEmailVerified
+            ? _self.isEmailVerified
+            : isEmailVerified // ignore: cast_nullable_to_non_nullable
+                  as bool,
+      ),
+    );
+  }
+}
+
+/// Adds pattern-matching-related methods to [AuthUser].
+extension AuthUserPatterns on AuthUser {
+  /// A variant of `map` that fallback to returning `orElse`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_AuthUser value)? $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _AuthUser() when $default != null:
+        return $default(_that);
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// Callbacks receives the raw object, upcasted.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case final Subclass2 value:
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_AuthUser value) $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _AuthUser():
+        return $default(_that);
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `map` that fallback to returning `null`.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case final Subclass value:
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_AuthUser value)? $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _AuthUser() when $default != null:
+        return $default(_that);
+      case _:
+        return null;
+    }
+  }
+
+  /// A variant of `when` that fallback to an `orElse` callback.
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return orElse();
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+      String id,
+      String email,
+      String displayName,
+      String? photoUrl,
+      String? phoneNumber,
+      bool isEmailVerified,
+    )?
+    $default, {
+    required TResult orElse(),
+  }) {
+    final _that = this;
+    switch (_that) {
+      case _AuthUser() when $default != null:
+        return $default(
+          _that.id,
+          _that.email,
+          _that.displayName,
+          _that.photoUrl,
+          _that.phoneNumber,
+          _that.isEmailVerified,
+        );
+      case _:
+        return orElse();
+    }
+  }
+
+  /// A `switch`-like method, using callbacks.
+  ///
+  /// As opposed to `map`, this offers destructuring.
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case Subclass2(:final field2):
+  ///     return ...;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+      String id,
+      String email,
+      String displayName,
+      String? photoUrl,
+      String? phoneNumber,
+      bool isEmailVerified,
+    )
+    $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _AuthUser():
+        return $default(
+          _that.id,
+          _that.email,
+          _that.displayName,
+          _that.photoUrl,
+          _that.phoneNumber,
+          _that.isEmailVerified,
+        );
+      case _:
+        throw StateError('Unexpected subclass');
+    }
+  }
+
+  /// A variant of `when` that fallback to returning `null`
+  ///
+  /// It is equivalent to doing:
+  /// ```dart
+  /// switch (sealedClass) {
+  ///   case Subclass(:final field):
+  ///     return ...;
+  ///   case _:
+  ///     return null;
+  /// }
+  /// ```
+
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+      String id,
+      String email,
+      String displayName,
+      String? photoUrl,
+      String? phoneNumber,
+      bool isEmailVerified,
+    )?
+    $default,
+  ) {
+    final _that = this;
+    switch (_that) {
+      case _AuthUser() when $default != null:
+        return $default(
+          _that.id,
+          _that.email,
+          _that.displayName,
+          _that.photoUrl,
+          _that.phoneNumber,
+          _that.isEmailVerified,
+        );
+      case _:
+        return null;
+    }
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$AuthUserImpl implements _AuthUser {
-  const _$AuthUserImpl(
-      {required this.id,
-      required this.email,
-      required this.displayName,
-      this.photoUrl,
-      this.phoneNumber,
-      this.isEmailVerified = false});
-
-  factory _$AuthUserImpl.fromJson(Map<String, dynamic> json) =>
-      _$$AuthUserImplFromJson(json);
+class _AuthUser implements AuthUser {
+  const _AuthUser({
+    required this.id,
+    required this.email,
+    required this.displayName,
+    this.photoUrl,
+    this.phoneNumber,
+    this.isEmailVerified = false,
+  });
+  factory _AuthUser.fromJson(Map<String, dynamic> json) =>
+      _$AuthUserFromJson(json);
 
   @override
   final String id;
@@ -196,16 +360,24 @@ class _$AuthUserImpl implements _AuthUser {
   @JsonKey()
   final bool isEmailVerified;
 
+  /// Create a copy of AuthUser
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'AuthUser(id: $id, email: $email, displayName: $displayName, photoUrl: $photoUrl, phoneNumber: $phoneNumber, isEmailVerified: $isEmailVerified)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$AuthUserCopyWith<_AuthUser> get copyWith =>
+      __$AuthUserCopyWithImpl<_AuthUser>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$AuthUserToJson(this);
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$AuthUserImpl &&
+            other is _AuthUser &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.displayName, displayName) ||
@@ -220,54 +392,85 @@ class _$AuthUserImpl implements _AuthUser {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, email, displayName, photoUrl,
-      phoneNumber, isEmailVerified);
+  int get hashCode => Object.hash(
+    runtimeType,
+    id,
+    email,
+    displayName,
+    photoUrl,
+    phoneNumber,
+    isEmailVerified,
+  );
 
-  /// Create a copy of AuthUser
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$AuthUserImplCopyWith<_$AuthUserImpl> get copyWith =>
-      __$$AuthUserImplCopyWithImpl<_$AuthUserImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$AuthUserImplToJson(
-      this,
-    );
+  String toString() {
+    return 'AuthUser(id: $id, email: $email, displayName: $displayName, photoUrl: $photoUrl, phoneNumber: $phoneNumber, isEmailVerified: $isEmailVerified)';
   }
 }
 
-abstract class _AuthUser implements AuthUser {
-  const factory _AuthUser(
-      {required final String id,
-      required final String email,
-      required final String displayName,
-      final String? photoUrl,
-      final String? phoneNumber,
-      final bool isEmailVerified}) = _$AuthUserImpl;
+/// @nodoc
+abstract mixin class _$AuthUserCopyWith<$Res>
+    implements $AuthUserCopyWith<$Res> {
+  factory _$AuthUserCopyWith(_AuthUser value, $Res Function(_AuthUser) _then) =
+      __$AuthUserCopyWithImpl;
+  @override
+  @useResult
+  $Res call({
+    String id,
+    String email,
+    String displayName,
+    String? photoUrl,
+    String? phoneNumber,
+    bool isEmailVerified,
+  });
+}
 
-  factory _AuthUser.fromJson(Map<String, dynamic> json) =
-      _$AuthUserImpl.fromJson;
+/// @nodoc
+class __$AuthUserCopyWithImpl<$Res> implements _$AuthUserCopyWith<$Res> {
+  __$AuthUserCopyWithImpl(this._self, this._then);
 
-  @override
-  String get id;
-  @override
-  String get email;
-  @override
-  String get displayName;
-  @override
-  String? get photoUrl;
-  @override
-  String? get phoneNumber;
-  @override
-  bool get isEmailVerified;
+  final _AuthUser _self;
+  final $Res Function(_AuthUser) _then;
 
   /// Create a copy of AuthUser
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AuthUserImplCopyWith<_$AuthUserImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? id = null,
+    Object? email = null,
+    Object? displayName = null,
+    Object? photoUrl = freezed,
+    Object? phoneNumber = freezed,
+    Object? isEmailVerified = null,
+  }) {
+    return _then(
+      _AuthUser(
+        id: null == id
+            ? _self.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as String,
+        email: null == email
+            ? _self.email
+            : email // ignore: cast_nullable_to_non_nullable
+                  as String,
+        displayName: null == displayName
+            ? _self.displayName
+            : displayName // ignore: cast_nullable_to_non_nullable
+                  as String,
+        photoUrl: freezed == photoUrl
+            ? _self.photoUrl
+            : photoUrl // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        phoneNumber: freezed == phoneNumber
+            ? _self.phoneNumber
+            : phoneNumber // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        isEmailVerified: null == isEmailVerified
+            ? _self.isEmailVerified
+            : isEmailVerified // ignore: cast_nullable_to_non_nullable
+                  as bool,
+      ),
+    );
+  }
 }

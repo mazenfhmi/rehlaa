@@ -198,17 +198,17 @@ git commit -m "chore: initialize flutter mobile project"
 - [ ] **Step 1: Add runtime dependencies**
 
 ```bash
-flutter pub add flutter_riverpod:^3.4.1 riverpod_annotation:^4.0.5 go_router:^17.3.0
-flutter pub add freezed_annotation:^3.1.0 json_annotation intl
-flutter pub add drift:^2.34.3 drift_flutter shared_preferences connectivity_plus
+flutter pub add flutter_riverpod:3.3.1 riverpod_annotation:4.0.2 go_router:^17.3.0
+flutter pub add freezed_annotation:3.1.0 json_annotation:4.10.0 intl
+flutter pub add drift:2.30.1 drift_flutter:0.2.8 shared_preferences connectivity_plus
 flutter pub add flutter_secure_storage cached_network_image flutter_svg
 ```
 
 - [ ] **Step 2: Add development dependencies**
 
 ```bash
-flutter pub add --dev riverpod_generator:^4.0.7 build_runner freezed:^3.2.5
-flutter pub add --dev json_serializable:^6.14.0 drift_dev mocktail
+flutter pub add --dev riverpod_generator:4.0.3 build_runner:^2.10.4 freezed:3.2.5
+flutter pub add --dev json_serializable:6.12.0 drift_dev:2.30.1 mocktail
 ```
 
 - [ ] **Step 3: Configure deterministic generators**
@@ -228,7 +228,7 @@ targets:
 
 ```bash
 flutter pub get
-dart run build_runner build --delete-conflicting-outputs
+dart run build_runner build
 flutter analyze
 ```
 
@@ -500,7 +500,7 @@ class LocaleController extends _$LocaleController {
 
 ```bash
 flutter gen-l10n
-dart run build_runner build --delete-conflicting-outputs
+dart run build_runner build
 flutter test test/core/localization/locale_controller_test.dart
 git add pubspec.yaml l10n.yaml lib/l10n lib/core/localization test/core/localization
 git commit -m "feat(l10n): add arabic and english runtime localization"
@@ -614,7 +614,7 @@ class ThemeController extends _$ThemeController {
 - [ ] **Step 5: Run tests and commit**
 
 ```bash
-dart run build_runner build --delete-conflicting-outputs
+dart run build_runner build
 flutter test test/core/design_system/theme/theme_test.dart
 git add lib/core/design_system test/core/design_system
 git commit -m "feat(ui): add token driven light and dark themes"
@@ -914,7 +914,7 @@ create their own mock lists or introduce raw visual values.
 - [ ] **Step 5: Verify complete foundation**
 
 ```bash
-dart run build_runner build --delete-conflicting-outputs
+dart run build_runner build
 flutter analyze
 flutter test
 flutter run -d android

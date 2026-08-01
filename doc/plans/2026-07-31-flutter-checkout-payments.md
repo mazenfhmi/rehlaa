@@ -143,7 +143,7 @@ Read NetworkStatus before apply/submit and return localized `OfflineFailure` sta
 - [ ] **Step 4: Test and commit**
 
 ```bash
-dart run build_runner build --delete-conflicting-outputs
+dart run build_runner build
 flutter test test/features/checkout/presentation/checkout_view_model_test.dart
 git add lib/features/checkout/presentation/states lib/features/checkout/presentation/view_models test/features/checkout/presentation
 git commit -m "feat(checkout): add checkout state orchestration"

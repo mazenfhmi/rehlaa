@@ -71,21 +71,24 @@
 
 ### DG-01: بوابة توافق الاعتماديات
 
-تُستأنف المهمة `F02` بمصفوفة مرشحة متقاطعة القيود، لا بالمصفوفة المتعارضة المكتوبة سابقًا:
+اعتمدت المهمة `F02` المصفوفة التالية بعد إثبات تقاطع مولداتها على Analyzer 9 دون `dependency_overrides`:
 
 ```yaml
-flutter_riverpod: ^3.4.1
+flutter_riverpod: 3.3.1
 riverpod_annotation: 4.0.2
 riverpod_generator: 4.0.3
 go_router: 17.3.0
 freezed_annotation: 3.1.0
 freezed: 3.2.5
-drift: 2.34.0
-drift_dev: 2.34.0
-json_serializable: 6.14.0
+json_annotation: 4.10.0
+json_serializable: 6.12.0
+drift: 2.30.1
+drift_dev: 2.30.1
+drift_flutter: 0.2.8
+build_runner: ^2.10.4
 ```
 
-معيار اعتماد المصفوفة هو نجاح `flutter pub get` و`dart run build_runner build --delete-conflicting-outputs` دون override، ثم نجاح الاختبارات. إذا رفض Pub هذه المصفوفة، تُعدّل الإصدارات داخل نفس مجال الإصدارات المتوافقة وتُسجل النتيجة في هذا الملف قبل تنفيذ `F03`.
+نجح `flutter pub get` و`dart run build_runner build` وجميع الاختبارات بهذه المصفوفة. القيد المعروف: Analyzer 9 يحلل مستوى لغة Dart 3.11 داخل المولدات، لذلك لا تستخدم صياغة خاصة بـDart 3.12 داخل الملفات المعلّمة للتوليد حتى تتوفر سلسلة مستقرة تجمع Riverpod وFreezed وDrift على Analyzer أحدث.
 
 ---
 
@@ -124,7 +127,7 @@ json_serializable: 6.14.0
 
 - [x] **F00 — استعادة baseline typed وقابل للبناء:** إصلاح RTL وCategories وإعادة Home إلى ViewModel واختبار الحالات.
 - [x] **F01 — تهيئة Flutter والتحليل الصارم:** اعتماد Flutter 3.44.x/Dart 3.12.x وتثبيت smoke test.
-- [ ] **F02 — إضافة الاعتماديات ومولدات الأكواد:** اجتياز `DG-01`، ضبط `pubspec.yaml` و`build.yaml`، وتشغيل التوليد.
+- [x] **F02 — إضافة الاعتماديات ومولدات الأكواد:** اجتياز `DG-01`، ضبط `pubspec.yaml` و`build.yaml`، وتشغيل التوليد.
 - [ ] **F03 — تثبيت Result وFailure typed:** إكمال التسلسل الهرمي ورسائل العرض واختبارات النجاح والفشل.
 - [ ] **F04 — تثبيت Bootstrap وتشخيص Riverpod:** البيئات، `runZonedGuarded`، observer، وربط `main.dart`.
 - [ ] **F05 — تفعيل الترجمة وتغيير اللغة وقت التشغيل:** توصيل delegates وARB وإزالة النصوص المرئية الثابتة.
@@ -139,7 +142,7 @@ json_serializable: 6.14.0
 - [ ] `dart format --output=none --set-exit-if-changed lib test` ينجح.
 - [ ] `flutter analyze` ينجح دون errors أو warnings.
 - [ ] `flutter test` ينجح بالكامل.
-- [ ] `dart run build_runner build --delete-conflicting-outputs` ينجح ولا يترك diff غير مقصود.
+- [ ] `dart run build_runner build` ينجح ولا يترك diff غير مقصود.
 - [ ] Home يعمل في Light/Dark وArabic/English وOnline/Offline وحالات Async الأربع.
 - [ ] لا توجد نصوص مرئية ثابتة أو `double` للأموال أو Map ديناميكية في Widgets.
 
@@ -364,7 +367,7 @@ All phases ──> Quality/Release (Q)
 dart format --output=none --set-exit-if-changed lib test
 flutter analyze
 flutter test
-dart run build_runner build --delete-conflicting-outputs
+dart run build_runner build
 git diff --check
 git status --short
 ```
@@ -378,7 +381,7 @@ git status --short
 | 2026-08-01 | D01–D10 | منجز | توحيد وثائق المعمارية والخطط مع مواصفة UI |
 | 2026-08-01 | F00 | منجز | Home typed، ربط ViewModel/Connectivity، واختبارات regression |
 | 2026-08-01 | F01 | منجز | Flutter 3.44.8، Dart 3.12.2، و28 اختبارًا ناجحًا |
-| 2026-08-01 | F02 | محجوب | تعارض Analyzer بين Riverpod Generator وFreezed وDrift؛ ينتظر DG-01 |
+| 2026-08-01 | F02 | منجز | Pub solver دون overrides، code generation ناجح، 28 اختبارًا ناجحًا، و0 Analyzer errors |
 
 ## 9. تعريف الإنجاز الكامل
 

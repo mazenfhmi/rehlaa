@@ -59,7 +59,7 @@ Include bilingual names, media, base price, compare-at price, rating, review cou
 - [ ] **Step 4: Generate, test, commit**
 
 ```bash
-dart run build_runner build --delete-conflicting-outputs
+dart run build_runner build
 flutter test test/shared/domain/money_test.dart
 git add lib/shared/domain test/shared/domain
 git commit -m "feat(catalog): add shared product and money domain"

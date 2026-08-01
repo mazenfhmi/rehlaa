@@ -6,23 +6,62 @@ part of 'login_view_model.dart';
 // RiverpodGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+/// ViewModel managing the sign-in form submission state.
+
+@ProviderFor(SignInViewModel)
+final signInViewModelProvider = SignInViewModelProvider._();
+
+/// ViewModel managing the sign-in form submission state.
+final class SignInViewModelProvider
+    extends $NotifierProvider<SignInViewModel, AsyncValue<void>> {
+  /// ViewModel managing the sign-in form submission state.
+  SignInViewModelProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'signInViewModelProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$signInViewModelHash();
+
+  @$internal
+  @override
+  SignInViewModel create() => SignInViewModel();
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(AsyncValue<void> value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<AsyncValue<void>>(value),
+    );
+  }
+}
+
 String _$signInViewModelHash() => r'06b5b9511b8dcd39f7ef078be976cf4c5c7b728f';
 
 /// ViewModel managing the sign-in form submission state.
-///
-/// Copied from [SignInViewModel].
-@ProviderFor(SignInViewModel)
-final signInViewModelProvider =
-    AutoDisposeNotifierProvider<SignInViewModel, AsyncValue<void>>.internal(
-  SignInViewModel.new,
-  name: r'signInViewModelProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$signInViewModelHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
 
-typedef _$SignInViewModel = AutoDisposeNotifier<AsyncValue<void>>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
+abstract class _$SignInViewModel extends $Notifier<AsyncValue<void>> {
+  AsyncValue<void> build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final ref = this.ref as $Ref<AsyncValue<void>, AsyncValue<void>>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<AsyncValue<void>, AsyncValue<void>>,
+              AsyncValue<void>,
+              Object?,
+              Object?
+            >;
+    element.handleCreate(ref, build);
+  }
+}

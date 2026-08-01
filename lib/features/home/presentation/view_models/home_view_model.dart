@@ -5,8 +5,10 @@ import '../../domain/entities/home_category.dart';
 
 part 'home_view_model.g.dart';
 
+Duration? _doNotRetry(int retryCount, Object error) => null;
+
 /// ViewModel managing the state of the Home Page categories.
-@riverpod
+@Riverpod(retry: _doNotRetry)
 class HomeCategoriesViewModel extends _$HomeCategoriesViewModel {
   @override
   Future<List<HomeCategory>> build() async {
@@ -20,13 +22,11 @@ class HomeCategoriesViewModel extends _$HomeCategoriesViewModel {
   }
 
   void selectCategory(String categoryId) {
-    final current = state.valueOrNull;
+    final current = state.value;
     if (current == null) return;
 
     state = AsyncData(
-      current
-          .map((c) => c.copyWith(isSelected: c.id == categoryId))
-          .toList(),
+      current.map((c) => c.copyWith(isSelected: c.id == categoryId)).toList(),
     );
   }
 }

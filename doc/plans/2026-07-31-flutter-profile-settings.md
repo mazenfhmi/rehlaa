@@ -44,7 +44,7 @@ Profile fields: firstName, lastName, displayName, email, avatarUrl; stats: order
 - [ ] **Step 3: Test and commit**
 
 ```bash
-dart run build_runner build --delete-conflicting-outputs
+dart run build_runner build
 flutter test test/features/profile/domain/user_profile_test.dart
 git add lib/features/profile/domain lib/features/settings/domain test/features/profile/domain
 git commit -m "feat(profile): define profile and settings domain"

@@ -32,7 +32,7 @@ and 200% text scaling. No embedded section may redefine these rules.
 
 **Architecture:** The project relies on Feature-first Clean MVVM with Riverpod for state and dependency management, Repository Contracts for data source isolation, and an elective Domain layer for shared and complex logic. All features start with Mock sources and read-only local memory, while purchases, payments, and wallet operations are prohibited offline.
 
-**Tech Stack:** Flutter 3.44.x, Dart 3.12.x, Material 3, flutter_riverpod 3.4.1, riverpod_annotation 4.0.5, riverpod_generator 4.0.7, go_router 17.3.0, Freezed 3.2.5, json_serializable 6.14.0, Drift 2.34.3, intl, connectivity_plus, shared_preferences, flutter_secure_storage, cached_network_image, flutter_svg, image_picker/file_picker, mocktail, flutter_test, integration_test.
+**Tech Stack:** Flutter 3.44.x, Dart 3.12.x, Material 3, flutter_riverpod 3.3.1, riverpod_annotation 4.0.2, riverpod_generator 4.0.3, go_router 17.3.0, Freezed 3.2.5, json_serializable 6.12.0, Drift 2.30.1, intl, connectivity_plus, shared_preferences, flutter_secure_storage, cached_network_image, flutter_svg, image_picker/file_picker, mocktail, flutter_test, integration_test.
 
 ## Global Constraints
 
@@ -348,17 +348,17 @@ git commit -m "chore: initialize flutter mobile project"
 - [ ] **Step 1: Add runtime dependencies**
 
 ```bash
-flutter pub add flutter_riverpod:^3.4.1 riverpod_annotation:^4.0.5 go_router:^17.3.0
-flutter pub add freezed_annotation:^3.1.0 json_annotation intl
-flutter pub add drift:^2.34.3 drift_flutter shared_preferences connectivity_plus
+flutter pub add flutter_riverpod:3.3.1 riverpod_annotation:4.0.2 go_router:^17.3.0
+flutter pub add freezed_annotation:3.1.0 json_annotation:4.10.0 intl
+flutter pub add drift:2.30.1 drift_flutter:0.2.8 shared_preferences connectivity_plus
 flutter pub add flutter_secure_storage cached_network_image flutter_svg
 ```
 
 - [ ] **Step 2: Add development dependencies**
 
 ```bash
-flutter pub add --dev riverpod_generator:^4.0.7 build_runner freezed:^3.2.5
-flutter pub add --dev json_serializable:^6.14.0 drift_dev mocktail
+flutter pub add --dev riverpod_generator:4.0.3 build_runner:^2.10.4 freezed:3.2.5
+flutter pub add --dev json_serializable:6.12.0 drift_dev:2.30.1 mocktail
 ```
 
 - [ ] **Step 3: Configure deterministic generators**
@@ -378,7 +378,7 @@ targets:
 
 ```bash
 flutter pub get
-dart run build_runner build --delete-conflicting-outputs
+dart run build_runner build
 flutter analyze
 ```
 
@@ -650,7 +650,7 @@ class LocaleController extends _$LocaleController {
 
 ```bash
 flutter gen-l10n
-dart run build_runner build --delete-conflicting-outputs
+dart run build_runner build
 flutter test test/core/localization/locale_controller_test.dart
 git add pubspec.yaml l10n.yaml lib/l10n lib/core/localization test/core/localization
 git commit -m "feat(l10n): add arabic and english runtime localization"
@@ -745,7 +745,7 @@ class ThemeController extends _$ThemeController {
 - [ ] **Step 4: Run tests and commit**
 
 ```bash
-dart run build_runner build --delete-conflicting-outputs
+dart run build_runner build
 flutter test test/core/design_system/theme/theme_test.dart
 git add lib/core/design_system test/core/design_system
 git commit -m "feat(ui): add token driven light and dark themes"
@@ -1022,7 +1022,7 @@ Return deterministic data for All, Gaming, Mobile, Educational Programs, Softwar
 - [ ] **Step 5: Verify complete foundation**
 
 ```bash
-dart run build_runner build --delete-conflicting-outputs
+dart run build_runner build
 flutter analyze
 flutter test
 flutter run -d android
@@ -1132,7 +1132,7 @@ abstract interface class AuthRepository {
 - [ ] **Step 4: Generate and test**
 
 ```bash
-dart run build_runner build --delete-conflicting-outputs
+dart run build_runner build
 flutter test test/features/authentication/domain/auth_session_test.dart
 ```
 
@@ -1218,7 +1218,7 @@ AuthRepository authRepository(Ref ref) {
 - [ ] **Step 4: Test and commit**
 
 ```bash
-dart run build_runner build --delete-conflicting-outputs
+dart run build_runner build
 flutter test test/features/authentication/data/mock_auth_repository_test.dart
 git add lib/features/authentication/data test/features/authentication/data
 git commit -m "feat(auth): add deterministic mock authentication repository"
@@ -1261,7 +1261,7 @@ Include `isSubmitting`, `fieldErrors`, and `submissionFailure`; do not expose ra
 - [ ] **Step 3: Implement ViewModels and test**
 
 ```bash
-dart run build_runner build --delete-conflicting-outputs
+dart run build_runner build
 flutter test test/features/authentication/presentation/login_view_model_test.dart
 ```
 
@@ -1460,7 +1460,7 @@ Include bilingual names, media, base price, compare-at price, rating, review cou
 - [ ] **Step 4: Generate, test, commit**
 
 ```bash
-dart run build_runner build --delete-conflicting-outputs
+dart run build_runner build
 flutter test test/shared/domain/money_test.dart
 git add lib/shared/domain test/shared/domain
 git commit -m "feat(catalog): add shared product and money domain"
@@ -1854,7 +1854,7 @@ Read NetworkStatus before apply/submit and return localized `OfflineFailure` sta
 - [ ] **Step 4: Test and commit**
 
 ```bash
-dart run build_runner build --delete-conflicting-outputs
+dart run build_runner build
 flutter test test/features/checkout/presentation/checkout_view_model_test.dart
 git add lib/features/checkout/presentation/states lib/features/checkout/presentation/view_models test/features/checkout/presentation
 git commit -m "feat(checkout): add checkout state orchestration"
@@ -2036,7 +2036,7 @@ Repository methods: getWallet, getTransactions(page), createTopup(amount), refre
 - [ ] **Step 3: Test and commit**
 
 ```bash
-dart run build_runner build --delete-conflicting-outputs
+dart run build_runner build
 flutter test test/features/wallet/domain/wallet_topup_test.dart
 git add lib/features/wallet/domain test/features/wallet/domain
 git commit -m "feat(wallet): define wallet ledger domain"
@@ -2090,7 +2090,7 @@ Prevent duplicate next-page requests while one is in progress.
 - [ ] **Step 3: Test and commit**
 
 ```bash
-dart run build_runner build --delete-conflicting-outputs
+dart run build_runner build
 flutter test test/features/wallet/presentation/wallet_view_model_test.dart
 git add lib/features/wallet/presentation/states lib/features/wallet/presentation/view_models test/features/wallet/presentation
 git commit -m "feat(wallet): add wallet dashboard state management"
@@ -2253,7 +2253,7 @@ Profile fields: firstName, lastName, displayName, email, avatarUrl; stats: order
 - [ ] **Step 3: Test and commit**
 
 ```bash
-dart run build_runner build --delete-conflicting-outputs
+dart run build_runner build
 flutter test test/features/profile/domain/user_profile_test.dart
 git add lib/features/profile/domain lib/features/settings/domain test/features/profile/domain
 git commit -m "feat(profile): define profile and settings domain"
@@ -2813,7 +2813,7 @@ jobs:
           channel: stable
           cache: true
       - run: flutter pub get
-      - run: dart run build_runner build --delete-conflicting-outputs
+      - run: dart run build_runner build
       - run: git diff --exit-code
       - run: dart format --output=none --set-exit-if-changed lib test integration_test
       - run: flutter analyze
@@ -2914,7 +2914,7 @@ git commit -m "chore(release): configure android and ios release builds"
 ```bash
 flutter clean
 flutter pub get
-dart run build_runner build --delete-conflicting-outputs
+dart run build_runner build
 ```
 
 - [ ] **Step 2: Run static and automated checks**
