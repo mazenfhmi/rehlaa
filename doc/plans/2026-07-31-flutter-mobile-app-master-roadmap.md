@@ -2,6 +2,8 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
+> **Execution authority:** Use `doc/plans/2026-08-01-rehlaa-master-execution-plan.md` for the current ordered checklist, completion state, decision gates, and phase gates. This file remains the product-level roadmap; any historical environment status below is superseded by the newer execution log.
+
 **Goal:** بناء تطبيق متجر خدمات رقمية للهواتف باستخدام Flutter على Android وiOS، مع واجهات عربية وإنجليزية، بيانات Mock قابلة للاستبدال لاحقًا بالـAPI، ونظام Widgets موحد يغطي جميع الصفحات.
 
 **Architecture:** يعتمد المشروع Feature-first Clean MVVM مع Riverpod لإدارة الحالة والاعتماديات، Repository Contracts لعزل مصادر البيانات، وطبقة Domain انتقائية للمنطق المشترك والمعقد. تبدأ جميع الميزات بمصادر Mock وذاكرة محلية للقراءة فقط، بينما تُمنع عمليات الشراء والدفع والمحفظة دون اتصال.

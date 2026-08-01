@@ -6,11 +6,12 @@ This consolidated document contains the master implementation roadmap and all su
 
 This aggregate is governed by, in order:
 
-1. `doc/specs/2026-07-31-flutter-mobile-app-design.md` for product and architecture.
-2. `doc/specs/2026-08-01-ui-design-system.md` for all visual decisions.
-3. `doc/2026-08-01-project-audit.md` for the verified current implementation state and stabilization priorities.
-4. The individual plans in `doc/plans/` for task-level execution details.
-5. `doc/plans/2026-08-01-ui-plan-alignment.md` for documentation synchronization checks.
+1. `doc/plans/2026-08-01-rehlaa-master-execution-plan.md` for execution order, current state, decision gates, and phase gates.
+2. `doc/specs/2026-07-31-flutter-mobile-app-design.md` for product and architecture.
+3. `doc/specs/2026-08-01-ui-design-system.md` for all visual decisions.
+4. `doc/2026-08-01-project-audit.md` for its historical audited baseline and stabilization findings.
+5. The individual plans in `doc/plans/` for task-level execution details.
+6. `doc/plans/2026-08-01-ui-plan-alignment.md` for documentation synchronization checks.
 
 If an embedded section in this consolidated document becomes inconsistent with
 an individual plan, the individual plan is authoritative and this file must be
