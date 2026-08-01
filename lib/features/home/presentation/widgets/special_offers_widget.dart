@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../core/design_system/tokens/app_tokens.dart';
-import '../../../../core/navigation/app_route_names.dart';
-import 'section_title_widget.dart';
+import 'package:rehlaa/core/design_system/tokens/app_tokens.dart';
+import 'package:rehlaa/core/navigation/app_route_names.dart';
+import 'package:rehlaa/features/home/presentation/widgets/section_title_widget.dart';
 
 class SpecialOffersWidget extends StatelessWidget {
   const SpecialOffersWidget({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Column(
+  Widget build(BuildContext context) => Column(
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
           child: SectionTitleWidget(
-            title: "Special for you",
+            title: 'Special for you',
             press: () {},
           ),
         ),
@@ -26,8 +25,8 @@ class SpecialOffersWidget extends StatelessWidget {
               SpecialOfferCard(
                 // Using a placeholder image since assets/images/Image Banner 2.png might not exist
                 image:
-                    "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=600",
-                category: "Smartphone",
+                    'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=600',
+                category: 'Smartphone',
                 numOfBrands: 18,
                 press: () {
                   context.goNamed(AppRouteNames.cart); // Placeholder navigation
@@ -35,8 +34,8 @@ class SpecialOffersWidget extends StatelessWidget {
               ),
               SpecialOfferCard(
                 image:
-                    "https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=600",
-                category: "Fashion",
+                    'https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=600',
+                category: 'Fashion',
                 numOfBrands: 24,
                 press: () {
                   context.goNamed(AppRouteNames.cart);
@@ -48,25 +47,20 @@ class SpecialOffersWidget extends StatelessWidget {
         ),
       ],
     );
-  }
 }
 
 class SpecialOfferCard extends StatelessWidget {
   const SpecialOfferCard({
-    super.key,
-    required this.category,
-    required this.image,
-    required this.numOfBrands,
-    required this.press,
+    required this.category, required this.image, required this.numOfBrands, required this.press, super.key,
   });
 
-  final String category, image;
+  final String category;
+  final String image;
   final int numOfBrands;
   final GestureTapCallback press;
 
   @override
-  Widget build(BuildContext context) {
-    return Padding(
+  Widget build(BuildContext context) => Padding(
       padding: const EdgeInsets.only(left: AppSpacing.lg),
       child: GestureDetector(
         onTap: press,
@@ -113,13 +107,13 @@ class SpecialOfferCard extends StatelessWidget {
                       style: const TextStyle(color: Colors.white),
                       children: [
                         TextSpan(
-                          text: "$category\n",
+                          text: '$category\n',
                           style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        TextSpan(text: "$numOfBrands Brands")
+                        TextSpan(text: '$numOfBrands Brands')
                       ],
                     ),
                   ),
@@ -130,5 +124,4 @@ class SpecialOfferCard extends StatelessWidget {
         ),
       ),
     );
-  }
 }

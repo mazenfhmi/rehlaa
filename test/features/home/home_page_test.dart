@@ -11,6 +11,7 @@ import 'package:rehlaa/features/home/domain/entities/home_category.dart';
 import 'package:rehlaa/features/home/domain/repositories/home_repository.dart';
 import 'package:rehlaa/features/home/presentation/pages/home_page.dart';
 import 'package:rehlaa/features/home/presentation/widgets/categories_widget.dart';
+import 'package:rehlaa/generated/l10n/app_localizations.dart';
 
 void main() {
   testWidgets('shows category loading feedback while Home data is pending', (
@@ -22,7 +23,11 @@ void main() {
           homeRepositoryProvider.overrideWithValue(_PendingHomeRepository()),
           isOnlineProvider.overrideWith((ref) => Stream.value(true)),
         ],
-        child: const MaterialApp(home: HomePage()),
+        child: const MaterialApp(
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
+          home: HomePage(),
+        ),
       ),
     );
 
@@ -36,6 +41,8 @@ void main() {
 
     await tester.pumpWidget(
       MaterialApp(
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
         home: Scaffold(
           body: CategoriesWidget(
             categories: _categories,
@@ -63,7 +70,11 @@ void main() {
           ),
           isOnlineProvider.overrideWith((ref) => Stream.value(true)),
         ],
-        child: const MaterialApp(home: HomePage()),
+        child: const MaterialApp(
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
+          home: HomePage(),
+        ),
       ),
     );
     await tester.pump();
@@ -95,7 +106,11 @@ void main() {
           ),
           isOnlineProvider.overrideWith((ref) => Stream.value(false)),
         ],
-        child: const MaterialApp(home: HomePage()),
+        child: const MaterialApp(
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
+          home: HomePage(),
+        ),
       ),
     );
     await tester.pump();
@@ -114,7 +129,11 @@ void main() {
           ),
           isOnlineProvider.overrideWith((ref) => Stream.value(true)),
         ],
-        child: const MaterialApp(home: HomePage()),
+        child: const MaterialApp(
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
+          home: HomePage(),
+        ),
       ),
     );
     await tester.pump();

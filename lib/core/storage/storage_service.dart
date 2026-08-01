@@ -1,10 +1,8 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:rehlaa/core/logging/app_logger.dart';
+import 'package:rehlaa/core/result/result.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../logging/app_logger.dart';
-import '../result/result.dart';
 
 part 'storage_service.g.dart';
 
@@ -30,7 +28,7 @@ class SecureStorageService {
       return const Success(null);
     } on Exception catch (e) {
       AppLogger.error('SecureStorage write failed for key=$key', e);
-      return Failure(StorageFailure(message: 'Failed to write to secure storage.'));
+      return const Failure(StorageFailure(message: 'Failed to write to secure storage.'));
     }
   }
 
@@ -40,7 +38,7 @@ class SecureStorageService {
       return Success(value);
     } on Exception catch (e) {
       AppLogger.error('SecureStorage read failed for key=$key', e);
-      return Failure(StorageFailure(message: 'Failed to read from secure storage.'));
+      return const Failure(StorageFailure(message: 'Failed to read from secure storage.'));
     }
   }
 
@@ -50,7 +48,7 @@ class SecureStorageService {
       return const Success(null);
     } on Exception catch (e) {
       AppLogger.error('SecureStorage delete failed for key=$key', e);
-      return Failure(StorageFailure(message: 'Failed to delete from secure storage.'));
+      return const Failure(StorageFailure(message: 'Failed to delete from secure storage.'));
     }
   }
 
@@ -60,7 +58,7 @@ class SecureStorageService {
       return const Success(null);
     } on Exception catch (e) {
       AppLogger.error('SecureStorage deleteAll failed', e);
-      return Failure(StorageFailure(message: 'Failed to clear secure storage.'));
+      return const Failure(StorageFailure(message: 'Failed to clear secure storage.'));
     }
   }
 }

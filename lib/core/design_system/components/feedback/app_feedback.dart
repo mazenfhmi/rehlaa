@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../tokens/app_tokens.dart';
+import 'package:rehlaa/core/design_system/tokens/app_tokens.dart';
 
 // ---------------------------------------------------------------------------
 // Feedback components — loading, empty, error, async builder
@@ -31,8 +31,7 @@ class AppLoadingIndicator extends StatelessWidget {
 /// Empty state with icon, title, and optional action button.
 class AppEmptyState extends StatelessWidget {
   const AppEmptyState({
-    super.key,
-    required this.title,
+    required this.title, super.key,
     this.subtitle,
     this.icon,
     this.actionLabel,
@@ -92,8 +91,7 @@ class AppEmptyState extends StatelessWidget {
 /// Error state with retry button.
 class AppErrorState extends StatelessWidget {
   const AppErrorState({
-    super.key,
-    required this.message,
+    required this.message, super.key,
     this.onRetry,
     this.retryLabel = 'Try Again',
   });
@@ -142,9 +140,7 @@ class AppErrorState extends StatelessWidget {
 /// Works with Riverpod's AsyncValue<T>.
 class AppAsyncBuilder<T> extends StatelessWidget {
   const AppAsyncBuilder({
-    super.key,
-    required this.value,
-    required this.data,
+    required this.value, required this.data, super.key,
     this.loading,
     this.error,
     this.skeleton,
@@ -183,8 +179,7 @@ enum AppBadgeStatus { pending, processing, completed, cancelled, info }
 
 class AppStatusBadge extends StatelessWidget {
   const AppStatusBadge({
-    super.key,
-    required this.label,
+    required this.label, super.key,
     this.status = AppBadgeStatus.info,
   });
 
@@ -234,8 +229,7 @@ class AppStatusBadge extends StatelessWidget {
 
 class AppDotIndicator extends StatelessWidget {
   const AppDotIndicator({
-    super.key,
-    required this.isActive,
+    required this.isActive, super.key,
     this.activeColor = AppColors.primary,
     this.inactiveColor = AppColors.black20,
   });
@@ -259,9 +253,7 @@ class AppDotIndicator extends StatelessWidget {
 
 class AppDotsIndicator extends StatelessWidget {
   const AppDotsIndicator({
-    super.key,
-    required this.count,
-    required this.currentIndex,
+    required this.count, required this.currentIndex, super.key,
     this.activeColor = AppColors.primary,
   });
 

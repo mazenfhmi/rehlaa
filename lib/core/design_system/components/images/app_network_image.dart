@@ -1,8 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-
-import '../../tokens/app_tokens.dart';
-import '../feedback/app_skeleton.dart';
+import 'package:rehlaa/core/design_system/components/feedback/app_skeleton.dart';
+import 'package:rehlaa/core/design_system/tokens/app_tokens.dart';
 
 // ---------------------------------------------------------------------------
 // AppNetworkImage

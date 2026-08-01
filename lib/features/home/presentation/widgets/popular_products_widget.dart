@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/design_system/design_system.dart';
-import 'section_title_widget.dart';
+import 'package:rehlaa/core/design_system/design_system.dart';
+import 'package:rehlaa/features/home/presentation/widgets/section_title_widget.dart';
 
 class PopularProductsWidget extends StatelessWidget {
   const PopularProductsWidget({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Column(
+  Widget build(BuildContext context) => Column(
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
           child: SectionTitleWidget(
-            title: "Popular Products",
+            title: 'Popular Products',
             press: () {
               // Navigate to products
             },
@@ -45,5 +44,4 @@ class PopularProductsWidget extends StatelessWidget {
         )
       ],
     );
-  }
 }

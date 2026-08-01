@@ -8,8 +8,8 @@ extension type const Password._(String value) {
     if (rawPassword.length < 8) {
       throw const FormatException('Password must be at least 8 characters long.');
     }
-    final hasLetter = rawPassword.contains(RegExp(r'[a-zA-Z]'));
-    final hasDigit = rawPassword.contains(RegExp(r'[0-9]'));
+    final hasLetter = rawPassword.contains(RegExp('[a-zA-Z]'));
+    final hasDigit = rawPassword.contains(RegExp('[0-9]'));
     if (!hasLetter || !hasDigit) {
       throw const FormatException('Password must contain both letters and numbers.');
     }

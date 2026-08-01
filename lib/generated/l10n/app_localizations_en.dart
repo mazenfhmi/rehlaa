@@ -64,6 +64,35 @@ class AppLocalizationsEn extends AppLocalizations {
   String get forgotPassword => 'Forgot Password?';
 
   @override
+  String get alreadyHaveAccount => 'Already have an account?';
+
+  @override
+  String get dontHaveAccount => 'Don\'t have an account?';
+
+  @override
+  String get continueWithGoogle => 'Continue with Google';
+
+  @override
+  String get backToSignIn => 'Back to Sign In';
+
+  @override
+  String get sendRecoveryEmail => 'Send Recovery Email';
+
+  @override
+  String get passwordRecoveryTitle => 'Password Recovery';
+
+  @override
+  String get recoveryEmailSent => 'Recovery email sent!';
+
+  @override
+  String get recoveryEmailSentDesc =>
+      'Please check your inbox for instructions to reset your password.';
+
+  @override
+  String get forgotPasswordDesc =>
+      'Enter your email address and we will send you a recovery link.';
+
+  @override
   String get fullName => 'Full Name';
 
   @override

@@ -1,9 +1,7 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:rehlaa/core/result/result.dart';
+import 'package:rehlaa/features/home/domain/entities/home_category.dart';
+import 'package:rehlaa/features/home/domain/repositories/home_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-
-import '../../../../core/result/result.dart';
-import '../../domain/entities/home_category.dart';
-import '../../domain/repositories/home_repository.dart';
 
 part 'mock_home_repository.g.dart';
 

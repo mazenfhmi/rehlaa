@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
-import '../core/design_system/tokens/app_tokens.dart';
+import 'package:rehlaa/core/design_system/tokens/app_tokens.dart';
+import 'package:rehlaa/generated/l10n/app_localizations.dart';
 
 // ---------------------------------------------------------------------------
 // AppShell — Persistent bottom navigation shell for 5 branches
@@ -20,17 +21,20 @@ class _ShellNavItem {
   final String svgPath;
 }
 
-const List<_ShellNavItem> _navItems = [
-  _ShellNavItem(label: 'Home', svgPath: 'assets/icons/Home.svg'),
-  _ShellNavItem(label: 'Favorites', svgPath: 'assets/icons/Heart.svg'),
-  _ShellNavItem(label: 'Cart', svgPath: 'assets/icons/Bag.svg'),
-  _ShellNavItem(label: 'Wallet', svgPath: 'assets/icons/Wallet.svg'),
-  _ShellNavItem(label: 'Profile', svgPath: 'assets/icons/Profile.svg'),
-];
+List<_ShellNavItem> _getNavItems(BuildContext context) {
+  final l10n = AppLocalizations.of(context);
+  return [
+    _ShellNavItem(label: l10n.homeTitle, svgPath: 'assets/icons/Home.svg'),
+    _ShellNavItem(label: l10n.favoritesTitle, svgPath: 'assets/icons/Heart.svg'),
+    _ShellNavItem(label: l10n.cartTitle, svgPath: 'assets/icons/Bag.svg'),
+    _ShellNavItem(label: l10n.walletTitle, svgPath: 'assets/icons/Wallet.svg'),
+    _ShellNavItem(label: l10n.profileTitle, svgPath: 'assets/icons/Profile.svg'),
+  ];
+}
 
 /// The persistent shell wrapping the bottom navigation and its indexed branches.
 class AppShell extends StatelessWidget {
-  const AppShell({super.key, required this.navigationShell});
+  const AppShell({required this.navigationShell, super.key});
 
   final StatefulNavigationShell navigationShell;
 
@@ -47,7 +51,7 @@ class AppShell extends StatelessWidget {
 
     return Scaffold(
       body: navigationShell,
-      bottomNavigationBar: Container(
+      bottomNavigationBar: DecoratedBox(
         decoration: BoxDecoration(
           color: isDark ? const Color(0xFF101015) : AppColors.white,
           border: Border(
@@ -63,10 +67,8 @@ class AppShell extends StatelessWidget {
           elevation: 0,
           selectedItemColor: AppColors.primary,
           unselectedItemColor: const Color(0xFFB6B6B6),
-          items: _navItems.asMap().entries.map((entry) {
-            final i = entry.key;
+          items: _getNavItems(context).asMap().entries.map((entry) {
             final item = entry.value;
-            final isActive = i == navigationShell.currentIndex;
 
             return BottomNavigationBarItem(
               icon: SvgPicture.asset(

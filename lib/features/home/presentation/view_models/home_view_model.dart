@@ -1,7 +1,6 @@
+import 'package:rehlaa/features/home/data/repositories/mock_home_repository.dart';
+import 'package:rehlaa/features/home/domain/entities/home_category.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-
-import '../../data/repositories/mock_home_repository.dart';
-import '../../domain/entities/home_category.dart';
 
 part 'home_view_model.g.dart';
 
@@ -17,7 +16,7 @@ class HomeCategoriesViewModel extends _$HomeCategoriesViewModel {
 
     return result.fold(
       onSuccess: (data) => data,
-      onFailure: (failure) => throw failure,
+      onFailure: (failure) => throw Exception(failure.message),
     );
   }
 

@@ -26,7 +26,6 @@ void main() {
         id: 'u2',
         email: 'unverified@example.com',
         displayName: 'Unverified',
-        isEmailVerified: false,
       );
       const session = AuthSession.unverified(user: user);
       expect(session.isAuthenticated, isFalse);

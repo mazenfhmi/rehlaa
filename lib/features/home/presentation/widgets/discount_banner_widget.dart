@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/design_system/tokens/app_tokens.dart';
+import 'package:rehlaa/core/design_system/tokens/app_tokens.dart';
 
 class DiscountBannerWidget extends StatelessWidget {
   const DiscountBannerWidget({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Container(
+  Widget build(BuildContext context) => Container(
       width: double.infinity,
       margin: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
       padding: const EdgeInsets.symmetric(
@@ -22,9 +21,9 @@ class DiscountBannerWidget extends StatelessWidget {
         TextSpan(
           style: TextStyle(color: Colors.white),
           children: [
-            TextSpan(text: "A Summer Surprise\n"),
+            TextSpan(text: 'A Summer Surprise\n'),
             TextSpan(
-              text: "Cashback 20%",
+              text: 'Cashback 20%',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -34,5 +33,4 @@ class DiscountBannerWidget extends StatelessWidget {
         ),
       ),
     );
-  }
 }

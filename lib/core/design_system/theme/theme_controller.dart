@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rehlaa/core/storage/storage_service.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'theme_controller.g.dart';
@@ -11,12 +12,26 @@ part 'theme_controller.g.dart';
 @Riverpod(keepAlive: true)
 class ThemeController extends _$ThemeController {
   @override
-  ThemeMode build() => ThemeMode.light;
+  ThemeMode build() {
+    final prefs = ref.read(preferenceStorageServiceProvider);
+    final saved = prefs.getString(PreferenceKeys.themeMode);
+    if (saved != null) {
+      return ThemeMode.values.firstWhere(
+        (e) => e.name == saved,
+        orElse: () => ThemeMode.light,
+      );
+    }
+    return ThemeMode.light;
+  }
 
-  void setThemeMode(ThemeMode mode) => state = mode;
+  ThemeMode get themeMode => state;
+  set themeMode(ThemeMode mode) {
+    state = mode;
+    ref.read(preferenceStorageServiceProvider).setString(PreferenceKeys.themeMode, mode.name);
+  }
 
   void toggleTheme() {
-    state = switch (state) {
+    themeMode = switch (state) {
       ThemeMode.light => ThemeMode.dark,
       ThemeMode.dark => ThemeMode.light,
       ThemeMode.system => ThemeMode.light,

@@ -61,7 +61,36 @@ class AppLocalizationsAr extends AppLocalizations {
   String get confirmPassword => 'تأكيد كلمة المرور';
 
   @override
-  String get forgotPassword => 'نسيت كلمة المرور؟';
+  String get forgotPassword => 'هل نسيت كلمة المرور؟';
+
+  @override
+  String get alreadyHaveAccount => 'لديك حساب بالفعل؟';
+
+  @override
+  String get dontHaveAccount => 'ليس لديك حساب؟';
+
+  @override
+  String get continueWithGoogle => 'المتابعة باستخدام جوجل';
+
+  @override
+  String get backToSignIn => 'العودة لتسجيل الدخول';
+
+  @override
+  String get sendRecoveryEmail => 'إرسال بريد الاستعادة';
+
+  @override
+  String get passwordRecoveryTitle => 'استعادة كلمة المرور';
+
+  @override
+  String get recoveryEmailSent => 'تم إرسال بريد الاستعادة!';
+
+  @override
+  String get recoveryEmailSentDesc =>
+      'يرجى التحقق من بريدك الوارد للحصول على تعليمات إعادة تعيين كلمة المرور.';
+
+  @override
+  String get forgotPasswordDesc =>
+      'أدخل عنوان بريدك الإلكتروني وسنرسل لك رابط الاستعادة.';
 
   @override
   String get fullName => 'الاسم الكامل';

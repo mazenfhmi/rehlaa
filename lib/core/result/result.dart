@@ -69,7 +69,7 @@ sealed class AppFailure {
   final String message;
 
   @override
-  String toString() => '$runtimeType: $message';
+  String toString() => 'AppFailure: $message';
 }
 
 /// The device has no active network connection.

@@ -35,7 +35,7 @@ String? validatePassword(String? value) {
   final required = validateRequired(value, field: 'Password');
   if (required != null) return required;
   if (value!.length < 8) return 'Password must be at least 8 characters.';
-  if (!RegExp(r'[A-Za-z]').hasMatch(value)) {
+  if (!RegExp('[A-Za-z]').hasMatch(value)) {
     return 'Password must contain at least one letter.';
   }
   if (!RegExp(r'\d').hasMatch(value)) {

@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:rehlaa/app/app_shell.dart';
+import 'package:rehlaa/core/navigation/app_route_names.dart';
+import 'package:rehlaa/features/authentication/presentation/pages/forgot_password_page.dart';
+import 'package:rehlaa/features/authentication/presentation/pages/login_page.dart';
+import 'package:rehlaa/features/authentication/presentation/pages/register_page.dart';
+import 'package:rehlaa/features/home/presentation/pages/home_page.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-
-import '../../app/app_shell.dart';
-import '../../features/authentication/presentation/pages/forgot_password_page.dart';
-import '../../features/authentication/presentation/pages/login_page.dart';
-import '../../features/authentication/presentation/pages/register_page.dart';
-import '../../features/home/presentation/pages/home_page.dart';
-import 'app_route_names.dart';
 
 part 'app_router.g.dart';
 

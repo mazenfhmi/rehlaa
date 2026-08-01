@@ -1,5 +1,5 @@
-import '../../../../core/result/result.dart';
-import '../entities/auth_session.dart';
+import 'package:rehlaa/core/result/result.dart';
+import 'package:rehlaa/features/authentication/domain/entities/auth_session.dart';
 
 /// Contract defining all authentication operations.
 abstract interface class AuthRepository {

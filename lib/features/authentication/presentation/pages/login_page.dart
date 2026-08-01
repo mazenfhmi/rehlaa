@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../core/design_system/design_system.dart';
-import '../../../../core/navigation/app_route_names.dart';
-import '../../../../core/validation/validators.dart';
-import '../view_models/login_view_model.dart';
+import 'package:rehlaa/core/design_system/design_system.dart';
+import 'package:rehlaa/core/navigation/app_route_names.dart';
+import 'package:rehlaa/core/validation/validators.dart';
+import 'package:rehlaa/features/authentication/presentation/view_models/login_view_model.dart';
+import 'package:rehlaa/generated/l10n/app_localizations.dart';
 
 /// Sign-in page matching `.desgin-ui/lib/screens/auth/views/login_screen.dart`.
 class SignInPage extends ConsumerStatefulWidget {
@@ -35,7 +36,8 @@ class _SignInPageState extends ConsumerState<SignInPage> {
           password: _passwordController.text,
         );
 
-    if (success && mounted) {
+    if (!mounted) return;
+    if (success) {
       context.go(AppRoutePaths.home);
     }
   }
@@ -43,6 +45,7 @@ class _SignInPageState extends ConsumerState<SignInPage> {
   @override
   Widget build(BuildContext context) {
     final signInState = ref.watch(signInViewModelProvider);
+    final l10n = AppLocalizations.of(context);
     final isLoading = signInState.isLoading;
 
     return AppScaffold(
@@ -88,7 +91,7 @@ class _SignInPageState extends ConsumerState<SignInPage> {
                     // Email Field
                     AppTextField(
                       controller: _emailController,
-                      label: 'Email',
+                      label: l10n.email,
                       hint: 'user@rehlaa.com',
                       prefixSvgIcon: 'assets/icons/Message.svg',
                       keyboardType: TextInputType.emailAddress,
@@ -106,7 +109,7 @@ class _SignInPageState extends ConsumerState<SignInPage> {
                     Align(
                       alignment: Alignment.centerRight,
                       child: AppSecondaryButton(
-                        label: 'Forgot password?',
+                        label: l10n.forgotPassword,
                         onPressed: () => context.push(AppRoutePaths.forgotPassword),
                       ),
                     ),
@@ -124,7 +127,7 @@ class _SignInPageState extends ConsumerState<SignInPage> {
 
                     // Sign In Button
                     AppPrimaryButton(
-                      label: 'Log In',
+                      label: l10n.signIn,
                       isLoading: isLoading,
                       onPressed: _submit,
                     ),
@@ -132,7 +135,7 @@ class _SignInPageState extends ConsumerState<SignInPage> {
 
                     // Google Sign In
                     AppOutlinedButton(
-                      label: 'Continue with Google',
+                      label: l10n.continueWithGoogle,
                       svgIcon: 'assets/icons/Google.svg',
                       onPressed: isLoading
                           ? null
@@ -140,7 +143,8 @@ class _SignInPageState extends ConsumerState<SignInPage> {
                               final success = await ref
                                   .read(signInViewModelProvider.notifier)
                                   .signInWithGoogle();
-                              if (success && mounted) {
+                              if (!context.mounted) return;
+                              if (success) {
                                 context.go(AppRoutePaths.home);
                               }
                             },
@@ -152,9 +156,9 @@ class _SignInPageState extends ConsumerState<SignInPage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text("Don't have an account?"),
+                        Text(l10n.dontHaveAccount),
                         AppSecondaryButton(
-                          label: 'Sign up',
+                          label: l10n.signUp,
                           onPressed: () => context.push(AppRoutePaths.signUp),
                         ),
                       ],

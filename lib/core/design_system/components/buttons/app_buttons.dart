@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../tokens/app_tokens.dart';
+import 'package:rehlaa/core/design_system/tokens/app_tokens.dart';
 
 // ---------------------------------------------------------------------------
 // Buttons — adapted from .desgin-ui/lib/theme/button_theme.dart
@@ -11,8 +11,7 @@ import '../../tokens/app_tokens.dart';
 /// Full-width primary elevated button (matches reference ElevatedButton style).
 class AppPrimaryButton extends StatelessWidget {
   const AppPrimaryButton({
-    super.key,
-    required this.label,
+    required this.label, super.key,
     this.onPressed,
     this.isLoading = false,
     this.icon,
@@ -35,7 +34,7 @@ class AppPrimaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool isDisabled = onPressed == null || isLoading;
+    final isDisabled = onPressed == null || isLoading;
     return SizedBox(
       width: width,
       height: height,
@@ -86,8 +85,7 @@ class AppPrimaryButton extends StatelessWidget {
 /// Full-width outlined button — matches reference OutlinedButton style.
 class AppOutlinedButton extends StatelessWidget {
   const AppOutlinedButton({
-    super.key,
-    required this.label,
+    required this.label, super.key,
     this.onPressed,
     this.isLoading = false,
     this.icon,
@@ -148,9 +146,7 @@ class AppOutlinedButton extends StatelessWidget {
 /// Adapted from .desgin-ui/lib/components/outlined_active_button.dart
 class AppToggleButton extends StatelessWidget {
   const AppToggleButton({
-    super.key,
-    required this.label,
-    required this.onPressed,
+    required this.label, required this.onPressed, super.key,
     this.isActive = false,
     this.width,
     this.height = 40,
@@ -185,8 +181,7 @@ class AppToggleButton extends StatelessWidget {
 /// Text button — reference TextButton style with primary color.
 class AppSecondaryButton extends StatelessWidget {
   const AppSecondaryButton({
-    super.key,
-    required this.label,
+    required this.label, super.key,
     this.onPressed,
     this.isLoading = false,
     this.color,
@@ -218,8 +213,7 @@ class AppSecondaryButton extends StatelessWidget {
 /// Icon-only tappable button (matches reference icon buttons).
 class AppIconButton extends StatelessWidget {
   const AppIconButton({
-    super.key,
-    required this.icon,
+    required this.icon, super.key,
     this.onPressed,
     this.tooltip,
     this.badgeCount,
@@ -229,8 +223,7 @@ class AppIconButton extends StatelessWidget {
 
   /// Use [icon] for Material icons or [svgPath] for SVG assets.
   factory AppIconButton.svg({
-    Key? key,
-    required String svgPath,
+    required String svgPath, Key? key,
     VoidCallback? onPressed,
     String? tooltip,
     int? badgeCount,
@@ -281,11 +274,9 @@ class AppIconButton extends StatelessWidget {
 /// Buy-Now / Add-to-Cart bottom bar button matching the design reference.
 class AppCartButton extends StatelessWidget {
   const AppCartButton({
-    super.key,
-    required this.price,
+    required this.price, required this.onPressed, super.key,
     this.title = 'Buy Now',
     this.subTitle = 'Unit price',
-    required this.onPressed,
     this.currencySymbol = 'SAR',
   });
 

@@ -38,7 +38,7 @@ final class HomeCategoriesViewModelProvider
 }
 
 String _$homeCategoriesViewModelHash() =>
-    r'f4869db04a553f7ff4872b535d24673127a62800';
+    r'fe046d6ba4ec1983c191cfd326697fc85b0225b4';
 
 /// ViewModel managing the state of the Home Page categories.
 

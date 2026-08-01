@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../tokens/app_tokens.dart';
+import 'package:rehlaa/core/design_system/tokens/app_tokens.dart';
 
 // ---------------------------------------------------------------------------
 // Text field components — adapted from .desgin-ui input_decoration_theme

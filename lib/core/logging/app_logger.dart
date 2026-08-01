@@ -11,11 +11,7 @@ class AppLogger {
   static final Logger _logger = Logger(
     filter: _AppLogFilter(),
     printer: PrettyPrinter(
-      methodCount: 2,
-      errorMethodCount: 8,
-      lineLength: 120,
-      colors: true,
-      printEmojis: true,
+      
     ),
   );
 
@@ -44,8 +40,8 @@ class _AppLogFilter extends LogFilter {
   @override
   bool shouldLog(LogEvent event) {
     // In release mode, suppress trace and debug logs.
-    const bool kReleaseMode =
-        bool.fromEnvironment('dart.vm.product', defaultValue: false);
+    const kReleaseMode =
+        bool.fromEnvironment('dart.vm.product');
     if (kReleaseMode) {
       return event.level.index >= Level.warning.index;
     }

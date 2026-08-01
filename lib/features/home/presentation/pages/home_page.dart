@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../core/design_system/design_system.dart';
-import '../../../../core/network/connectivity_service.dart';
-import '../view_models/home_view_model.dart';
-import '../widgets/categories_widget.dart';
-import '../widgets/discount_banner_widget.dart';
-import '../widgets/home_header_widget.dart';
-import '../widgets/popular_products_widget.dart';
-import '../widgets/special_offers_widget.dart';
+import 'package:rehlaa/core/design_system/design_system.dart';
+import 'package:rehlaa/core/network/connectivity_service.dart';
+import 'package:rehlaa/features/home/presentation/view_models/home_view_model.dart';
+import 'package:rehlaa/features/home/presentation/widgets/categories_widget.dart';
+import 'package:rehlaa/features/home/presentation/widgets/discount_banner_widget.dart';
+import 'package:rehlaa/features/home/presentation/widgets/home_header_widget.dart';
+import 'package:rehlaa/features/home/presentation/widgets/popular_products_widget.dart';
+import 'package:rehlaa/features/home/presentation/widgets/special_offers_widget.dart';
 
 /// Home Page matching the design reference from ui.txt.
 class HomePage extends ConsumerWidget {

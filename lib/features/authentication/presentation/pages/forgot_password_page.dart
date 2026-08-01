@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../core/design_system/design_system.dart';
-import '../../../../core/result/result.dart';
-import '../../../../core/validation/validators.dart';
-import '../../data/providers/auth_providers.dart';
+import 'package:rehlaa/core/design_system/design_system.dart';
+import 'package:rehlaa/core/result/result.dart';
+import 'package:rehlaa/core/validation/validators.dart';
+import 'package:rehlaa/features/authentication/data/providers/auth_providers.dart';
+import 'package:rehlaa/generated/l10n/app_localizations.dart';
 
 /// Password recovery page matching `.desgin-ui/lib/screens/auth/views/password_recovery_screen.dart`.
 class ForgotPasswordPage extends ConsumerStatefulWidget {
@@ -19,7 +20,7 @@ class _ForgotPasswordPageState extends ConsumerState<ForgotPasswordPage> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   bool _isLoading = false;
-  bool _isSent = false;
+  final bool _isSent = false;
   String? _errorMessage;
 
   @override
@@ -42,14 +43,16 @@ class _ForgotPasswordPageState extends ConsumerState<ForgotPasswordPage> {
     setState(() {
       _isLoading = false;
       if (result is Failure) {
-        _errorMessage = (result as Failure).failure.message;
+        _errorMessage = result.failure.message;
       }
     });
   }
 
   @override
-  Widget build(BuildContext context) => AppScaffold(
-        appBar: const AppPageHeader(title: 'Password Recovery'),
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    return AppScaffold(
+        appBar: AppPageHeader(title: l10n.passwordRecoveryTitle),
         body: Padding(
           padding: const EdgeInsets.all(AppSpacing.base),
           child: _isSent
@@ -64,18 +67,18 @@ class _ForgotPasswordPageState extends ConsumerState<ForgotPasswordPage> {
                       ),
                       const SizedBox(height: AppSpacing.base),
                       Text(
-                        'Recovery email sent!',
+                        l10n.recoveryEmailSent,
                         style: Theme.of(context).textTheme.titleLarge,
                       ),
                       const SizedBox(height: AppSpacing.sm),
                       Text(
-                        'Please check your inbox for instructions to reset your password.',
+                        l10n.recoveryEmailSentDesc,
                         style: Theme.of(context).textTheme.bodyMedium,
                         textAlign: TextAlign.center,
                       ),
                       const SizedBox(height: AppSpacing.xl),
                       AppPrimaryButton(
-                        label: 'Back to Sign In',
+                        label: l10n.backToSignIn,
                         onPressed: () => context.pop(),
                       ),
                     ],
@@ -87,19 +90,19 @@ class _ForgotPasswordPageState extends ConsumerState<ForgotPasswordPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Forgot Password',
+                        l10n.forgotPassword,
                         style: Theme.of(context).textTheme.headlineSmall,
                       ),
                       const SizedBox(height: AppSpacing.xs),
                       Text(
-                        'Enter your email address and we will send you a recovery link.',
+                        l10n.forgotPasswordDesc,
                         style: Theme.of(context).textTheme.bodyMedium,
                       ),
                       const SizedBox(height: AppSpacing.xl),
 
                       AppTextField(
                         controller: _emailController,
-                        label: 'Email',
+                        label: l10n.email,
                         hint: 'user@rehlaa.com',
                         prefixSvgIcon: 'assets/icons/Message.svg',
                         keyboardType: TextInputType.emailAddress,
@@ -119,7 +122,7 @@ class _ForgotPasswordPageState extends ConsumerState<ForgotPasswordPage> {
                       ],
 
                       AppPrimaryButton(
-                        label: 'Send Recovery Email',
+                        label: l10n.sendRecoveryEmail,
                         isLoading: _isLoading,
                         onPressed: _submit,
                       ),
@@ -128,4 +131,5 @@ class _ForgotPasswordPageState extends ConsumerState<ForgotPasswordPage> {
                 ),
         ),
       );
+  }
 }

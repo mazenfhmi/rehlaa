@@ -1,8 +1,8 @@
-import '../../../../core/result/result.dart';
-import '../../domain/entities/auth_session.dart';
-import '../../domain/entities/auth_user.dart';
-import '../../domain/repositories/auth_repository.dart';
-import '../data_sources/auth_mock_data_source.dart';
+import 'package:rehlaa/core/result/result.dart';
+import 'package:rehlaa/features/authentication/data/data_sources/auth_mock_data_source.dart';
+import 'package:rehlaa/features/authentication/domain/entities/auth_session.dart';
+import 'package:rehlaa/features/authentication/domain/entities/auth_user.dart';
+import 'package:rehlaa/features/authentication/domain/repositories/auth_repository.dart';
 
 /// Mock implementation of [AuthRepository] handling login, registration,
 /// verification, and persistent session state.
@@ -44,7 +44,7 @@ class MockAuthRepository implements AuthRepository {
         user: AuthMockDataSource.defaultUser,
       );
       return Success(_currentSession);
-    } catch (e) {
+    } on Exception catch (e) {
       return Failure(NetworkFailure(message: e.toString()));
     }
   }
@@ -68,12 +68,11 @@ class MockAuthRepository implements AuthRepository {
         id: 'usr_${DateTime.now().millisecondsSinceEpoch}',
         email: email,
         displayName: name,
-        isEmailVerified: false,
       );
 
       _currentSession = AuthSession.unverified(user: newUser);
       return Success(_currentSession);
-    } catch (e) {
+    } on Exception catch (e) {
       return Failure(NetworkFailure(message: e.toString()));
     }
   }
@@ -86,7 +85,7 @@ class MockAuthRepository implements AuthRepository {
         user: AuthMockDataSource.defaultUser,
       );
       return Success(_currentSession);
-    } catch (e) {
+    } on Exception catch (e) {
       return Failure(NetworkFailure(message: e.toString()));
     }
   }
@@ -101,7 +100,7 @@ class MockAuthRepository implements AuthRepository {
         _currentSession = AuthSession.authenticated(user: verifiedUser);
       }
       return const Success(null);
-    } catch (e) {
+    } on Exception catch (e) {
       return Failure(NetworkFailure(message: e.toString()));
     }
   }
@@ -111,7 +110,7 @@ class MockAuthRepository implements AuthRepository {
     try {
       await _dataSource.simulateNetwork();
       return const Success(null);
-    } catch (e) {
+    } on Exception catch (e) {
       return Failure(NetworkFailure(message: e.toString()));
     }
   }
@@ -124,7 +123,7 @@ class MockAuthRepository implements AuthRepository {
     try {
       await _dataSource.simulateNetwork();
       return const Success(null);
-    } catch (e) {
+    } on Exception catch (e) {
       return Failure(NetworkFailure(message: e.toString()));
     }
   }

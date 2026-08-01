@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-import '../tokens/app_tokens.dart';
+import 'package:rehlaa/core/design_system/tokens/app_tokens.dart';
 
 // ---------------------------------------------------------------------------
 // AppTheme — adapted from .desgin-ui/lib/theme/
@@ -326,6 +327,7 @@ final CheckboxThemeData _checkboxTheme = CheckboxThemeData(
 
 TextStyle _t(double size, FontWeight weight, Color color) => TextStyle(
       fontFamily: 'PlusJakarta',
+      fontFamilyFallback: [GoogleFonts.cairo().fontFamily!],
       fontSize: size,
       fontWeight: weight,
       color: color,

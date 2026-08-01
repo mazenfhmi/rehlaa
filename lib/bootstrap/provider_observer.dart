@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../core/logging/app_logger.dart';
+import 'package:rehlaa/core/logging/app_logger.dart';
 
 /// Riverpod ProviderObserver that logs provider lifecycle events.
 ///

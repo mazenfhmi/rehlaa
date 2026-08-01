@@ -1,9 +1,8 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-
-import '../../tokens/app_tokens.dart';
-import '../images/app_network_image.dart';
+import 'package:rehlaa/core/design_system/components/images/app_network_image.dart';
+import 'package:rehlaa/core/design_system/tokens/app_tokens.dart';
 
 // ---------------------------------------------------------------------------
 // Card components
@@ -13,8 +12,7 @@ import '../images/app_network_image.dart';
 /// Standard outlined card matching the reference border/radius style.
 class AppCard extends StatelessWidget {
   const AppCard({
-    super.key,
-    required this.child,
+    required this.child, super.key,
     this.padding = const EdgeInsets.all(AppSpacing.base),
     this.onTap,
     this.borderRadius,
@@ -35,7 +33,7 @@ class AppCard extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       borderRadius: radius,
-      child: Container(
+      child: DecoratedBox(
         decoration: BoxDecoration(
           color: backgroundColor ?? Theme.of(context).cardTheme.color,
           borderRadius: radius,
@@ -54,10 +52,7 @@ class AppCard extends StatelessWidget {
 /// Payment / wallet card matching .desgin-ui/lib/components/card_info.dart
 class AppPaymentCard extends StatelessWidget {
   const AppPaymentCard({
-    super.key,
-    required this.last4Digits,
-    required this.name,
-    required this.expiryDate,
+    required this.last4Digits, required this.name, required this.expiryDate, super.key,
     this.isSelected = false,
     this.onTap,
     this.backgroundColor = AppColors.primary,
@@ -75,7 +70,7 @@ class AppPaymentCard extends StatelessWidget {
         onTap: onTap,
         child: AspectRatio(
           aspectRatio: 2,
-          child: Container(
+          child: DecoratedBox(
             decoration: BoxDecoration(
               color: backgroundColor,
               borderRadius: const BorderRadius.all(
@@ -165,14 +160,9 @@ class AppPaymentCard extends StatelessWidget {
 /// Product card — grid view, matching .desgin-ui/lib/components/product/product_card.dart
 class AppProductCard extends StatelessWidget {
   const AppProductCard({
-    super.key,
-    required this.image,
-    required this.brandName,
-    required this.title,
-    required this.price,
+    required this.image, required this.brandName, required this.title, required this.price, required this.onTap, super.key,
     this.priceAfterDiscount,
     this.discountPercent,
-    required this.onTap,
     this.isFavorite = false,
     this.onFavoriteTap,
     this.currencySymbol = 'SAR',
@@ -203,7 +193,7 @@ class AppProductCard extends StatelessWidget {
               aspectRatio: 1.15,
               child: Stack(
                 children: [
-                  AppNetworkImage(image, radius: AppRadius.md),
+                  AppNetworkImage(image),
                   if (discountPercent != null)
                     Positioned(
                       right: AppSpacing.sm,
@@ -266,11 +256,7 @@ class AppProductCard extends StatelessWidget {
 /// Horizontal product card — list view, matching secondary_product_card.dart
 class AppProductHorizontalCard extends StatelessWidget {
   const AppProductHorizontalCard({
-    super.key,
-    required this.image,
-    required this.brandName,
-    required this.title,
-    required this.price,
+    required this.image, required this.brandName, required this.title, required this.price, super.key,
     this.priceAfterDiscount,
     this.discountPercent,
     this.onTap,
@@ -300,7 +286,7 @@ class AppProductHorizontalCard extends StatelessWidget {
               aspectRatio: 1.15,
               child: Stack(
                 children: [
-                  AppNetworkImage(image, radius: AppRadius.md),
+                  AppNetworkImage(image),
                   if (discountPercent != null)
                     Positioned(
                       right: AppSpacing.sm,
@@ -354,8 +340,7 @@ class AppProductHorizontalCard extends StatelessWidget {
 /// Glassmorphism frosted-glass container with text.
 class AppBlurContainer extends StatelessWidget {
   const AppBlurContainer({
-    super.key,
-    required this.text,
+    required this.text, super.key,
     this.height = 40,
     this.width = 40,
     this.fontSize = 18,
@@ -449,8 +434,7 @@ class _FavoriteButton extends StatelessWidget {
 class _PriceRow extends StatelessWidget {
   const _PriceRow({
     required this.price,
-    this.priceAfterDiscount,
-    required this.currencySymbol,
+    required this.currencySymbol, this.priceAfterDiscount,
   });
 
   final double price;
@@ -475,7 +459,7 @@ class _PriceRow extends StatelessWidget {
             ),
           ),
           Text(
-            '${price.toStringAsFixed(2)}',
+            price.toStringAsFixed(2),
             style: TextStyle(
               color: Theme.of(context).textTheme.bodyMedium?.color,
               fontSize: 10,

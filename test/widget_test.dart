@@ -4,8 +4,8 @@ import 'package:rehlaa/core/design_system/design_system.dart';
 
 void main() {
   group('AppPrimaryButton Widget Test', () {
-    testWidgets('renders label and handles tap', (WidgetTester tester) async {
-      bool tapped = false;
+    testWidgets('renders label and handles tap', (tester) async {
+      var tapped = false;
 
       await tester.pumpWidget(
         MaterialApp(
@@ -27,7 +27,7 @@ void main() {
     });
 
     testWidgets('shows loading indicator when isLoading is true',
-        (WidgetTester tester) async {
+        (tester) async {
       await tester.pumpWidget(
         const MaterialApp(
           home: Scaffold(

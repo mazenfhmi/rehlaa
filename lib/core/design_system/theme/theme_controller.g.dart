@@ -56,7 +56,7 @@ final class ThemeControllerProvider
   }
 }
 
-String _$themeControllerHash() => r'7db59f441809dc2855d5bae6fb74f3edf20ea4ee';
+String _$themeControllerHash() => r'3cd6267bd3bdf1249756d2d4f8f566c3413286d7';
 
 /// Controls the active [ThemeMode] at runtime.
 ///

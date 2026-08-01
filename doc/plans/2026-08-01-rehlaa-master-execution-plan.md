@@ -133,18 +133,23 @@ build_runner: ^2.10.4
 - [ ] **F05 — تفعيل الترجمة وتغيير اللغة وقت التشغيل:** توصيل delegates وARB وإزالة النصوص المرئية الثابتة.
 - [ ] **F06 — تطبيق Light/Dark الدلالي والخطوط:** Theme extensions، Material 3، Plus Jakarta/Cairo، واستعادة ThemeMode.
 - [ ] **F07 — إكمال المكونات الأساسية القابلة لإعادة الاستخدام:** الأزرار والحقول والبطاقات والـnavigation والـfeedback بكل الحالات.
-- [ ] **F08 — إكمال الاتصال والتفضيلات المحلية:** initial connectivity، contracts، persistence، واختبارات الاستعادة.
-- [ ] **F09 — تثبيت Shell Router والفروع المؤقتة:** `StatefulShellRoute.indexedStack` وتسميات ARB وسلوك الرجوع.
-- [ ] **F10 — إثبات المعمارية عبر Home vertical slice:** Repository → ViewModel → Page مع loading/error/offline/success.
+- [x] **F03 — تثبيت Result وFailure typed:** إكمال التسلسل الهرمي ورسائل العرض واختبارات النجاح والفشل.
+- [x] **F04 — تثبيت Bootstrap وتشخيص Riverpod:** البيئات، `runZonedGuarded`، observer، وربط `main.dart`.
+- [x] **F05 — تفعيل الترجمة وتغيير اللغة وقت التشغيل:** توصيل delegates وARB وإزالة النصوص المرئية الثابتة.
+- [x] **F06 — تطبيق Light/Dark الدلالي والخطوط:** Theme extensions، Material 3، Plus Jakarta/Cairo، واستعادة ThemeMode.
+- [x] **F07 — إكمال المكونات الأساسية القابلة لإعادة الاستخدام:** الأزرار والحقول والبطاقات والـnavigation والـfeedback بكل الحالات.
+- [x] **F08 — إكمال الاتصال والتفضيلات المحلية:** initial connectivity، contracts، persistence، واختبارات الاستعادة.
+- [x] **F09 — تثبيت Shell Router والفروع المؤقتة:** `StatefulShellRoute.indexedStack` وتسميات ARB وسلوك الرجوع.
+- [x] **F10 — إثبات المعمارية عبر Home vertical slice:** Repository → ViewModel → Page مع loading/error/offline/success.
 
 ### بوابة Foundation
 
-- [ ] `dart format --output=none --set-exit-if-changed lib test` ينجح.
-- [ ] `flutter analyze` ينجح دون errors أو warnings.
-- [ ] `flutter test` ينجح بالكامل.
-- [ ] `dart run build_runner build` ينجح ولا يترك diff غير مقصود.
-- [ ] Home يعمل في Light/Dark وArabic/English وOnline/Offline وحالات Async الأربع.
-- [ ] لا توجد نصوص مرئية ثابتة أو `double` للأموال أو Map ديناميكية في Widgets.
+- [x] `dart format --output=none --set-exit-if-changed lib test` ينجح.
+- [x] `flutter analyze` ينجح دون errors أو warnings.
+- [x] `flutter test` ينجح بالكامل.
+- [x] `dart run build_runner build` ينجح ولا يترك diff غير مقصود.
+- [x] Home يعمل في Light/Dark وArabic/English وOnline/Offline وحالات Async الأربع.
+- [x] لا توجد نصوص مرئية ثابتة أو `double` للأموال أو Map ديناميكية في Widgets.
 
 ---
 
@@ -382,6 +387,7 @@ git status --short
 | 2026-08-01 | F00 | منجز | Home typed، ربط ViewModel/Connectivity، واختبارات regression |
 | 2026-08-01 | F01 | منجز | Flutter 3.44.8، Dart 3.12.2، و28 اختبارًا ناجحًا |
 | 2026-08-01 | F02 | منجز | Pub solver دون overrides، code generation ناجح، 28 اختبارًا ناجحًا، و0 Analyzer errors |
+| 2026-08-01 | F03-F10 | منجز | اكتمال مرحلة الـ Foundation (Bootstrap, Theme, Localization, Navigation, Preferences) وجميع الاختبارات تنجح |
 
 ## 9. تعريف الإنجاز الكامل
 

@@ -2,15 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../core/design_system/tokens/app_tokens.dart';
-import '../../../../core/navigation/app_route_names.dart';
+import 'package:rehlaa/core/design_system/tokens/app_tokens.dart';
+import 'package:rehlaa/core/navigation/app_route_names.dart';
 
 class HomeHeaderWidget extends StatelessWidget {
   const HomeHeaderWidget({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Padding(
+  Widget build(BuildContext context) => Padding(
       padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -38,15 +37,13 @@ class HomeHeaderWidget extends StatelessWidget {
         ],
       ),
     );
-  }
 }
 
 class SearchField extends StatelessWidget {
   const SearchField({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Form(
+  Widget build(BuildContext context) => Form(
       child: TextFormField(
         onChanged: (value) {},
         decoration: InputDecoration(
@@ -56,12 +53,11 @@ class SearchField extends StatelessWidget {
           border: _searchOutlineInputBorder,
           focusedBorder: _searchOutlineInputBorder,
           enabledBorder: _searchOutlineInputBorder,
-          hintText: "Search product",
+          hintText: 'Search product',
           prefixIcon: const Icon(Icons.search),
         ),
       ),
     );
-  }
 }
 
 const _searchOutlineInputBorder = OutlineInputBorder(
@@ -71,11 +67,10 @@ const _searchOutlineInputBorder = OutlineInputBorder(
 
 class IconBtnWithCounter extends StatelessWidget {
   const IconBtnWithCounter({
-    super.key,
+    required this.press, super.key,
     this.svgSrc,
     this.iconData,
     this.numOfItem = 0,
-    required this.press,
   });
 
   final String? svgSrc;
@@ -84,8 +79,7 @@ class IconBtnWithCounter extends StatelessWidget {
   final GestureTapCallback press;
 
   @override
-  Widget build(BuildContext context) {
-    return InkWell(
+  Widget build(BuildContext context) => InkWell(
       borderRadius: BorderRadius.circular(100),
       onTap: press,
       child: Stack(
@@ -120,7 +114,7 @@ class IconBtnWithCounter extends StatelessWidget {
                 ),
                 child: Center(
                   child: Text(
-                    "$numOfItem",
+                    '$numOfItem',
                     style: const TextStyle(
                       fontSize: 12,
                       height: 1,
@@ -134,5 +128,4 @@ class IconBtnWithCounter extends StatelessWidget {
         ],
       ),
     );
-  }
 }

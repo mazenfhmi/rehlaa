@@ -1,7 +1,6 @@
+import 'package:rehlaa/features/authentication/data/providers/auth_providers.dart';
+import 'package:rehlaa/features/authentication/domain/entities/auth_session.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-
-import '../../data/providers/auth_providers.dart';
-import '../../domain/entities/auth_session.dart';
 
 part 'auth_session_controller.g.dart';
 

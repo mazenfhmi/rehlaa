@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../core/design_system/design_system.dart';
-import '../core/design_system/theme/theme_controller.dart';
-import '../core/localization/locale_controller.dart';
-import '../core/navigation/app_router.dart';
+import 'package:rehlaa/core/design_system/design_system.dart';
+import 'package:rehlaa/core/design_system/theme/theme_controller.dart';
+import 'package:rehlaa/core/localization/locale_controller.dart';
+import 'package:rehlaa/core/navigation/app_router.dart';
+import 'package:rehlaa/generated/l10n/app_localizations.dart';
 
 /// Root application widget.
 ///
@@ -34,11 +34,9 @@ class RehlaaApp extends ConsumerWidget {
 
       // Localization — Arabic (default) + English
       locale: locale,
-      supportedLocales: const [
-        Locale('ar'),
-        Locale('en'),
-      ],
+      supportedLocales: AppLocalizations.supportedLocales,
       localizationsDelegates: const [
+        AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,

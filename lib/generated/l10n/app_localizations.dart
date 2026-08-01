@@ -206,6 +206,60 @@ abstract class AppLocalizations {
   /// **'Forgot Password?'**
   String get forgotPassword;
 
+  /// No description provided for @alreadyHaveAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Already have an account?'**
+  String get alreadyHaveAccount;
+
+  /// No description provided for @dontHaveAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Don\'t have an account?'**
+  String get dontHaveAccount;
+
+  /// No description provided for @continueWithGoogle.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue with Google'**
+  String get continueWithGoogle;
+
+  /// No description provided for @backToSignIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to Sign In'**
+  String get backToSignIn;
+
+  /// No description provided for @sendRecoveryEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Send Recovery Email'**
+  String get sendRecoveryEmail;
+
+  /// No description provided for @passwordRecoveryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Password Recovery'**
+  String get passwordRecoveryTitle;
+
+  /// No description provided for @recoveryEmailSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Recovery email sent!'**
+  String get recoveryEmailSent;
+
+  /// No description provided for @recoveryEmailSentDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Please check your inbox for instructions to reset your password.'**
+  String get recoveryEmailSentDesc;
+
+  /// No description provided for @forgotPasswordDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your email address and we will send you a recovery link.'**
+  String get forgotPasswordDesc;
+
   /// No description provided for @fullName.
   ///
   /// In en, this message translates to:

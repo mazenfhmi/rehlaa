@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-import '../../tokens/app_tokens.dart';
+import 'package:rehlaa/core/design_system/tokens/app_tokens.dart';
+import 'package:rehlaa/generated/l10n/app_localizations.dart';
 
 // ---------------------------------------------------------------------------
 // Layout & navigation components
@@ -11,9 +11,8 @@ import '../../tokens/app_tokens.dart';
 /// Application scaffold wrapper ensuring consistent scaffold background.
 class AppScaffold extends StatelessWidget {
   const AppScaffold({
-    super.key,
+    required this.body, super.key,
     this.appBar,
-    required this.body,
     this.bottomNavigationBar,
     this.floatingActionButton,
     this.backgroundColor,
@@ -49,8 +48,7 @@ class AppScaffold extends StatelessWidget {
 /// App bar matching the reference: no elevation, centered or left title.
 class AppPageHeader extends StatelessWidget implements PreferredSizeWidget {
   const AppPageHeader({
-    super.key,
-    required this.title,
+    required this.title, super.key,
     this.centerTitle = false,
     this.leading,
     this.actions,
@@ -78,7 +76,6 @@ class AppPageHeader extends StatelessWidget implements PreferredSizeWidget {
         actions: actions,
         backgroundColor: backgroundColor,
         bottom: bottom,
-        automaticallyImplyLeading: true,
       );
 }
 
@@ -100,10 +97,7 @@ class AppNavItem {
 /// Bottom navigation bar using SVG icons, matching the reference design.
 class AppBottomNavigation extends StatelessWidget {
   const AppBottomNavigation({
-    super.key,
-    required this.items,
-    required this.currentIndex,
-    required this.onTap,
+    required this.items, required this.currentIndex, required this.onTap, super.key,
     this.cartBadgeCount = 0,
     this.cartTabIndex = 3,
   });
@@ -229,11 +223,10 @@ class AppDivider extends StatelessWidget {
 /// Section header: title + optional "See all" action.
 class AppSectionHeader extends StatelessWidget {
   const AppSectionHeader({
-    super.key,
-    required this.title,
+    required this.title, super.key,
     this.trailing,
     this.onTrailingTap,
-    this.trailingLabel = 'See All',
+    this.trailingLabel,
     this.padding = const EdgeInsetsDirectional.symmetric(
       horizontal: AppSpacing.base,
       vertical: AppSpacing.sm,
@@ -243,11 +236,13 @@ class AppSectionHeader extends StatelessWidget {
   final String title;
   final Widget? trailing;
   final VoidCallback? onTrailingTap;
-  final String trailingLabel;
+  final String? trailingLabel;
   final EdgeInsetsGeometry padding;
 
   @override
-  Widget build(BuildContext context) => Padding(
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    return Padding(
         padding: padding,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -262,11 +257,12 @@ class AppSectionHeader extends StatelessWidget {
                   padding: EdgeInsets.zero,
                   minimumSize: Size.zero,
                 ),
-                child: Text(trailingLabel),
+                child: Text(trailingLabel ?? l10n.seeAllLabel),
               ),
           ],
         ),
       );
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -274,8 +270,7 @@ class AppSectionHeader extends StatelessWidget {
 /// Consistent horizontal page padding (EdgeInsetsDirectional for RTL support).
 class AppResponsivePadding extends StatelessWidget {
   const AppResponsivePadding({
-    super.key,
-    required this.child,
+    required this.child, super.key,
     this.horizontal = AppSpacing.base,
     this.vertical = 0,
   });
@@ -303,7 +298,9 @@ class AppOfflineBanner extends StatelessWidget {
   const AppOfflineBanner({super.key});
 
   @override
-  Widget build(BuildContext context) => Container(
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    return Container(
         width: double.infinity,
         color: AppColors.warning,
         padding: const EdgeInsets.symmetric(
@@ -316,7 +313,7 @@ class AppOfflineBanner extends StatelessWidget {
             const SizedBox(width: AppSpacing.sm),
             Expanded(
               child: Text(
-                'You are offline. Some features are unavailable.',
+                l10n.offlineMessage,
                 style: Theme.of(context).textTheme.labelSmall?.copyWith(
                       color: AppColors.white,
                     ),
@@ -325,4 +322,5 @@ class AppOfflineBanner extends StatelessWidget {
           ],
         ),
       );
+  }
 }

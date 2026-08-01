@@ -56,7 +56,7 @@ final class LocaleControllerProvider
   }
 }
 
-String _$localeControllerHash() => r'7f77d24b05e1ccf37b41ee33dbd8e7f72bceba29';
+String _$localeControllerHash() => r'2e7fa320c4d7b38b6e7b934699bc2be013be4d02';
 
 /// Controls the active locale at runtime.
 ///

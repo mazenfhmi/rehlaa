@@ -1,13 +1,14 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:rehlaa/app/app.dart';
+import 'package:rehlaa/bootstrap/app_environment.dart';
+import 'package:rehlaa/bootstrap/provider_observer.dart';
+import 'package:rehlaa/core/logging/app_logger.dart';
+import 'package:rehlaa/core/storage/storage_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../app/app.dart';
-import '../core/logging/app_logger.dart';
-import '../core/storage/storage_service.dart';
-import 'app_environment.dart';
-import 'provider_observer.dart';
 
 /// Initializes all platform services and starts the application.
 ///
@@ -35,6 +36,12 @@ Future<void> bootstrap({
       details.stack,
     );
     FlutterError.presentError(details);
+  };
+
+  // Forward uncaught asynchronous errors.
+  PlatformDispatcher.instance.onError = (error, stack) {
+    AppLogger.error('Unhandled Async Error: $error', error, stack);
+    return true;
   };
 
   AppLogger.info('Rehlaa starting [${environment.label}]');

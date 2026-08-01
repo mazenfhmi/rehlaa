@@ -1,5 +1,4 @@
-import '../../domain/entities/auth_session.dart';
-import '../../domain/entities/auth_user.dart';
+import 'package:rehlaa/features/authentication/domain/entities/auth_user.dart';
 
 /// Configurable mock scenarios for testing auth failure cases.
 enum AuthMockScenario {
@@ -29,7 +28,6 @@ class AuthMockDataSource {
     id: 'usr_mock_102',
     email: 'new@rehlaa.com',
     displayName: 'New User',
-    isEmailVerified: false,
   );
 
   Future<void> simulateNetwork() async {

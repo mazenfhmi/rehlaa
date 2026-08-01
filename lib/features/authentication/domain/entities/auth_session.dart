@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'auth_user.dart';
+import 'package:rehlaa/features/authentication/domain/entities/auth_user.dart';
 
 part 'auth_session.freezed.dart';
 

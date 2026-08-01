@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../../core/design_system/tokens/app_tokens.dart';
-import '../../domain/entities/home_category.dart';
+import 'package:rehlaa/core/design_system/tokens/app_tokens.dart';
+import 'package:rehlaa/features/home/domain/entities/home_category.dart';
 
 class CategoriesWidget extends StatelessWidget {
   const CategoriesWidget({

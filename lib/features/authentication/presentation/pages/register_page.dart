@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../core/design_system/design_system.dart';
-import '../../../../core/navigation/app_route_names.dart';
-import '../../../../core/validation/validators.dart';
-import '../../data/providers/auth_providers.dart';
-import '../view_models/auth_session_controller.dart';
+import 'package:rehlaa/core/design_system/design_system.dart';
+import 'package:rehlaa/core/navigation/app_route_names.dart';
+import 'package:rehlaa/core/validation/validators.dart';
+import 'package:rehlaa/features/authentication/data/providers/auth_providers.dart';
+import 'package:rehlaa/features/authentication/presentation/view_models/auth_session_controller.dart';
+import 'package:rehlaa/generated/l10n/app_localizations.dart';
 
 /// Sign-up page matching `.desgin-ui/lib/screens/auth/views/signup_screen.dart`.
 class SignUpPage extends ConsumerStatefulWidget {
@@ -61,8 +62,10 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
   }
 
   @override
-  Widget build(BuildContext context) => AppScaffold(
-        appBar: const AppPageHeader(title: 'Sign Up'),
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    return AppScaffold(
+        appBar: AppPageHeader(title: l10n.signUp),
         body: SingleChildScrollView(
           padding: const EdgeInsets.all(AppSpacing.base),
           child: Form(
@@ -84,7 +87,7 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
                 // Name Field
                 AppTextField(
                   controller: _nameController,
-                  label: 'Full Name',
+                  label: l10n.fullName,
                   hint: 'Mazen Ahmed',
                   prefixSvgIcon: 'assets/icons/Profile.svg',
                   textInputAction: TextInputAction.next,
@@ -96,7 +99,7 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
                 // Email Field
                 AppTextField(
                   controller: _emailController,
-                  label: 'Email',
+                  label: l10n.email,
                   hint: 'user@rehlaa.com',
                   prefixSvgIcon: 'assets/icons/Message.svg',
                   keyboardType: TextInputType.emailAddress,
@@ -122,7 +125,7 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
 
                 // Sign Up Button
                 AppPrimaryButton(
-                  label: 'Sign Up',
+                  label: l10n.signUp,
                   isLoading: _isLoading,
                   onPressed: _submit,
                 ),
@@ -132,9 +135,9 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text('Already have an account?'),
+                    Text(l10n.alreadyHaveAccount),
                     AppSecondaryButton(
-                      label: 'Log in',
+                      label: l10n.signIn,
                       onPressed: () => context.pop(),
                     ),
                   ],
@@ -144,4 +147,5 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
           ),
         ),
       );
+  }
 }
