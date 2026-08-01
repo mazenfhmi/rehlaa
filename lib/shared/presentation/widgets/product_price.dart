@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:rehlaa/core/design_system/tokens/app_tokens.dart';
 import 'package:rehlaa/shared/domain/money/money.dart';
-import 'package:intl/intl.dart';
 
 class ProductPrice extends StatelessWidget {
-  final Money currentPrice;
-  final Money? compareAtPrice;
-  final TextStyle? currentPriceStyle;
-  final TextStyle? compareAtPriceStyle;
 
   const ProductPrice({
-    super.key,
-    required this.currentPrice,
+    required this.currentPrice, super.key,
     this.compareAtPrice,
     this.currentPriceStyle,
     this.compareAtPriceStyle,
   });
+  final Money currentPrice;
+  final Money? compareAtPrice;
+  final TextStyle? currentPriceStyle;
+  final TextStyle? compareAtPriceStyle;
 
   String _formatPrice(Money money) {
     final format = NumberFormat.decimalPattern('en');

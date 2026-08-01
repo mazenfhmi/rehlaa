@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'money.g.dart';
@@ -6,8 +5,6 @@ part 'money.g.dart';
 @JsonSerializable()
 @immutable
 class Money {
-  final String currencyCode;
-  final int minorUnits;
 
   const Money({
     required this.currencyCode,
@@ -17,6 +14,11 @@ class Money {
   const Money.sdg(this.minorUnits) : currencyCode = 'SDG';
 
   factory Money.fromJson(Map<String, dynamic> json) => _$MoneyFromJson(json);
+  final String currencyCode;
+  final int minorUnits;
+  
+  String get formatted => '${(minorUnits / 100).toStringAsFixed(2)} $currencyCode';
+
   Map<String, dynamic> toJson() => _$MoneyToJson(this);
 
   Money operator +(Money other) {

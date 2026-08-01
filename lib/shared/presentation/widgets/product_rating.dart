@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:rehlaa/core/design_system/tokens/app_tokens.dart';
 
 class ProductRating extends StatelessWidget {
-  final double rating;
-  final int reviewCount;
 
   const ProductRating({
-    super.key,
-    required this.rating,
-    required this.reviewCount,
+    required this.rating, required this.reviewCount, super.key,
   });
+  final double rating;
+  final int reviewCount;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +15,6 @@ class ProductRating extends StatelessWidget {
 
     return Row(
       mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         const Icon(Icons.star_rounded, size: 16, color: AppColors.warning),
         const SizedBox(width: 4),

@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:rehlaa/shared/domain/money/money.dart';
 import 'package:rehlaa/shared/domain/catalog/product_option_group.dart';
+import 'package:rehlaa/shared/domain/money/money.dart';
 
 part 'product.freezed.dart';
 part 'product.g.dart';
@@ -19,12 +19,7 @@ abstract class Product with _$Product {
     required String imageUrl,
     required List<String> galleryUrls,
     required Money basePrice,
-    Money? compareAtPrice,
-    required double rating,
-    required int reviewCount,
-    required StockStatus stockStatus,
-    required bool isFeatured,
-    required List<ProductOptionGroup> optionGroups,
+    required double rating, required int reviewCount, required StockStatus stockStatus, required bool isFeatured, required List<ProductOptionGroup> optionGroups, Money? compareAtPrice,
   }) = _Product;
 
   factory Product.fromJson(Map<String, dynamic> json) => _$ProductFromJson(json);

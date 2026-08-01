@@ -1,0 +1,50 @@
+import 'package:flutter_test/flutter_test.dart';
+import 'package:rehlaa/features/checkout/data/repositories/mock_checkout_repository.dart';
+import 'package:rehlaa/features/checkout/domain/entities/checkout_quote.dart';
+import 'package:rehlaa/shared/domain/money/money.dart';
+
+void main() {
+  group('MockCheckoutRepository', () {
+    late MockCheckoutRepository repo;
+
+    setUp(() {
+      repo = MockCheckoutRepository(delay: Duration.zero);
+    });
+
+    test('returns bank of khartoum details correctly', () async {
+      final result = await repo.getBankAccount('bok');
+      
+      expect(result.isSuccess, true);
+      final account = result.dataOrThrow;
+      
+      expect(account.accountNumber, '8199246');
+      expect(account.bankId, 'bok');
+    });
+
+    test('returns failure for unknown bank', () async {
+      final result = await repo.getBankAccount('unknown');
+      
+      expect(result.isFailure, true);
+    });
+
+    test('submits bank transfer mock successfully', () async {
+      final quote = CheckoutQuote(
+        subtotal: const Money.sdg(100),
+        couponDiscount: const Money.sdg(0),
+        referralDiscount: const Money.sdg(0),
+        walletApplied: const Money.sdg(0),
+        externalPayable: const Money.sdg(100),
+        grandTotal: const Money.sdg(100),
+      );
+
+      final result = await repo.submitBankTransfer(
+        quote: quote,
+        bankId: 'bok',
+        operationNumber: '12345',
+        receiptFilePath: 'path/to/receipt.jpg',
+      );
+      
+      expect(result.isSuccess, true);
+    });
+  });
+}

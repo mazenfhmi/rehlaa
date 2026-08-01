@@ -22,12 +22,12 @@ mixin _$Product {
   String get imageUrl;
   List<String> get galleryUrls;
   Money get basePrice;
-  Money? get compareAtPrice;
   double get rating;
   int get reviewCount;
   StockStatus get stockStatus;
   bool get isFeatured;
   List<ProductOptionGroup> get optionGroups;
+  Money? get compareAtPrice;
 
   /// Create a copy of Product
   /// with the given fields replaced by the non-null parameter values.
@@ -61,8 +61,6 @@ mixin _$Product {
             ) &&
             (identical(other.basePrice, basePrice) ||
                 other.basePrice == basePrice) &&
-            (identical(other.compareAtPrice, compareAtPrice) ||
-                other.compareAtPrice == compareAtPrice) &&
             (identical(other.rating, rating) || other.rating == rating) &&
             (identical(other.reviewCount, reviewCount) ||
                 other.reviewCount == reviewCount) &&
@@ -73,7 +71,9 @@ mixin _$Product {
             const DeepCollectionEquality().equals(
               other.optionGroups,
               optionGroups,
-            ));
+            ) &&
+            (identical(other.compareAtPrice, compareAtPrice) ||
+                other.compareAtPrice == compareAtPrice));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -89,17 +89,17 @@ mixin _$Product {
     imageUrl,
     const DeepCollectionEquality().hash(galleryUrls),
     basePrice,
-    compareAtPrice,
     rating,
     reviewCount,
     stockStatus,
     isFeatured,
     const DeepCollectionEquality().hash(optionGroups),
+    compareAtPrice,
   );
 
   @override
   String toString() {
-    return 'Product(id: $id, categoryId: $categoryId, nameAr: $nameAr, nameEn: $nameEn, descriptionAr: $descriptionAr, descriptionEn: $descriptionEn, imageUrl: $imageUrl, galleryUrls: $galleryUrls, basePrice: $basePrice, compareAtPrice: $compareAtPrice, rating: $rating, reviewCount: $reviewCount, stockStatus: $stockStatus, isFeatured: $isFeatured, optionGroups: $optionGroups)';
+    return 'Product(id: $id, categoryId: $categoryId, nameAr: $nameAr, nameEn: $nameEn, descriptionAr: $descriptionAr, descriptionEn: $descriptionEn, imageUrl: $imageUrl, galleryUrls: $galleryUrls, basePrice: $basePrice, rating: $rating, reviewCount: $reviewCount, stockStatus: $stockStatus, isFeatured: $isFeatured, optionGroups: $optionGroups, compareAtPrice: $compareAtPrice)';
   }
 }
 
@@ -118,12 +118,12 @@ abstract mixin class $ProductCopyWith<$Res> {
     String imageUrl,
     List<String> galleryUrls,
     Money basePrice,
-    Money? compareAtPrice,
     double rating,
     int reviewCount,
     StockStatus stockStatus,
     bool isFeatured,
     List<ProductOptionGroup> optionGroups,
+    Money? compareAtPrice,
   });
 }
 
@@ -148,12 +148,12 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
     Object? imageUrl = null,
     Object? galleryUrls = null,
     Object? basePrice = null,
-    Object? compareAtPrice = freezed,
     Object? rating = null,
     Object? reviewCount = null,
     Object? stockStatus = null,
     Object? isFeatured = null,
     Object? optionGroups = null,
+    Object? compareAtPrice = freezed,
   }) {
     return _then(
       _self.copyWith(
@@ -193,10 +193,6 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
             ? _self.basePrice
             : basePrice // ignore: cast_nullable_to_non_nullable
                   as Money,
-        compareAtPrice: freezed == compareAtPrice
-            ? _self.compareAtPrice
-            : compareAtPrice // ignore: cast_nullable_to_non_nullable
-                  as Money?,
         rating: null == rating
             ? _self.rating
             : rating // ignore: cast_nullable_to_non_nullable
@@ -217,6 +213,10 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
             ? _self.optionGroups
             : optionGroups // ignore: cast_nullable_to_non_nullable
                   as List<ProductOptionGroup>,
+        compareAtPrice: freezed == compareAtPrice
+            ? _self.compareAtPrice
+            : compareAtPrice // ignore: cast_nullable_to_non_nullable
+                  as Money?,
       ),
     );
   }
@@ -325,12 +325,12 @@ extension ProductPatterns on Product {
       String imageUrl,
       List<String> galleryUrls,
       Money basePrice,
-      Money? compareAtPrice,
       double rating,
       int reviewCount,
       StockStatus stockStatus,
       bool isFeatured,
       List<ProductOptionGroup> optionGroups,
+      Money? compareAtPrice,
     )?
     $default, {
     required TResult orElse(),
@@ -348,12 +348,12 @@ extension ProductPatterns on Product {
           _that.imageUrl,
           _that.galleryUrls,
           _that.basePrice,
-          _that.compareAtPrice,
           _that.rating,
           _that.reviewCount,
           _that.stockStatus,
           _that.isFeatured,
           _that.optionGroups,
+          _that.compareAtPrice,
         );
       case _:
         return orElse();
@@ -385,12 +385,12 @@ extension ProductPatterns on Product {
       String imageUrl,
       List<String> galleryUrls,
       Money basePrice,
-      Money? compareAtPrice,
       double rating,
       int reviewCount,
       StockStatus stockStatus,
       bool isFeatured,
       List<ProductOptionGroup> optionGroups,
+      Money? compareAtPrice,
     )
     $default,
   ) {
@@ -407,12 +407,12 @@ extension ProductPatterns on Product {
           _that.imageUrl,
           _that.galleryUrls,
           _that.basePrice,
-          _that.compareAtPrice,
           _that.rating,
           _that.reviewCount,
           _that.stockStatus,
           _that.isFeatured,
           _that.optionGroups,
+          _that.compareAtPrice,
         );
       case _:
         throw StateError('Unexpected subclass');
@@ -443,12 +443,12 @@ extension ProductPatterns on Product {
       String imageUrl,
       List<String> galleryUrls,
       Money basePrice,
-      Money? compareAtPrice,
       double rating,
       int reviewCount,
       StockStatus stockStatus,
       bool isFeatured,
       List<ProductOptionGroup> optionGroups,
+      Money? compareAtPrice,
     )?
     $default,
   ) {
@@ -465,12 +465,12 @@ extension ProductPatterns on Product {
           _that.imageUrl,
           _that.galleryUrls,
           _that.basePrice,
-          _that.compareAtPrice,
           _that.rating,
           _that.reviewCount,
           _that.stockStatus,
           _that.isFeatured,
           _that.optionGroups,
+          _that.compareAtPrice,
         );
       case _:
         return null;
@@ -491,12 +491,12 @@ class _Product implements Product {
     required this.imageUrl,
     required final List<String> galleryUrls,
     required this.basePrice,
-    this.compareAtPrice,
     required this.rating,
     required this.reviewCount,
     required this.stockStatus,
     required this.isFeatured,
     required final List<ProductOptionGroup> optionGroups,
+    this.compareAtPrice,
   }) : _galleryUrls = galleryUrls,
        _optionGroups = optionGroups;
   factory _Product.fromJson(Map<String, dynamic> json) =>
@@ -527,8 +527,6 @@ class _Product implements Product {
   @override
   final Money basePrice;
   @override
-  final Money? compareAtPrice;
-  @override
   final double rating;
   @override
   final int reviewCount;
@@ -543,6 +541,9 @@ class _Product implements Product {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_optionGroups);
   }
+
+  @override
+  final Money? compareAtPrice;
 
   /// Create a copy of Product
   /// with the given fields replaced by the non-null parameter values.
@@ -579,8 +580,6 @@ class _Product implements Product {
             ) &&
             (identical(other.basePrice, basePrice) ||
                 other.basePrice == basePrice) &&
-            (identical(other.compareAtPrice, compareAtPrice) ||
-                other.compareAtPrice == compareAtPrice) &&
             (identical(other.rating, rating) || other.rating == rating) &&
             (identical(other.reviewCount, reviewCount) ||
                 other.reviewCount == reviewCount) &&
@@ -591,7 +590,9 @@ class _Product implements Product {
             const DeepCollectionEquality().equals(
               other._optionGroups,
               _optionGroups,
-            ));
+            ) &&
+            (identical(other.compareAtPrice, compareAtPrice) ||
+                other.compareAtPrice == compareAtPrice));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -607,17 +608,17 @@ class _Product implements Product {
     imageUrl,
     const DeepCollectionEquality().hash(_galleryUrls),
     basePrice,
-    compareAtPrice,
     rating,
     reviewCount,
     stockStatus,
     isFeatured,
     const DeepCollectionEquality().hash(_optionGroups),
+    compareAtPrice,
   );
 
   @override
   String toString() {
-    return 'Product(id: $id, categoryId: $categoryId, nameAr: $nameAr, nameEn: $nameEn, descriptionAr: $descriptionAr, descriptionEn: $descriptionEn, imageUrl: $imageUrl, galleryUrls: $galleryUrls, basePrice: $basePrice, compareAtPrice: $compareAtPrice, rating: $rating, reviewCount: $reviewCount, stockStatus: $stockStatus, isFeatured: $isFeatured, optionGroups: $optionGroups)';
+    return 'Product(id: $id, categoryId: $categoryId, nameAr: $nameAr, nameEn: $nameEn, descriptionAr: $descriptionAr, descriptionEn: $descriptionEn, imageUrl: $imageUrl, galleryUrls: $galleryUrls, basePrice: $basePrice, rating: $rating, reviewCount: $reviewCount, stockStatus: $stockStatus, isFeatured: $isFeatured, optionGroups: $optionGroups, compareAtPrice: $compareAtPrice)';
   }
 }
 
@@ -637,12 +638,12 @@ abstract mixin class _$ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
     String imageUrl,
     List<String> galleryUrls,
     Money basePrice,
-    Money? compareAtPrice,
     double rating,
     int reviewCount,
     StockStatus stockStatus,
     bool isFeatured,
     List<ProductOptionGroup> optionGroups,
+    Money? compareAtPrice,
   });
 }
 
@@ -667,12 +668,12 @@ class __$ProductCopyWithImpl<$Res> implements _$ProductCopyWith<$Res> {
     Object? imageUrl = null,
     Object? galleryUrls = null,
     Object? basePrice = null,
-    Object? compareAtPrice = freezed,
     Object? rating = null,
     Object? reviewCount = null,
     Object? stockStatus = null,
     Object? isFeatured = null,
     Object? optionGroups = null,
+    Object? compareAtPrice = freezed,
   }) {
     return _then(
       _Product(
@@ -712,10 +713,6 @@ class __$ProductCopyWithImpl<$Res> implements _$ProductCopyWith<$Res> {
             ? _self.basePrice
             : basePrice // ignore: cast_nullable_to_non_nullable
                   as Money,
-        compareAtPrice: freezed == compareAtPrice
-            ? _self.compareAtPrice
-            : compareAtPrice // ignore: cast_nullable_to_non_nullable
-                  as Money?,
         rating: null == rating
             ? _self.rating
             : rating // ignore: cast_nullable_to_non_nullable
@@ -736,6 +733,10 @@ class __$ProductCopyWithImpl<$Res> implements _$ProductCopyWith<$Res> {
             ? _self._optionGroups
             : optionGroups // ignore: cast_nullable_to_non_nullable
                   as List<ProductOptionGroup>,
+        compareAtPrice: freezed == compareAtPrice
+            ? _self.compareAtPrice
+            : compareAtPrice // ignore: cast_nullable_to_non_nullable
+                  as Money?,
       ),
     );
   }

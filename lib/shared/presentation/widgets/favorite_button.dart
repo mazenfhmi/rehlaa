@@ -2,20 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:rehlaa/core/design_system/tokens/app_tokens.dart';
 
 class FavoriteButton extends StatelessWidget {
+
+  const FavoriteButton({
+    required this.isFavorite, required this.onTap, super.key,
+    this.size = 48.0, 
+  });
   final bool isFavorite;
   final VoidCallback onTap;
   final double size;
 
-  const FavoriteButton({
-    super.key,
-    required this.isFavorite,
-    required this.onTap,
-    this.size = 48.0, 
-  });
-
   @override
-  Widget build(BuildContext context) {
-    return SizedBox(
+  Widget build(BuildContext context) => SizedBox(
       width: size,
       height: size,
       child: IconButton(
@@ -27,5 +24,4 @@ class FavoriteButton extends StatelessWidget {
         ),
       ),
     );
-  }
 }

@@ -1,8 +1,8 @@
+import 'package:rehlaa/features/home/domain/entities/home_feed.dart';
 import 'package:rehlaa/shared/domain/catalog/category.dart';
 import 'package:rehlaa/shared/domain/catalog/product.dart';
 import 'package:rehlaa/shared/domain/catalog/product_option_group.dart';
 import 'package:rehlaa/shared/domain/money/money.dart';
-import 'package:rehlaa/features/home/domain/entities/home_feed.dart';
 
 class CatalogMockData {
   static final List<Category> categories = [
@@ -21,7 +21,7 @@ class CatalogMockData {
   ];
 
   static final List<Product> products = [
-    Product(
+    const Product(
       id: 'prod_google_one',
       categoryId: 'cat_subscriptions',
       nameAr: 'جوجل ون + جيميناي برو',
@@ -29,15 +29,15 @@ class CatalogMockData {
       descriptionAr: 'اشتراك جوجل ون مع جيميناي برو لمدة شهر',
       descriptionEn: 'Google One with Gemini Pro for one month',
       imageUrl: 'https://placehold.co/400/orange/white?text=G1',
-      galleryUrls: const ['https://placehold.co/400/orange/white?text=G1'],
-      basePrice: const Money.sdg(13500000), // 135,000.00 SDG
-      compareAtPrice: const Money.sdg(39900000), // 399,000.00 SDG
+      galleryUrls: ['https://placehold.co/400/orange/white?text=G1'],
+      basePrice: Money.sdg(13500000), // 135,000.00 SDG
+      compareAtPrice: Money.sdg(39900000), // 399,000.00 SDG
       rating: 4.8,
       reviewCount: 120,
       stockStatus: StockStatus.inStock,
       isFeatured: true,
       optionGroups: [
-        const ProductOptionGroup(
+        ProductOptionGroup(
           id: 'opt_duration',
           nameAr: 'المدة',
           nameEn: 'Duration',

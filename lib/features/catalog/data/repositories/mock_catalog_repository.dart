@@ -8,17 +8,15 @@ import 'package:rehlaa/shared/domain/catalog/category.dart';
 import 'package:rehlaa/shared/domain/catalog/product.dart';
 
 class MockCatalogRepository implements CatalogRepository {
+
+  MockCatalogRepository({
+    required this._connectivity,
+    required this._localDataSource,
+    this._delay = const Duration(milliseconds: 800),
+  });
   final ConnectivityService _connectivity;
   final CatalogLocalDataSource _localDataSource;
   final Duration _delay;
-
-  MockCatalogRepository({
-    required ConnectivityService connectivity,
-    required CatalogLocalDataSource localDataSource,
-    Duration delay = const Duration(milliseconds: 800),
-  })  : _connectivity = connectivity,
-        _localDataSource = localDataSource,
-        _delay = delay;
 
   @override
   Future<Result<HomeFeed>> getHomeFeed() async {
@@ -31,7 +29,7 @@ class MockCatalogRepository implements CatalogRepository {
       return const Failure(OfflineFailure());
     }
 
-    await Future.delayed(_delay);
+    await Future<void>.delayed(_delay);
     final feed = CatalogMockData.homeFeed;
     await _localDataSource.cacheHomeFeed(feed);
     return Success(feed);
@@ -39,13 +37,13 @@ class MockCatalogRepository implements CatalogRepository {
 
   @override
   Future<Result<List<Product>>> getProducts() async {
-    await Future.delayed(_delay);
+    await Future<void>.delayed(_delay);
     return Success(CatalogMockData.products);
   }
 
   @override
   Future<Result<Product>> getProductById(String id) async {
-    await Future.delayed(_delay);
+    await Future<void>.delayed(_delay);
     final product = CatalogMockData.products.where((p) => p.id == id).firstOrNull;
     if (product != null) {
       return Success(product);
@@ -55,7 +53,7 @@ class MockCatalogRepository implements CatalogRepository {
 
   @override
   Future<Result<List<Category>>> getCategories() async {
-    await Future.delayed(_delay);
+    await Future<void>.delayed(_delay);
     return Success(CatalogMockData.categories);
   }
 }

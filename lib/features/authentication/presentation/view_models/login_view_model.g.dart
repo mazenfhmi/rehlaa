@@ -44,7 +44,7 @@ final class SignInViewModelProvider
   }
 }
 
-String _$signInViewModelHash() => r'06b5b9511b8dcd39f7ef078be976cf4c5c7b728f';
+String _$signInViewModelHash() => r'8f9728caf1a29d03fb6981f366c7cd7ed86e8240';
 
 /// ViewModel managing the sign-in form submission state.
 

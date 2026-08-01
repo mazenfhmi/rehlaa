@@ -4,14 +4,12 @@ import 'package:rehlaa/shared/domain/catalog/product.dart';
 import 'package:rehlaa/shared/domain/money/money.dart';
 import 'package:rehlaa/shared/presentation/widgets/product_card.dart';
 
-Widget testApp(Widget child) {
-  return MaterialApp(
+Widget testApp(Widget child) => MaterialApp(
     home: Scaffold(body: child),
   );
-}
 
 void main() {
-  final fixtureProduct = Product(
+  const fixtureProduct = Product(
     id: 'prod_google_one',
     categoryId: 'cat_subscriptions',
     nameAr: 'جوجل ون + جيميناي برو',
@@ -19,14 +17,14 @@ void main() {
     descriptionAr: 'اشتراك جوجل ون',
     descriptionEn: 'Google One',
     imageUrl: 'https://placehold.co/400',
-    galleryUrls: const [],
-    basePrice: const Money.sdg(13500000), // 135,000 SDG
-    compareAtPrice: const Money.sdg(39900000), // 399,000 SDG
+    galleryUrls: [],
+    basePrice: Money.sdg(13500000), // 135,000 SDG
+    compareAtPrice: Money.sdg(39900000), // 399,000 SDG
     rating: 4.8,
     reviewCount: 120,
     stockStatus: StockStatus.inStock,
     isFeatured: true,
-    optionGroups: const [],
+    optionGroups: [],
   );
 
   testWidgets('renders discounted price and featured badge', (tester) async {

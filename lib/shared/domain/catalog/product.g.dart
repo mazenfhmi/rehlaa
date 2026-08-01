@@ -26,10 +26,6 @@ _Product _$ProductFromJson(Map<String, dynamic> json) => $checkedCreate(
         'basePrice',
         (v) => Money.fromJson(v as Map<String, dynamic>),
       ),
-      compareAtPrice: $checkedConvert(
-        'compareAtPrice',
-        (v) => v == null ? null : Money.fromJson(v as Map<String, dynamic>),
-      ),
       rating: $checkedConvert('rating', (v) => (v as num).toDouble()),
       reviewCount: $checkedConvert('reviewCount', (v) => (v as num).toInt()),
       stockStatus: $checkedConvert(
@@ -42,6 +38,10 @@ _Product _$ProductFromJson(Map<String, dynamic> json) => $checkedCreate(
         (v) => (v as List<dynamic>)
             .map((e) => ProductOptionGroup.fromJson(e as Map<String, dynamic>))
             .toList(),
+      ),
+      compareAtPrice: $checkedConvert(
+        'compareAtPrice',
+        (v) => v == null ? null : Money.fromJson(v as Map<String, dynamic>),
       ),
     );
     return val;
@@ -58,12 +58,12 @@ Map<String, dynamic> _$ProductToJson(_Product instance) => <String, dynamic>{
   'imageUrl': instance.imageUrl,
   'galleryUrls': instance.galleryUrls,
   'basePrice': instance.basePrice.toJson(),
-  'compareAtPrice': ?instance.compareAtPrice?.toJson(),
   'rating': instance.rating,
   'reviewCount': instance.reviewCount,
   'stockStatus': _$StockStatusEnumMap[instance.stockStatus]!,
   'isFeatured': instance.isFeatured,
   'optionGroups': instance.optionGroups.map((e) => e.toJson()).toList(),
+  'compareAtPrice': ?instance.compareAtPrice?.toJson(),
 };
 
 const _$StockStatusEnumMap = {

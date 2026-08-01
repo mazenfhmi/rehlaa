@@ -1,11 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:rehlaa/core/result/result.dart';
 import 'package:rehlaa/core/network/connectivity_service.dart';
+import 'package:rehlaa/core/result/result.dart';
 import 'package:rehlaa/features/catalog/data/data_sources/catalog_local_data_source.dart';
 import 'package:rehlaa/features/catalog/data/mock/catalog_mock_data.dart';
 import 'package:rehlaa/features/catalog/data/repositories/mock_catalog_repository.dart';
-import 'package:rehlaa/features/home/domain/entities/home_feed.dart';
 import 'package:rehlaa/shared/domain/money/money.dart';
 
 class MockConnectivityService extends Mock implements ConnectivityService {}

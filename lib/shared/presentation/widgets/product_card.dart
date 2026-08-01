@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:rehlaa/core/design_system/tokens/app_tokens.dart';
 import 'package:rehlaa/core/design_system/components/images/app_network_image.dart';
+import 'package:rehlaa/core/design_system/tokens/app_tokens.dart';
 import 'package:rehlaa/shared/domain/catalog/product.dart';
 import 'package:rehlaa/shared/presentation/widgets/favorite_button.dart';
 import 'package:rehlaa/shared/presentation/widgets/product_price.dart';
@@ -9,35 +9,29 @@ import 'package:rehlaa/shared/presentation/widgets/product_rating.dart';
 enum ProductCardVariant { grid, compact, horizontal }
 
 class ProductCard extends StatelessWidget {
-  final Product product;
-  final VoidCallback onTap;
-  final VoidCallback? onFavoriteTap;
-  final bool isFavorite;
-  final ProductCardVariant variant;
 
   const ProductCard.grid({
-    super.key,
-    required this.product,
-    required this.onTap,
+    required this.product, required this.onTap, super.key,
     this.onFavoriteTap,
     this.isFavorite = false,
   }) : variant = ProductCardVariant.grid;
 
   const ProductCard.compact({
-    super.key,
-    required this.product,
-    required this.onTap,
+    required this.product, required this.onTap, super.key,
     this.onFavoriteTap,
     this.isFavorite = false,
   }) : variant = ProductCardVariant.compact;
 
   const ProductCard.horizontal({
-    super.key,
-    required this.product,
-    required this.onTap,
+    required this.product, required this.onTap, super.key,
     this.onFavoriteTap,
     this.isFavorite = false,
   }) : variant = ProductCardVariant.horizontal;
+  final Product product;
+  final VoidCallback onTap;
+  final VoidCallback? onFavoriteTap;
+  final bool isFavorite;
+  final ProductCardVariant variant;
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +70,6 @@ class ProductCard extends StatelessWidget {
                     product.imageUrl,
                     width: double.infinity,
                     height: double.infinity,
-                    fit: BoxFit.cover,
                     radius: 0,
                   ),
                 ),
@@ -135,11 +128,7 @@ class ProductCard extends StatelessWidget {
     );
   }
 
-  Widget _buildCompact(BuildContext context) {
-    return const SizedBox.shrink(); 
-  }
+  Widget _buildCompact(BuildContext context) => const SizedBox.shrink();
 
-  Widget _buildHorizontal(BuildContext context) {
-    return const SizedBox.shrink();
-  }
+  Widget _buildHorizontal(BuildContext context) => const SizedBox.shrink();
 }
