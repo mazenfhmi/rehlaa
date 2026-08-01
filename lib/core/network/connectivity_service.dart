@@ -13,12 +13,8 @@ class ConnectivityService {
   final Connectivity _connectivity;
 
   /// Emits `true` when online, `false` when offline.
-  Stream<bool> get onConnectivityChanged =>
-      _connectivity.onConnectivityChanged.map(
-        (results) => results.any(
-          (r) => r != ConnectivityResult.none,
-        ),
-      );
+  Stream<bool> get onConnectivityChanged => _connectivity.onConnectivityChanged
+      .map((results) => results.any((r) => r != ConnectivityResult.none));
 
   /// Returns `true` if the device currently has connectivity.
   Future<bool> get isConnected async {

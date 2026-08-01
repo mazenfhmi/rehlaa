@@ -40,8 +40,10 @@ class _AppSkeletonState extends State<AppSkeleton>
       vsync: this,
       duration: const Duration(milliseconds: 1200),
     )..repeat(reverse: true);
-    _animation = Tween<double>(begin: 0.04 * widget.layer, end: 0.10 * widget.layer)
-        .animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
+    _animation = Tween<double>(
+      begin: 0.04 * widget.layer,
+      end: 0.10 * widget.layer,
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
   }
 
   @override
@@ -52,19 +54,18 @@ class _AppSkeletonState extends State<AppSkeleton>
 
   @override
   Widget build(BuildContext context) => AnimatedBuilder(
-        animation: _animation,
-        builder: (context, child) => Container(
-          height: widget.height,
-          width: widget.width,
-          decoration: BoxDecoration(
-            color: Theme.of(context)
-                .iconTheme
-                .color!
-                .withValues(alpha: _animation.value),
-            borderRadius: BorderRadius.all(Radius.circular(widget.radius)),
-          ),
-        ),
-      );
+    animation: _animation,
+    builder: (context, child) => Container(
+      height: widget.height,
+      width: widget.width,
+      decoration: BoxDecoration(
+        color: Theme.of(
+          context,
+        ).iconTheme.color!.withValues(alpha: _animation.value),
+        borderRadius: BorderRadius.all(Radius.circular(widget.radius)),
+      ),
+    ),
+  );
 }
 
 /// A circular skeleton placeholder for avatars.
@@ -75,30 +76,23 @@ class AppCircleSkeleton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Container(
-        height: size,
-        width: size,
-        decoration: BoxDecoration(
-          color: Theme.of(context).iconTheme.color!.withValues(alpha: 0.06),
-          shape: BoxShape.circle,
-        ),
-      );
+    height: size,
+    width: size,
+    decoration: BoxDecoration(
+      color: Theme.of(context).iconTheme.color!.withValues(alpha: 0.06),
+      shape: BoxShape.circle,
+    ),
+  );
 }
 
 /// A full-width skeleton line for text placeholders.
 class AppSkeletonLine extends StatelessWidget {
-  const AppSkeletonLine({
-    super.key,
-    this.width,
-    this.height = 14,
-  });
+  const AppSkeletonLine({super.key, this.width, this.height = 14});
 
   final double? width;
   final double height;
 
   @override
-  Widget build(BuildContext context) => AppSkeleton(
-        width: width,
-        height: height,
-        radius: AppRadius.sm,
-      );
+  Widget build(BuildContext context) =>
+      AppSkeleton(width: width, height: height, radius: AppRadius.sm);
 }

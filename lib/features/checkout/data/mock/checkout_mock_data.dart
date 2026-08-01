@@ -12,7 +12,6 @@ class CheckoutMockData {
       logoUrl: 'https://placehold.co/100x100/purple/white?text=Bravo',
       descriptionAr: 'ادفع باستخدام تطبيق براڤو',
       descriptionEn: 'Pay using Bravo app',
-      isBankTransfer: false,
     ),
     PaymentMethod(
       id: 'cashil_pay',
@@ -22,7 +21,6 @@ class CheckoutMockData {
       logoUrl: 'https://placehold.co/100x100/blue/white?text=CashilPay',
       descriptionAr: 'ادفع باستخدام محفظة كاشيل',
       descriptionEn: 'Pay using Cashil wallet',
-      isBankTransfer: false,
     ),
     PaymentMethod(
       id: 'bank_transfer',
@@ -58,7 +56,8 @@ class CheckoutMockData {
     Bank(
       id: 'mb',
       nameAr: 'بنك النيلين',
-      nameEn: 'Al Nilein Bank', // Just using MB placeholder from plan, let's say it's Al Nilein
+      nameEn:
+          'Al Nilein Bank', // Just using MB placeholder from plan, let's say it's Al Nilein
       logoUrl: 'https://placehold.co/100x100/blue/white?text=MB',
     ),
   ];

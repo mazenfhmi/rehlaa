@@ -19,7 +19,8 @@ class AuthMockDataSource {
     id: 'usr_mock_101',
     email: 'user@rehlaa.com',
     displayName: 'Mazen Ahmed',
-    photoUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200',
+    photoUrl:
+        'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200',
     phoneNumber: '+966500000000',
     isEmailVerified: true,
   );

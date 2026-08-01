@@ -13,7 +13,8 @@ abstract class PromoBanner with _$PromoBanner {
     required String linkTarget,
   }) = _PromoBanner;
 
-  factory PromoBanner.fromJson(Map<String, dynamic> json) => _$PromoBannerFromJson(json);
+  factory PromoBanner.fromJson(Map<String, dynamic> json) =>
+      _$PromoBannerFromJson(json);
 }
 
 @freezed
@@ -26,5 +27,6 @@ abstract class HomeFeed with _$HomeFeed {
     @Default(false) bool isStale,
   }) = _HomeFeed;
 
-  factory HomeFeed.fromJson(Map<String, dynamic> json) => _$HomeFeedFromJson(json);
+  factory HomeFeed.fromJson(Map<String, dynamic> json) =>
+      _$HomeFeedFromJson(json);
 }

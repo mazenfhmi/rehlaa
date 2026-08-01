@@ -1,27 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:rehlaa/core/design_system/tokens/app_colors.dart';
 import 'package:rehlaa/core/design_system/tokens/app_spacing.dart';
 
 class AppModalHandle extends StatelessWidget {
   const AppModalHandle({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 48,
-      height: 4,
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.2),
-        borderRadius: BorderRadius.circular(AppSpacing.xs),
-      ),
-    );
-  }
+  Widget build(BuildContext context) => Container(
+    width: 48,
+    height: 4,
+    decoration: BoxDecoration(
+      color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.2),
+      borderRadius: BorderRadius.circular(AppSpacing.xs),
+    ),
+  );
 }
 
 class AppBottomSheet extends StatelessWidget {
   const AppBottomSheet({
-    super.key,
     required this.child,
+    super.key,
     this.padding = const EdgeInsets.all(AppSpacing.lg),
   });
 
@@ -29,37 +26,32 @@ class AppBottomSheet extends StatelessWidget {
   final EdgeInsetsGeometry padding;
 
   @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surface,
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(30)),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.05),
-            blurRadius: 10,
-            offset: const Offset(0, -2),
-          ),
+  Widget build(BuildContext context) => DecoratedBox(
+    decoration: BoxDecoration(
+      color: Theme.of(context).colorScheme.surface,
+      borderRadius: const BorderRadius.vertical(top: Radius.circular(30)),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.black.withValues(alpha: 0.05),
+          blurRadius: 10,
+          offset: const Offset(0, -2),
+        ),
+      ],
+    ),
+    child: SafeArea(
+      top: false,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          const SizedBox(height: AppSpacing.sm),
+          const Center(child: AppModalHandle()),
+          const SizedBox(height: AppSpacing.sm),
+          Padding(padding: padding, child: child),
         ],
       ),
-      child: SafeArea(
-        top: false,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            const SizedBox(height: AppSpacing.sm),
-            const Center(child: AppModalHandle()),
-            const SizedBox(height: AppSpacing.sm),
-            Padding(
-              padding: padding,
-              child: child,
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+    ),
+  );
 }
 
 Future<T?> showAppBottomSheet<T>({
@@ -67,21 +59,18 @@ Future<T?> showAppBottomSheet<T>({
   required WidgetBuilder builder,
   bool isScrollControlled = true,
   bool useRootNavigator = true,
-}) {
-  return showModalBottomSheet<T>(
-    context: context,
-    isScrollControlled: isScrollControlled,
-    useRootNavigator: useRootNavigator,
-    backgroundColor: Colors.transparent,
-    elevation: 0,
-    shape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
-    ),
-    builder: (context) {
-      return AppBottomSheet(
-        padding: EdgeInsets.zero, // The builder will provide its own padding or use DraggableScrollableSheet
-        child: builder(context),
-      );
-    },
-  );
-}
+}) => showModalBottomSheet<T>(
+  context: context,
+  isScrollControlled: isScrollControlled,
+  useRootNavigator: useRootNavigator,
+  backgroundColor: Colors.transparent,
+  elevation: 0,
+  shape: const RoundedRectangleBorder(
+    borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
+  ),
+  builder: (context) => AppBottomSheet(
+    padding: EdgeInsets
+        .zero, // The builder will provide its own padding or use DraggableScrollableSheet
+    child: builder(context),
+  ),
+);

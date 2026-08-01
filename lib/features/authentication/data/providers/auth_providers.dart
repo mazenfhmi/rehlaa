@@ -9,6 +9,5 @@ part 'auth_providers.g.dart';
 AuthRepository authRepository(Ref ref) => MockAuthRepository();
 
 @riverpod
-GoogleSignIn googleSignIn(Ref ref) => GoogleSignIn(
-      scopes: ['email', 'profile'],
-    );
+GoogleSignIn googleSignIn(Ref ref) =>
+    GoogleSignIn(scopes: ['email', 'profile']);

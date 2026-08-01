@@ -13,8 +13,8 @@ extension AppEnvironmentX on AppEnvironment {
 
   /// Human-readable name for logging.
   String get label => switch (this) {
-        AppEnvironment.development => 'development',
-        AppEnvironment.staging => 'staging',
-        AppEnvironment.production => 'production',
-      };
+    AppEnvironment.development => 'development',
+    AppEnvironment.staging => 'staging',
+    AppEnvironment.production => 'production',
+  };
 }

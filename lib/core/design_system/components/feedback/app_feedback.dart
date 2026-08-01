@@ -15,15 +15,15 @@ class AppLoadingIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Center(
-        child: SizedBox(
-          width: size,
-          height: size,
-          child: const CircularProgressIndicator(
-            strokeWidth: 2.5,
-            color: AppColors.primary,
-          ),
-        ),
-      );
+    child: SizedBox(
+      width: size,
+      height: size,
+      child: const CircularProgressIndicator(
+        strokeWidth: 2.5,
+        color: AppColors.primary,
+      ),
+    ),
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -31,7 +31,8 @@ class AppLoadingIndicator extends StatelessWidget {
 /// Empty state with icon, title, and optional action button.
 class AppEmptyState extends StatelessWidget {
   const AppEmptyState({
-    required this.title, super.key,
+    required this.title,
+    super.key,
     this.subtitle,
     this.icon,
     this.actionLabel,
@@ -46,44 +47,44 @@ class AppEmptyState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Center(
-        child: Padding(
-          padding: const EdgeInsets.all(AppSpacing.xxxl),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(
-                icon ?? Icons.inbox_outlined,
-                size: 72,
-                color: Theme.of(context).dividerColor,
-              ),
-              const SizedBox(height: AppSpacing.base),
-              Text(
-                title,
-                style: Theme.of(context).textTheme.titleMedium,
-                textAlign: TextAlign.center,
-              ),
-              if (subtitle != null) ...[
-                const SizedBox(height: AppSpacing.sm),
-                Text(
-                  subtitle!,
-                  style: Theme.of(context).textTheme.bodyMedium,
-                  textAlign: TextAlign.center,
-                ),
-              ],
-              if (onAction != null && actionLabel != null) ...[
-                const SizedBox(height: AppSpacing.xl),
-                SizedBox(
-                  width: 200,
-                  child: ElevatedButton(
-                    onPressed: onAction,
-                    child: Text(actionLabel!),
-                  ),
-                ),
-              ],
-            ],
+    child: Padding(
+      padding: const EdgeInsets.all(AppSpacing.xxxl),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(
+            icon ?? Icons.inbox_outlined,
+            size: 72,
+            color: Theme.of(context).dividerColor,
           ),
-        ),
-      );
+          const SizedBox(height: AppSpacing.base),
+          Text(
+            title,
+            style: Theme.of(context).textTheme.titleMedium,
+            textAlign: TextAlign.center,
+          ),
+          if (subtitle != null) ...[
+            const SizedBox(height: AppSpacing.sm),
+            Text(
+              subtitle!,
+              style: Theme.of(context).textTheme.bodyMedium,
+              textAlign: TextAlign.center,
+            ),
+          ],
+          if (onAction != null && actionLabel != null) ...[
+            const SizedBox(height: AppSpacing.xl),
+            SizedBox(
+              width: 200,
+              child: ElevatedButton(
+                onPressed: onAction,
+                child: Text(actionLabel!),
+              ),
+            ),
+          ],
+        ],
+      ),
+    ),
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -91,7 +92,8 @@ class AppEmptyState extends StatelessWidget {
 /// Error state with retry button.
 class AppErrorState extends StatelessWidget {
   const AppErrorState({
-    required this.message, super.key,
+    required this.message,
+    super.key,
     this.onRetry,
     this.retryLabel = 'Try Again',
   });
@@ -102,36 +104,36 @@ class AppErrorState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Center(
-        child: Padding(
-          padding: const EdgeInsets.all(AppSpacing.xxxl),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Icon(
-                Icons.error_outline_rounded,
-                size: 72,
-                color: AppColors.error,
-              ),
-              const SizedBox(height: AppSpacing.base),
-              Text(
-                message,
-                style: Theme.of(context).textTheme.bodyMedium,
-                textAlign: TextAlign.center,
-              ),
-              if (onRetry != null) ...[
-                const SizedBox(height: AppSpacing.xl),
-                SizedBox(
-                  width: 200,
-                  child: ElevatedButton(
-                    onPressed: onRetry,
-                    child: Text(retryLabel),
-                  ),
-                ),
-              ],
-            ],
+    child: Padding(
+      padding: const EdgeInsets.all(AppSpacing.xxxl),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Icon(
+            Icons.error_outline_rounded,
+            size: 72,
+            color: AppColors.error,
           ),
-        ),
-      );
+          const SizedBox(height: AppSpacing.base),
+          Text(
+            message,
+            style: Theme.of(context).textTheme.bodyMedium,
+            textAlign: TextAlign.center,
+          ),
+          if (onRetry != null) ...[
+            const SizedBox(height: AppSpacing.xl),
+            SizedBox(
+              width: 200,
+              child: ElevatedButton(
+                onPressed: onRetry,
+                child: Text(retryLabel),
+              ),
+            ),
+          ],
+        ],
+      ),
+    ),
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -140,7 +142,9 @@ class AppErrorState extends StatelessWidget {
 /// Works with Riverpod's AsyncValue<T>.
 class AppAsyncBuilder<T> extends StatelessWidget {
   const AppAsyncBuilder({
-    required this.value, required this.data, super.key,
+    required this.value,
+    required this.data,
+    super.key,
     this.loading,
     this.error,
     this.skeleton,
@@ -163,12 +167,11 @@ class AppAsyncBuilder<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => value.when(
-        data: data,
-        loading: () => skeleton ?? loading ?? const AppLoadingIndicator(),
-        error: (e, st) =>
-            error?.call(e, st) ??
-            AppErrorState(message: e.toString()),
-      );
+    data: data,
+    loading: () => skeleton ?? loading ?? const AppLoadingIndicator(),
+    error: (e, st) =>
+        error?.call(e, st) ?? AppErrorState(message: e.toString()),
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -179,7 +182,8 @@ enum AppBadgeStatus { pending, processing, completed, cancelled, info }
 
 class AppStatusBadge extends StatelessWidget {
   const AppStatusBadge({
-    required this.label, super.key,
+    required this.label,
+    super.key,
     this.status = AppBadgeStatus.info,
   });
 
@@ -189,16 +193,26 @@ class AppStatusBadge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final (bgColor, textColor) = switch (status) {
-      AppBadgeStatus.pending =>
-        (AppColors.warning.withValues(alpha: 0.15), AppColors.warning),
-      AppBadgeStatus.processing =>
-        (AppColors.info.withValues(alpha: 0.15), AppColors.info),
-      AppBadgeStatus.completed =>
-        (AppColors.success.withValues(alpha: 0.15), AppColors.success),
-      AppBadgeStatus.cancelled =>
-        (AppColors.error.withValues(alpha: 0.15), AppColors.error),
-      AppBadgeStatus.info =>
-        (AppColors.primary.withValues(alpha: 0.12), AppColors.primary),
+      AppBadgeStatus.pending => (
+        AppColors.warning.withValues(alpha: 0.15),
+        AppColors.warning,
+      ),
+      AppBadgeStatus.processing => (
+        AppColors.info.withValues(alpha: 0.15),
+        AppColors.info,
+      ),
+      AppBadgeStatus.completed => (
+        AppColors.success.withValues(alpha: 0.15),
+        AppColors.success,
+      ),
+      AppBadgeStatus.cancelled => (
+        AppColors.error.withValues(alpha: 0.15),
+        AppColors.error,
+      ),
+      AppBadgeStatus.info => (
+        AppColors.primary.withValues(alpha: 0.12),
+        AppColors.primary,
+      ),
     };
 
     return Container(
@@ -229,7 +243,8 @@ class AppStatusBadge extends StatelessWidget {
 
 class AppDotIndicator extends StatelessWidget {
   const AppDotIndicator({
-    required this.isActive, super.key,
+    required this.isActive,
+    super.key,
     this.activeColor = AppColors.primary,
     this.inactiveColor = AppColors.black20,
   });
@@ -240,20 +255,22 @@ class AppDotIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => AnimatedContainer(
-        duration: AppDurations.normal,
-        margin: const EdgeInsets.symmetric(horizontal: 3),
-        height: isActive ? 6 : 4,
-        width: isActive ? 20 : 4,
-        decoration: BoxDecoration(
-          color: isActive ? activeColor : inactiveColor,
-          borderRadius: BorderRadius.circular(AppRadius.full),
-        ),
-      );
+    duration: AppDurations.normal,
+    margin: const EdgeInsets.symmetric(horizontal: 3),
+    height: isActive ? 6 : 4,
+    width: isActive ? 20 : 4,
+    decoration: BoxDecoration(
+      color: isActive ? activeColor : inactiveColor,
+      borderRadius: BorderRadius.circular(AppRadius.full),
+    ),
+  );
 }
 
 class AppDotsIndicator extends StatelessWidget {
   const AppDotsIndicator({
-    required this.count, required this.currentIndex, super.key,
+    required this.count,
+    required this.currentIndex,
+    super.key,
     this.activeColor = AppColors.primary,
   });
 
@@ -263,13 +280,13 @@ class AppDotsIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: List.generate(
-          count,
-          (i) => AppDotIndicator(
-            isActive: i == currentIndex,
-            activeColor: activeColor,
-          ),
-        ),
-      );
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: List.generate(
+      count,
+      (i) => AppDotIndicator(
+        isActive: i == currentIndex,
+        activeColor: activeColor,
+      ),
+    ),
+  );
 }

@@ -28,7 +28,11 @@ void main() {
     });
 
     test('authenticated user accessing auth route is redirected to home', () {
-      const user = AuthUser(id: 'u1', email: 'user@rehlaa.com', displayName: 'User');
+      const user = AuthUser(
+        id: 'u1',
+        email: 'user@rehlaa.com',
+        displayName: 'User',
+      );
       final redirect = authRedirect(
         session: const AuthSession.authenticated(user: user),
         state: _fakeState(AppRoutePaths.signIn),
@@ -36,14 +40,21 @@ void main() {
       expect(redirect, equals(AppRoutePaths.home));
     });
 
-    test('authenticated user accessing auth route with returnTo is redirected to returnTo', () {
-      const user = AuthUser(id: 'u1', email: 'user@rehlaa.com', displayName: 'User');
-      final redirect = authRedirect(
-        session: const AuthSession.authenticated(user: user),
-        state: _fakeState('${AppRoutePaths.signIn}?returnTo=%2Fwallet'),
-      );
-      expect(redirect, equals('/wallet'));
-    });
+    test(
+      'authenticated user accessing auth route with returnTo is redirected to returnTo',
+      () {
+        const user = AuthUser(
+          id: 'u1',
+          email: 'user@rehlaa.com',
+          displayName: 'User',
+        );
+        final redirect = authRedirect(
+          session: const AuthSession.authenticated(user: user),
+          state: _fakeState('${AppRoutePaths.signIn}?returnTo=%2Fwallet'),
+        );
+        expect(redirect, equals('/wallet'));
+      },
+    );
 
     test('guest accessing home is not redirected', () {
       final redirect = authRedirect(

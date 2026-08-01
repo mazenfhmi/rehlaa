@@ -26,15 +26,13 @@ void main() {
       expect(tapped, isTrue);
     });
 
-    testWidgets('shows loading indicator when isLoading is true',
-        (tester) async {
+    testWidgets('shows loading indicator when isLoading is true', (
+      tester,
+    ) async {
       await tester.pumpWidget(
         const MaterialApp(
           home: Scaffold(
-            body: AppPrimaryButton(
-              label: 'Loading Button',
-              isLoading: true,
-            ),
+            body: AppPrimaryButton(label: 'Loading Button', isLoading: true),
           ),
         ),
       );

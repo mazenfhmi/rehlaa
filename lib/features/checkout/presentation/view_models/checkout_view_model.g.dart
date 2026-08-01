@@ -58,7 +58,7 @@ final class CheckoutViewModelProvider
   }
 }
 
-String _$checkoutViewModelHash() => r'60b9ebd2347949798acb0dbd0fc2e8ed4f2190ee';
+String _$checkoutViewModelHash() => r'bcca4a4ec44a10b3c5cc9b2fde646f5bc534bb48';
 
 final class CheckoutViewModelFamily extends $Family
     with

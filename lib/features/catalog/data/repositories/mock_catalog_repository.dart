@@ -8,7 +8,6 @@ import 'package:rehlaa/shared/domain/catalog/category.dart';
 import 'package:rehlaa/shared/domain/catalog/product.dart';
 
 class MockCatalogRepository implements CatalogRepository {
-
   MockCatalogRepository({
     required this._connectivity,
     required this._localDataSource,
@@ -44,7 +43,9 @@ class MockCatalogRepository implements CatalogRepository {
   @override
   Future<Result<Product>> getProductById(String id) async {
     await Future<void>.delayed(_delay);
-    final product = CatalogMockData.products.where((p) => p.id == id).firstOrNull;
+    final product = CatalogMockData.products
+        .where((p) => p.id == id)
+        .firstOrNull;
     if (product != null) {
       return Success(product);
     }

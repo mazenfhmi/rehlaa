@@ -4,7 +4,9 @@ import 'package:rehlaa/generated/l10n/app_localizations.dart';
 
 class SectionTitleWidget extends StatelessWidget {
   const SectionTitleWidget({
-    required this.title, required this.press, super.key,
+    required this.title,
+    required this.press,
+    super.key,
   });
 
   final String title;
@@ -12,21 +14,21 @@ class SectionTitleWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          title,
-          style: const TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-            color: Colors.black,
-          ),
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      Text(
+        title,
+        style: const TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.w600,
+          color: Colors.black,
         ),
-        TextButton(
-          onPressed: press,
-          style: TextButton.styleFrom(foregroundColor: Colors.grey),
-          child: Text(AppLocalizations.of(context).seeAllLabel),
-        ),
-      ],
-    );
+      ),
+      TextButton(
+        onPressed: press,
+        style: TextButton.styleFrom(foregroundColor: Colors.grey),
+        child: Text(AppLocalizations.of(context).seeAllLabel),
+      ),
+    ],
+  );
 }

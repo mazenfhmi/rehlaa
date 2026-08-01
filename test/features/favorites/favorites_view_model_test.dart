@@ -16,34 +16,49 @@ void main() {
   setUp(() {
     mockRepo = MockFavoritesRepository();
     container = ProviderContainer(
-      overrides: [
-        favoritesRepositoryProvider.overrideWithValue(mockRepo),
-      ],
+      overrides: [favoritesRepositoryProvider.overrideWithValue(mockRepo)],
     );
   });
-  
-  test('toggleFavorite performs optimistic update and rolls back on failure', () async {
+
+  test(
+    'toggleFavorite performs optimistic update and rolls back on failure',
+    () async {
+      final product = CatalogMockData.homeFeed.featuredProducts.first;
+      when(
+        () => mockRepo.getFavorites(),
+      ).thenAnswer((_) async => Success([product]));
+
+      // Keep the provider alive
+      container.listen(favoritesViewModelProvider, (_, __) {});
+
+      await container.read(favoritesViewModelProvider.future);
+      expect(container.read(favoritesViewModelProvider).value, [product]);
+
+      when(() => mockRepo.toggleFavorite(product.id)).thenAnswer((_) async {
+        await Future<void>.delayed(const Duration(milliseconds: 50));
+        return const Failure(NetworkFailure(message: 'Failed'));
+      });
+
+      final future = container
+          .read(favoritesViewModelProvider.notifier)
+          .toggleFavorite(product);
+
+      expect(container.read(favoritesViewModelProvider).value, isEmpty);
+
+      await future;
+
+      expect(container.read(favoritesViewModelProvider).value, [product]);
+    },
+  );
+
+  test('build removes duplicate products returned by the repository', () async {
     final product = CatalogMockData.homeFeed.featuredProducts.first;
-    when(() => mockRepo.getFavorites()).thenAnswer((_) async => Success([product]));
-    
-    // Keep the provider alive
-    container.listen(favoritesViewModelProvider, (_, __) {});
-    
-    await container.read(favoritesViewModelProvider.future);
-    expect(container.read(favoritesViewModelProvider).value, [product]);
+    when(
+      () => mockRepo.getFavorites(),
+    ).thenAnswer((_) async => Success([product, product]));
 
-    when(() => mockRepo.toggleFavorite(product.id))
-        .thenAnswer((_) async {
-          await Future<void>.delayed(const Duration(milliseconds: 50));
-          return const Failure(NetworkFailure(message: 'Failed'));
-        });
+    final favorites = await container.read(favoritesViewModelProvider.future);
 
-    final future = container.read(favoritesViewModelProvider.notifier).toggleFavorite(product);
-    
-    expect(container.read(favoritesViewModelProvider).value, isEmpty);
-    
-    await future;
-    
-    expect(container.read(favoritesViewModelProvider).value, [product]);
+    expect(favorites, [product]);
   });
 }

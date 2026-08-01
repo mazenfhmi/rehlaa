@@ -47,9 +47,10 @@ extension StringX on String {
       .join(' ');
 
   /// Returns `true` if this is a valid email address.
-  bool get isValidEmail =>
-      RegExp(r'^[\w.+-]+@[\w-]+\.[a-z]{2,}$', caseSensitive: false)
-          .hasMatch(trim());
+  bool get isValidEmail => RegExp(
+    r'^[\w.+-]+@[\w-]+\.[a-z]{2,}$',
+    caseSensitive: false,
+  ).hasMatch(trim());
 
   /// Trims and returns `null` if empty, otherwise returns the trimmed value.
   String? get nullIfEmpty => trim().isEmpty ? null : trim();
@@ -67,10 +68,10 @@ extension NullableStringX on String? {
 extension NumX on num {
   /// Formats as SAR currency: "125.00 ر.س"
   String toSar({String locale = 'ar'}) => NumberFormat.currency(
-        locale: locale,
-        symbol: 'ر.س',
-        decimalDigits: 2,
-      ).format(this);
+    locale: locale,
+    symbol: 'ر.س',
+    decimalDigits: 2,
+  ).format(this);
 
   /// Formats as a simple decimal: "125.00"
   String toDecimal({int decimalDigits = 2}) =>

@@ -5,19 +5,16 @@ part 'money.g.dart';
 @JsonSerializable()
 @immutable
 class Money {
-
-  const Money({
-    required this.currencyCode,
-    required this.minorUnits,
-  });
+  const Money({required this.currencyCode, required this.minorUnits});
 
   const Money.sdg(this.minorUnits) : currencyCode = 'SDG';
 
   factory Money.fromJson(Map<String, dynamic> json) => _$MoneyFromJson(json);
   final String currencyCode;
   final int minorUnits;
-  
-  String get formatted => '${(minorUnits / 100).toStringAsFixed(2)} $currencyCode';
+
+  String get formatted =>
+      '${(minorUnits / 100).toStringAsFixed(2)} $currencyCode';
 
   Map<String, dynamic> toJson() => _$MoneyToJson(this);
 

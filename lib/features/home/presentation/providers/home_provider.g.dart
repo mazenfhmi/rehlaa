@@ -9,43 +9,43 @@ part of 'home_provider.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
 
-@ProviderFor(HomeFeedViewModel)
-final homeFeedViewModelProvider = HomeFeedViewModelProvider._();
+@ProviderFor(HomeViewModel)
+final homeViewModelProvider = HomeViewModelProvider._();
 
-final class HomeFeedViewModelProvider
-    extends $AsyncNotifierProvider<HomeFeedViewModel, HomeFeed> {
-  HomeFeedViewModelProvider._()
+final class HomeViewModelProvider
+    extends $AsyncNotifierProvider<HomeViewModel, HomeViewState> {
+  HomeViewModelProvider._()
     : super(
         from: null,
         argument: null,
         retry: _doNotRetry,
-        name: r'homeFeedViewModelProvider',
+        name: r'homeViewModelProvider',
         isAutoDispose: true,
         dependencies: null,
         $allTransitiveDependencies: null,
       );
 
   @override
-  String debugGetCreateSourceHash() => _$homeFeedViewModelHash();
+  String debugGetCreateSourceHash() => _$homeViewModelHash();
 
   @$internal
   @override
-  HomeFeedViewModel create() => HomeFeedViewModel();
+  HomeViewModel create() => HomeViewModel();
 }
 
-String _$homeFeedViewModelHash() => r'6e3e16bc8af6e813ed0c0a3dffeafcba7eddadaf';
+String _$homeViewModelHash() => r'82283cdae70e3e9ad97adbcc40d9627a59d77e20';
 
-abstract class _$HomeFeedViewModel extends $AsyncNotifier<HomeFeed> {
-  FutureOr<HomeFeed> build();
+abstract class _$HomeViewModel extends $AsyncNotifier<HomeViewState> {
+  FutureOr<HomeViewState> build();
   @$mustCallSuper
   @override
   void runBuild() {
-    final ref = this.ref as $Ref<AsyncValue<HomeFeed>, HomeFeed>;
+    final ref = this.ref as $Ref<AsyncValue<HomeViewState>, HomeViewState>;
     final element =
         ref.element
             as $ClassProviderElement<
-              AnyNotifier<AsyncValue<HomeFeed>, HomeFeed>,
-              AsyncValue<HomeFeed>,
+              AnyNotifier<AsyncValue<HomeViewState>, HomeViewState>,
+              AsyncValue<HomeViewState>,
               Object?,
               Object?
             >;

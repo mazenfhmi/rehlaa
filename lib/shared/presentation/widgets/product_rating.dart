@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:rehlaa/core/design_system/tokens/app_tokens.dart';
 
 class ProductRating extends StatelessWidget {
-
   const ProductRating({
-    required this.rating, required this.reviewCount, super.key,
+    required this.rating,
+    required this.reviewCount,
+    super.key,
   });
   final double rating;
   final int reviewCount;
@@ -12,25 +12,23 @@ class ProductRating extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final colors = Theme.of(context).colorScheme;
 
-    return Row(
-      mainAxisSize: MainAxisSize.min,
+    return Wrap(
+      spacing: 4,
+      crossAxisAlignment: WrapCrossAlignment.center,
       children: [
-        const Icon(Icons.star_rounded, size: 16, color: AppColors.warning),
-        const SizedBox(width: 4),
+        Icon(Icons.star_rounded, size: 16, color: colors.tertiary),
         Text(
           rating.toStringAsFixed(1),
           style: textTheme.bodyMedium?.copyWith(
-            color: AppColors.black,
+            color: colors.onSurface,
             fontWeight: FontWeight.bold,
           ),
         ),
-        const SizedBox(width: 4),
         Text(
           '($reviewCount)',
-          style: textTheme.bodySmall?.copyWith(
-            color: AppColors.black40,
-          ),
+          style: textTheme.bodySmall?.copyWith(color: colors.onSurfaceVariant),
         ),
       ],
     );

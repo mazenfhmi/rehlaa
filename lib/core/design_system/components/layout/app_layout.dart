@@ -11,7 +11,8 @@ import 'package:rehlaa/generated/l10n/app_localizations.dart';
 /// Application scaffold wrapper ensuring consistent scaffold background.
 class AppScaffold extends StatelessWidget {
   const AppScaffold({
-    required this.body, super.key,
+    required this.body,
+    super.key,
     this.appBar,
     this.bottomNavigationBar,
     this.floatingActionButton,
@@ -32,15 +33,15 @@ class AppScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        appBar: appBar,
-        body: body,
-        bottomNavigationBar: bottomNavigationBar,
-        floatingActionButton: floatingActionButton,
-        backgroundColor: backgroundColor,
-        resizeToAvoidBottomInset: resizeToAvoidBottomInset,
-        extendBodyBehindAppBar: extendBodyBehindAppBar,
-        extendBody: extendBody,
-      );
+    appBar: appBar,
+    body: body,
+    bottomNavigationBar: bottomNavigationBar,
+    floatingActionButton: floatingActionButton,
+    backgroundColor: backgroundColor,
+    resizeToAvoidBottomInset: resizeToAvoidBottomInset,
+    extendBodyBehindAppBar: extendBodyBehindAppBar,
+    extendBody: extendBody,
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -48,7 +49,8 @@ class AppScaffold extends StatelessWidget {
 /// App bar matching the reference: no elevation, centered or left title.
 class AppPageHeader extends StatelessWidget implements PreferredSizeWidget {
   const AppPageHeader({
-    required this.title, super.key,
+    required this.title,
+    super.key,
     this.centerTitle = false,
     this.leading,
     this.actions,
@@ -64,19 +66,18 @@ class AppPageHeader extends StatelessWidget implements PreferredSizeWidget {
   final Color? backgroundColor;
 
   @override
-  Size get preferredSize => Size.fromHeight(
-        kToolbarHeight + (bottom?.preferredSize.height ?? 0),
-      );
+  Size get preferredSize =>
+      Size.fromHeight(kToolbarHeight + (bottom?.preferredSize.height ?? 0));
 
   @override
   Widget build(BuildContext context) => AppBar(
-        title: Text(title),
-        centerTitle: centerTitle,
-        leading: leading,
-        actions: actions,
-        backgroundColor: backgroundColor,
-        bottom: bottom,
-      );
+    title: Text(title),
+    centerTitle: centerTitle,
+    leading: leading,
+    actions: actions,
+    backgroundColor: backgroundColor,
+    bottom: bottom,
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -85,10 +86,7 @@ class AppPageHeader extends StatelessWidget implements PreferredSizeWidget {
 
 /// Bottom navigation item definition for [AppBottomNavigation].
 class AppNavItem {
-  const AppNavItem({
-    required this.svgPath,
-    required this.label,
-  });
+  const AppNavItem({required this.svgPath, required this.label});
 
   final String svgPath;
   final String label;
@@ -97,7 +95,10 @@ class AppNavItem {
 /// Bottom navigation bar using SVG icons, matching the reference design.
 class AppBottomNavigation extends StatelessWidget {
   const AppBottomNavigation({
-    required this.items, required this.currentIndex, required this.onTap, super.key,
+    required this.items,
+    required this.currentIndex,
+    required this.onTap,
+    super.key,
     this.cartBadgeCount = 0,
     this.cartTabIndex = 3,
   });
@@ -114,17 +115,16 @@ class AppBottomNavigation extends StatelessWidget {
     final bgColor = isDark ? const Color(0xFF101015) : AppColors.white;
 
     SvgPicture svgIcon(String src, {Color? color}) => SvgPicture.asset(
-          src,
-          height: 24,
-          colorFilter: ColorFilter.mode(
-            color ??
-                Theme.of(context)
-                    .iconTheme
-                    .color!
-                    .withValues(alpha: isDark ? 0.3 : 1),
-            BlendMode.srcIn,
-          ),
-        );
+      src,
+      height: 24,
+      colorFilter: ColorFilter.mode(
+        color ??
+            Theme.of(
+              context,
+            ).iconTheme.color!.withValues(alpha: isDark ? 0.3 : 1),
+        BlendMode.srcIn,
+      ),
+    );
 
     Widget buildCartIcon({required bool isActive}) {
       final iconColor = isActive ? AppColors.primary : null;
@@ -210,12 +210,12 @@ class AppDivider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Divider(
-        height: height,
-        thickness: height,
-        indent: indent,
-        endIndent: endIndent,
-        color: color ?? Theme.of(context).dividerColor,
-      );
+    height: height,
+    thickness: height,
+    indent: indent,
+    endIndent: endIndent,
+    color: color ?? Theme.of(context).dividerColor,
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -223,7 +223,8 @@ class AppDivider extends StatelessWidget {
 /// Section header: title + optional "See all" action.
 class AppSectionHeader extends StatelessWidget {
   const AppSectionHeader({
-    required this.title, super.key,
+    required this.title,
+    super.key,
     this.trailing,
     this.onTrailingTap,
     this.trailingLabel,
@@ -243,25 +244,25 @@ class AppSectionHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     return Padding(
-        padding: padding,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(title, style: Theme.of(context).textTheme.titleMedium),
-            if (trailing != null)
-              trailing!
-            else if (onTrailingTap != null)
-              TextButton(
-                onPressed: onTrailingTap,
-                style: TextButton.styleFrom(
-                  padding: EdgeInsets.zero,
-                  minimumSize: Size.zero,
-                ),
-                child: Text(trailingLabel ?? l10n.seeAllLabel),
+      padding: padding,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(title, style: Theme.of(context).textTheme.titleMedium),
+          if (trailing != null)
+            trailing!
+          else if (onTrailingTap != null)
+            TextButton(
+              onPressed: onTrailingTap,
+              style: TextButton.styleFrom(
+                padding: EdgeInsets.zero,
+                minimumSize: Size.zero,
               ),
-          ],
-        ),
-      );
+              child: Text(trailingLabel ?? l10n.seeAllLabel),
+            ),
+        ],
+      ),
+    );
   }
 }
 
@@ -270,7 +271,8 @@ class AppSectionHeader extends StatelessWidget {
 /// Consistent horizontal page padding (EdgeInsetsDirectional for RTL support).
 class AppResponsivePadding extends StatelessWidget {
   const AppResponsivePadding({
-    required this.child, super.key,
+    required this.child,
+    super.key,
     this.horizontal = AppSpacing.base,
     this.vertical = 0,
   });
@@ -281,12 +283,12 @@ class AppResponsivePadding extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Padding(
-        padding: EdgeInsetsDirectional.symmetric(
-          horizontal: horizontal,
-          vertical: vertical,
-        ),
-        child: child,
-      );
+    padding: EdgeInsetsDirectional.symmetric(
+      horizontal: horizontal,
+      vertical: vertical,
+    ),
+    child: child,
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -301,26 +303,26 @@ class AppOfflineBanner extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     return Container(
-        width: double.infinity,
-        color: AppColors.warning,
-        padding: const EdgeInsets.symmetric(
-          horizontal: AppSpacing.base,
-          vertical: AppSpacing.xs,
-        ),
-        child: Row(
-          children: [
-            const Icon(Icons.wifi_off_rounded, size: 16, color: AppColors.white),
-            const SizedBox(width: AppSpacing.sm),
-            Expanded(
-              child: Text(
-                l10n.offlineMessage,
-                style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                      color: AppColors.white,
-                    ),
-              ),
+      width: double.infinity,
+      color: AppColors.warning,
+      padding: const EdgeInsets.symmetric(
+        horizontal: AppSpacing.base,
+        vertical: AppSpacing.xs,
+      ),
+      child: Row(
+        children: [
+          const Icon(Icons.wifi_off_rounded, size: 16, color: AppColors.white),
+          const SizedBox(width: AppSpacing.sm),
+          Expanded(
+            child: Text(
+              l10n.offlineMessage,
+              style: Theme.of(
+                context,
+              ).textTheme.labelSmall?.copyWith(color: AppColors.white),
             ),
-          ],
-        ),
-      );
+          ),
+        ],
+      ),
+    );
   }
 }

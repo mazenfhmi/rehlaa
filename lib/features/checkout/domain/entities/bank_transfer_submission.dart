@@ -3,11 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'bank_transfer_submission.freezed.dart';
 part 'bank_transfer_submission.g.dart';
 
-enum BankTransferStatus {
-  pendingReview,
-  approved,
-  rejected,
-}
+enum BankTransferStatus { pendingReview, approved, rejected }
 
 @freezed
 abstract class BankTransferSubmission with _$BankTransferSubmission {

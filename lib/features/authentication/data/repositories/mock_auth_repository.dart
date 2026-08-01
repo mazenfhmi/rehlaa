@@ -8,7 +8,7 @@ import 'package:rehlaa/features/authentication/domain/repositories/auth_reposito
 /// verification, and persistent session state.
 class MockAuthRepository implements AuthRepository {
   MockAuthRepository({AuthMockDataSource? dataSource})
-      : _dataSource = dataSource ?? AuthMockDataSource();
+    : _dataSource = dataSource ?? AuthMockDataSource();
 
   final AuthMockDataSource _dataSource;
   AuthSession _currentSession = const AuthSession.guest();
@@ -60,7 +60,9 @@ class MockAuthRepository implements AuthRepository {
 
       if (_dataSource.scenario == AuthMockScenario.emailAlreadyExists) {
         return const Failure(
-          ValidationFailure(message: 'An account with this email already exists.'),
+          ValidationFailure(
+            message: 'An account with this email already exists.',
+          ),
         );
       }
 

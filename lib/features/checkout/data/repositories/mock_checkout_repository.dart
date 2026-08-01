@@ -8,9 +8,7 @@ import 'package:rehlaa/features/checkout/domain/entities/payment_method.dart';
 import 'package:rehlaa/features/checkout/domain/repositories/checkout_repository.dart';
 
 class MockCheckoutRepository implements CheckoutRepository {
-  MockCheckoutRepository({
-    this.delay = const Duration(milliseconds: 500),
-  });
+  MockCheckoutRepository({this.delay = const Duration(milliseconds: 500)});
 
   final Duration delay;
 
@@ -32,7 +30,7 @@ class MockCheckoutRepository implements CheckoutRepository {
     final account = CheckoutMockData.bankAccounts
         .where((acc) => acc.bankId == bankId)
         .firstOrNull;
-    
+
     if (account != null) {
       return Success(account);
     }
@@ -47,7 +45,9 @@ class MockCheckoutRepository implements CheckoutRepository {
     required String receiptFilePath,
   }) async {
     await Future<void>.delayed(delay);
-    return const Success(null); // Just simulating a successful API call. The ViewModel will manage the BankTransferSubmission entity.
+    return const Success(
+      null,
+    ); // Just simulating a successful API call. The ViewModel will manage the BankTransferSubmission entity.
   }
 
   @override
@@ -60,6 +60,6 @@ class MockCheckoutRepository implements CheckoutRepository {
   }
 }
 
-final checkoutRepositoryProvider = Provider<CheckoutRepository>((ref) {
-  return MockCheckoutRepository();
-});
+final checkoutRepositoryProvider = Provider<CheckoutRepository>(
+  (ref) => MockCheckoutRepository(),
+);

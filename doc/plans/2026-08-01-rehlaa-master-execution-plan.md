@@ -64,10 +64,12 @@
 | مواءمة جميع خطط الواجهة | منجزة | الخطط والمواصفات تشير إلى عقد التصميم الموحد |
 | Foundation Task 0 | منجزة | Home typed وعادت إلى Repository/ViewModel مع اختبارات الحالات |
 | Foundation Task 1 | منجزة | Flutter 3.44.8 وDart 3.12.2، واختبارات المشروع 28/28 |
-| Foundation Task 2 | محجوبة | مصفوفة الإصدارات الأصلية غير قابلة للحل بسبب قيود Analyzer المتعارضة |
-| بقية Foundation | جزئية وغير معتمدة | تُنفذ بالترتيب ولا يُحسب الموجود منجزًا قبل قبول المهمة |
-| Authentication | جزئية وغير معتمدة | Domain وواجهات أولية موجودة، لكن الحماية والتدفقات الكاملة ناقصة |
-| Catalog وما بعده | غير منجز | يبدأ فقط بعد بوابة Foundation والمصادقة |
+| Foundation Task 2 | منجزة | مصفوفة DG-01 مثبتة، والتوليد والتحليل والاختبارات ناجحة |
+| بقية Foundation | منجزة | F03–F10 منفذة ومثبتة بالاختبارات |
+| Authentication | منجزة | A01–A07 منفذة، وحماية المسارات و`returnTo` مثبتان بالاختبارات |
+| Catalog | قيد الاستكمال | C01–C07 مثبتة؛ نقطة الاستئناف C08 ثم بوابة قبول المرحلة |
+| Checkout | قيد الاستكمال | P01–P06 لها تنفيذ عامل؛ P07–P08 وتغطية الملف/Offline/RTL/الثيمات لم تكتمل |
+| نقطة الاستئناف | C08 ثم بوابة المرحلة 3 | إغلاق السلة والتدفق التكاملي قبل استكمال Checkout |
 
 ### DG-01: بوابة توافق الاعتماديات
 
@@ -182,13 +184,13 @@ build_runner: ^2.10.4
 
 **الناتج:** مسار متجر كامل حتى سلة جاهزة للـCheckout.
 
-- [ ] **C01 — تعريف Catalog entities وMoney:** منتجات وخيارات وأسعار دون `double`.
-- [ ] **C02 — تنفيذ Mock Catalog وRead Cache:** بيانات حتمية وسياسة cache/offline واضحة.
-- [ ] **C03 — بناء Product widgets المشتركة:** typed variants للبطاقات والحالات والاتجاهين.
-- [ ] **C04 — إكمال تركيب Home:** sections رفيعة مرتبطة بـViewModel ومكونات التصميم.
-- [ ] **C05 — تنفيذ اختيار الخيارات والتسعير:** signature حتمية وحساب السعر في Domain.
-- [ ] **C06 — بناء Product Details:** gallery/options/quantity/sticky purchase action وحالات التعطيل.
-- [ ] **C07 — تنفيذ Favorites:** uniqueness وoptimistic update مع rollback وحالة فارغة.
+- [x] **C01 — تعريف Catalog entities وMoney:** منتجات وخيارات وأسعار دون `double`.
+- [x] **C02 — تنفيذ Mock Catalog وRead Cache:** بيانات حتمية وسياسة cache/offline واضحة.
+- [x] **C03 — بناء Product widgets المشتركة:** typed variants للبطاقات والحالات والاتجاهين.
+- [x] **C04 — إكمال تركيب Home:** sections رفيعة مرتبطة بـViewModel ومكونات التصميم.
+- [x] **C05 — تنفيذ اختيار الخيارات والتسعير:** signature حتمية وحساب السعر في Domain.
+- [x] **C06 — بناء Product Details:** gallery/options/quantity/sticky purchase action وحالات التعطيل.
+- [x] **C07 — تنفيذ Favorites:** uniqueness وoptimistic update مع rollback وحالة فارغة.
 - [ ] **C08 — تنفيذ Cart domain والشاشات:** دمج العناصر بالهوية الصحيحة وملخص typed وحالتي الفراغ والامتلاء.
 
 ### بوابة الكتالوج والتجارة
@@ -384,6 +386,11 @@ git status --short
 | 2026-08-01 | F02 | منجز | Pub solver دون overrides، code generation ناجح، 28 اختبارًا ناجحًا، و0 Analyzer errors |
 | 2026-08-01 | F03-F10 | منجز | اكتمال مرحلة الـ Foundation (Bootstrap, Theme, Localization, Navigation, Preferences) وجميع الاختبارات تنجح |
 | 2026-08-01 | A01-A07 | منجز | اكتمال مرحلة المصادقة (Auth Entities, Value Objects, Mock Repo, ViewModels, Pages, Protected Redirects, Integration Tests) |
+| 2026-08-01 | تدقيق C/P بعد التنفيذ الجزئي | قيد الاستكمال | إصلاح override قديم في اختبارات Home؛ `flutter analyze` بلا errors/warnings و`flutter test` ناجح 68/68؛ المتبقي يبدأ من C04 ومتطلبات قبول المرحلتين 3 و4 |
+| 2026-08-01 | C04 | منجز | توحيد Home حول Catalog ViewModel، إضافة refresh/category selection والمكونات المترجمة، وإثبات Light-English وDark-Arabic و200% وempty/offline؛ الاختبارات 72/72 |
+| 2026-08-01 | C05 | منجز | تثبيت required options والتوقيع المرتب وDomain pricing، ورفض المعرفات الدخيلة وتعدد قيم المجموعة واختلاف العملة، مع snapshot immutable؛ الاختبارات 76/76 |
+| 2026-08-01 | C06 | منجز | Gallery وmetadata/favorite/rating والخيارات والكمية وشريط شراء safe-area، مع callback typed وتعريب Light/Dark وRTL و200%؛ format نظيف والتحليل بلا warnings والاختبارات 78/78 |
+| 2026-08-01 | C07 | منجز | uniqueness عبر Set وتطبيع نتائج Repository، optimistic remove مع rollback، وصفحة empty/grid مترجمة ومثبتة في Dark-Arabic و200%؛ الاختبارات 81/81 |
 
 ## 9. تعريف الإنجاز الكامل
 

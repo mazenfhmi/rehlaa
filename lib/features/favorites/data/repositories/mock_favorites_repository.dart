@@ -5,7 +5,7 @@ import 'package:rehlaa/features/favorites/domain/repositories/favorites_reposito
 import 'package:rehlaa/shared/domain/catalog/product.dart';
 
 class MockFavoritesRepository implements FavoritesRepository {
-  final List<String> _favoriteIds = [];
+  final Set<String> _favoriteIds = {};
 
   @override
   Future<Result<List<Product>>> getFavorites() async {
@@ -34,4 +34,6 @@ class MockFavoritesRepository implements FavoritesRepository {
   }
 }
 
-final favoritesRepositoryProvider = Provider<FavoritesRepository>((ref) => MockFavoritesRepository());
+final favoritesRepositoryProvider = Provider<FavoritesRepository>(
+  (ref) => MockFavoritesRepository(),
+);

@@ -27,7 +27,9 @@ class ThemeController extends _$ThemeController {
   ThemeMode get themeMode => state;
   set themeMode(ThemeMode mode) {
     state = mode;
-    ref.read(preferenceStorageServiceProvider).setString(PreferenceKeys.themeMode, mode.name);
+    ref
+        .read(preferenceStorageServiceProvider)
+        .setString(PreferenceKeys.themeMode, mode.name);
   }
 
   void toggleTheme() {

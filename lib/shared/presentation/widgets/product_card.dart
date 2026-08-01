@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:rehlaa/core/design_system/components/images/app_network_image.dart';
-import 'package:rehlaa/core/design_system/tokens/app_tokens.dart';
 import 'package:rehlaa/shared/domain/catalog/product.dart';
 import 'package:rehlaa/shared/presentation/widgets/favorite_button.dart';
 import 'package:rehlaa/shared/presentation/widgets/product_price.dart';
@@ -9,21 +8,26 @@ import 'package:rehlaa/shared/presentation/widgets/product_rating.dart';
 enum ProductCardVariant { grid, compact, horizontal }
 
 class ProductCard extends StatelessWidget {
-
   const ProductCard.grid({
-    required this.product, required this.onTap, super.key,
+    required this.product,
+    required this.onTap,
+    super.key,
     this.onFavoriteTap,
     this.isFavorite = false,
   }) : variant = ProductCardVariant.grid;
 
   const ProductCard.compact({
-    required this.product, required this.onTap, super.key,
+    required this.product,
+    required this.onTap,
+    super.key,
     this.onFavoriteTap,
     this.isFavorite = false,
   }) : variant = ProductCardVariant.compact;
 
   const ProductCard.horizontal({
-    required this.product, required this.onTap, super.key,
+    required this.product,
+    required this.onTap,
+    super.key,
     this.onFavoriteTap,
     this.isFavorite = false,
   }) : variant = ProductCardVariant.horizontal;
@@ -47,6 +51,7 @@ class ProductCard extends StatelessWidget {
 
   Widget _buildGrid(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final colors = Theme.of(context).colorScheme;
     final isRtl = Directionality.of(context) == TextDirection.rtl;
     final name = isRtl ? product.nameAr : product.nameEn;
 
@@ -62,7 +67,7 @@ class ProductCard extends StatelessWidget {
               children: [
                 Container(
                   decoration: BoxDecoration(
-                    color: AppColors.black5, // surfaceMuted
+                    color: colors.surfaceContainerHighest,
                     borderRadius: BorderRadius.circular(12),
                   ),
                   clipBehavior: Clip.antiAlias,
@@ -79,15 +84,18 @@ class ProductCard extends StatelessWidget {
                     left: isRtl ? null : 8,
                     right: isRtl ? 8 : null,
                     child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 8,
+                        vertical: 4,
+                      ),
                       decoration: BoxDecoration(
-                        color: AppColors.primary,
+                        color: colors.primary,
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Text(
                         'Featured', // We can localize this if needed
                         style: textTheme.labelSmall?.copyWith(
-                          color: AppColors.white,
+                          color: colors.onPrimary,
                         ),
                       ),
                     ),
@@ -107,9 +115,7 @@ class ProductCard extends StatelessWidget {
           const SizedBox(height: 8),
           Text(
             name,
-            style: textTheme.bodyMedium?.copyWith(
-              color: AppColors.black,
-            ),
+            style: textTheme.bodyMedium?.copyWith(color: colors.onSurface),
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
           ),

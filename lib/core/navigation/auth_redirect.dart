@@ -21,7 +21,8 @@ String? authRedirect({
 }) {
   final matchedLocation = state.matchedLocation;
   final isProtected = _protectedRoutes.any(
-    (route) => matchedLocation == route || matchedLocation.startsWith('$route/'),
+    (route) =>
+        matchedLocation == route || matchedLocation.startsWith('$route/'),
   );
 
   final isAuthRoute = matchedLocation.startsWith('/auth/');

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:rehlaa/core/design_system/components/fields/app_fields.dart';
 import 'package:rehlaa/core/design_system/components/buttons/app_buttons.dart';
+import 'package:rehlaa/core/design_system/components/fields/app_fields.dart';
 
 class ApplyCodeField extends StatefulWidget {
   const ApplyCodeField({
@@ -58,16 +58,17 @@ class _ApplyCodeFieldState extends State<ApplyCodeField> {
 
   @override
   Widget build(BuildContext context) {
-    final hasAppliedCode = widget.appliedCode != null && widget.appliedCode!.isNotEmpty;
-    
+    final hasAppliedCode =
+        widget.appliedCode != null && widget.appliedCode!.isNotEmpty;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           widget.label,
-          style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
+          style: Theme.of(
+            context,
+          ).textTheme.titleSmall?.copyWith(fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 8),
         Row(
@@ -95,8 +96,8 @@ class _ApplyCodeFieldState extends State<ApplyCodeField> {
             child: Text(
               widget.errorText!,
               style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                    color: Theme.of(context).colorScheme.error,
-                  ),
+                color: Theme.of(context).colorScheme.error,
+              ),
             ),
           ),
       ],

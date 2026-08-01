@@ -24,10 +24,7 @@ void main() {
     });
 
     test('rejects short password', () {
-      expect(
-        () => Password.parse('Pass1'),
-        throwsA(isA<FormatException>()),
-      );
+      expect(() => Password.parse('Pass1'), throwsA(isA<FormatException>()));
     });
 
     test('rejects password without numbers', () {

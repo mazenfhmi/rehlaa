@@ -31,7 +31,9 @@ class _SignInPageState extends ConsumerState<SignInPage> {
   Future<void> _submit() async {
     if (!_formKey.currentState!.validate()) return;
 
-    final success = await ref.read(signInViewModelProvider.notifier).signIn(
+    final success = await ref
+        .read(signInViewModelProvider.notifier)
+        .signIn(
           email: _emailController.text,
           password: _passwordController.text,
         );
@@ -110,7 +112,8 @@ class _SignInPageState extends ConsumerState<SignInPage> {
                       alignment: Alignment.centerRight,
                       child: AppSecondaryButton(
                         label: l10n.forgotPassword,
-                        onPressed: () => context.push(AppRoutePaths.forgotPassword),
+                        onPressed: () =>
+                            context.push(AppRoutePaths.forgotPassword),
                       ),
                     ),
 
@@ -120,7 +123,10 @@ class _SignInPageState extends ConsumerState<SignInPage> {
                     if (signInState.hasError) ...[
                       Text(
                         signInState.error.toString(),
-                        style: const TextStyle(color: AppColors.error, fontSize: 13),
+                        style: const TextStyle(
+                          color: AppColors.error,
+                          fontSize: 13,
+                        ),
                       ),
                       const SizedBox(height: AppSpacing.base),
                     ],

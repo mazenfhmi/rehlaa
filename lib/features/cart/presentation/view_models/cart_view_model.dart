@@ -10,30 +10,43 @@ part 'cart_view_model.g.dart';
 @riverpod
 class CartViewModel extends _$CartViewModel {
   @override
-  Cart build() => const Cart(items: [], subtotal: Money(minorUnits: 0, currencyCode: 'SDG'));
+  Cart build() => const Cart(
+    items: [],
+    subtotal: Money(minorUnits: 0, currencyCode: 'SDG'),
+  );
 
-  void addItem(Product product, ProductSelection selection, [int quantity = 1]) {
+  void addItem(
+    Product product,
+    ProductSelection selection, [
+    int quantity = 1,
+  ]) {
     if (quantity < 1) return;
-    
-    final newItem = CartItem(product: product, selection: selection, quantity: quantity);
+
+    final newItem = CartItem(
+      product: product,
+      selection: selection,
+      quantity: quantity,
+    );
     final items = List<CartItem>.from(state.items);
-    
+
     final index = items.indexWhere((item) => item.id == newItem.id);
     if (index != -1) {
-      items[index] = items[index].copyWith(quantity: items[index].quantity + quantity);
+      items[index] = items[index].copyWith(
+        quantity: items[index].quantity + quantity,
+      );
     } else {
       items.add(newItem);
     }
-    
+
     _updateState(items);
   }
-  
+
   void updateQuantity(String itemId, int quantity) {
     if (quantity < 1) return;
-    
+
     final items = List<CartItem>.from(state.items);
     final index = items.indexWhere((item) => item.id == itemId);
-    
+
     if (index != -1) {
       items[index] = items[index].copyWith(quantity: quantity);
       _updateState(items);
@@ -48,7 +61,7 @@ class CartViewModel extends _$CartViewModel {
   void clear() {
     _updateState([]);
   }
-  
+
   void _updateState(List<CartItem> items) {
     var totalMinorUnits = 0;
     var currencyCode = 'SDG';
@@ -58,7 +71,7 @@ class CartViewModel extends _$CartViewModel {
         totalMinorUnits += item.totalPrice.minorUnits;
       }
     }
-    
+
     state = state.copyWith(
       items: items,
       subtotal: Money(minorUnits: totalMinorUnits, currencyCode: currencyCode),

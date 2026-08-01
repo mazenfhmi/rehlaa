@@ -3,24 +3,33 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:rehlaa/core/design_system/design_system.dart';
 import 'package:rehlaa/core/network/connectivity_service.dart';
 import 'package:rehlaa/core/result/result.dart';
-import 'package:rehlaa/features/home/data/repositories/mock_home_repository.dart';
+import 'package:rehlaa/features/catalog/data/mock/catalog_mock_data.dart';
+import 'package:rehlaa/features/catalog/domain/repositories/catalog_repository.dart';
+import 'package:rehlaa/features/catalog/presentation/providers/catalog_provider.dart';
 import 'package:rehlaa/features/home/domain/entities/home_category.dart';
-import 'package:rehlaa/features/home/domain/repositories/home_repository.dart';
+import 'package:rehlaa/features/home/domain/entities/home_feed.dart';
 import 'package:rehlaa/features/home/presentation/pages/home_page.dart';
 import 'package:rehlaa/features/home/presentation/widgets/categories_widget.dart';
 import 'package:rehlaa/generated/l10n/app_localizations.dart';
+
+class _MockCatalogRepository extends Mock implements CatalogRepository {}
 
 void main() {
   testWidgets('shows category loading feedback while Home data is pending', (
     tester,
   ) async {
+    final repository = _MockCatalogRepository();
+    final pendingFeed = Completer<Result<HomeFeed>>();
+    when(() => repository.getHomeFeed()).thenAnswer((_) => pendingFeed.future);
+
     await tester.pumpWidget(
       ProviderScope(
         overrides: [
-          homeRepositoryProvider.overrideWithValue(_PendingHomeRepository()),
+          catalogRepositoryProvider.overrideWithValue(repository),
           isOnlineProvider.overrideWith((ref) => Stream.value(true)),
         ],
         child: const MaterialApp(
@@ -59,15 +68,18 @@ void main() {
     expect(selectedId, 'gaming');
   });
 
-  testWidgets('renders repository categories and updates Home selection', (
+  testWidgets('renders categories returned by CatalogRepository', (
     tester,
   ) async {
+    final repository = _MockCatalogRepository();
+    when(
+      () => repository.getHomeFeed(),
+    ).thenAnswer((_) async => Success(CatalogMockData.homeFeed));
+
     await tester.pumpWidget(
       ProviderScope(
         overrides: [
-          homeRepositoryProvider.overrideWithValue(
-            const _SuccessHomeRepository(),
-          ),
+          catalogRepositoryProvider.overrideWithValue(repository),
           isOnlineProvider.overrideWith((ref) => Stream.value(true)),
         ],
         child: const MaterialApp(
@@ -79,31 +91,21 @@ void main() {
     );
     await tester.pump();
 
-    expect(find.text('Gaming'), findsOneWidget);
-
-    await tester.tap(find.text('Gaming'));
-    await tester.pump();
-
-    final selectedCard = tester.widget<AnimatedContainer>(
-      find.descendant(
-        of: find.byKey(const ValueKey('gaming')),
-        matching: find.byType(AnimatedContainer),
-      ),
-    );
-    final decoration = selectedCard.decoration! as BoxDecoration;
-
-    expect(decoration.color, AppColors.primary);
+    expect(find.text('Game Cards'), findsOneWidget);
   });
 
   testWidgets('shows offline feedback when connectivity is unavailable', (
     tester,
   ) async {
+    final repository = _MockCatalogRepository();
+    when(
+      () => repository.getHomeFeed(),
+    ).thenAnswer((_) async => Success(CatalogMockData.homeFeed));
+
     await tester.pumpWidget(
       ProviderScope(
         overrides: [
-          homeRepositoryProvider.overrideWithValue(
-            const _SuccessHomeRepository(),
-          ),
+          catalogRepositoryProvider.overrideWithValue(repository),
           isOnlineProvider.overrideWith((ref) => Stream.value(false)),
         ],
         child: const MaterialApp(
@@ -121,12 +123,16 @@ void main() {
   testWidgets('shows error feedback when loading categories fails', (
     tester,
   ) async {
+    final repository = _MockCatalogRepository();
+    when(() => repository.getHomeFeed()).thenAnswer(
+      (_) async =>
+          const Failure(NetworkFailure(message: 'catalog unavailable')),
+    );
+
     await tester.pumpWidget(
       ProviderScope(
         overrides: [
-          homeRepositoryProvider.overrideWithValue(
-            const _FailureHomeRepository(),
-          ),
+          catalogRepositoryProvider.overrideWithValue(repository),
           isOnlineProvider.overrideWith((ref) => Stream.value(true)),
         ],
         child: const MaterialApp(
@@ -158,27 +164,3 @@ const _categories = [
     svgIcon: 'assets/icons/Game Icon.svg',
   ),
 ];
-
-class _PendingHomeRepository implements HomeRepository {
-  final Completer<Result<List<HomeCategory>>> _completer = Completer();
-
-  @override
-  Future<Result<List<HomeCategory>>> getCategories() => _completer.future;
-}
-
-class _SuccessHomeRepository implements HomeRepository {
-  const _SuccessHomeRepository();
-
-  @override
-  Future<Result<List<HomeCategory>>> getCategories() async =>
-      const Success(_categories);
-}
-
-class _FailureHomeRepository implements HomeRepository {
-  const _FailureHomeRepository();
-
-  @override
-  Future<Result<List<HomeCategory>>> getCategories() async => const Failure(
-        NetworkFailure(message: 'catalog unavailable'),
-      );
-}

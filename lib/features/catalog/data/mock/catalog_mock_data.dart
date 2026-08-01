@@ -70,9 +70,9 @@ class CatalogMockData {
   ];
 
   static HomeFeed get homeFeed => HomeFeed(
-        banners: banners,
-        categories: categories,
-        featuredProducts: products.where((p) => p.isFeatured).toList(),
-        exclusiveOffers: products.where((p) => p.compareAtPrice != null).toList(),
-      );
+    banners: banners,
+    categories: categories,
+    featuredProducts: products.where((p) => p.isFeatured).toList(),
+    exclusiveOffers: products.where((p) => p.compareAtPrice != null).toList(),
+  );
 }

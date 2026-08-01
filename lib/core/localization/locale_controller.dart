@@ -27,7 +27,9 @@ class LocaleController extends _$LocaleController {
   void setLocale(Locale locale) {
     if (!_supportedLocales.contains(locale.languageCode)) return;
     state = locale;
-    ref.read(preferenceStorageServiceProvider).setString(PreferenceKeys.locale, locale.languageCode);
+    ref
+        .read(preferenceStorageServiceProvider)
+        .setString(PreferenceKeys.locale, locale.languageCode);
   }
 
   void toggleLocale() {

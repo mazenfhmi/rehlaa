@@ -15,7 +15,37 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeTitle => 'Home';
 
   @override
+  String get homeSearchHint => 'Search products';
+
+  @override
+  String get categoriesTitle => 'Categories';
+
+  @override
+  String get exclusiveOffersTitle => 'Exclusive Offers';
+
+  @override
+  String get featuredProductsTitle => 'Featured Products';
+
+  @override
+  String get cachedDataMessage => 'Showing saved catalog data';
+
+  @override
+  String get securePaymentsLabel => 'Secure payments';
+
+  @override
+  String get instantDeliveryLabel => 'Instant delivery';
+
+  @override
+  String get supportAnytimeLabel => 'Support anytime';
+
+  @override
   String get favoritesTitle => 'Favorites';
+
+  @override
+  String get favoritesEmptyTitle => 'No favorites yet';
+
+  @override
+  String get favoritesEmptySubtitle => 'Products you save will appear here.';
 
   @override
   String get cartTitle => 'Cart';
@@ -103,6 +133,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get buyNow => 'Buy Now';
+
+  @override
+  String get totalPriceLabel => 'Total price';
+
+  @override
+  String get quantityLabel => 'Quantity';
+
+  @override
+  String get selectRequiredOptions =>
+      'Select all required options to continue.';
 
   @override
   String get removeFromCart => 'Remove';

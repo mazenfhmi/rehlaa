@@ -52,84 +52,84 @@ class _ForgotPasswordPageState extends ConsumerState<ForgotPasswordPage> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     return AppScaffold(
-        appBar: AppPageHeader(title: l10n.passwordRecoveryTitle),
-        body: Padding(
-          padding: const EdgeInsets.all(AppSpacing.base),
-          child: _isSent
-              ? Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Icon(
-                        Icons.mark_email_read_outlined,
-                        size: 72,
-                        color: AppColors.primary,
+      appBar: AppPageHeader(title: l10n.passwordRecoveryTitle),
+      body: Padding(
+        padding: const EdgeInsets.all(AppSpacing.base),
+        child: _isSent
+            ? Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Icon(
+                      Icons.mark_email_read_outlined,
+                      size: 72,
+                      color: AppColors.primary,
+                    ),
+                    const SizedBox(height: AppSpacing.base),
+                    Text(
+                      l10n.recoveryEmailSent,
+                      style: Theme.of(context).textTheme.titleLarge,
+                    ),
+                    const SizedBox(height: AppSpacing.sm),
+                    Text(
+                      l10n.recoveryEmailSentDesc,
+                      style: Theme.of(context).textTheme.bodyMedium,
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: AppSpacing.xl),
+                    AppPrimaryButton(
+                      label: l10n.backToSignIn,
+                      onPressed: () => context.pop(),
+                    ),
+                  ],
+                ),
+              )
+            : Form(
+                key: _formKey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      l10n.forgotPassword,
+                      style: Theme.of(context).textTheme.headlineSmall,
+                    ),
+                    const SizedBox(height: AppSpacing.xs),
+                    Text(
+                      l10n.forgotPasswordDesc,
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                    const SizedBox(height: AppSpacing.xl),
+
+                    AppTextField(
+                      controller: _emailController,
+                      label: l10n.email,
+                      hint: 'user@rehlaa.com',
+                      prefixSvgIcon: 'assets/icons/Message.svg',
+                      keyboardType: TextInputType.emailAddress,
+                      validator: validateEmail,
+                    ),
+                    const SizedBox(height: AppSpacing.xl),
+
+                    if (_errorMessage != null) ...[
+                      Text(
+                        _errorMessage!,
+                        style: const TextStyle(
+                          color: AppColors.error,
+                          fontSize: 13,
+                        ),
                       ),
                       const SizedBox(height: AppSpacing.base),
-                      Text(
-                        l10n.recoveryEmailSent,
-                        style: Theme.of(context).textTheme.titleLarge,
-                      ),
-                      const SizedBox(height: AppSpacing.sm),
-                      Text(
-                        l10n.recoveryEmailSentDesc,
-                        style: Theme.of(context).textTheme.bodyMedium,
-                        textAlign: TextAlign.center,
-                      ),
-                      const SizedBox(height: AppSpacing.xl),
-                      AppPrimaryButton(
-                        label: l10n.backToSignIn,
-                        onPressed: () => context.pop(),
-                      ),
                     ],
-                  ),
-                )
-              : Form(
-                  key: _formKey,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        l10n.forgotPassword,
-                        style: Theme.of(context).textTheme.headlineSmall,
-                      ),
-                      const SizedBox(height: AppSpacing.xs),
-                      Text(
-                        l10n.forgotPasswordDesc,
-                        style: Theme.of(context).textTheme.bodyMedium,
-                      ),
-                      const SizedBox(height: AppSpacing.xl),
 
-                      AppTextField(
-                        controller: _emailController,
-                        label: l10n.email,
-                        hint: 'user@rehlaa.com',
-                        prefixSvgIcon: 'assets/icons/Message.svg',
-                        keyboardType: TextInputType.emailAddress,
-                        validator: validateEmail,
-                      ),
-                      const SizedBox(height: AppSpacing.xl),
-
-                      if (_errorMessage != null) ...[
-                        Text(
-                          _errorMessage!,
-                          style: const TextStyle(
-                            color: AppColors.error,
-                            fontSize: 13,
-                          ),
-                        ),
-                        const SizedBox(height: AppSpacing.base),
-                      ],
-
-                      AppPrimaryButton(
-                        label: l10n.sendRecoveryEmail,
-                        isLoading: _isLoading,
-                        onPressed: _submit,
-                      ),
-                    ],
-                  ),
+                    AppPrimaryButton(
+                      label: l10n.sendRecoveryEmail,
+                      isLoading: _isLoading,
+                      onPressed: _submit,
+                    ),
+                  ],
                 ),
-        ),
-      );
+              ),
+      ),
+    );
   }
 }

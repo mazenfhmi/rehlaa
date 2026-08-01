@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:rehlaa/core/design_system/tokens/app_colors.dart';
-import 'package:rehlaa/core/design_system/tokens/app_colors.dart';
 import 'package:rehlaa/features/checkout/domain/entities/payment_method.dart';
 
 class PaymentMethodTile extends StatelessWidget {
   const PaymentMethodTile({
-    super.key,
     required this.method,
     required this.isSelected,
     required this.onTap,
+    super.key,
   });
 
   final PaymentMethod method;
@@ -16,20 +15,19 @@ class PaymentMethodTile extends StatelessWidget {
   final VoidCallback onTap;
 
   @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(12),
-      child: Container(
-        padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          color: isSelected ? AppColors.primaryLight : AppColors.white,
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(
-            color: isSelected ? AppColors.primary : AppColors.black20,
-            width: 1.5,
-          ),
+  Widget build(BuildContext context) => InkWell(
+    onTap: onTap,
+    borderRadius: BorderRadius.circular(12),
+    child: Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: isSelected ? AppColors.primaryLight : AppColors.white,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(
+          color: isSelected ? AppColors.primary : AppColors.black20,
+          width: 1.5,
         ),
+      ),
       child: Row(
         children: [
           Container(
@@ -44,8 +42,10 @@ class PaymentMethodTile extends StatelessWidget {
               child: Image.network(
                 method.logoUrl,
                 fit: BoxFit.cover,
-                errorBuilder: (context, error, stackTrace) =>
-                    const Icon(Icons.account_balance_wallet, color: AppColors.black40),
+                errorBuilder: (context, error, stackTrace) => const Icon(
+                  Icons.account_balance_wallet,
+                  color: AppColors.black40,
+                ),
               ),
             ),
           ),
@@ -56,17 +56,17 @@ class PaymentMethodTile extends StatelessWidget {
               children: [
                 Text(
                   method.nameAr,
-                  style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
+                  style: Theme.of(
+                    context,
+                  ).textTheme.titleSmall?.copyWith(fontWeight: FontWeight.bold),
                 ),
                 if (method.descriptionAr.isNotEmpty) ...[
                   const SizedBox(height: 4),
                   Text(
                     method.descriptionAr,
-                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          color: AppColors.black60,
-                        ),
+                    style: Theme.of(
+                      context,
+                    ).textTheme.bodySmall?.copyWith(color: AppColors.black60),
                   ),
                 ],
               ],
@@ -86,6 +86,5 @@ class PaymentMethodTile extends StatelessWidget {
         ],
       ),
     ),
-    );
-  }
+  );
 }

@@ -23,13 +23,10 @@ class _PlaceholderPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        body: Center(
-          child: Text(
-            title,
-            style: Theme.of(context).textTheme.headlineSmall,
-          ),
-        ),
-      );
+    body: Center(
+      child: Text(title, style: Theme.of(context).textTheme.headlineSmall),
+    ),
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -38,7 +35,8 @@ class _PlaceholderPage extends StatelessWidget {
 
 @riverpod
 GoRouter appRouter(Ref ref) {
-  final session = ref.watch(authSessionControllerProvider).value ??
+  final session =
+      ref.watch(authSessionControllerProvider).value ??
       const AuthSession.guest();
 
   return GoRouter(
@@ -48,9 +46,8 @@ GoRouter appRouter(Ref ref) {
     routes: [
       // ── Shell with bottom navigation ──
       StatefulShellRoute.indexedStack(
-        builder: (context, state, navigationShell) => AppShell(
-          navigationShell: navigationShell,
-        ),
+        builder: (context, state, navigationShell) =>
+            AppShell(navigationShell: navigationShell),
         branches: [
           // ── Home ──
           StatefulShellBranch(

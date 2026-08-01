@@ -3,10 +3,7 @@ import 'package:rehlaa/core/design_system/tokens/app_colors.dart';
 import 'package:rehlaa/features/checkout/domain/entities/checkout_quote.dart';
 
 class PriceSummary extends StatelessWidget {
-  const PriceSummary({
-    required this.quote,
-    super.key,
-  });
+  const PriceSummary({required this.quote, super.key});
 
   final CheckoutQuote quote;
 
@@ -59,29 +56,29 @@ class PriceSummary extends StatelessWidget {
     Color? valueColor,
     bool isTotal = false,
   }) => Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          label,
-          style: isTotal
-              ? Theme.of(context).textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  )
-              : Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: AppColors.black60,
-                  ),
-        ),
-        Text(
-          value,
-          style: isTotal
-              ? Theme.of(context).textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  )
-              : Theme.of(context).textTheme.titleSmall?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    color: valueColor,
-                  ),
-        ),
-      ],
-    );
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      Text(
+        label,
+        style: isTotal
+            ? Theme.of(
+                context,
+              ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold)
+            : Theme.of(
+                context,
+              ).textTheme.bodyMedium?.copyWith(color: AppColors.black60),
+      ),
+      Text(
+        value,
+        style: isTotal
+            ? Theme.of(
+                context,
+              ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold)
+            : Theme.of(context).textTheme.titleSmall?.copyWith(
+                fontWeight: FontWeight.bold,
+                color: valueColor,
+              ),
+      ),
+    ],
+  );
 }

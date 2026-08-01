@@ -15,7 +15,37 @@ class AppLocalizationsAr extends AppLocalizations {
   String get homeTitle => 'الرئيسية';
 
   @override
+  String get homeSearchHint => 'ابحث عن المنتجات';
+
+  @override
+  String get categoriesTitle => 'الفئات';
+
+  @override
+  String get exclusiveOffersTitle => 'عروض حصرية';
+
+  @override
+  String get featuredProductsTitle => 'منتجات مميزة';
+
+  @override
+  String get cachedDataMessage => 'يتم عرض بيانات الكتالوج المحفوظة';
+
+  @override
+  String get securePaymentsLabel => 'دفع آمن';
+
+  @override
+  String get instantDeliveryLabel => 'تسليم فوري';
+
+  @override
+  String get supportAnytimeLabel => 'دعم متواصل';
+
+  @override
   String get favoritesTitle => 'المفضلة';
+
+  @override
+  String get favoritesEmptyTitle => 'لا توجد منتجات في المفضلة';
+
+  @override
+  String get favoritesEmptySubtitle => 'ستظهر هنا المنتجات التي تحفظها.';
 
   @override
   String get cartTitle => 'السلة';
@@ -103,6 +133,15 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get buyNow => 'اشتر الآن';
+
+  @override
+  String get totalPriceLabel => 'السعر الإجمالي';
+
+  @override
+  String get quantityLabel => 'الكمية';
+
+  @override
+  String get selectRequiredOptions => 'اختر جميع الخيارات المطلوبة للمتابعة.';
 
   @override
   String get removeFromCart => 'إزالة';

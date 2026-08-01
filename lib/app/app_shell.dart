@@ -12,10 +12,7 @@ import 'package:rehlaa/generated/l10n/app_localizations.dart';
 
 /// Bottom navigation item model for the shell.
 class _ShellNavItem {
-  const _ShellNavItem({
-    required this.label,
-    required this.svgPath,
-  });
+  const _ShellNavItem({required this.label, required this.svgPath});
 
   final String label;
   final String svgPath;
@@ -25,10 +22,16 @@ List<_ShellNavItem> _getNavItems(BuildContext context) {
   final l10n = AppLocalizations.of(context);
   return [
     _ShellNavItem(label: l10n.homeTitle, svgPath: 'assets/icons/Home.svg'),
-    _ShellNavItem(label: l10n.favoritesTitle, svgPath: 'assets/icons/Heart.svg'),
+    _ShellNavItem(
+      label: l10n.favoritesTitle,
+      svgPath: 'assets/icons/Heart.svg',
+    ),
     _ShellNavItem(label: l10n.cartTitle, svgPath: 'assets/icons/Bag.svg'),
     _ShellNavItem(label: l10n.walletTitle, svgPath: 'assets/icons/Wallet.svg'),
-    _ShellNavItem(label: l10n.profileTitle, svgPath: 'assets/icons/Profile.svg'),
+    _ShellNavItem(
+      label: l10n.profileTitle,
+      svgPath: 'assets/icons/Profile.svg',
+    ),
   ];
 }
 

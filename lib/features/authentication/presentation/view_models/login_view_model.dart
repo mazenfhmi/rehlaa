@@ -10,10 +10,7 @@ class SignInViewModel extends _$SignInViewModel {
   @override
   AsyncValue<void> build() => const AsyncData(null);
 
-  Future<bool> signIn({
-    required String email,
-    required String password,
-  }) async {
+  Future<bool> signIn({required String email, required String password}) async {
     state = const AsyncLoading();
 
     final repo = ref.read(authRepositoryProvider);

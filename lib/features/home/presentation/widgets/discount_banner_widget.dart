@@ -7,30 +7,27 @@ class DiscountBannerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Container(
-      width: double.infinity,
-      margin: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
-      padding: const EdgeInsets.symmetric(
-        horizontal: AppSpacing.lg,
-        vertical: AppSpacing.md,
+    width: double.infinity,
+    margin: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
+    padding: const EdgeInsets.symmetric(
+      horizontal: AppSpacing.lg,
+      vertical: AppSpacing.md,
+    ),
+    decoration: BoxDecoration(
+      color: const Color(0xFF4A3298),
+      borderRadius: BorderRadius.circular(20),
+    ),
+    child: const Text.rich(
+      TextSpan(
+        style: TextStyle(color: Colors.white),
+        children: [
+          TextSpan(text: 'A Summer Surprise\n'),
+          TextSpan(
+            text: 'Cashback 20%',
+            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          ),
+        ],
       ),
-      decoration: BoxDecoration(
-        color: const Color(0xFF4A3298),
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: const Text.rich(
-        TextSpan(
-          style: TextStyle(color: Colors.white),
-          children: [
-            TextSpan(text: 'A Summer Surprise\n'),
-            TextSpan(
-              text: 'Cashback 20%',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
+    ),
+  );
 }

@@ -1,3 +1,4 @@
+import 'package:rehlaa/core/files/picked_file.dart';
 import 'package:rehlaa/core/network/connectivity_service.dart';
 import 'package:rehlaa/core/result/result.dart';
 import 'package:rehlaa/features/checkout/data/repositories/mock_checkout_repository.dart';
@@ -6,7 +7,6 @@ import 'package:rehlaa/features/checkout/domain/use_cases/apply_promotion.dart';
 import 'package:rehlaa/features/checkout/domain/use_cases/build_checkout_quote.dart';
 import 'package:rehlaa/features/checkout/presentation/states/checkout_state.dart';
 import 'package:rehlaa/shared/domain/money/money.dart';
-import 'package:rehlaa/core/files/picked_file.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'checkout_view_model.g.dart';
@@ -28,14 +28,14 @@ class CheckoutViewModel extends _$CheckoutViewModel {
     _walletBalance = const Money.sdg(5000000); // 50,000 SDG
 
     // Trigger initial load but don't await (build must be sync since we return CheckoutState, not Future<CheckoutState>)
-    Future.microtask(() => _loadInitialData());
+    Future.microtask(_loadInitialData);
 
     return const CheckoutState();
   }
 
   Future<void> _loadInitialData() async {
     state = state.copyWith(isLoading: true);
-    
+
     _recalculateQuote();
 
     final methodsResult = await _repository.getPaymentMethods();
@@ -49,8 +49,8 @@ class CheckoutViewModel extends _$CheckoutViewModel {
   }
 
   void _recalculateQuote() {
-    Money couponDiscount = const Money.sdg(0);
-    Money referralDiscount = const Money.sdg(0);
+    var couponDiscount = const Money.sdg(0);
+    var referralDiscount = const Money.sdg(0);
 
     if (state.couponCode.isNotEmpty && state.couponError == null) {
       final couponRes = _applyPromotion(code: state.couponCode);
@@ -104,7 +104,9 @@ class CheckoutViewModel extends _$CheckoutViewModel {
     if (result.isSuccess) {
       state = state.copyWith(referralCode: code, referralError: null);
     } else {
-      state = state.copyWith(referralError: (result as Failure).failure.message);
+      state = state.copyWith(
+        referralError: (result as Failure).failure.message,
+      );
     }
     _recalculateQuote();
   }
@@ -122,7 +124,7 @@ class CheckoutViewModel extends _$CheckoutViewModel {
   Future<void> selectBank(String id) async {
     final bank = state.banks.where((b) => b.id == id).firstOrNull;
     state = state.copyWith(selectedBank: bank, bankAccount: null);
-    
+
     if (bank != null) {
       final accountResult = await _repository.getBankAccount(bank.id);
       if (accountResult.isSuccess) {
@@ -144,11 +146,18 @@ class CheckoutViewModel extends _$CheckoutViewModel {
 
     final isConnected = await _connectivityService.isConnected;
     if (!isConnected) {
-      state = state.copyWith(isOffline: true, submissionError: 'لا يوجد اتصال بالإنترنت.');
+      state = state.copyWith(
+        isOffline: true,
+        submissionError: 'لا يوجد اتصال بالإنترنت.',
+      );
       return;
     }
 
-    state = state.copyWith(isSubmitting: true, isOffline: false, submissionError: null);
+    state = state.copyWith(
+      isSubmitting: true,
+      isOffline: false,
+      submissionError: null,
+    );
 
     if (state.selectedPaymentMethod!.isBankTransfer) {
       final result = await _repository.submitBankTransfer(
@@ -161,7 +170,9 @@ class CheckoutViewModel extends _$CheckoutViewModel {
       state = state.copyWith(
         isSubmitting: false,
         isSuccess: result.isSuccess,
-        submissionError: result.isFailure ? (result as Failure).failure.message : null,
+        submissionError: result.isFailure
+            ? (result as Failure).failure.message
+            : null,
       );
     } else {
       final result = await _repository.submitOrder(
@@ -172,7 +183,9 @@ class CheckoutViewModel extends _$CheckoutViewModel {
       state = state.copyWith(
         isSubmitting: false,
         isSuccess: result.isSuccess,
-        submissionError: result.isFailure ? (result as Failure).failure.message : null,
+        submissionError: result.isFailure
+            ? (result as Failure).failure.message
+            : null,
       );
     }
   }

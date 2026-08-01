@@ -1,5 +1,5 @@
 /// Core result type used throughout the application.
-/// 
+///
 /// Every repository method and use case returns [Result<T>].
 /// ViewModels translate failures into localized UI states.
 sealed class Result<T> {
@@ -13,26 +13,26 @@ sealed class Result<T> {
 
   /// Returns the data if [Success], throws otherwise.
   T get dataOrThrow => switch (this) {
-        Success(:final data) => data,
-        Failure(:final failure) =>
-          throw StateError('Result is a failure: $failure'),
-      };
+    Success(:final data) => data,
+    Failure(:final failure) => throw StateError(
+      'Result is a failure: $failure',
+    ),
+  };
 
   /// Maps the data inside [Success] to a new type.
   Result<U> map<U>(U Function(T data) transform) => switch (this) {
-        Success(:final data) => Success(transform(data)),
-        Failure(:final failure) => Failure(failure),
-      };
+    Success(:final data) => Success(transform(data)),
+    Failure(:final failure) => Failure(failure),
+  };
 
   /// Calls [onSuccess] if [Success], [onFailure] if [Failure].
   R fold<R>({
     required R Function(T data) onSuccess,
     required R Function(AppFailure failure) onFailure,
-  }) =>
-      switch (this) {
-        Success(:final data) => onSuccess(data),
-        Failure(:final failure) => onFailure(failure),
-      };
+  }) => switch (this) {
+    Success(:final data) => onSuccess(data),
+    Failure(:final failure) => onFailure(failure),
+  };
 }
 
 /// Represents a successful result carrying data of type [T].
@@ -75,23 +75,22 @@ sealed class AppFailure {
 /// The device has no active network connection.
 final class OfflineFailure extends AppFailure {
   const OfflineFailure({String message = 'No internet connection.'})
-      : super(message);
+    : super(message);
 }
 
 /// A network request failed (DNS, timeout, server error, etc.).
 final class NetworkFailure extends AppFailure {
-  const NetworkFailure({
-    required String message,
-    this.statusCode,
-  }) : super(message);
+  const NetworkFailure({required String message, this.statusCode})
+    : super(message);
 
   final int? statusCode;
 }
 
 /// The user is not authenticated or the session has expired.
 final class UnauthorizedFailure extends AppFailure {
-  const UnauthorizedFailure({String message = 'Session expired. Please sign in again.'})
-      : super(message);
+  const UnauthorizedFailure({
+    String message = 'Session expired. Please sign in again.',
+  }) : super(message);
 }
 
 /// One or more input fields are invalid.
@@ -108,7 +107,7 @@ final class ValidationFailure extends AppFailure {
 /// The requested resource was not found.
 final class NotFoundFailure extends AppFailure {
   const NotFoundFailure({String message = 'Resource not found.'})
-      : super(message);
+    : super(message);
 }
 
 /// A resource conflict occurred (e.g., duplicate email).
@@ -131,7 +130,7 @@ final class StorageFailure extends AppFailure {
 /// An unclassified or unexpected failure.
 final class UnknownFailure extends AppFailure {
   const UnknownFailure({String message = 'An unexpected error occurred.'})
-      : super(message);
+    : super(message);
 
   // Original exception for logging only — never shown to users.
   factory UnknownFailure.fromException(Object error) =>

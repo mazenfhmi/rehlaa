@@ -83,11 +83,10 @@ String? validatePositiveAmount(String? value, {double min = 0.01}) {
 /// Composes multiple validators — returns the first non-null error.
 String? Function(String?) composeValidators(
   List<String? Function(String?)> validators,
-) =>
-    (value) {
-      for (final validator in validators) {
-        final error = validator(value);
-        if (error != null) return error;
-      }
-      return null;
-    };
+) => (value) {
+  for (final validator in validators) {
+    final error = validator(value);
+    if (error != null) return error;
+  }
+  return null;
+};

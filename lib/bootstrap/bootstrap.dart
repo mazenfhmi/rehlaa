@@ -14,9 +14,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 ///
 /// All async initialization is done here — `main.dart` remains a single line.
 /// Error handling is global via [FlutterError.onError].
-Future<void> bootstrap({
-  required AppEnvironment environment,
-}) async {
+Future<void> bootstrap({required AppEnvironment environment}) async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Lock to portrait.

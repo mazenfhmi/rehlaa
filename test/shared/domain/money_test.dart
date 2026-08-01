@@ -17,7 +17,8 @@ void main() {
 
     test('rejects mixed currencies on addition', () {
       expect(
-        () => const Money(currencyCode: 'SDG', minorUnits: 1) +
+        () =>
+            const Money(currencyCode: 'SDG', minorUnits: 1) +
             const Money(currencyCode: 'USD', minorUnits: 1),
         throwsStateError,
       );
@@ -25,12 +26,13 @@ void main() {
 
     test('rejects mixed currencies on subtraction', () {
       expect(
-        () => const Money(currencyCode: 'SDG', minorUnits: 1) -
+        () =>
+            const Money(currencyCode: 'SDG', minorUnits: 1) -
             const Money(currencyCode: 'USD', minorUnits: 1),
         throwsStateError,
       );
     });
-    
+
     test('equality works', () {
       expect(const Money.sdg(500000), equals(const Money.sdg(500000)));
       expect(const Money.sdg(500000), isNot(equals(const Money.sdg(100000))));

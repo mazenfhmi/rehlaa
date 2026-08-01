@@ -10,10 +10,11 @@ abstract class ProductOptionValue with _$ProductOptionValue {
     required String id,
     required String nameAr,
     required String nameEn,
-    required Money priceDelta, 
+    required Money priceDelta,
   }) = _ProductOptionValue;
 
-  factory ProductOptionValue.fromJson(Map<String, dynamic> json) => _$ProductOptionValueFromJson(json);
+  factory ProductOptionValue.fromJson(Map<String, dynamic> json) =>
+      _$ProductOptionValueFromJson(json);
 }
 
 @freezed
@@ -26,5 +27,6 @@ abstract class ProductOptionGroup with _$ProductOptionGroup {
     required List<ProductOptionValue> values,
   }) = _ProductOptionGroup;
 
-  factory ProductOptionGroup.fromJson(Map<String, dynamic> json) => _$ProductOptionGroupFromJson(json);
+  factory ProductOptionGroup.fromJson(Map<String, dynamic> json) =>
+      _$ProductOptionGroupFromJson(json);
 }

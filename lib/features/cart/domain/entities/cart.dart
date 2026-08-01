@@ -6,8 +6,6 @@ part 'cart.freezed.dart';
 
 @freezed
 abstract class Cart with _$Cart {
-  const factory Cart({
-    required List<CartItem> items,
-    required Money subtotal,
-  }) = _Cart;
+  const factory Cart({required List<CartItem> items, required Money subtotal}) =
+      _Cart;
 }

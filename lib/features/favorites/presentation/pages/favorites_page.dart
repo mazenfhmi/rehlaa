@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:rehlaa/core/design_system/design_system.dart';
 import 'package:rehlaa/features/favorites/presentation/view_models/favorites_view_model.dart';
+import 'package:rehlaa/generated/l10n/app_localizations.dart';
 import 'package:rehlaa/shared/presentation/widgets/product_card.dart';
 
 class FavoritesPage extends ConsumerWidget {
@@ -10,17 +11,17 @@ class FavoritesPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(favoritesViewModelProvider);
+    final l10n = AppLocalizations.of(context);
 
     return AppScaffold(
-      appBar: const AppPageHeader(title: 'Favorites'),
+      appBar: AppPageHeader(title: l10n.favoritesTitle),
       body: state.when(
         data: (favorites) {
           if (favorites.isEmpty) {
-            return Center(
-              child: Text(
-                'No favorites yet',
-                style: Theme.of(context).textTheme.titleMedium,
-              ),
+            return AppEmptyState(
+              title: l10n.favoritesEmptyTitle,
+              subtitle: l10n.favoritesEmptySubtitle,
+              icon: Icons.favorite_outline_rounded,
             );
           }
           return GridView.builder(
@@ -32,14 +33,21 @@ class FavoritesPage extends ConsumerWidget {
               childAspectRatio: 0.65,
             ),
             itemCount: favorites.length,
-            itemBuilder: (context, index) => ProductCard.grid(
-                product: favorites[index],
+            itemBuilder: (context, index) {
+              final product = favorites[index];
+              return ProductCard.grid(
+                product: product,
+                isFavorite: true,
+                onFavoriteTap: () => ref
+                    .read(favoritesViewModelProvider.notifier)
+                    .toggleFavorite(product),
                 onTap: () {},
-              ),
+              );
+            },
           );
         },
-        loading: () => const Center(child: CircularProgressIndicator()),
-        error: (err, stack) => Center(child: Text(err.toString())),
+        loading: () => const AppLoadingIndicator(),
+        error: (err, stack) => AppErrorState(message: err.toString()),
       ),
     );
   }

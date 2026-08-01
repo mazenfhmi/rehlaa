@@ -28,7 +28,9 @@ class SecureStorageService {
       return const Success(null);
     } on Exception catch (e) {
       AppLogger.error('SecureStorage write failed for key=$key', e);
-      return const Failure(StorageFailure(message: 'Failed to write to secure storage.'));
+      return const Failure(
+        StorageFailure(message: 'Failed to write to secure storage.'),
+      );
     }
   }
 
@@ -38,7 +40,9 @@ class SecureStorageService {
       return Success(value);
     } on Exception catch (e) {
       AppLogger.error('SecureStorage read failed for key=$key', e);
-      return const Failure(StorageFailure(message: 'Failed to read from secure storage.'));
+      return const Failure(
+        StorageFailure(message: 'Failed to read from secure storage.'),
+      );
     }
   }
 
@@ -48,7 +52,9 @@ class SecureStorageService {
       return const Success(null);
     } on Exception catch (e) {
       AppLogger.error('SecureStorage delete failed for key=$key', e);
-      return const Failure(StorageFailure(message: 'Failed to delete from secure storage.'));
+      return const Failure(
+        StorageFailure(message: 'Failed to delete from secure storage.'),
+      );
     }
   }
 
@@ -58,7 +64,9 @@ class SecureStorageService {
       return const Success(null);
     } on Exception catch (e) {
       AppLogger.error('SecureStorage deleteAll failed', e);
-      return const Failure(StorageFailure(message: 'Failed to clear secure storage.'));
+      return const Failure(
+        StorageFailure(message: 'Failed to clear secure storage.'),
+      );
     }
   }
 }
@@ -71,11 +79,11 @@ abstract final class SecureStorageKeys {
 
 @riverpod
 SecureStorageService secureStorageService(Ref ref) => SecureStorageService(
-      const FlutterSecureStorage(
-        aOptions: AndroidOptions(encryptedSharedPreferences: true),
-        iOptions: IOSOptions(accessibility: KeychainAccessibility.first_unlock),
-      ),
-    );
+  const FlutterSecureStorage(
+    aOptions: AndroidOptions(encryptedSharedPreferences: true),
+    iOptions: IOSOptions(accessibility: KeychainAccessibility.first_unlock),
+  ),
+);
 
 // ---------------------------------------------------------------------------
 // Preference Storage — theme, language, non-sensitive cache

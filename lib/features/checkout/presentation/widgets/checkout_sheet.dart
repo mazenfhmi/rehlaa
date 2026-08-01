@@ -1,58 +1,55 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import 'package:rehlaa/features/checkout/presentation/states/checkout_state.dart';
-import 'package:rehlaa/features/checkout/presentation/view_models/checkout_view_model.dart';
-import 'package:rehlaa/shared/domain/money/money.dart';
-
 import 'package:rehlaa/core/design_system/components/buttons/app_buttons.dart';
 import 'package:rehlaa/core/design_system/components/overlays/app_bottom_sheet.dart';
 import 'package:rehlaa/core/design_system/tokens/app_colors.dart';
-import 'package:rehlaa/features/checkout/domain/entities/checkout_quote.dart';
-import 'package:rehlaa/features/checkout/domain/entities/payment_method.dart';
+import 'package:rehlaa/features/checkout/presentation/view_models/checkout_view_model.dart';
 import 'package:rehlaa/features/checkout/presentation/widgets/apply_code_field.dart';
 import 'package:rehlaa/features/checkout/presentation/widgets/bank_details_card.dart';
 import 'package:rehlaa/features/checkout/presentation/widgets/bank_selector_tile.dart';
 import 'package:rehlaa/features/checkout/presentation/widgets/payment_method_tile.dart';
 import 'package:rehlaa/features/checkout/presentation/widgets/price_summary.dart';
 import 'package:rehlaa/features/checkout/presentation/widgets/receipt_uploader.dart';
+import 'package:rehlaa/shared/domain/money/money.dart';
 
-Future<void> showCheckoutSheet(BuildContext context, {required Money price}) {
-  return showModalBottomSheet(
-    context: context,
-    isScrollControlled: true,
-    backgroundColor: Colors.transparent,
-    builder: (context) => CheckoutSheet(price: price),
-  );
-}
+Future<void> showCheckoutSheet(BuildContext context, {required Money price}) =>
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (context) => CheckoutSheet(price: price),
+    );
 
 class CheckoutSheet extends ConsumerWidget {
-  const CheckoutSheet({
-    required this.price,
-    super.key,
-  });
+  const CheckoutSheet({required this.price, super.key});
 
   final Money price;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final CheckoutState state = ref.watch(checkoutViewModelProvider(price));
-    final CheckoutViewModel viewModel = ref.read(checkoutViewModelProvider(price).notifier);
+    final state = ref.watch(checkoutViewModelProvider(price));
+    final viewModel = ref.read(checkoutViewModelProvider(price).notifier);
 
     // Error handling listener
-    ref.listen(checkoutViewModelProvider(price).select((s) => s.submissionError), (prev, next) {
-      if (next != null) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(next),
-            backgroundColor: Theme.of(context).colorScheme.error,
-          ),
-        );
-      }
-    });
+    ref.listen(
+      checkoutViewModelProvider(price).select((s) => s.submissionError),
+      (prev, next) {
+        if (next != null) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(next),
+              backgroundColor: Theme.of(context).colorScheme.error,
+            ),
+          );
+        }
+      },
+    );
 
     // Success listener
-    ref.listen(checkoutViewModelProvider(price).select((s) => s.isSuccess), (prev, next) {
+    ref.listen(checkoutViewModelProvider(price).select((s) => s.isSuccess), (
+      prev,
+      next,
+    ) {
       if (next == true) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
@@ -69,77 +66,88 @@ class CheckoutSheet extends ConsumerWidget {
       minChildSize: 0.5,
       maxChildSize: 0.9,
       expand: false,
-      builder: (context, scrollController) {
-        return Container(
-          decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.surface,
-            borderRadius: const BorderRadius.vertical(top: Radius.circular(30)),
-          ),
-          child: Stack(
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  const SizedBox(height: 12),
-                  const Center(child: AppModalHandle()),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-                    child: Text(
-                      'الدفع',
-                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                            fontWeight: FontWeight.bold,
-                          ),
+      builder: (context, scrollController) => DecoratedBox(
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.surface,
+          borderRadius: const BorderRadius.vertical(top: Radius.circular(30)),
+        ),
+        child: Stack(
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                const SizedBox(height: 12),
+                const Center(child: AppModalHandle()),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 24,
+                    vertical: 16,
+                  ),
+                  child: Text(
+                    'الدفع',
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
+                ),
                 Expanded(
                   child: ListView(
                     controller: scrollController,
-                    padding: const EdgeInsets.only(left: 24, right: 24, bottom: 120),
+                    padding: const EdgeInsets.only(
+                      left: 24,
+                      right: 24,
+                      bottom: 120,
+                    ),
                     children: [
                       // Payment Methods
                       Text(
                         'طريقة الدفع',
                         style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                              fontWeight: FontWeight.bold,
-                            ),
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       const SizedBox(height: 12),
                       if (state.isLoading && state.paymentMethods.isEmpty)
                         const Center(child: CircularProgressIndicator())
                       else
-                        ...state.paymentMethods.map((method) => Padding(
-                              padding: const EdgeInsets.only(bottom: 12),
-                              child: PaymentMethodTile(
-                                method: method,
-                                isSelected: state.selectedPaymentMethod?.id == method.id,
-                                onTap: () => viewModel.selectPaymentMethod(method.id),
-                              ),
-                            )),
+                        ...state.paymentMethods.map(
+                          (method) => Padding(
+                            padding: const EdgeInsets.only(bottom: 12),
+                            child: PaymentMethodTile(
+                              method: method,
+                              isSelected:
+                                  state.selectedPaymentMethod?.id == method.id,
+                              onTap: () =>
+                                  viewModel.selectPaymentMethod(method.id),
+                            ),
+                          ),
+                        ),
 
                       // Bank Transfer Details
-                      if (state.selectedPaymentMethod?.isBankTransfer == true) ...[
+                      if (state.selectedPaymentMethod?.isBankTransfer ==
+                          true) ...[
                         const SizedBox(height: 24),
                         Text(
                           'اختر البنك',
-                          style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                                fontWeight: FontWeight.bold,
-                              ),
+                          style: Theme.of(context).textTheme.titleSmall
+                              ?.copyWith(fontWeight: FontWeight.bold),
                         ),
                         const SizedBox(height: 12),
-                        ...state.banks.map((bank) => Padding(
-                              padding: const EdgeInsets.only(bottom: 12),
-                              child: BankSelectorTile(
-                                bank: bank,
-                                isSelected: state.selectedBank?.id == bank.id,
-                                onTap: () => viewModel.selectBank(bank.id),
-                              ),
-                            )),
-                        
-                        if (state.selectedBank != null && state.bankAccount != null) ...[
-                          const SizedBox(height: 24),
-                          BankDetailsCard(
-                            account: state.bankAccount!,
+                        ...state.banks.map(
+                          (bank) => Padding(
+                            padding: const EdgeInsets.only(bottom: 12),
+                            child: BankSelectorTile(
+                              bank: bank,
+                              isSelected: state.selectedBank?.id == bank.id,
+                              onTap: () => viewModel.selectBank(bank.id),
+                            ),
                           ),
+                        ),
+
+                        if (state.selectedBank != null &&
+                            state.bankAccount != null) ...[
+                          const SizedBox(height: 24),
+                          BankDetailsCard(account: state.bankAccount!),
                           const SizedBox(height: 24),
                           ReceiptUploader(
                             selectedFile: state.receiptFile,
@@ -149,7 +157,7 @@ class CheckoutSheet extends ConsumerWidget {
                       ],
 
                       const SizedBox(height: 32),
-                      
+
                       // Apply Code
                       ApplyCodeField(
                         label: 'كوبون الخصم',
@@ -164,7 +172,7 @@ class CheckoutSheet extends ConsumerWidget {
                       const SizedBox(height: 32),
 
                       // Wallet Switch
-                      Container(
+                      DecoratedBox(
                         decoration: BoxDecoration(
                           color: AppColors.black5,
                           borderRadius: BorderRadius.circular(12),
@@ -191,7 +199,7 @@ class CheckoutSheet extends ConsumerWidget {
                 ),
               ],
             ),
-            
+
             // Sticky Bottom Button
             Positioned(
               bottom: 0,
@@ -222,9 +230,8 @@ class CheckoutSheet extends ConsumerWidget {
               ),
             ),
           ],
-          ), // End of Stack
-        ); // End of Container
-      },
-    );
+        ), // End of Stack
+      ), // End of DecoratedBox
+    ); // End of DraggableScrollableSheet
   }
 }

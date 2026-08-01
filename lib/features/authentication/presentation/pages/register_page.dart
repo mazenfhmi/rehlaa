@@ -65,87 +65,87 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     return AppScaffold(
-        appBar: AppPageHeader(title: l10n.signUp),
-        body: SingleChildScrollView(
-          padding: const EdgeInsets.all(AppSpacing.base),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+      appBar: AppPageHeader(title: l10n.signUp),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(AppSpacing.base),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Create account',
+                style: Theme.of(context).textTheme.headlineSmall,
+              ),
+              const SizedBox(height: AppSpacing.xs),
+              Text(
+                'Please enter your details to register.',
+                style: Theme.of(context).textTheme.bodyMedium,
+              ),
+              const SizedBox(height: AppSpacing.xl),
+
+              // Name Field
+              AppTextField(
+                controller: _nameController,
+                label: l10n.fullName,
+                hint: 'Mazen Ahmed',
+                prefixSvgIcon: 'assets/icons/Profile.svg',
+                textInputAction: TextInputAction.next,
+                validator: (v) =>
+                    v == null || v.isEmpty ? 'Please enter your name' : null,
+              ),
+              const SizedBox(height: AppSpacing.base),
+
+              // Email Field
+              AppTextField(
+                controller: _emailController,
+                label: l10n.email,
+                hint: 'user@rehlaa.com',
+                prefixSvgIcon: 'assets/icons/Message.svg',
+                keyboardType: TextInputType.emailAddress,
+                textInputAction: TextInputAction.next,
+                validator: validateEmail,
+              ),
+              const SizedBox(height: AppSpacing.base),
+
+              // Password Field
+              AppPasswordField(
+                controller: _passwordController,
+                validator: validatePassword,
+              ),
+              const SizedBox(height: AppSpacing.xl),
+
+              if (_errorMessage != null) ...[
                 Text(
-                  'Create account',
-                  style: Theme.of(context).textTheme.headlineSmall,
-                ),
-                const SizedBox(height: AppSpacing.xs),
-                Text(
-                  'Please enter your details to register.',
-                  style: Theme.of(context).textTheme.bodyMedium,
-                ),
-                const SizedBox(height: AppSpacing.xl),
-
-                // Name Field
-                AppTextField(
-                  controller: _nameController,
-                  label: l10n.fullName,
-                  hint: 'Mazen Ahmed',
-                  prefixSvgIcon: 'assets/icons/Profile.svg',
-                  textInputAction: TextInputAction.next,
-                  validator: (v) =>
-                      v == null || v.isEmpty ? 'Please enter your name' : null,
+                  _errorMessage!,
+                  style: const TextStyle(color: AppColors.error, fontSize: 13),
                 ),
                 const SizedBox(height: AppSpacing.base),
-
-                // Email Field
-                AppTextField(
-                  controller: _emailController,
-                  label: l10n.email,
-                  hint: 'user@rehlaa.com',
-                  prefixSvgIcon: 'assets/icons/Message.svg',
-                  keyboardType: TextInputType.emailAddress,
-                  textInputAction: TextInputAction.next,
-                  validator: validateEmail,
-                ),
-                const SizedBox(height: AppSpacing.base),
-
-                // Password Field
-                AppPasswordField(
-                  controller: _passwordController,
-                  validator: validatePassword,
-                ),
-                const SizedBox(height: AppSpacing.xl),
-
-                if (_errorMessage != null) ...[
-                  Text(
-                    _errorMessage!,
-                    style: const TextStyle(color: AppColors.error, fontSize: 13),
-                  ),
-                  const SizedBox(height: AppSpacing.base),
-                ],
-
-                // Sign Up Button
-                AppPrimaryButton(
-                  label: l10n.signUp,
-                  isLoading: _isLoading,
-                  onPressed: _submit,
-                ),
-                const SizedBox(height: AppSpacing.base),
-
-                // Sign In Link
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(l10n.alreadyHaveAccount),
-                    AppSecondaryButton(
-                      label: l10n.signIn,
-                      onPressed: () => context.pop(),
-                    ),
-                  ],
-                ),
               ],
-            ),
+
+              // Sign Up Button
+              AppPrimaryButton(
+                label: l10n.signUp,
+                isLoading: _isLoading,
+                onPressed: _submit,
+              ),
+              const SizedBox(height: AppSpacing.base),
+
+              // Sign In Link
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(l10n.alreadyHaveAccount),
+                  AppSecondaryButton(
+                    label: l10n.signIn,
+                    onPressed: () => context.pop(),
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
-      );
+      ),
+    );
   }
 }

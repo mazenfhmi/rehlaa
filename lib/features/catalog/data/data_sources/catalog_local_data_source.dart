@@ -9,10 +9,9 @@ abstract class CatalogLocalDataSource {
 }
 
 class CatalogLocalDataSourceImpl implements CatalogLocalDataSource {
-
   CatalogLocalDataSourceImpl(this._prefs);
   final PreferenceStorageService _prefs;
-  
+
   static const _homeFeedKey = 'CACHED_HOME_FEED';
 
   @override

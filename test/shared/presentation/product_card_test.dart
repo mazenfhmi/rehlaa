@@ -4,9 +4,7 @@ import 'package:rehlaa/shared/domain/catalog/product.dart';
 import 'package:rehlaa/shared/domain/money/money.dart';
 import 'package:rehlaa/shared/presentation/widgets/product_card.dart';
 
-Widget testApp(Widget child) => MaterialApp(
-    home: Scaffold(body: child),
-  );
+Widget testApp(Widget child) => MaterialApp(home: Scaffold(body: child));
 
 void main() {
   const fixtureProduct = Product(
@@ -28,15 +26,16 @@ void main() {
   );
 
   testWidgets('renders discounted price and featured badge', (tester) async {
-    await tester.pumpWidget(testApp(Center(
-      child: SizedBox(
-        width: 200,
-        child: ProductCard.grid(
-          product: fixtureProduct,
-          onTap: () {},
+    await tester.pumpWidget(
+      testApp(
+        Center(
+          child: SizedBox(
+            width: 200,
+            child: ProductCard.grid(product: fixtureProduct, onTap: () {}),
+          ),
         ),
       ),
-    )));
+    );
 
     expect(find.text('135,000 SDG'), findsOneWidget);
     expect(find.text('399,000 SDG'), findsOneWidget);

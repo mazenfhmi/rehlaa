@@ -11,7 +11,8 @@ import 'package:rehlaa/core/design_system/tokens/app_tokens.dart';
 /// Full-width primary elevated button (matches reference ElevatedButton style).
 class AppPrimaryButton extends StatelessWidget {
   const AppPrimaryButton({
-    required this.label, super.key,
+    required this.label,
+    super.key,
     this.onPressed,
     this.isLoading = false,
     this.icon,
@@ -64,7 +65,14 @@ class AppPrimaryButton extends StatelessWidget {
       return Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          SvgPicture.asset(svgIcon!, height: 20, colorFilter: const ColorFilter.mode(AppColors.white, BlendMode.srcIn)),
+          SvgPicture.asset(
+            svgIcon!,
+            height: 20,
+            colorFilter: const ColorFilter.mode(
+              AppColors.white,
+              BlendMode.srcIn,
+            ),
+          ),
           const SizedBox(width: AppSpacing.sm),
           Text(label),
         ],
@@ -73,7 +81,11 @@ class AppPrimaryButton extends StatelessWidget {
     if (icon != null) {
       return Row(
         mainAxisSize: MainAxisSize.min,
-        children: [icon!, const SizedBox(width: AppSpacing.sm), Text(label)],
+        children: [
+          icon!,
+          const SizedBox(width: AppSpacing.sm),
+          Text(label),
+        ],
       );
     }
     return Text(label);
@@ -85,7 +97,8 @@ class AppPrimaryButton extends StatelessWidget {
 /// Full-width outlined button — matches reference OutlinedButton style.
 class AppOutlinedButton extends StatelessWidget {
   const AppOutlinedButton({
-    required this.label, super.key,
+    required this.label,
+    super.key,
     this.onPressed,
     this.isLoading = false,
     this.icon,
@@ -106,38 +119,42 @@ class AppOutlinedButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => SizedBox(
-        width: width,
-        height: height,
-        child: OutlinedButton(
-          onPressed: (onPressed == null || isLoading) ? null : onPressed,
-          style: borderColor != null
-              ? OutlinedButton.styleFrom(
-                  side: BorderSide(width: 1.5, color: borderColor!),
-                )
-              : null,
-          child: isLoading
-              ? const SizedBox(
-                  width: 22,
-                  height: 22,
-                  child: CircularProgressIndicator(strokeWidth: 2.5),
-                )
-              : svgIcon != null
-                  ? Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        SvgPicture.asset(svgIcon!, height: 20),
-                        const SizedBox(width: AppSpacing.sm),
-                        Text(label),
-                      ],
-                    )
-                  : icon != null
-                      ? Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [icon!, const SizedBox(width: AppSpacing.sm), Text(label)],
-                        )
-                      : Text(label),
-        ),
-      );
+    width: width,
+    height: height,
+    child: OutlinedButton(
+      onPressed: (onPressed == null || isLoading) ? null : onPressed,
+      style: borderColor != null
+          ? OutlinedButton.styleFrom(
+              side: BorderSide(width: 1.5, color: borderColor!),
+            )
+          : null,
+      child: isLoading
+          ? const SizedBox(
+              width: 22,
+              height: 22,
+              child: CircularProgressIndicator(strokeWidth: 2.5),
+            )
+          : svgIcon != null
+          ? Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SvgPicture.asset(svgIcon!, height: 20),
+                const SizedBox(width: AppSpacing.sm),
+                Text(label),
+              ],
+            )
+          : icon != null
+          ? Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                icon!,
+                const SizedBox(width: AppSpacing.sm),
+                Text(label),
+              ],
+            )
+          : Text(label),
+    ),
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -146,7 +163,9 @@ class AppOutlinedButton extends StatelessWidget {
 /// Adapted from .desgin-ui/lib/components/outlined_active_button.dart
 class AppToggleButton extends StatelessWidget {
   const AppToggleButton({
-    required this.label, required this.onPressed, super.key,
+    required this.label,
+    required this.onPressed,
+    super.key,
     this.isActive = false,
     this.width,
     this.height = 40,
@@ -160,20 +179,20 @@ class AppToggleButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => SizedBox(
-        width: width,
-        height: height,
-        child: OutlinedButton(
-          onPressed: onPressed,
-          style: isActive
-              ? OutlinedButton.styleFrom(
-                  backgroundColor: AppColors.primary,
-                  foregroundColor: AppColors.white,
-                  side: const BorderSide(color: AppColors.primary),
-                )
-              : null,
-          child: Text(label),
-        ),
-      );
+    width: width,
+    height: height,
+    child: OutlinedButton(
+      onPressed: onPressed,
+      style: isActive
+          ? OutlinedButton.styleFrom(
+              backgroundColor: AppColors.primary,
+              foregroundColor: AppColors.white,
+              side: const BorderSide(color: AppColors.primary),
+            )
+          : null,
+      child: Text(label),
+    ),
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -181,7 +200,8 @@ class AppToggleButton extends StatelessWidget {
 /// Text button — reference TextButton style with primary color.
 class AppSecondaryButton extends StatelessWidget {
   const AppSecondaryButton({
-    required this.label, super.key,
+    required this.label,
+    super.key,
     this.onPressed,
     this.isLoading = false,
     this.color,
@@ -194,18 +214,16 @@ class AppSecondaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => TextButton(
-        onPressed: (onPressed == null || isLoading) ? null : onPressed,
-        style: color != null
-            ? TextButton.styleFrom(foregroundColor: color)
-            : null,
-        child: isLoading
-            ? const SizedBox(
-                width: 18,
-                height: 18,
-                child: CircularProgressIndicator(strokeWidth: 2),
-              )
-            : Text(label),
-      );
+    onPressed: (onPressed == null || isLoading) ? null : onPressed,
+    style: color != null ? TextButton.styleFrom(foregroundColor: color) : null,
+    child: isLoading
+        ? const SizedBox(
+            width: 18,
+            height: 18,
+            child: CircularProgressIndicator(strokeWidth: 2),
+          )
+        : Text(label),
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -213,7 +231,8 @@ class AppSecondaryButton extends StatelessWidget {
 /// Icon-only tappable button (matches reference icon buttons).
 class AppIconButton extends StatelessWidget {
   const AppIconButton({
-    required this.icon, super.key,
+    required this.icon,
+    super.key,
     this.onPressed,
     this.tooltip,
     this.badgeCount,
@@ -223,27 +242,27 @@ class AppIconButton extends StatelessWidget {
 
   /// Use [icon] for Material icons or [svgPath] for SVG assets.
   factory AppIconButton.svg({
-    required String svgPath, Key? key,
+    required String svgPath,
+    Key? key,
     VoidCallback? onPressed,
     String? tooltip,
     int? badgeCount,
     Color? color,
     double size = 24,
-  }) =>
-      AppIconButton(
-        key: key,
-        icon: SvgPicture.asset(
-          svgPath,
-          height: size,
-          colorFilter: color != null
-              ? ColorFilter.mode(color, BlendMode.srcIn)
-              : null,
-        ),
-        onPressed: onPressed,
-        tooltip: tooltip,
-        badgeCount: badgeCount,
-        size: size,
-      );
+  }) => AppIconButton(
+    key: key,
+    icon: SvgPicture.asset(
+      svgPath,
+      height: size,
+      colorFilter: color != null
+          ? ColorFilter.mode(color, BlendMode.srcIn)
+          : null,
+    ),
+    onPressed: onPressed,
+    tooltip: tooltip,
+    badgeCount: badgeCount,
+    size: size,
+  );
 
   final Widget icon;
   final VoidCallback? onPressed;
@@ -274,7 +293,9 @@ class AppIconButton extends StatelessWidget {
 /// Buy-Now / Add-to-Cart bottom bar button matching the design reference.
 class AppCartButton extends StatelessWidget {
   const AppCartButton({
-    required this.price, required this.onPressed, super.key,
+    required this.price,
+    required this.onPressed,
+    super.key,
     this.title = 'Buy Now',
     this.subTitle = 'Unit price',
     this.currencySymbol = 'SAR',
@@ -288,73 +309,70 @@ class AppCartButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: AppSpacing.base,
-            vertical: AppRadius.sm,
+    child: Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: AppSpacing.base,
+        vertical: AppRadius.sm,
+      ),
+      child: SizedBox(
+        height: 64,
+        child: Material(
+          color: AppColors.primary,
+          clipBehavior: Clip.hardEdge,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(AppRadius.md)),
           ),
-          child: SizedBox(
-            height: 64,
-            child: Material(
-              color: AppColors.primary,
-              clipBehavior: Clip.hardEdge,
-              shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(AppRadius.md)),
-              ),
-              child: InkWell(
-                onTap: onPressed,
-                child: Row(
-                  children: [
-                    Expanded(
-                      flex: 4,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: AppSpacing.base,
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              '${price.toStringAsFixed(2)} $currencySymbol',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleSmall!
-                                  .copyWith(color: AppColors.white),
-                            ),
-                            Text(
-                              subTitle,
-                              style: const TextStyle(
-                                color: Colors.white54,
-                                fontWeight: FontWeight.w500,
-                                fontFamily: 'PlusJakarta',
-                                fontSize: 12,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+          child: InkWell(
+            onTap: onPressed,
+            child: Row(
+              children: [
+                Expanded(
+                  flex: 4,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: AppSpacing.base,
                     ),
-                    Expanded(
-                      flex: 3,
-                      child: Container(
-                        alignment: Alignment.center,
-                        height: double.infinity,
-                        color: Colors.black.withValues(alpha: 0.15),
-                        child: Text(
-                          title,
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleSmall!
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '${price.toStringAsFixed(2)} $currencySymbol',
+                          style: Theme.of(context).textTheme.titleSmall!
                               .copyWith(color: AppColors.white),
                         ),
-                      ),
+                        Text(
+                          subTitle,
+                          style: const TextStyle(
+                            color: Colors.white54,
+                            fontWeight: FontWeight.w500,
+                            fontFamily: 'PlusJakarta',
+                            fontSize: 12,
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
-              ),
+                Expanded(
+                  flex: 3,
+                  child: Container(
+                    alignment: Alignment.center,
+                    height: double.infinity,
+                    color: Colors.black.withValues(alpha: 0.15),
+                    child: Text(
+                      title,
+                      style: Theme.of(
+                        context,
+                      ).textTheme.titleSmall!.copyWith(color: AppColors.white),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ),
-      );
+      ),
+    ),
+  );
 }

@@ -29,10 +29,7 @@ class CartPage extends ConsumerWidget {
                 ),
                 Align(
                   alignment: Alignment.bottomCenter,
-                  child: CartSummaryBar(
-                    cart: cart,
-                    onCheckout: () {},
-                  ),
+                  child: CartSummaryBar(cart: cart, onCheckout: () {}),
                 ),
               ],
             ),

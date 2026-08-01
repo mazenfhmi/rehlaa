@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:rehlaa/core/design_system/tokens/app_tokens.dart';
 import 'package:rehlaa/shared/domain/money/money.dart';
 
 class ProductPrice extends StatelessWidget {
-
   const ProductPrice({
-    required this.currentPrice, super.key,
+    required this.currentPrice,
+    super.key,
     this.compareAtPrice,
     this.currentPriceStyle,
     this.compareAtPriceStyle,
@@ -16,33 +15,42 @@ class ProductPrice extends StatelessWidget {
   final TextStyle? currentPriceStyle;
   final TextStyle? compareAtPriceStyle;
 
-  String _formatPrice(Money money) {
-    final format = NumberFormat.decimalPattern('en');
-    return '${format.format(money.minorUnits / 100)} ${money.currencyCode}';
+  String _formatPrice(BuildContext context, Money money) {
+    final locale = Localizations.localeOf(context).toLanguageTag();
+    final format = NumberFormat.currency(
+      locale: locale,
+      symbol: '',
+      decimalDigits: money.minorUnits % 100 == 0 ? 0 : 2,
+    );
+    return '${format.format(money.minorUnits / 100).trim()} '
+        '${money.currencyCode}';
   }
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final colors = Theme.of(context).colorScheme;
 
     return Wrap(
       spacing: 8,
       crossAxisAlignment: WrapCrossAlignment.center,
       children: [
         Text(
-          _formatPrice(currentPrice),
-          style: currentPriceStyle ??
+          _formatPrice(context, currentPrice),
+          style:
+              currentPriceStyle ??
               textTheme.titleMedium?.copyWith(
-                color: AppColors.black,
+                color: colors.onSurface,
                 fontWeight: FontWeight.bold,
               ),
         ),
         if (compareAtPrice != null)
           Text(
-            _formatPrice(compareAtPrice!),
-            style: compareAtPriceStyle ??
+            _formatPrice(context, compareAtPrice!),
+            style:
+                compareAtPriceStyle ??
                 textTheme.bodyMedium?.copyWith(
-                  color: AppColors.black40,
+                  color: colors.onSurfaceVariant,
                   decoration: TextDecoration.lineThrough,
                 ),
           ),

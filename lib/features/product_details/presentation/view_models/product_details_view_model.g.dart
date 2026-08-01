@@ -13,7 +13,7 @@ part of 'product_details_view_model.dart';
 final productDetailsViewModelProvider = ProductDetailsViewModelFamily._();
 
 final class ProductDetailsViewModelProvider
-    extends $NotifierProvider<ProductDetailsViewModel, ProductSelection> {
+    extends $NotifierProvider<ProductDetailsViewModel, ProductDetailsState> {
   ProductDetailsViewModelProvider._({
     required ProductDetailsViewModelFamily super.from,
     required Product super.argument,
@@ -40,10 +40,10 @@ final class ProductDetailsViewModelProvider
   ProductDetailsViewModel create() => ProductDetailsViewModel();
 
   /// {@macro riverpod.override_with_value}
-  Override overrideWithValue(ProductSelection value) {
+  Override overrideWithValue(ProductDetailsState value) {
     return $ProviderOverride(
       origin: this,
-      providerOverride: $SyncValueProvider<ProductSelection>(value),
+      providerOverride: $SyncValueProvider<ProductDetailsState>(value),
     );
   }
 
@@ -60,15 +60,15 @@ final class ProductDetailsViewModelProvider
 }
 
 String _$productDetailsViewModelHash() =>
-    r'd0ac92a7de7f3ae02799ef026a755843aed2f5a2';
+    r'e3c1875dbc1510819ab8254d3f2d76c75786e7a2';
 
 final class ProductDetailsViewModelFamily extends $Family
     with
         $ClassFamilyOverride<
           ProductDetailsViewModel,
-          ProductSelection,
-          ProductSelection,
-          ProductSelection,
+          ProductDetailsState,
+          ProductDetailsState,
+          ProductDetailsState,
           Product
         > {
   ProductDetailsViewModelFamily._()
@@ -87,20 +87,21 @@ final class ProductDetailsViewModelFamily extends $Family
   String toString() => r'productDetailsViewModelProvider';
 }
 
-abstract class _$ProductDetailsViewModel extends $Notifier<ProductSelection> {
+abstract class _$ProductDetailsViewModel
+    extends $Notifier<ProductDetailsState> {
   late final _$args = ref.$arg as Product;
   Product get product => _$args;
 
-  ProductSelection build(Product product);
+  ProductDetailsState build(Product product);
   @$mustCallSuper
   @override
   void runBuild() {
-    final ref = this.ref as $Ref<ProductSelection, ProductSelection>;
+    final ref = this.ref as $Ref<ProductDetailsState, ProductDetailsState>;
     final element =
         ref.element
             as $ClassProviderElement<
-              AnyNotifier<ProductSelection, ProductSelection>,
-              ProductSelection,
+              AnyNotifier<ProductDetailsState, ProductDetailsState>,
+              ProductDetailsState,
               Object?,
               Object?
             >;

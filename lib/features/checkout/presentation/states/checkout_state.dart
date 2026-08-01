@@ -1,9 +1,9 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:rehlaa/core/files/picked_file.dart';
 import 'package:rehlaa/features/checkout/domain/entities/bank.dart';
 import 'package:rehlaa/features/checkout/domain/entities/bank_account.dart';
 import 'package:rehlaa/features/checkout/domain/entities/checkout_quote.dart';
 import 'package:rehlaa/features/checkout/domain/entities/payment_method.dart';
-import 'package:rehlaa/core/files/picked_file.dart';
 
 part 'checkout_state.freezed.dart';
 
@@ -34,14 +34,16 @@ abstract class CheckoutState with _$CheckoutState {
 
   bool get canSubmit {
     if (quote == null || selectedPaymentMethod == null) return false;
-    
+
     // For bank transfers
     if (selectedPaymentMethod!.isBankTransfer) {
-      if (selectedBank == null || operationNumber.trim().isEmpty || receiptFile == null) {
+      if (selectedBank == null ||
+          operationNumber.trim().isEmpty ||
+          receiptFile == null) {
         return false;
       }
     }
-    
+
     return true;
   }
 }

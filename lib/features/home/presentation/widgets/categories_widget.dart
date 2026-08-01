@@ -60,43 +60,40 @@ class CategoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => InkWell(
-        borderRadius: BorderRadius.circular(10),
-        onTap: onPressed,
-        child: SizedBox(
-          width: 64,
-          child: Column(
-            children: [
-              AnimatedContainer(
-                duration: AppDurations.fast,
-                padding: const EdgeInsets.all(AppSpacing.md),
-                height: 56,
-                width: 56,
-                decoration: BoxDecoration(
-                  color: isSelected
-                      ? AppColors.primary
-                      : AppColors.ecommercePrimaryLight,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: SvgPicture.asset(
-                  icon,
-                  colorFilter: isSelected
-                      ? const ColorFilter.mode(
-                          AppColors.white,
-                          BlendMode.srcIn,
-                        )
-                      : null,
-                ),
-              ),
-              const SizedBox(height: AppSpacing.xs),
-              Text(
-                text,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.labelSmall,
-              ),
-            ],
+    borderRadius: BorderRadius.circular(10),
+    onTap: onPressed,
+    child: SizedBox(
+      width: 64,
+      child: Column(
+        children: [
+          AnimatedContainer(
+            duration: AppDurations.fast,
+            padding: const EdgeInsets.all(AppSpacing.md),
+            height: 56,
+            width: 56,
+            decoration: BoxDecoration(
+              color: isSelected
+                  ? AppColors.primary
+                  : AppColors.ecommercePrimaryLight,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: SvgPicture.asset(
+              icon,
+              colorFilter: isSelected
+                  ? const ColorFilter.mode(AppColors.white, BlendMode.srcIn)
+                  : null,
+            ),
           ),
-        ),
-      );
+          const SizedBox(height: AppSpacing.xs),
+          Text(
+            text,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.labelSmall,
+          ),
+        ],
+      ),
+    ),
+  );
 }

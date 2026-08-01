@@ -6,8 +6,6 @@ part 'checkout_quote.g.dart';
 
 @freezed
 abstract class CheckoutQuote with _$CheckoutQuote {
-  const CheckoutQuote._();
-
   const factory CheckoutQuote({
     required Money subtotal,
     required Money couponDiscount,
@@ -16,6 +14,7 @@ abstract class CheckoutQuote with _$CheckoutQuote {
     required Money externalPayable,
     required Money grandTotal,
   }) = _CheckoutQuote;
+  const CheckoutQuote._();
 
   /// Deterministically builds a quote ensuring invariants are maintained.
   /// Deductions are applied in order: coupon -> referral -> wallet.
@@ -27,20 +26,20 @@ abstract class CheckoutQuote with _$CheckoutQuote {
     required Money walletBalance,
     required bool useWallet,
   }) {
-    int current = subtotal.minorUnits;
+    var current = subtotal.minorUnits;
 
     // Apply coupon
-    int couponDeduction = couponDiscount.minorUnits;
+    var couponDeduction = couponDiscount.minorUnits;
     if (couponDeduction > current) couponDeduction = current;
     current -= couponDeduction;
 
     // Apply referral
-    int referralDeduction = referralDiscount.minorUnits;
+    var referralDeduction = referralDiscount.minorUnits;
     if (referralDeduction > current) referralDeduction = current;
     current -= referralDeduction;
 
     // Apply wallet
-    int walletDeduction = 0;
+    var walletDeduction = 0;
     if (useWallet) {
       walletDeduction = walletBalance.minorUnits;
       if (walletDeduction > current) walletDeduction = current;
@@ -48,7 +47,7 @@ abstract class CheckoutQuote with _$CheckoutQuote {
     current -= walletDeduction;
 
     // The remaining amount is what needs to be paid via external payment method
-    int payable = current;
+    var payable = current;
     if (payable < 0) payable = 0;
 
     return CheckoutQuote(
@@ -57,7 +56,8 @@ abstract class CheckoutQuote with _$CheckoutQuote {
       referralDiscount: Money.sdg(referralDeduction),
       walletApplied: Money.sdg(walletDeduction),
       externalPayable: Money.sdg(payable),
-      grandTotal: subtotal, // Grand total is always the original subtotal before discounts
+      grandTotal:
+          subtotal, // Grand total is always the original subtotal before discounts
     );
   }
 

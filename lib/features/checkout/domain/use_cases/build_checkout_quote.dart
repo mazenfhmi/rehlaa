@@ -8,13 +8,11 @@ class BuildCheckoutQuote {
     required Money referralDiscount,
     required Money walletBalance,
     required bool useWallet,
-  }) {
-    return CheckoutQuote.calculate(
-      subtotal: subtotal,
-      couponDiscount: couponDiscount,
-      referralDiscount: referralDiscount,
-      walletBalance: walletBalance,
-      useWallet: useWallet,
-    );
-  }
+  }) => CheckoutQuote.calculate(
+    subtotal: subtotal,
+    couponDiscount: couponDiscount,
+    referralDiscount: referralDiscount,
+    walletBalance: walletBalance,
+    useWallet: useWallet,
+  );
 }

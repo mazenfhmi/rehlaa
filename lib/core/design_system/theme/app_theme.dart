@@ -14,161 +14,155 @@ abstract final class AppTheme {
   static ThemeData get dark => _buildDark();
 
   static ThemeData _buildLight() => ThemeData(
-        useMaterial3: false,
-        brightness: Brightness.light,
+    useMaterial3: false,
+    brightness: Brightness.light,
+    fontFamily: 'PlusJakarta',
+    primaryColor: AppColors.primary,
+    primarySwatch: AppColors.primarySwatch,
+    scaffoldBackgroundColor: AppColors.white,
+    iconTheme: const IconThemeData(color: AppColors.black),
+    // Text theme
+    textTheme: _lightTextTheme,
+    // Components
+    elevatedButtonTheme: _elevatedButtonTheme,
+    textButtonTheme: _textButtonTheme,
+    outlinedButtonTheme: _outlinedButtonTheme(),
+    inputDecorationTheme: _lightInputTheme,
+    checkboxTheme: _checkboxTheme.copyWith(
+      side: const BorderSide(color: AppColors.black40),
+    ),
+    appBarTheme: _lightAppBarTheme,
+    dividerColor: AppColors.black10,
+    dividerTheme: const DividerThemeData(
+      color: AppColors.black10,
+      thickness: 1,
+      space: 0,
+    ),
+    cardTheme: CardThemeData(
+      color: AppColors.white,
+      elevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(AppRadius.md),
+        side: const BorderSide(color: AppColors.black10),
+      ),
+      margin: EdgeInsets.zero,
+    ),
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      backgroundColor: AppColors.white,
+      selectedItemColor: AppColors.primary,
+      unselectedItemColor: Colors.transparent,
+      type: BottomNavigationBarType.fixed,
+      selectedLabelStyle: TextStyle(fontSize: 12),
+      elevation: 0,
+    ),
+    bottomSheetTheme: const BottomSheetThemeData(
+      backgroundColor: AppColors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(AppRadius.xl)),
+      ),
+      elevation: 0,
+    ),
+    chipTheme: ChipThemeData(
+      backgroundColor: AppColors.lightGrey,
+      selectedColor: AppColors.primaryLight,
+      side: const BorderSide(color: AppColors.black10),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(AppRadius.full),
+      ),
+      labelStyle: const TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w500,
         fontFamily: 'PlusJakarta',
-        primaryColor: AppColors.primary,
-        primarySwatch: AppColors.primarySwatch,
-        scaffoldBackgroundColor: AppColors.white,
-        iconTheme: const IconThemeData(color: AppColors.black),
-        // Text theme
-        textTheme: _lightTextTheme,
-        // Components
-        elevatedButtonTheme: _elevatedButtonTheme,
-        textButtonTheme: _textButtonTheme,
-        outlinedButtonTheme: _outlinedButtonTheme(),
-        inputDecorationTheme: _lightInputTheme,
-        checkboxTheme: _checkboxTheme.copyWith(
-          side: const BorderSide(color: AppColors.black40),
-        ),
-        appBarTheme: _lightAppBarTheme,
-        dividerColor: AppColors.black10,
-        dividerTheme: const DividerThemeData(
-          color: AppColors.black10,
-          thickness: 1,
-          space: 0,
-        ),
-        cardTheme: CardThemeData(
-          color: AppColors.white,
-          elevation: 0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppRadius.md),
-            side: const BorderSide(color: AppColors.black10),
-          ),
-          margin: EdgeInsets.zero,
-        ),
-        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-          backgroundColor: AppColors.white,
-          selectedItemColor: AppColors.primary,
-          unselectedItemColor: Colors.transparent,
-          type: BottomNavigationBarType.fixed,
-          selectedLabelStyle: TextStyle(fontSize: 12),
-          elevation: 0,
-        ),
-        bottomSheetTheme: const BottomSheetThemeData(
-          backgroundColor: AppColors.white,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-              top: Radius.circular(AppRadius.xl),
-            ),
-          ),
-          elevation: 0,
-        ),
-        chipTheme: ChipThemeData(
-          backgroundColor: AppColors.lightGrey,
-          selectedColor: AppColors.primaryLight,
-          side: const BorderSide(color: AppColors.black10),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppRadius.full),
-          ),
-          labelStyle: const TextStyle(
-            fontSize: 12,
-            fontWeight: FontWeight.w500,
-            fontFamily: 'PlusJakarta',
-          ),
-        ),
-        snackBarTheme: SnackBarThemeData(
-          behavior: SnackBarBehavior.floating,
-          backgroundColor: AppColors.black,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppRadius.md),
-          ),
-          contentTextStyle: const TextStyle(
-            color: AppColors.white,
-            fontFamily: 'PlusJakarta',
-            fontSize: 14,
-          ),
-        ),
-      );
+      ),
+    ),
+    snackBarTheme: SnackBarThemeData(
+      behavior: SnackBarBehavior.floating,
+      backgroundColor: AppColors.black,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(AppRadius.md),
+      ),
+      contentTextStyle: const TextStyle(
+        color: AppColors.white,
+        fontFamily: 'PlusJakarta',
+        fontSize: 14,
+      ),
+    ),
+  );
 
   static ThemeData _buildDark() => ThemeData(
-        useMaterial3: false,
-        brightness: Brightness.dark,
+    useMaterial3: false,
+    brightness: Brightness.dark,
+    fontFamily: 'PlusJakarta',
+    primaryColor: AppColors.primary,
+    primarySwatch: AppColors.primarySwatch,
+    scaffoldBackgroundColor: AppColors.darkBackground,
+    iconTheme: const IconThemeData(color: AppColors.white),
+    textTheme: _darkTextTheme,
+    elevatedButtonTheme: _elevatedButtonTheme,
+    textButtonTheme: _textButtonTheme,
+    outlinedButtonTheme: _outlinedButtonTheme(borderColor: AppColors.white20),
+    inputDecorationTheme: _darkInputTheme,
+    checkboxTheme: _checkboxTheme.copyWith(
+      side: const BorderSide(color: AppColors.white40),
+    ),
+    appBarTheme: _darkAppBarTheme,
+    dividerColor: AppColors.white20,
+    dividerTheme: const DividerThemeData(
+      color: AppColors.white20,
+      thickness: 1,
+      space: 0,
+    ),
+    cardTheme: CardThemeData(
+      color: AppColors.darkCard,
+      elevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(AppRadius.md),
+        side: const BorderSide(color: AppColors.white20),
+      ),
+      margin: EdgeInsets.zero,
+    ),
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      backgroundColor: Color(0xFF101015),
+      selectedItemColor: AppColors.primary,
+      unselectedItemColor: Colors.transparent,
+      type: BottomNavigationBarType.fixed,
+      selectedLabelStyle: TextStyle(fontSize: 12),
+      elevation: 0,
+    ),
+    bottomSheetTheme: const BottomSheetThemeData(
+      backgroundColor: AppColors.darkCard,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(AppRadius.xl)),
+      ),
+      elevation: 0,
+    ),
+    chipTheme: ChipThemeData(
+      backgroundColor: AppColors.darkSurface,
+      selectedColor: AppColors.primary.withValues(alpha: 0.2),
+      side: const BorderSide(color: AppColors.white20),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(AppRadius.full),
+      ),
+      labelStyle: const TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.w500,
         fontFamily: 'PlusJakarta',
-        primaryColor: AppColors.primary,
-        primarySwatch: AppColors.primarySwatch,
-        scaffoldBackgroundColor: AppColors.darkBackground,
-        iconTheme: const IconThemeData(color: AppColors.white),
-        textTheme: _darkTextTheme,
-        elevatedButtonTheme: _elevatedButtonTheme,
-        textButtonTheme: _textButtonTheme,
-        outlinedButtonTheme: _outlinedButtonTheme(
-          borderColor: AppColors.white20,
-        ),
-        inputDecorationTheme: _darkInputTheme,
-        checkboxTheme: _checkboxTheme.copyWith(
-          side: const BorderSide(color: AppColors.white40),
-        ),
-        appBarTheme: _darkAppBarTheme,
-        dividerColor: AppColors.white20,
-        dividerTheme: const DividerThemeData(
-          color: AppColors.white20,
-          thickness: 1,
-          space: 0,
-        ),
-        cardTheme: CardThemeData(
-          color: AppColors.darkCard,
-          elevation: 0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppRadius.md),
-            side: const BorderSide(color: AppColors.white20),
-          ),
-          margin: EdgeInsets.zero,
-        ),
-        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-          backgroundColor: Color(0xFF101015),
-          selectedItemColor: AppColors.primary,
-          unselectedItemColor: Colors.transparent,
-          type: BottomNavigationBarType.fixed,
-          selectedLabelStyle: TextStyle(fontSize: 12),
-          elevation: 0,
-        ),
-        bottomSheetTheme: const BottomSheetThemeData(
-          backgroundColor: AppColors.darkCard,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-              top: Radius.circular(AppRadius.xl),
-            ),
-          ),
-          elevation: 0,
-        ),
-        chipTheme: ChipThemeData(
-          backgroundColor: AppColors.darkSurface,
-          selectedColor: AppColors.primary.withValues(alpha: 0.2),
-          side: const BorderSide(color: AppColors.white20),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppRadius.full),
-          ),
-          labelStyle: const TextStyle(
-            fontSize: 12,
-            fontWeight: FontWeight.w500,
-            fontFamily: 'PlusJakarta',
-            color: AppColors.white,
-          ),
-        ),
-        snackBarTheme: SnackBarThemeData(
-          behavior: SnackBarBehavior.floating,
-          backgroundColor: AppColors.white,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppRadius.md),
-          ),
-          contentTextStyle: const TextStyle(
-            color: AppColors.black,
-            fontFamily: 'PlusJakarta',
-            fontSize: 14,
-          ),
-        ),
-      );
+        color: AppColors.white,
+      ),
+    ),
+    snackBarTheme: SnackBarThemeData(
+      behavior: SnackBarBehavior.floating,
+      backgroundColor: AppColors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(AppRadius.md),
+      ),
+      contentTextStyle: const TextStyle(
+        color: AppColors.black,
+        fontFamily: 'PlusJakarta',
+        fontSize: 14,
+      ),
+    ),
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -227,22 +221,21 @@ final ElevatedButtonThemeData _elevatedButtonTheme = ElevatedButtonThemeData(
 
 OutlinedButtonThemeData _outlinedButtonTheme({
   Color borderColor = AppColors.black10,
-}) =>
-    OutlinedButtonThemeData(
-      style: OutlinedButton.styleFrom(
-        padding: const EdgeInsets.all(AppSpacing.base),
-        minimumSize: const Size(double.infinity, 56),
-        side: BorderSide(width: 1.5, color: borderColor),
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(AppRadius.md)),
-        ),
-        textStyle: const TextStyle(
-          fontFamily: 'PlusJakarta',
-          fontSize: 14,
-          fontWeight: FontWeight.w500,
-        ),
-      ),
-    );
+}) => OutlinedButtonThemeData(
+  style: OutlinedButton.styleFrom(
+    padding: const EdgeInsets.all(AppSpacing.base),
+    minimumSize: const Size(double.infinity, 56),
+    side: BorderSide(width: 1.5, color: borderColor),
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(AppRadius.md)),
+    ),
+    textStyle: const TextStyle(
+      fontFamily: 'PlusJakarta',
+      fontSize: 14,
+      fontWeight: FontWeight.w500,
+    ),
+  ),
+);
 
 final TextButtonThemeData _textButtonTheme = TextButtonThemeData(
   style: TextButton.styleFrom(
@@ -326,13 +319,13 @@ final CheckboxThemeData _checkboxTheme = CheckboxThemeData(
 // ---------------------------------------------------------------------------
 
 TextStyle _t(double size, FontWeight weight, Color color) => TextStyle(
-      fontFamily: 'PlusJakarta',
-      fontFamilyFallback: [GoogleFonts.cairo().fontFamily!],
-      fontSize: size,
-      fontWeight: weight,
-      color: color,
-      height: 1.5,
-    );
+  fontFamily: 'PlusJakarta',
+  fontFamilyFallback: [GoogleFonts.cairo().fontFamily!],
+  fontSize: size,
+  fontWeight: weight,
+  color: color,
+  height: 1.5,
+);
 
 final TextTheme _lightTextTheme = TextTheme(
   displayLarge: _t(57, FontWeight.w700, AppColors.black),

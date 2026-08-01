@@ -12,9 +12,7 @@ void main() {
     });
 
     test('Failure returns AppFailure and isFailure is true', () {
-      const failure = Failure<String>(
-        NetworkFailure(message: 'No internet'),
-      );
+      const failure = Failure<String>(NetworkFailure(message: 'No internet'));
       expect(failure.isSuccess, isFalse);
       expect(failure.isFailure, isTrue);
       expect(failure.failure.message, equals('No internet'));

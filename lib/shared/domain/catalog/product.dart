@@ -19,8 +19,14 @@ abstract class Product with _$Product {
     required String imageUrl,
     required List<String> galleryUrls,
     required Money basePrice,
-    required double rating, required int reviewCount, required StockStatus stockStatus, required bool isFeatured, required List<ProductOptionGroup> optionGroups, Money? compareAtPrice,
+    required double rating,
+    required int reviewCount,
+    required StockStatus stockStatus,
+    required bool isFeatured,
+    required List<ProductOptionGroup> optionGroups,
+    Money? compareAtPrice,
   }) = _Product;
 
-  factory Product.fromJson(Map<String, dynamic> json) => _$ProductFromJson(json);
+  factory Product.fromJson(Map<String, dynamic> json) =>
+      _$ProductFromJson(json);
 }

@@ -1,22 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:integration_test/integration_test.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
 import 'package:rehlaa/core/design_system/components/buttons/app_buttons.dart';
 import 'package:rehlaa/core/design_system/components/fields/app_fields.dart';
 import 'package:rehlaa/core/network/connectivity_service.dart';
 import 'package:rehlaa/core/storage/storage_service.dart';
 import 'package:rehlaa/features/checkout/data/repositories/mock_checkout_repository.dart';
-import 'package:rehlaa/features/checkout/domain/repositories/checkout_repository.dart';
 import 'package:rehlaa/features/checkout/presentation/widgets/checkout_sheet.dart';
 import 'package:rehlaa/shared/domain/money/money.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MockConnectivityService implements ConnectivityService {
   @override
   Future<bool> get isConnected async => true;
-  
+
   @override
   Stream<bool> get onConnectivityChanged => Stream.value(true);
 }
@@ -34,8 +31,12 @@ void main() {
           preferenceStorageServiceProvider.overrideWithValue(
             PreferenceStorageService(prefs),
           ),
-          checkoutRepositoryProvider.overrideWithValue(MockCheckoutRepository(delay: Duration.zero)),
-          connectivityServiceProvider.overrideWithValue(MockConnectivityService()),
+          checkoutRepositoryProvider.overrideWithValue(
+            MockCheckoutRepository(delay: Duration.zero),
+          ),
+          connectivityServiceProvider.overrideWithValue(
+            MockConnectivityService(),
+          ),
         ],
         child: MaterialApp(
           home: Scaffold(
@@ -61,7 +62,7 @@ void main() {
 
     // Verify sheet opened
     expect(find.text('الدفع'), findsOneWidget);
-    
+
     // Tap bank transfer
     final bankTransferFinder = find.text('تحويل بنكي');
     await tester.ensureVisible(bankTransferFinder);
@@ -70,7 +71,7 @@ void main() {
 
     // Verify banks are shown
     expect(find.text('بنك الخرطوم'), findsOneWidget);
-    
+
     // Tap bank
     final bankFinder = find.text('بنك الخرطوم');
     await tester.ensureVisible(bankFinder);
@@ -85,7 +86,7 @@ void main() {
       const Offset(0, -100),
     );
     await tester.enterText(couponFinder, 'WELCOME50');
-    
+
     final applyFinder = find.text('تطبيق');
     await tester.tap(applyFinder);
     await tester.pumpAndSettle();

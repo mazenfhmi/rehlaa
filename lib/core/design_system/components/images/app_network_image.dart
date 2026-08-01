@@ -26,30 +26,27 @@ class AppNetworkImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => ClipRRect(
-        borderRadius: BorderRadius.all(Radius.circular(radius)),
-        child: CachedNetworkImage(
-          imageUrl: src,
-          fit: fit,
-          width: width,
-          height: height,
-          imageBuilder: (context, imageProvider) => Container(
-            width: width,
-            height: height,
-            decoration: BoxDecoration(
-              image: DecorationImage(image: imageProvider, fit: fit),
-            ),
-          ),
-          placeholder: (context, url) => AppSkeleton(
-            width: width,
-            height: height,
-            radius: radius,
-          ),
-          errorWidget: (context, url, error) => Container(
-            width: width,
-            height: height,
-            color: Theme.of(context).dividerColor,
-            child: const Icon(Icons.image_not_supported_outlined),
-          ),
+    borderRadius: BorderRadius.all(Radius.circular(radius)),
+    child: CachedNetworkImage(
+      imageUrl: src,
+      fit: fit,
+      width: width,
+      height: height,
+      imageBuilder: (context, imageProvider) => Container(
+        width: width,
+        height: height,
+        decoration: BoxDecoration(
+          image: DecorationImage(image: imageProvider, fit: fit),
         ),
-      );
+      ),
+      placeholder: (context, url) =>
+          AppSkeleton(width: width, height: height, radius: radius),
+      errorWidget: (context, url, error) => Container(
+        width: width,
+        height: height,
+        color: Theme.of(context).dividerColor,
+        child: const Icon(Icons.image_not_supported_outlined),
+      ),
+    ),
+  );
 }

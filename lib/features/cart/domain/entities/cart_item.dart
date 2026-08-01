@@ -17,7 +17,7 @@ abstract class CartItem with _$CartItem {
 
   String get id => '${product.id}_${selection.optionSignature}';
   Money get totalPrice => Money(
-    minorUnits: selection.resolvedPrice.minorUnits * quantity, 
+    minorUnits: selection.resolvedPrice.minorUnits * quantity,
     currencyCode: selection.resolvedPrice.currencyCode,
   );
 }

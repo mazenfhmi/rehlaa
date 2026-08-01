@@ -75,27 +75,27 @@ class AppTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => TextFormField(
-        controller: controller,
-        initialValue: initialValue,
-        keyboardType: keyboardType,
-        textInputAction: textInputAction,
-        validator: validator,
-        onChanged: onChanged,
-        onFieldSubmitted: onFieldSubmitted,
-        enabled: enabled,
-        maxLines: maxLines,
-        maxLength: maxLength,
-        inputFormatters: inputFormatters,
-        autofillHints: autofillHints,
-        focusNode: focusNode,
-        decoration: InputDecoration(
-          labelText: label,
-          hintText: hint,
-          prefixIcon: _buildPrefix(context),
-          suffixIcon: suffixIcon,
-          counterText: maxLength != null ? '' : null,
-        ),
-      );
+    controller: controller,
+    initialValue: initialValue,
+    keyboardType: keyboardType,
+    textInputAction: textInputAction,
+    validator: validator,
+    onChanged: onChanged,
+    onFieldSubmitted: onFieldSubmitted,
+    enabled: enabled,
+    maxLines: maxLines,
+    maxLength: maxLength,
+    inputFormatters: inputFormatters,
+    autofillHints: autofillHints,
+    focusNode: focusNode,
+    decoration: InputDecoration(
+      labelText: label,
+      hintText: hint,
+      prefixIcon: _buildPrefix(context),
+      suffixIcon: suffixIcon,
+      counterText: maxLength != null ? '' : null,
+    ),
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -132,45 +132,45 @@ class _AppPasswordFieldState extends State<AppPasswordField> {
 
   @override
   Widget build(BuildContext context) => TextFormField(
-        controller: widget.controller,
-        obscureText: _obscure,
-        keyboardType: TextInputType.visiblePassword,
-        textInputAction: widget.textInputAction,
-        validator: widget.validator,
-        onChanged: widget.onChanged,
-        focusNode: widget.focusNode,
-        autofillHints: widget.autofillHints,
-        decoration: InputDecoration(
-          labelText: widget.label,
-          hintText: widget.hint,
-          prefixIcon: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: AppSpacing.base,
-              vertical: AppSpacing.md,
-            ),
-            child: SvgPicture.asset(
-              'assets/icons/Lock.svg',
-              height: 20,
-              colorFilter: ColorFilter.mode(
-                Theme.of(context).inputDecorationTheme.hintStyle?.color ??
-                    AppColors.grey,
-                BlendMode.srcIn,
-              ),
-            ),
-          ),
-          suffixIcon: IconButton(
-            onPressed: () => setState(() => _obscure = !_obscure),
-            icon: SvgPicture.asset(
-              'assets/icons/Show.svg',
-              height: 20,
-              colorFilter: ColorFilter.mode(
-                _obscure ? AppColors.grey : AppColors.primary,
-                BlendMode.srcIn,
-              ),
-            ),
+    controller: widget.controller,
+    obscureText: _obscure,
+    keyboardType: TextInputType.visiblePassword,
+    textInputAction: widget.textInputAction,
+    validator: widget.validator,
+    onChanged: widget.onChanged,
+    focusNode: widget.focusNode,
+    autofillHints: widget.autofillHints,
+    decoration: InputDecoration(
+      labelText: widget.label,
+      hintText: widget.hint,
+      prefixIcon: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppSpacing.base,
+          vertical: AppSpacing.md,
+        ),
+        child: SvgPicture.asset(
+          'assets/icons/Lock.svg',
+          height: 20,
+          colorFilter: ColorFilter.mode(
+            Theme.of(context).inputDecorationTheme.hintStyle?.color ??
+                AppColors.grey,
+            BlendMode.srcIn,
           ),
         ),
-      );
+      ),
+      suffixIcon: IconButton(
+        onPressed: () => setState(() => _obscure = !_obscure),
+        icon: SvgPicture.asset(
+          'assets/icons/Show.svg',
+          height: 20,
+          colorFilter: ColorFilter.mode(
+            _obscure ? AppColors.grey : AppColors.primary,
+            BlendMode.srcIn,
+          ),
+        ),
+      ),
+    ),
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -196,30 +196,30 @@ class AppSearchField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => TextFormField(
-        controller: controller,
-        autofocus: autofocus,
-        focusNode: focusNode,
-        keyboardType: TextInputType.text,
-        textInputAction: TextInputAction.search,
-        onChanged: onChanged,
-        onFieldSubmitted: onSubmitted,
-        decoration: InputDecoration(
-          hintText: hint,
-          prefixIcon: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: AppSpacing.base,
-              vertical: AppSpacing.md,
-            ),
-            child: SvgPicture.asset(
-              'assets/icons/Search.svg',
-              height: 20,
-              colorFilter: ColorFilter.mode(
-                Theme.of(context).inputDecorationTheme.hintStyle?.color ??
-                    AppColors.grey,
-                BlendMode.srcIn,
-              ),
-            ),
+    controller: controller,
+    autofocus: autofocus,
+    focusNode: focusNode,
+    keyboardType: TextInputType.text,
+    textInputAction: TextInputAction.search,
+    onChanged: onChanged,
+    onFieldSubmitted: onSubmitted,
+    decoration: InputDecoration(
+      hintText: hint,
+      prefixIcon: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppSpacing.base,
+          vertical: AppSpacing.md,
+        ),
+        child: SvgPicture.asset(
+          'assets/icons/Search.svg',
+          height: 20,
+          colorFilter: ColorFilter.mode(
+            Theme.of(context).inputDecorationTheme.hintStyle?.color ??
+                AppColors.grey,
+            BlendMode.srcIn,
           ),
         ),
-      );
+      ),
+    ),
+  );
 }

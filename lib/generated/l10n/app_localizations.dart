@@ -110,11 +110,71 @@ abstract class AppLocalizations {
   /// **'Home'**
   String get homeTitle;
 
+  /// No description provided for @homeSearchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search products'**
+  String get homeSearchHint;
+
+  /// No description provided for @categoriesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Categories'**
+  String get categoriesTitle;
+
+  /// No description provided for @exclusiveOffersTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Exclusive Offers'**
+  String get exclusiveOffersTitle;
+
+  /// No description provided for @featuredProductsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Featured Products'**
+  String get featuredProductsTitle;
+
+  /// No description provided for @cachedDataMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Showing saved catalog data'**
+  String get cachedDataMessage;
+
+  /// No description provided for @securePaymentsLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Secure payments'**
+  String get securePaymentsLabel;
+
+  /// No description provided for @instantDeliveryLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Instant delivery'**
+  String get instantDeliveryLabel;
+
+  /// No description provided for @supportAnytimeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Support anytime'**
+  String get supportAnytimeLabel;
+
   /// No description provided for @favoritesTitle.
   ///
   /// In en, this message translates to:
   /// **'Favorites'**
   String get favoritesTitle;
+
+  /// No description provided for @favoritesEmptyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'No favorites yet'**
+  String get favoritesEmptyTitle;
+
+  /// No description provided for @favoritesEmptySubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Products you save will appear here.'**
+  String get favoritesEmptySubtitle;
 
   /// No description provided for @cartTitle.
   ///
@@ -283,6 +343,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Buy Now'**
   String get buyNow;
+
+  /// No description provided for @totalPriceLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Total price'**
+  String get totalPriceLabel;
+
+  /// No description provided for @quantityLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Quantity'**
+  String get quantityLabel;
+
+  /// No description provided for @selectRequiredOptions.
+  ///
+  /// In en, this message translates to:
+  /// **'Select all required options to continue.'**
+  String get selectRequiredOptions;
 
   /// No description provided for @removeFromCart.
   ///

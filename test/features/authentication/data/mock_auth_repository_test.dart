@@ -5,18 +5,21 @@ import 'package:rehlaa/features/authentication/data/repositories/mock_auth_repos
 
 void main() {
   group('MockAuthRepository', () {
-    test('signIn with default credentials returns authenticated session', () async {
-      final repo = MockAuthRepository();
-      final result = await repo.signIn(
-        email: 'user@rehlaa.com',
-        password: 'Password123',
-      );
+    test(
+      'signIn with default credentials returns authenticated session',
+      () async {
+        final repo = MockAuthRepository();
+        final result = await repo.signIn(
+          email: 'user@rehlaa.com',
+          password: 'Password123',
+        );
 
-      expect(result.isSuccess, isTrue);
-      final session = result.dataOrThrow;
-      expect(session.isAuthenticated, isTrue);
-      expect(session.user?.email, equals('user@rehlaa.com'));
-    });
+        expect(result.isSuccess, isTrue);
+        final session = result.dataOrThrow;
+        expect(session.isAuthenticated, isTrue);
+        expect(session.user?.email, equals('user@rehlaa.com'));
+      },
+    );
 
     test('signIn with unverified email returns unverified session', () async {
       final repo = MockAuthRepository();
