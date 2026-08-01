@@ -25,7 +25,8 @@ class SpecialOffersWidget extends StatelessWidget {
             children: [
               SpecialOfferCard(
                 // Using a placeholder image since assets/images/Image Banner 2.png might not exist
-                image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=600",
+                image:
+                    "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=600",
                 category: "Smartphone",
                 numOfBrands: 18,
                 press: () {
@@ -33,7 +34,8 @@ class SpecialOffersWidget extends StatelessWidget {
                 },
               ),
               SpecialOfferCard(
-                image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=600",
+                image:
+                    "https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=600",
                 category: "Fashion",
                 numOfBrands: 24,
                 press: () {
@@ -80,6 +82,12 @@ class SpecialOfferCard extends StatelessWidget {
                   fit: BoxFit.cover,
                   width: double.infinity,
                   height: double.infinity,
+                  errorBuilder: (context, error, stackTrace) => ColoredBox(
+                    color: Theme.of(context).colorScheme.surfaceContainer,
+                    child: const Center(
+                      child: Icon(Icons.image_not_supported_outlined),
+                    ),
+                  ),
                 ),
                 Container(
                   decoration: const BoxDecoration(

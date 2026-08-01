@@ -6,6 +6,7 @@ analyzer:
     strict-inference: true
     strict-raw-types: true
   errors:
+    invalid_annotation_target: ignore
     missing_required_param: error
     missing_return: error
     todo: ignore
@@ -30,6 +31,7 @@ linter:
     - unnecessary_statements
 
     # Style rules
+    - always_use_package_imports
     - always_declare_return_types
     - always_put_required_named_parameters_first
     - avoid_bool_literals_in_conditional_expressions
@@ -83,7 +85,6 @@ linter:
     - prefer_if_elements_to_conditional_expressions
     - prefer_mixin
     - prefer_null_aware_method_calls
-    - prefer_relative_imports
     - prefer_single_quotes
     - require_trailing_commas
     - sized_box_shrink_expand

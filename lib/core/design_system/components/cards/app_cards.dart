@@ -193,8 +193,8 @@ class AppProductCard extends StatelessWidget {
   Widget build(BuildContext context) => OutlinedButton(
         onPressed: onTap,
         style: OutlinedButton.styleFrom(
-          minimumSize: const Size(140, 220),
-          maximumSize: const Size(140, 220),
+          minimumSize: const Size(140, 260),
+          maximumSize: const Size(140, 260),
           padding: const EdgeInsets.all(8),
         ),
         child: Column(
@@ -460,7 +460,10 @@ class _PriceRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (priceAfterDiscount != null) {
-      return Row(
+      return Wrap(
+        crossAxisAlignment: WrapCrossAlignment.center,
+        spacing: AppSpacing.xs,
+        runSpacing: AppSpacing.xs,
         children: [
           Text(
             '${priceAfterDiscount!.toStringAsFixed(2)} $currencySymbol',
@@ -471,7 +474,6 @@ class _PriceRow extends StatelessWidget {
               fontFamily: 'PlusJakarta',
             ),
           ),
-          const SizedBox(width: AppSpacing.xs),
           Text(
             '${price.toStringAsFixed(2)}',
             style: TextStyle(

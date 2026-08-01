@@ -2,39 +2,43 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../core/design_system/tokens/app_tokens.dart';
+import '../../domain/entities/home_category.dart';
 
 class CategoriesWidget extends StatelessWidget {
-  const CategoriesWidget({super.key});
+  const CategoriesWidget({
+    required this.categories,
+    required this.onSelected,
+    super.key,
+  });
+
+  final List<HomeCategory> categories;
+  final ValueChanged<String> onSelected;
 
   @override
   Widget build(BuildContext context) {
-    // Icons might not exist in the current project, fallback to IconData if needed
-    // or just rely on SVGs if they are added later.
-    final List<Map<String, dynamic>> categories = [
-      {"icon": "assets/icons/Flash Icon.svg", "fallback": Icons.flash_on, "text": "Flash Deal"},
-      {"icon": "assets/icons/Bill Icon.svg", "fallback": Icons.receipt, "text": "Bill"},
-      {"icon": "assets/icons/Game Icon.svg", "fallback": Icons.videogame_asset, "text": "Game"},
-      {"icon": "assets/icons/Gift Icon.svg", "fallback": Icons.card_giftcard, "text": "Daily Gift"},
-      {"icon": "assets/icons/Discover.svg", "fallback": Icons.more_horiz, "text": "More"},
-    ];
+    final isArabic = Localizations.localeOf(context).languageCode == 'ar';
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: AppSpacing.lg,
-        vertical: AppSpacing.lg,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: List.generate(
-          categories.length,
-          (index) => CategoryCard(
-            icon: categories[index]["icon"],
-            iconFallback: categories[index]["fallback"],
-            text: categories[index]["text"],
-            press: () {},
-          ),
+    return SizedBox(
+      height: 112,
+      child: ListView.separated(
+        scrollDirection: Axis.horizontal,
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppSpacing.lg,
+          vertical: AppSpacing.md,
         ),
+        itemCount: categories.length,
+        separatorBuilder: (_, __) => const SizedBox(width: AppSpacing.md),
+        itemBuilder: (context, index) {
+          final category = categories[index];
+
+          return CategoryCard(
+            key: ValueKey(category.id),
+            icon: category.svgIcon,
+            text: isArabic ? category.titleAr : category.titleEn,
+            isSelected: category.isSelected,
+            onPressed: () => onSelected(category.id),
+          );
+        },
       ),
     );
   }
@@ -42,56 +46,57 @@ class CategoriesWidget extends StatelessWidget {
 
 class CategoryCard extends StatelessWidget {
   const CategoryCard({
-    super.key,
     required this.icon,
-    this.iconFallback,
     required this.text,
-    required this.press,
+    required this.isSelected,
+    required this.onPressed,
+    super.key,
   });
 
   final String icon;
-  final IconData? iconFallback;
   final String text;
-  final GestureTapCallback press;
+  final bool isSelected;
+  final VoidCallback onPressed;
 
   @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: press,
-      child: SizedBox(
-        width: 56,
-        child: Column(
-          children: [
-            Container(
-              padding: const EdgeInsets.all(AppSpacing.md),
-              height: 56,
-              width: 56,
-              decoration: BoxDecoration(
-                color: AppColors.ecommercePrimaryLight,
-                borderRadius: BorderRadius.circular(10),
+  Widget build(BuildContext context) => InkWell(
+        borderRadius: BorderRadius.circular(10),
+        onTap: onPressed,
+        child: SizedBox(
+          width: 64,
+          child: Column(
+            children: [
+              AnimatedContainer(
+                duration: AppDurations.fast,
+                padding: const EdgeInsets.all(AppSpacing.md),
+                height: 56,
+                width: 56,
+                decoration: BoxDecoration(
+                  color: isSelected
+                      ? AppColors.primary
+                      : AppColors.ecommercePrimaryLight,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: SvgPicture.asset(
+                  icon,
+                  colorFilter: isSelected
+                      ? const ColorFilter.mode(
+                          AppColors.white,
+                          BlendMode.srcIn,
+                        )
+                      : null,
+                ),
               ),
-              child: Builder(
-                builder: (context) {
-                  // In a real app we'd load the SVG. We use a try-catch pattern or just
-                  // assume SVGs might fail if not present.
-                  // For now, if we don't have the SVG, we can at least show it if available
-                  // Since we are preserving architecture and just applying UI, we will use SvgPicture
-                  // But as a fallback we will try to use iconFallback if SvgPicture fails (not easily done without errorBuilder).
-                  // We will just use SvgPicture and let it throw if asset is missing, or we can use Icon for now.
-                  // The prompt requires applying the UI design, so we stick to SvgPicture.
-                  return SvgPicture.asset(icon);
-                },
+              const SizedBox(height: AppSpacing.xs),
+              Text(
+                text,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.labelSmall,
               ),
-            ),
-            const SizedBox(height: 4),
-            Text(
-              text,
-              textAlign: TextAlign.center,
-              style: const TextStyle(fontSize: 12),
-            )
-          ],
+            ],
+          ),
         ),
-      ),
-    );
-  }
+      );
 }

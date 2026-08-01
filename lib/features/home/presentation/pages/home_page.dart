@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/design_system/design_system.dart';
+import '../../../../core/network/connectivity_service.dart';
+import '../view_models/home_view_model.dart';
 import '../widgets/categories_widget.dart';
 import '../widgets/discount_banner_widget.dart';
 import '../widgets/home_header_widget.dart';
@@ -14,23 +16,40 @@ class HomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final categoriesAsync = ref.watch(homeCategoriesViewModelProvider);
+    final isOnline = ref.watch(isOnlineProvider).valueOrNull ?? true;
+
     return AppScaffold(
-      // We don't use the standard AppBar here since ui.txt provides a custom HomeHeader
-      body: const SafeArea(
-        child: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(vertical: AppSpacing.lg),
-          child: Column(
-            children: [
-              HomeHeaderWidget(),
-              SizedBox(height: AppSpacing.lg),
-              DiscountBannerWidget(),
-              CategoriesWidget(),
-              SpecialOffersWidget(),
-              SizedBox(height: AppSpacing.xl),
-              PopularProductsWidget(),
-              SizedBox(height: AppSpacing.xl),
-            ],
-          ),
+      body: SafeArea(
+        child: Column(
+          children: [
+            if (!isOnline) const AppOfflineBanner(),
+            Expanded(
+              child: AppAsyncBuilder(
+                value: categoriesAsync,
+                data: (categories) => SingleChildScrollView(
+                  padding: const EdgeInsets.symmetric(vertical: AppSpacing.lg),
+                  child: Column(
+                    children: [
+                      const HomeHeaderWidget(),
+                      const SizedBox(height: AppSpacing.lg),
+                      const DiscountBannerWidget(),
+                      CategoriesWidget(
+                        categories: categories,
+                        onSelected: (id) => ref
+                            .read(homeCategoriesViewModelProvider.notifier)
+                            .selectCategory(id),
+                      ),
+                      const SpecialOffersWidget(),
+                      const SizedBox(height: AppSpacing.xl),
+                      const PopularProductsWidget(),
+                      const SizedBox(height: AppSpacing.xl),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
