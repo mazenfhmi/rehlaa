@@ -2,45 +2,27 @@ import 'package:rehlaa/features/authentication/data/providers/auth_providers.dar
 import 'package:rehlaa/features/authentication/presentation/view_models/auth_session_controller.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'login_view_model.g.dart';
+part 'register_view_model.g.dart';
 
-/// ViewModel managing the sign-in form submission state.
+/// ViewModel managing registration form submission state.
 @riverpod
-class SignInViewModel extends _$SignInViewModel {
+class RegisterViewModel extends _$RegisterViewModel {
   @override
   AsyncValue<void> build() => const AsyncData(null);
 
-  Future<bool> signIn({
+  Future<bool> register({
+    required String name,
     required String email,
     required String password,
   }) async {
     state = const AsyncLoading();
 
     final repo = ref.read(authRepositoryProvider);
-    final result = await repo.signIn(email: email, password: password);
-
-    return result.fold(
-      onSuccess: (session) {
-        if (ref.mounted) {
-          state = const AsyncData(null);
-          ref.read(authSessionControllerProvider.notifier).setSession(session);
-        }
-        return true;
-      },
-      onFailure: (failure) {
-        if (ref.mounted) {
-          state = AsyncError(failure, StackTrace.current);
-        }
-        return false;
-      },
+    final result = await repo.register(
+      name: name,
+      email: email,
+      password: password,
     );
-  }
-
-  Future<bool> signInWithGoogle() async {
-    state = const AsyncLoading();
-
-    final repo = ref.read(authRepositoryProvider);
-    final result = await repo.signInWithGoogle();
 
     return result.fold(
       onSuccess: (session) {

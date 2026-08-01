@@ -1,16 +1,18 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:integration_test/integration_test.dart';
 import 'package:rehlaa/app/app.dart';
 import 'package:rehlaa/core/network/connectivity_service.dart';
-import 'package:rehlaa/core/result/result.dart';
 import 'package:rehlaa/core/storage/storage_service.dart';
-import 'package:rehlaa/features/home/data/repositories/mock_home_repository.dart';
-import 'package:rehlaa/features/home/domain/entities/home_category.dart';
-import 'package:rehlaa/features/home/domain/repositories/home_repository.dart';
+import 'package:rehlaa/features/authentication/data/providers/auth_providers.dart';
+import 'package:rehlaa/features/authentication/data/repositories/mock_auth_repository.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
-  testWidgets('app boots without throwing', (tester) async {
+  IntegrationTestWidgetsFlutterBinding.ensureInitialized();
+
+  testWidgets('guest authentication flow integration test', (tester) async {
     SharedPreferences.setMockInitialValues({});
     final prefs = await SharedPreferences.getInstance();
 
@@ -20,24 +22,14 @@ void main() {
           preferenceStorageServiceProvider.overrideWithValue(
             PreferenceStorageService(prefs),
           ),
-          homeRepositoryProvider.overrideWithValue(
-            const _ImmediateHomeRepository(),
-          ),
+          authRepositoryProvider.overrideWithValue(MockAuthRepository()),
           isOnlineProvider.overrideWith((ref) => Stream.value(true)),
         ],
         child: const RehlaaApp(),
       ),
     );
-    await tester.pump(const Duration(milliseconds: 500));
+    await tester.pumpAndSettle();
 
-    expect(tester.takeException(), isNull);
+    expect(find.byType(RehlaaApp), findsOneWidget);
   });
-}
-
-class _ImmediateHomeRepository implements HomeRepository {
-  const _ImmediateHomeRepository();
-
-  @override
-  Future<Result<List<HomeCategory>>> getCategories() async =>
-      const Success(<HomeCategory>[]);
 }

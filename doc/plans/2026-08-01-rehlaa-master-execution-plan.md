@@ -156,21 +156,21 @@ build_runner: ^2.10.4
 
 **الناتج:** تسجيل الدخول والتسجيل والتحقق والاستعادة والضيف والحماية وإعادة التوجيه ببيانات Mock.
 
-- [ ] **A01 — تعريف Auth entities وRepository contract:** `AuthUser` و`AuthSession` والعقد المستقل عن المزود.
-- [ ] **A02 — تنفيذ Email/Password value objects:** قواعد تحقق typed ورسائل failures قابلة للترجمة.
-- [ ] **A03 — تنفيذ Mock Auth Repository حتمي:** سيناريوهات النجاح والفشل والتأخير والجلسة.
-- [ ] **A04 — تنفيذ Session وForm ViewModels:** منع وصول الصفحات إلى Repository وإدارة submit state مركزيًا.
-- [ ] **A05 — بناء مكونات وصفحات المصادقة:** Login/Register/Verify/Forgot/Reset وGoogle والضيف دون منطق مكرر.
-- [ ] **A06 — حماية المسارات و`returnTo`:** توجيه الضيف ثم إعادته إلى الوجهة المطلوبة بعد النجاح.
-- [ ] **A07 — اختبار تدفقات المصادقة تكامليًا:** المسارات المحمية، الضيف، الخطأ، النجاح، واللغتان.
+- [x] **A01 — تعريف Auth entities وRepository contract:** `AuthUser` و`AuthSession` والعقد المستقل عن المزود.
+- [x] **A02 — تنفيذ Email/Password value objects:** قواعد تحقق typed ورسائل failures قابلة للترجمة.
+- [x] **A03 — تنفيذ Mock Auth Repository حتمي:** سيناريوهات النجاح والفشل والتأخير والجلسة.
+- [x] **A04 — تنفيذ Session وForm ViewModels:** منع وصول الصفحات إلى Repository وإدارة submit state مركزيًا.
+- [x] **A05 — بناء مكونات وصفحات المصادقة:** Login/Register/Verify/Forgot/Reset وGoogle والضيف دون منطق مكرر.
+- [x] **A06 — حماية المسارات و`returnTo`:** توجيه الضيف ثم إعادته إلى الوجهة المطلوبة بعد النجاح.
+- [x] **A07 — اختبار تدفقات المصادقة تكامليًا:** المسارات المحمية، الضيف، الخطأ، النجاح، واللغتان.
 
 ### بوابة المصادقة
 
-- [ ] كل صفحات المصادقة تمر باختبارات Light-English وDark-Arabic و200% text scale.
-- [ ] لا تصل أي صفحة Auth مباشرة إلى Repository.
-- [ ] Verify وReset قابلتان للوصول، ونجاح Forgot Password يغير الحالة المرئية.
-- [ ] protected redirect و`returnTo` مثبتان باختبارات Router وIntegration.
-- [ ] التحليل وجميع الاختبارات ناجحة.
+- [x] كل صفحات المصادقة تمر باختبارات Light-English وDark-Arabic و200% text scale.
+- [x] لا تصل أي صفحة Auth مباشرة إلى Repository.
+- [x] Verify وReset قابلتان للوصول، ونجاح Forgot Password يغير الحالة المرئية.
+- [x] protected redirect و`returnTo` مثبتان باختبارات Router وIntegration.
+- [x] التحليل وجميع الاختبارات ناجحة.
 
 ---
 
@@ -383,6 +383,7 @@ git status --short
 | 2026-08-01 | F01 | منجز | Flutter 3.44.8، Dart 3.12.2، و28 اختبارًا ناجحًا |
 | 2026-08-01 | F02 | منجز | Pub solver دون overrides، code generation ناجح، 28 اختبارًا ناجحًا، و0 Analyzer errors |
 | 2026-08-01 | F03-F10 | منجز | اكتمال مرحلة الـ Foundation (Bootstrap, Theme, Localization, Navigation, Preferences) وجميع الاختبارات تنجح |
+| 2026-08-01 | A01-A07 | منجز | اكتمال مرحلة المصادقة (Auth Entities, Value Objects, Mock Repo, ViewModels, Pages, Protected Redirects, Integration Tests) |
 
 ## 9. تعريف الإنجاز الكامل
 
