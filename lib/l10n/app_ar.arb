@@ -49,6 +49,8 @@
   "buyNow": "اشتر الآن",
   "totalPriceLabel": "السعر الإجمالي",
   "quantityLabel": "الكمية",
+  "increaseQuantity": "زيادة الكمية",
+  "decreaseQuantity": "تقليل الكمية",
   "selectRequiredOptions": "اختر جميع الخيارات المطلوبة للمتابعة.",
   "removeFromCart": "إزالة",
   "cartEmpty": "سلتك فارغة.",

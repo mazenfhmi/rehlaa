@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rehlaa/core/design_system/components/images/app_network_image.dart';
 import 'package:rehlaa/shared/domain/catalog/product.dart';
+import 'package:rehlaa/shared/domain/money/money.dart';
 import 'package:rehlaa/shared/presentation/widgets/favorite_button.dart';
 import 'package:rehlaa/shared/presentation/widgets/product_price.dart';
 import 'package:rehlaa/shared/presentation/widgets/product_rating.dart';
@@ -14,6 +15,7 @@ class ProductCard extends StatelessWidget {
     super.key,
     this.onFavoriteTap,
     this.isFavorite = false,
+    this.displayPrice,
   }) : variant = ProductCardVariant.grid;
 
   const ProductCard.compact({
@@ -22,6 +24,7 @@ class ProductCard extends StatelessWidget {
     super.key,
     this.onFavoriteTap,
     this.isFavorite = false,
+    this.displayPrice,
   }) : variant = ProductCardVariant.compact;
 
   const ProductCard.horizontal({
@@ -30,12 +33,14 @@ class ProductCard extends StatelessWidget {
     super.key,
     this.onFavoriteTap,
     this.isFavorite = false,
+    this.displayPrice,
   }) : variant = ProductCardVariant.horizontal;
   final Product product;
   final VoidCallback onTap;
   final VoidCallback? onFavoriteTap;
   final bool isFavorite;
   final ProductCardVariant variant;
+  final Money? displayPrice;
 
   @override
   Widget build(BuildContext context) {
@@ -126,7 +131,7 @@ class ProductCard extends StatelessWidget {
           ),
           const SizedBox(height: 4),
           ProductPrice(
-            currentPrice: product.basePrice,
+            currentPrice: displayPrice ?? product.basePrice,
             compareAtPrice: product.compareAtPrice,
           ),
         ],
@@ -136,5 +141,83 @@ class ProductCard extends StatelessWidget {
 
   Widget _buildCompact(BuildContext context) => const SizedBox.shrink();
 
-  Widget _buildHorizontal(BuildContext context) => const SizedBox.shrink();
+  Widget _buildHorizontal(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    final colors = Theme.of(context).colorScheme;
+    final isRtl = Directionality.of(context) == TextDirection.rtl;
+    final name = isRtl ? product.nameAr : product.nameEn;
+
+    return Semantics(
+      button: true,
+      label: name,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(16),
+        child: Padding(
+          padding: const EdgeInsets.all(12),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                width: 104,
+                height: 104,
+                decoration: BoxDecoration(
+                  color: colors.surfaceContainerHighest,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                clipBehavior: Clip.antiAlias,
+                child: AppNetworkImage(
+                  product.imageUrl,
+                  width: 104,
+                  height: 104,
+                  radius: 0,
+                ),
+              ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: Text(
+                            name,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            style: textTheme.titleSmall?.copyWith(
+                              color: colors.onSurface,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                        if (onFavoriteTap != null)
+                          FavoriteButton(
+                            isFavorite: isFavorite,
+                            onTap: onFavoriteTap!,
+                          ),
+                      ],
+                    ),
+                    const SizedBox(height: 4),
+                    ProductRating(
+                      rating: product.rating,
+                      reviewCount: product.reviewCount,
+                    ),
+                    const SizedBox(height: 8),
+                    ProductPrice(
+                      currentPrice: displayPrice ?? product.basePrice,
+                      compareAtPrice: displayPrice == null
+                          ? product.compareAtPrice
+                          : null,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 }

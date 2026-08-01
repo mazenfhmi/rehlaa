@@ -141,6 +141,12 @@ class AppLocalizationsAr extends AppLocalizations {
   String get quantityLabel => 'الكمية';
 
   @override
+  String get increaseQuantity => 'زيادة الكمية';
+
+  @override
+  String get decreaseQuantity => 'تقليل الكمية';
+
+  @override
   String get selectRequiredOptions => 'اختر جميع الخيارات المطلوبة للمتابعة.';
 
   @override

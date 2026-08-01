@@ -356,6 +356,18 @@ abstract class AppLocalizations {
   /// **'Quantity'**
   String get quantityLabel;
 
+  /// No description provided for @increaseQuantity.
+  ///
+  /// In en, this message translates to:
+  /// **'Increase quantity'**
+  String get increaseQuantity;
+
+  /// No description provided for @decreaseQuantity.
+  ///
+  /// In en, this message translates to:
+  /// **'Decrease quantity'**
+  String get decreaseQuantity;
+
   /// No description provided for @selectRequiredOptions.
   ///
   /// In en, this message translates to:

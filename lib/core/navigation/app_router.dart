@@ -8,6 +8,7 @@ import 'package:rehlaa/features/authentication/presentation/pages/forgot_passwor
 import 'package:rehlaa/features/authentication/presentation/pages/login_page.dart';
 import 'package:rehlaa/features/authentication/presentation/pages/register_page.dart';
 import 'package:rehlaa/features/authentication/presentation/view_models/auth_session_controller.dart';
+import 'package:rehlaa/features/cart/presentation/pages/cart_page.dart';
 import 'package:rehlaa/features/home/presentation/pages/home_page.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -76,8 +77,7 @@ GoRouter appRouter(Ref ref) {
               GoRoute(
                 path: AppRoutePaths.cart,
                 name: AppRouteNames.cart,
-                builder: (context, state) =>
-                    const _PlaceholderPage(title: 'Cart'),
+                builder: (context, state) => const CartPage(),
               ),
             ],
           ),

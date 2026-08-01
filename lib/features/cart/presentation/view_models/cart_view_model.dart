@@ -1,3 +1,4 @@
+import 'package:rehlaa/features/cart/data/repositories/mock_cart_repository.dart';
 import 'package:rehlaa/features/cart/domain/entities/cart.dart';
 import 'package:rehlaa/features/cart/domain/entities/cart_item.dart';
 import 'package:rehlaa/features/product_details/domain/entities/product_selection.dart';
@@ -10,10 +11,16 @@ part 'cart_view_model.g.dart';
 @riverpod
 class CartViewModel extends _$CartViewModel {
   @override
-  Cart build() => const Cart(
-    items: [],
-    subtotal: Money(minorUnits: 0, currencyCode: 'SDG'),
-  );
+  Cart build() {
+    final result = ref.watch(cartRepositoryProvider).getCart();
+    return result.fold(
+      onSuccess: (cart) => cart,
+      onFailure: (_) => const Cart(
+        items: [],
+        subtotal: Money(minorUnits: 0, currencyCode: 'SDG'),
+      ),
+    );
+  }
 
   void addItem(
     Product product,
@@ -21,6 +28,10 @@ class CartViewModel extends _$CartViewModel {
     int quantity = 1,
   ]) {
     if (quantity < 1) return;
+    if (state.items.isNotEmpty &&
+        state.subtotal.currencyCode != selection.resolvedPrice.currencyCode) {
+      return;
+    }
 
     final newItem = CartItem(
       product: product,
@@ -72,9 +83,13 @@ class CartViewModel extends _$CartViewModel {
       }
     }
 
-    state = state.copyWith(
+    final updatedCart = state.copyWith(
       items: items,
       subtotal: Money(minorUnits: totalMinorUnits, currencyCode: currencyCode),
     );
+    ref
+        .read(cartRepositoryProvider)
+        .saveCart(updatedCart)
+        .fold(onSuccess: (cart) => state = cart, onFailure: (_) {});
   }
 }

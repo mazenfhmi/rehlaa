@@ -49,6 +49,8 @@
   "buyNow": "Buy Now",
   "totalPriceLabel": "Total price",
   "quantityLabel": "Quantity",
+  "increaseQuantity": "Increase quantity",
+  "decreaseQuantity": "Decrease quantity",
   "selectRequiredOptions": "Select all required options to continue.",
   "removeFromCart": "Remove",
   "cartEmpty": "Your cart is empty.",

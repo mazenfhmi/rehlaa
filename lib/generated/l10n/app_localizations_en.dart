@@ -141,6 +141,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get quantityLabel => 'Quantity';
 
   @override
+  String get increaseQuantity => 'Increase quantity';
+
+  @override
+  String get decreaseQuantity => 'Decrease quantity';
+
+  @override
   String get selectRequiredOptions =>
       'Select all required options to continue.';
 
