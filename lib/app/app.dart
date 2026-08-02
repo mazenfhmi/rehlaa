@@ -28,8 +28,8 @@ class RehlaaApp extends ConsumerWidget {
       routerConfig: router,
 
       // Theme — from design reference (.desgin-ui)
-      theme: AppTheme.light,
-      darkTheme: AppTheme.dark,
+      theme: AppTheme.lightFor(locale),
+      darkTheme: AppTheme.darkFor(locale),
       themeMode: themeMode,
 
       // Localization — Arabic (default) + English

@@ -2,6 +2,14 @@ import 'package:flutter/material.dart';
 
 /// Application colors extracted from design reference (.desgin-ui/lib/constants.dart)
 abstract final class AppColors {
+  // MangoShop semantic palette
+  static const Color brandAccent = Color(0xFF00BFA5);
+  static const Color lightPrimary = Color(0xFF00796B);
+  static const Color lightSecondary = Color(0xFF0288D1);
+  static const Color lightTertiary = Color(0xFFEF6C00);
+  static const Color lightBackground = Color(0xFFF7FBFA);
+  static const Color lightSurfaceContainer = Color(0xFFE8F4F1);
+
   // Primary — Violet/Purple #7B61FF
   static const Color primary = Color(0xFF7B61FF);
   static const Color primaryLight = Color(0xFFEFECFF);
@@ -50,9 +58,11 @@ abstract final class AppColors {
   static const Color info = Color(0xFF31B0D8);
 
   // Dark mode surfaces
-  static const Color darkBackground = Color(0xFF101015);
-  static const Color darkSurface = Color(0xFF1C1C25);
-  static const Color darkCard = Color(0xFF16161E);
+  static const Color darkBackground = Color(0xFF071816);
+  static const Color darkSurface = Color(0xFF0D201D);
+  static const Color darkSurfaceContainer = Color(0xFF142B27);
+  static const Color darkSurfaceContainerHigh = Color(0xFF1C3631);
+  static const Color darkCard = darkSurfaceContainer;
 
   // Transparent / Scrim
   static const Color transparent = Colors.transparent;
